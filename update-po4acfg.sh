@@ -34,7 +34,7 @@ git reset --hard HEAD && git clean -f
 cat << EOS > $OUT_FILE
 # Don't edit this file directly!
 [po_directory] po4a/po
-[po4a_alias:mymd] text opt:"-k 0 -M utf-8 -L utf-8 -o markdown -o neverwrap"
+[po4a_alias:mymd] text opt:"-k 0 -M utf-8 -L utf-8 -o markdown"
 
 EOS
 
