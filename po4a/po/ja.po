@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-07-24 01:15+0000\n"
-"PO-Revision-Date: 2019-07-24 03:20+0000\n"
+"PO-Revision-Date: 2019-07-25 00:54+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -21,13 +21,13 @@ msgstr ""
 #: ext/julia/doc/src/./NEWS.md:2
 #, no-wrap
 msgid "Julia v1.1 Release Notes"
-msgstr ""
+msgstr "Julia v1.1 リリースノート"
 
 #. type: Title -
 #: ext/julia/doc/src/./NEWS.md:5
 #, no-wrap
 msgid "New language features"
-msgstr ""
+msgstr "新しい言語機能"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/./NEWS.md:13
@@ -35,24 +35,26 @@ msgid ""
 "An *exception stack* is maintained on each task to make exception handling more robust and enable root cause analysis. The stack may be "
 "accessed using the experimental function `Base.catch_stack` ([#28878](https://github.com/JuliaLang/julia/issues/28878))."
 msgstr ""
+"*例外スタック* は、例外処理をより堅牢にし、根本原因分析を有効にするために、各タスクで維持されます。スタックは、実験的関数 'Base."
+"catch_stack' ([#28878](https://github.com/JuliaLang/julia/issues/28878)を使用してアクセスできます。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/./NEWS.md:13
 msgid ""
 "The experimental macro `Base.@locals` returns a dictionary of current local variable names and values ([#29733](https://github.com/JuliaLang/"
 "julia/issues/29733))."
-msgstr ""
+msgstr "実験的マクロ 'Base.@locals' は、現在のローカル変数名と値の辞書を返します ([#29733](https://github.com/JuliaLang/julia/issues/29733))"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/./NEWS.md:13
 msgid "Binary `~` can now be dotted, as in `x .~ y` ([#30341](https://github.com/JuliaLang/julia/issues/30341))."
-msgstr ""
+msgstr "バイナリ '~' は 'x.~y' のようにドットを使えるようになりました。 ([#30341](https://github.com/JuliaLang/julia/issues/30341))"
 
 #. type: Title -
 #: ext/julia/doc/src/./NEWS.md:15
 #, no-wrap
 msgid "Language changes"
-msgstr ""
+msgstr "言語仕様の変更"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/./NEWS.md:39
@@ -60,6 +62,8 @@ msgid ""
 "Parser inputs ending with a comma are now consistently treated as incomplete.  Previously they were sometimes parsed as tuples, depending on "
 "whitespace ([#28506](https://github.com/JuliaLang/julia/issues/28506))."
 msgstr ""
+"コンマで終わるパーサー入力は、一貫して不完全行として扱われるようになりました。 以前は、空白に応じてタプルとして解析されることがありました"
+"([#28506](https://github.com/JuliaLang/julia/issues/28506)。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/./NEWS.md:39
@@ -67,13 +71,18 @@ msgid ""
 "Spaces were accidentally allowed in broadcast call syntax, e.g. `f. (x)`. They are now disallowed, consistent with normal function call "
 "syntax ([#29781](https://github.com/JuliaLang/julia/issues/29781))."
 msgstr ""
+"以前は('f. (x))' などのブロードキャストコール構文にスペースが誤って許可されていましたが、通常の関数呼び出し構文 ([#29781](https://github.com/"
+"JuliaLang/julia/issues/29781)と合わせて現在は許可されないようになりました。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/./NEWS.md:39
+#, fuzzy
 msgid ""
 "Big integer literals and command syntax (backticks) are now parsed with the name of the macro (`@int128_str`, `@uint128_str`, `@big_str`, "
 "`@cmd`) qualified to refer to the `Core` module ([#29968](https://github.com/JuliaLang/julia/issues/29968))."
 msgstr ""
+"Big Integer リテラルとコマンド構文(バッククオート)は、マクロの名前(`@int128_str`, `@uint128_str`, `@big_str`, `@cmd` )で解析され、「コア」モ"
+"ジュール([#29968](https://github.com/JuliaLang/julia/issues/29968)を参照することができます。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/./NEWS.md:39
@@ -752,9 +761,7 @@ msgstr ""
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/./index.md:109
 msgid "Free and open source ([MIT licensed](https://github.com/JuliaLang/julia/blob/master/LICENSE.md))"
-msgstr ""
-"フリーかつオープンソース（[MITライセンス](https://github.com/JuliaLang/julia/blob/master/LICENSE.md)）\n"
-" "
+msgstr "フリーかつオープンソース（[MITライセンス](https://github.com/JuliaLang/julia/blob/master/LICENSE.md)）"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/./index.md:109
@@ -7605,7 +7612,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/faq.md:44
 #, no-wrap
 msgid "[Scripting](@id man-scripting)"
-msgstr ""
+msgstr "[スクリプトの作成](@id man-scripting)"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/faq.md:46
@@ -27665,7 +27672,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/getting-started.md:1
 #, no-wrap
 msgid "[Getting Started](@id man-getting-started)"
-msgstr ""
+msgstr "[はじめよう](@id man-getting-started)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:5
@@ -27673,6 +27680,8 @@ msgid ""
 "Julia installation is straightforward, whether using precompiled binaries or compiling from source.  Download and install Julia by following "
 "the instructions at [https://julialang.org/downloads/](https://julialang.org/downloads/)."
 msgstr ""
+"Julia のインストールは、コンパイル済みのバイナリを使用するか、ソースからコンパイルするかにかかわらず、簡単です。 [https://julialang.org/"
+"downloads/]の指示に従ってジュリアをダウンロードしてインストールしてください。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:9
@@ -27680,6 +27689,8 @@ msgid ""
 "The easiest way to learn and experiment with Julia is by starting an interactive session (also known as a read-eval-print loop or \"REPL\") "
 "by double-clicking the Julia executable or running `julia` from the command line:"
 msgstr ""
+"Julia を学習して実験する最も簡単な方法は、Julia の実行ファイルをダブルクリックするか、コマンド ラインから 「julia」を実行して対話型セッショ"
+"ン (read-eval-print loop すなわち \"REPL\" とも呼ばれます) を開始することです:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:10
@@ -27701,16 +27712,21 @@ msgid ""
 "session with a trailing semicolon, its value is not shown. The variable `ans` is bound to the value of the last evaluated expression whether "
 "it is shown or not. The `ans` variable is only bound in interactive sessions, not when Julia code is run in other ways."
 msgstr ""
+"対話型セッションを終了するには、「Ctrl-D」と入力するか (コントロール/'^' キーを 'd' キーと一緒に押す)、 'exit()' と入力します。対話モードで実"
+"行すると、'julia' はプロンプトを表示し、入力を求めます。 ユーザーが '1 + 2' などの完全な式を入力し、enter キーが押されると、対話型セッション"
+"は式を評価し、その値を示します。後ろにセミコロンをつけて式を入力した場合には、評価結果は表示されません。変数 'ans' は、表示されているかどうか"
+"にかかわらず、最後に評価された式の値にバインドされます。'ans' 変数は対話型セッションでのみバインドされ、Julia コードが他の方法で実行される場"
+"合には使えません。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:27
 msgid "To evaluate expressions written in a source file `file.jl`, write `include(\"file.jl\")`."
-msgstr ""
+msgstr "ソース ファイル 'file.jl' に書かれた式を評価するには、'include(\"file.jl\") と書きます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:30
 msgid "To run code in a file non-interactively, you can give it as the first argument to the `julia` command:"
-msgstr ""
+msgstr "ファイル内のコードを非対話的に実行するには、'julia' コマンドの最初の引数としてファイル名を指定します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:31
@@ -27726,6 +27742,10 @@ msgid ""
 "set when a Julia expression is given using the `-e` option on the command line (see the `julia` help output below) but `PROGRAM_FILE` will "
 "be empty. For example, to just print the arguments given to a script, you could do this:"
 msgstr ""
+"この例が示すように、'julia' に対する次のコマンドライン引数は、グローバル定数 'ARGS' に渡されるプログラム 'script.jl' に対するコマンドライン引"
+"数として解釈されます。スクリプト自体の名前は、グローバル 'PROGRAM_FILE' として渡されます。「ARGS」は、コマンドラインの'-e'オプションを使用し"
+"て Julia 式が指定されている場合にも設定されますが(以下の「julia」ヘルプ出力を参照)、'PROGRAM_FILE' は空になります。たとえば、スクリプトに与え"
+"られた引数を表示するだけの場合は、次の操作を行います:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:42
@@ -27740,7 +27760,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:50
 msgid "Or you could put that code into a script and run it:"
-msgstr ""
+msgstr "もしくは、そのコードをスクリプトファイルにして実行することもできます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:51
@@ -27756,7 +27776,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:60
 msgid "The `--` delimiter can be used to separate command-line arguments intended for the script file from arguments intended for Julia:"
-msgstr ""
+msgstr "'--' 区切り文字は、スクリプト ファイルを対象とするコマンド ライン引数を Julia 用の引数から分離するために使用できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:61
@@ -27767,7 +27787,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:66
 msgid "See also [Scripting](@ref man-scripting) for more information on writing Julia scripts."
-msgstr ""
+msgstr "Julia スクリプトの作成の詳細については、[スクリプトの作成](@ref man-scripting)も参照してください。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:75
@@ -27779,11 +27799,17 @@ msgid ""
 "workers to spawn on the node, and defaults to 1. The optional `bind-to bind_addr[:port]` specifies the IP address and port that other "
 "workers should use to connect to this worker."
 msgstr ""
+"Julia は'-p' または '--machine-file' オプションを使用して並列モードで起動できます。'-p n' は追加で n個の ワーカー プロセスを起動し、'--"
+"machine-file ファイル' はファイル 'file' の各行で示された個数のワーカーを起動します 'file'`で定義されたマシンは２つの要求を満たしている必要が"
+"あります。1. 現在のホストと同じパスにJuliaがインストールされていること、2. パスワードなしの'ssh'ログインでアクセス可能なこと。各マシン定義"
+"は、'[count*][user@]host[:port] [bind_addr[:port]] ' の形式で行います。'user' はデフォルトで現在のユーザー、標準の ssh ポートへの 'port' で"
+"す。'count' はそのノードで起動するワーカーの数で、デフォルトは 1 です。オプションの 'bind-to bind_addr[:port]' は、他のワーカーがこのワーカー"
+"に接続するために使用する IP アドレスとポートを指定します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:78
 msgid "If you have code that you want executed whenever Julia is run, you can put it in `~/.julia/config/startup.jl`:"
-msgstr ""
+msgstr "Julia を実行するたびに実行させたい処理は、'~/.julia/config/startup.jl' に追記してください:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:79
@@ -27799,7 +27825,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:89
 msgid "There are various ways to run Julia code and provide options, similar to those available for the `perl` and `ruby` programs:"
-msgstr ""
+msgstr "Julia コードの実行時オプションは様々で、'perl' プログラムと 'ruby' プログラムで使用できるものと似ています:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:90
@@ -27845,6 +27871,39 @@ msgid ""
 "|`--track-allocation={none\\|user\\|all}` |Count bytes allocated by each source line|\n"
 "|`--track-allocation`                   |equivalent to `--track-allocation=user`|\n"
 msgstr ""
+"|スイッチ |説明 |\n"
+"|:---                                   |:---|\n"
+"|'-v', '--version' |バージョン情報の表示 |\n"
+"|'-h', '--help' |このメッセージを印刷する |\n"
+"|'--project[={<dir>\\|@.}]`              |<dir>をホーム プロジェクト/環境として設定します。デフォルトの@.オプションは、Project.toml または JuliaProject.toml ファイルが見つかるまで、親ディレクトリを検索します。\n"
+"|'-J', '--sysimage <file>' |特定のシステム イメージ ファイルを使用して起動 |\n"
+"|'-H', '--ホーム<dir>' | Julia 実行可能ファイルの場所を設定 |\n"
+"|'--startup-file ={yes\\|no} ' | yesを選択した場合、'~/.julia/config/startup.jl'を読み込む|\n"
+"|'--handle-signals={yes\\|no} ' |Juliatのデフォルトのシグナルハンドラを有効または無効にする |\n"
+"|'---sysimage-native-code={yes\\|no} ' |使用可能な場合は、システム イメージからネイティブ コードを使用する |\n"
+"|'--compiled-modules={yes\\|no} ' |モジュールの増分プリコンパイルを有効または無効にする|\n"
+"|'-e', '--eval <expr>' |式'<expr>'を評価する |\n"
+"|'-E', '--print <expr>' |式'<expr>'を評価し、結果を表示 |\n"
+"|'-L', '--load <file>' | すべてのプロセッサで 'file ' を読み込む |\n"
+"|'-p', '--procs {N\\|auto}' |整数値 N 個の追加のローカル ワーカー プロセスを起動します。'auto' は、ローカル CPU スレッド (論理コア) の数と同じ数のワーカーを起動します。\n"
+"|'--machine-file <file>' | <file>にリストされているホストでプロセスを実行する\n"
+"|'-i' |インタラクティブモード;REPL が実行される。このとき、'isinteractive()' の戻り値はtrue となる |\n"
+"|'-q', '--quiet' |静かなスタートアップ:バナーなし、REPL警告を抑制|\n"
+"|'--banner={yes\\|no\\|auto}' |スタートアップ バナーを有効または無効にする |\n"
+"|'--color={yes\\|no\\|auto}' |テキストの色を有効または無効にする |\n"
+"|'--history-file={yes\\|no} ' |履歴の読み込みまたは保存 |\n"
+"|'--depwarn={yes\\|no\\|error}' |非推奨の構文とメソッドを使用した際の警告を有効または無効にする ('error' は警告をエラーに変える) |\n"
+"|'--warn-overwrite={yes\\|no} ' |メソッドの上書き警告を有効または無効にする|\n"
+"|'-C', '--cpu-target' <target>| 使用するCPU 機能を <target>に制限する。 使用可能なオプションを表示するには <target>に'help' を設定して Juliaを実行してください。 |\n"
+"|'-O', '--optimiza={0,1,2,3}' |最適化レベルを設定する (不指定の場合はデフォルト レベルが 2、レベルなしで使用する場合は 3)|\n"
+"|'-g', '-g' <level>|デバッグ情報生成のレベルを有効/設定する (指定されていない場合はデフォルトレベルが 1、レベルなしで使用する場合は 2) |\n"
+"|'--inline={yes\\|no}' |'@inline' 宣言のオーバーライドをも含み、インライン化が許可されるかどうかを制御する |\n"
+"|'--check-bounds={yes\\|no}' | 境界チェックを常に行うか、常に無視するかの指定。(コード上の宣言は無視されます。) |\n"
+"|'--math-mode={ieee,fast}' |安全でない浮動小数点の最適化を許可または有効にする (ここで指定した値によって、@fastmath 宣言は上書きされます )| |\n"
+"|'--code-coverage={none\\|user\\|all}' |ソース行の実行数をカウントする |\n"
+"|'--code-coverage' |'--code-coverage=user'を指定するのと等価|\n"
+"|'--track-allocation={none\\|user\\|all}' |各ソース行にで割り当てたメモリのバイト数をカウントする |\n"
+"|'--track-allocation' |'--track-allocation=user'を指定するのと等価|\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:132
@@ -27855,12 +27914,14 @@ msgid ""
 "    directory of a Git repository for the `Project.toml` file. From Julia 1.1 forward, it\n"
 "    does.\n"
 msgstr ""
+"!!! compat \"Julia1.1\"\n"
+"    Julia 1.0 では、デフォルトの '--project=@.' オプションはGitレポジトリのルートディレクトリから'Project.toml'を探すことはしませんでした。 Julia1.1からは、行います。\n"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/getting-started.md:133
 #, no-wrap
 msgid "Resources"
-msgstr ""
+msgstr "リソース"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:135
@@ -27868,6 +27929,8 @@ msgid ""
 "A curated list of useful learning resources to help new users get started can be found on the [learning](https://julialang.org/learning/) "
 "page of the main Julia web site."
 msgstr ""
+"新しいユーザーがJuliaを始めるのに役立つ学習リソースのキュレーションリストは、Juliaのメインウェブサイトの[learning](https://julialang.org/"
+"learning/)ページにあります。"
 
 #. type: Title #
 #: ext/julia/doc/src/manual/types.md:1
