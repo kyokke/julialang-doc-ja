@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-07-24 01:15+0000\n"
-"PO-Revision-Date: 2019-07-25 22:54+0900\n"
+"PO-Revision-Date: 2019-07-26 00:38+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -27242,7 +27242,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/networking-and-streams.md:1
 #, no-wrap
 msgid "Networking and Streams"
-msgstr ""
+msgstr "[ネットワークとストリーム][@id networking-and-streams]"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/networking-and-streams.md:8
@@ -27252,6 +27252,9 @@ msgid ""
 "underlying asynchronous operation. This is achieved by making heavy use of Julia cooperative threading ([coroutine](@ref man-tasks))  "
 "functionality."
 msgstr ""
+"Julia は、端末、パイプ、TCP ソケットなどのストリーミング I/O オブジェクトを扱う豊富なインターフェイスを提供します。このインターフェイスは、シ"
+"ステム レベルでは非同期ですが、プログラマに同期的に提示され、通常は背後にある非同期処理を考える必要はありません。これは、Julia 協調スレッド"
+"([coroutine](@refのマンタスク))機能を多用することによって達成されます。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/networking-and-streams.md:9
@@ -27561,7 +27564,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/networking-and-streams.md:187
 #, no-wrap
 msgid "A simple TCP example"
-msgstr ""
+msgstr "簡単な TCP の例"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/networking-and-streams.md:192
@@ -27569,6 +27572,8 @@ msgid ""
 "Let's jump right in with a simple example involving TCP sockets.  This functionality is in a standard library package called `Sockets`.  "
 "Let's first create a simple server:"
 msgstr ""
+"ここで、TCP ソケットを含む簡単な例に飛び込んで見ましょう。この機能は、`Sockets` と呼ばれる標準ライブラリ パッケージにあります。 最初に単純な"
+"サーバーを作成してみましょう:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/networking-and-streams.md:193
@@ -27593,6 +27598,9 @@ msgid ""
 "socket API. The first call to [`listen`](@ref) will create a server waiting for incoming connections on the specified port (2000) in this "
 "case. The same function may also be used to create various other kinds of servers:"
 msgstr ""
+"Unix ソケット API に精通している人にとって親しみやすいメソッド名ですが、その使用法は生の Unix ソケット API よりもいくらかシンプルです。"
+"[`listen`](@ref) への最初の呼び出しは、この場合、指定されたポート (2000) 上の着信接続を待機するサーバーを作成します。同じ機能を使用して、他の"
+"さまざまな種類のサーバーを作成することもできます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/networking-and-streams.md:211
@@ -27632,6 +27640,13 @@ msgid ""
 "the environment (i.e. host, cwd, etc.) is the same you should be able to pass the same arguments to [`connect`](@ref) as you did to listen "
 "to establish the connection. So let's try that out (after having created the server above):"
 msgstr ""
+"最後の呼び出しの戻り値の型が異なることに注意してください。これは、このサーバーが TCP ではなく、名前付きパイプ (Windows) または UNIX ドメイン "
+"ソケットでリッスンするためです。また、Windows の名前付きパイプ形式は、名前プレフィックス (`\\\\.\\pipe\\`) が [ファイルの種類](https://docs."
+"microsoft.com/en-us/windows/desktop/ipc/pip-names) を一意に識別するように特定のパターンである必要があります。TCP と名前付きパイプまたは UNIX "
+"ドメイン ソケットの違いはわずかで、[`accept`](@ref) メソッドと [`connect`](@ref) メソッドに関係しています。[`accept`](@ref) メソッドは、作成"
+"したサーバーに接続をしようとしているクライアントとの接続を受け入れます。[`connect`](@ref) 関数は指定されたメソッドを使ってサーバーに接続しま"
+"す。[`connect`](@ref) 関数は[`listen`](@ref)と同じ引数を受け取るので、環境(ホスト、現在のカレントディレクトリなど)が同じであると仮定すると、"
+"接続を確立するために行ったのと同じ引数を[`connect`](@ref)に渡すことができるはずです。(上記のサーバーを作成した後)それを試してみましょう:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/networking-and-streams.md:247
@@ -27650,6 +27665,9 @@ msgid ""
 "connect to the server we had just created. Meanwhile, the accept function returns a server-side connection to the newly created socket and "
 "prints \"Hello World\" to indicate that the connection was successful."
 msgstr ""
+"予想通り\"Hello World\" が(サーバー側に)プリントされました。それでは、舞台裏で何が起こったのかを実際に分析してみましょう。[`connect`](@ref)を"
+"呼ぶと、作成したサーバーに接続します。一方、accept 関数は、新しく作成されたソケットへのサーバー側からの接続を返し、接続が成功したことを示す "
+"\"Hello World\" を出力します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/networking-and-streams.md:266
@@ -27660,6 +27678,10 @@ msgid ""
 "a connection request was now available), accepted the connection, printed the message and waited for the next client. Reading and writing "
 "works in the same way.  To see this, consider the following simple echo server:"
 msgstr ""
+"Julia の大きな強みは、I/O が実際に非同期的に発生しているにもかかわらず、API が同期的に公開されるので、コールバックを心配したり、サーバーが確"
+"実に実行されることを確認したりする必要がなかったことです。[`connect'](@ref)を呼び出すと、現在のタスクは接続が確立されるのを待ち、その後も実行"
+"を続行しました。この一時停止では、サーバー タスクが実行を再開し (接続要求が利用可能になったため)、接続を受け入れ、メッセージを印刷し、次のク"
+"ライアントを待機しました。ReadとWriteは同じように機能します。 これを確認するために次の単純なエコー サーバーを考えてみましょう:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/networking-and-streams.md:267
@@ -27691,7 +27713,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/networking-and-streams.md:292
 msgid "As with other streams, use [`close`](@ref) to disconnect the socket:"
-msgstr ""
+msgstr "他のストリームと同様に、[`close`](@ref)を使用してソケットを切断します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/networking-and-streams.md:293
@@ -27703,7 +27725,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/networking-and-streams.md:297
 #, no-wrap
 msgid "Resolving IP Addresses"
-msgstr ""
+msgstr "IP アドレスの解決"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/networking-and-streams.md:302
@@ -27711,6 +27733,8 @@ msgid ""
 "One of the [`connect`](@ref) methods that does not follow the [`listen`](@ref) methods is `connect(host::String,port)`, which will attempt "
 "to connect to the host given by the `host` parameter on the port given by the `port` parameter. It allows you to do things like:"
 msgstr ""
+"[`listen`](@ref) メソッドと組み合わせて使われる[`connect`](@ref) メソッドの他に`connect(host::String,port)`の形式のものがあります。これは、"
+"`host`パラメータで指定されたホストに対して、`port`で指定されたポートを使って接続します。次のように使い方です:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/networking-and-streams.md:303
@@ -27723,7 +27747,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/networking-and-streams.md:310
 msgid "At the base of this functionality is [`getaddrinfo`](@ref), which will do the appropriate address resolution:"
-msgstr ""
+msgstr "この機能のベースになっているのは[`getaddrinfo`](@ref)で、適切なアドレス解決を行います。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/networking-and-streams.md:311
@@ -30006,6 +30030,8 @@ msgid ""
 "If we want it to display instead as `3.0 * exp(4.0im)`, we would define the following method to print the object to a given output object "
 "`io` (representing a file, terminal, buffer, etcetera; see [Networking and Streams](@ref)):"
 msgstr ""
+"代わりに `3.0 * exp(4.0im)` として表示する場合は、特定の出力オブジェクト 'io' にオブジェクトを出力する次のメソッドを定義します (ファイル、端"
+"末、バッファなどを表します; [ネットワークとストリーム](@ref networking-and-streams)を参照してください):"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:1228
