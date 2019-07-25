@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-07-24 01:15+0000\n"
-"PO-Revision-Date: 2019-07-25 13:53+0900\n"
+"PO-Revision-Date: 2019-07-25 14:14+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -17445,7 +17445,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:42
 msgid "Finally, you can use [`ccall`](@ref) to actually generate a call to the library function. Arguments to [`ccall`](@ref) are as follows:"
-msgstr "最後に、[`ccall`](@ref)を使用して、ライブラリ関数の呼び出しを行う実際に生成することができます。['ccall'](@ref)の引数は次のとおりです:"
+msgstr "最後に、[`ccall`](@ref)を使用して、ライブラリ関数の呼び出しを行う実際に生成することができます。[`ccall`](@ref)の引数は次のとおりです:"
 
 #. type: Bullet: '1. '
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:44
@@ -44215,11 +44215,15 @@ msgstr ""
 
 #. type: Bullet: '12. '
 #: ext/julia/doc/src/devdocs/eval.md:59
+#, fuzzy
 msgid ""
 "If instead, the code is compiled, the bulk of the work is handled by `codegen.cpp`. Whenever a Julia function is called for the first time "
 "with a given set of argument types, [type inference](@ref dev-type-inference)  will be run on that function. This information is used by the "
 "[codegen](@ref dev-codegen) step to generate faster code."
 msgstr ""
+"代わりに、コードがコンパイルされている場合、作業の大部分は 'codegen.cpp' によって処理されます。指定された引数型のセットで Julia 関数が初めて"
+"呼び出されるたびに、その関数に対して [型推論](@ref dev-type-inference)が実行されます。この情報は、[codegen](@ref dev-codegen)ステップでより高"
+"速なコードを生成するために使用されます。"
 
 #. type: Bullet: '13. '
 #: ext/julia/doc/src/devdocs/eval.md:59
