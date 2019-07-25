@@ -15,6 +15,7 @@ DOCS="\
   . \
   manual \
   base \
+  stdlib \
   devdocs"
 
 TARGET_EXT=md
