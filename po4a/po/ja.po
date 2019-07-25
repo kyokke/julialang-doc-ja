@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-07-24 01:15+0000\n"
-"PO-Revision-Date: 2019-07-25 14:14+0900\n"
+"PO-Revision-Date: 2019-07-25 05:22+0000\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -35,20 +35,20 @@ msgid ""
 "An *exception stack* is maintained on each task to make exception handling more robust and enable root cause analysis. The stack may be "
 "accessed using the experimental function `Base.catch_stack` ([#28878](https://github.com/JuliaLang/julia/issues/28878))."
 msgstr ""
-"*例外スタック* は、例外処理をより堅牢にし、根本原因分析を有効にするために、各タスクで維持されます。スタックは、実験的関数 'Base."
-"catch_stack' ([#28878](https://github.com/JuliaLang/julia/issues/28878)を使用してアクセスできます。"
+"*例外スタック* は、例外処理をより堅牢にし、根本原因分析を有効にするために、各タスクで維持されます。スタックは、実験的関数 `Base.catch_stack` "
+"([#28878](https://github.com/JuliaLang/julia/issues/28878)を使用してアクセスできます。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/./NEWS.md:13
 msgid ""
 "The experimental macro `Base.@locals` returns a dictionary of current local variable names and values ([#29733](https://github.com/JuliaLang/"
 "julia/issues/29733))."
-msgstr "実験的マクロ 'Base.@locals' は、現在のローカル変数名と値の辞書を返します ([#29733](https://github.com/JuliaLang/julia/issues/29733))"
+msgstr "実験的マクロ `Base.@locals` は、現在のローカル変数名と値の辞書を返します ([#29733](https://github.com/JuliaLang/julia/issues/29733))"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/./NEWS.md:13
 msgid "Binary `~` can now be dotted, as in `x .~ y` ([#30341](https://github.com/JuliaLang/julia/issues/30341))."
-msgstr "バイナリ '~' は 'x.~y' のようにドットを使えるようになりました。 ([#30341](https://github.com/JuliaLang/julia/issues/30341))"
+msgstr "バイナリ `~` は `x.~y` のようにドットを使えるようになりました。 ([#30341](https://github.com/JuliaLang/julia/issues/30341))"
 
 #. type: Title -
 #: ext/julia/doc/src/./NEWS.md:15
@@ -71,7 +71,7 @@ msgid ""
 "Spaces were accidentally allowed in broadcast call syntax, e.g. `f. (x)`. They are now disallowed, consistent with normal function call "
 "syntax ([#29781](https://github.com/JuliaLang/julia/issues/29781))."
 msgstr ""
-"以前は('f. (x))' などのブロードキャストコール構文にスペースが誤って許可されていましたが、通常の関数呼び出し構文 ([#29781](https://github.com/"
+"以前は(`f. (x))` などのブロードキャストコール構文にスペースが誤って許可されていましたが、通常の関数呼び出し構文 ([#29781](https://github.com/"
 "JuliaLang/julia/issues/29781)と合わせて現在は許可されないようになりました。"
 
 #. type: Bullet: '  * '
@@ -732,7 +732,7 @@ msgstr ""
 "ちょっとプログラムを書きたいだけなら、わざわざ使う必要のない型や多重ディスパッチですが、 これらの昨日は実はJuliaの中核を担っています。関数は"
 "さまざまな引数の組み合わせに対して定義され、実行時には最も当てはまる定義が適用されます。 このモデルは数値計算にとても適しています。従来のオブ"
 "ジェクト指向ディスパッチのように、第一引数が演算子を「所有」するのは不自然です。これに対してJuliaの演算子は（特殊な記法を持った）単なる関数に"
-"過ぎません。 ユーザーが定義したデータ型に対して加算処理を追加したい場合は、 '+'　関数に対して新たなメソッドを定義します。 こうすることで、既"
+"過ぎません。 ユーザーが定義したデータ型に対して加算処理を追加したい場合は、 `+`　関数に対して新たなメソッドを定義します。 こうすることで、既"
 "存のコードをシームレスに新たなデータ型対応させることができます。"
 
 #. type: Plain text
@@ -17397,7 +17397,7 @@ msgid ""
 "gains.)"
 msgstr ""
 "Julia から呼び出されるコードは、共有ライブラリとして使用できなければなりません。ほとんどの C ライブラリと Fortran ライブラリは既に共有ライブ"
-"ラリとしてコンパイルされていますが、GCC (または Clang) を使用してコードを自分でコンパイルする場合は、'-shared' および 'fPIC' オプションを使用"
+"ラリとしてコンパイルされていますが、GCC (または Clang) を使用してコードを自分でコンパイルする場合は、`-shared` および `fPIC` オプションを使用"
 "してください。Julia の JIT によって生成されるマシン命令はネイティブ C 呼び出しと同じなので、結果として生じるオーバーヘッドは C コードからライ"
 "ブラリ関数を呼び出すのと同じです。(C と Julia の両方の非ライブラリ関数呼び出しはインライン化できるため、共有ライブラリ関数の呼び出しよりも"
 "オーバーヘッドが少ない場合があります。ライブラリと実行可能ファイルの両方が LLVM によって生成される場合、この境界を越えて最適化できるプログラ"
@@ -17412,8 +17412,8 @@ msgid ""
 "specific) load path will be resolved by name, and if necessary a direct path may be specified."
 msgstr ""
 "共有ライブラリと関数は、`(:function, \"library\")` or `(\"function\", \"library\")` の書式のタプルで参照できます。ここで 、`function` は、C出"
-"エクスポートされた関数名、'library' は共有ライブラリの名前です: ライブラリ読み込みパス(プラットフォーム固有の物も含む)中の共用ライブラリーは"
-"その名前のみで解決されますが、必要に応じて直接パスを指定することもできます。"
+"エクスポートされた関数名、library` は共有ライブラリの名前です: ライブラリ読み込みパス(プラットフォーム固有の物も含む)中の共用ライブラリーはそ"
+"の名前のみで解決されますが、必要に応じて直接パスを指定することもできます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:28
@@ -17422,7 +17422,7 @@ msgid ""
 "current process. This form can be used to call C library functions, functions in the Julia runtime, or functions in an application linked to "
 "Julia."
 msgstr ""
-"関数名は、タプルの代わりに単独で(単に ':function' または \"function\" として) 使用できます。この場合、名前は現在のプロセス内で解決されます。"
+"関数名は、タプルの代わりに単独で(単に `:function` または \"function\" として) 使用できます。この場合、名前は現在のプロセス内で解決されます。"
 "この形式を使用できるのは、C ライブラリ関数、Julia ランタイムの関数、または Julia にリンクされたアプリケーションの関数のいずれかを呼び出す時で"
 "す。"
 
@@ -17496,7 +17496,7 @@ msgstr "そのあとに続く引数(もしあれば)は、その関数に実際�
 #. type: Plain text
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:67
 msgid "As a complete but simple example, the following calls the `clock` function from the standard C library:"
-msgstr "上記全ての内容を含むシンプルな例ですが、次の関数は標準 C ライブラリから 'clock' 関数を呼び出します:"
+msgstr "上記全ての内容を含むシンプルな例ですが、次の関数は標準 C ライブラリから `clock` 関数を呼び出します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:68
@@ -17518,8 +17518,8 @@ msgid ""
 "`clock` takes no arguments and returns an [`Int32`](@ref). One common gotcha is that a 1-tuple must be written with a trailing comma. For "
 "example, to call the `getenv` function to get a pointer to the value of an environment variable, one makes a call like this:"
 msgstr ""
-"'clock' は引数を受け取らず、[`Int32`](@ref)を返します。よくある落とし穴1 つは、1要素の タプルにも末尾のコンマが必要になる点です。たとえ"
-"ば、'getenv' 関数を呼び出して環境変数の値へのポインターを取得するには、次のような呼び出しを行います:"
+"`clock` は引数を受け取らず、[`Int32`](@ref)を返します。よくある落とし穴1 つは、1要素の タプルにも末尾のコンマが必要になる点です。たとえば、"
+"`getenv` 関数を呼び出して環境変数の値へのポインターを取得するには、次のような呼び出しを行います:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:83
@@ -17561,7 +17561,7 @@ msgid ""
 msgstr ""
 "実際には、特に再利用可能な機能を提供する場合の話ですが、[`ccall`](@ref)を使用するコードに対して、引数を設定して、CまたはFortranのターゲット関"
 "数の振る舞いのエラーチェックをして、例外をJulia側にまで伝播させるようなラッパー関数を準備することが多いです。C API と Fortran API は、エラー"
-"条件を示す方法に関して一貫性がないため、これは特に重要です。たとえば、'getenv' C ライブラリ関数は、['env.jl'] (https://github.com/JuliaLang/"
+"条件を示す方法に関して一貫性がないため、これは特に重要です。たとえば、`getenv` C ライブラリ関数は、[`env.jl`] (https://github.com/JuliaLang/"
 "julia/blob/master/base/env.jl) から実際の定義の簡略化されたバージョンである次の Julia 関数にラップされます:"
 
 #. type: Plain text
@@ -17585,7 +17585,7 @@ msgid ""
 "including by returning -1, 0, 1 and other special values.  This wrapper throws an exception clearly indicating the problem if the caller "
 "tries to get a non-existent environment variable:"
 msgstr ""
-"C言語の 'getenv' 関数は 'NULL' を返すことによってエラーを示しますが、他の標準 C 関数は-1、0、1 およびその他の特殊値を返すなど、さまざまな方法"
+"C言語の `getenv` 関数は `NULL` を返すことによってエラーを示しますが、他の標準 C 関数は-1、0、1 およびその他の特殊値を返すなど、さまざまな方法"
 "でエラーを示します。 このラッパーは、呼び出し元が存在しない環境変数を取得しようとした場合に問題を明確に示す例外をスローします:"
 
 #. type: Plain text
@@ -17628,11 +17628,11 @@ msgid ""
 "function. This is why we don't use the `Cstring` type here: as the array is uninitialized, it could contain NUL bytes. Converting to a "
 "`Cstring` as part of the [`ccall`](@ref) checks for contained NUL bytes and could therefore throw a conversion error."
 msgstr ""
-"次の使用例は、最初にバイトの配列を割り当て、次に C ライブラリ関数 'gethostname' を呼び出して配列をホスト名で埋め、ホスト名バッファーへのポイ"
+"次の使用例は、最初にバイトの配列を割り当て、次に C ライブラリ関数 `gethostname` を呼び出して配列をホスト名で埋め、ホスト名バッファーへのポイ"
 "ンターを取得し、NULL 終端 C 文字列であると仮定してJulia 文字列にポインタを変換します。C ライブラリでは、呼び出し元にメモリを割り当てて、呼び"
 "出し先に渡して入力するように要求するこのパターンを使用するのが一般的です。このような Julia からのメモリの割り当ては、一般に、初期化されていな"
 "い配列を作成し、そのデータへのポインタを C 関数に渡すことによって行われます。配列が初期化されていないため、NULL バイトを含むことができるた"
-"め、ここで 'Cstring' 型を使用しない理由です。[`ccall`](@ref)の一部として'Cstring'に変換すると、含まれる NULL バイトがチェックされるため、変換"
+"め、ここで `Cstring` 型を使用しない理由です。[`ccall`](@ref)の一部として`Cstring`に変換すると、含まれる NULL バイトがチェックされるため、変換"
 "エラーがスローされる可能性があります。"
 
 #. type: Title ##
@@ -27753,21 +27753,21 @@ msgid ""
 "session with a trailing semicolon, its value is not shown. The variable `ans` is bound to the value of the last evaluated expression whether "
 "it is shown or not. The `ans` variable is only bound in interactive sessions, not when Julia code is run in other ways."
 msgstr ""
-"対話型セッションを終了するには、「Ctrl-D」と入力するか (コントロール/'^' キーを 'd' キーと一緒に押す)、 'exit()' と入力します。対話モードで実"
-"行すると、'julia' はプロンプトを表示し、入力を求めます。 ユーザーが '1 + 2' などの完全な式を入力し、enter キーが押されると、対話型セッション"
-"は式を評価し、その値を示します。後ろにセミコロンをつけて式を入力した場合には、評価結果は表示されません。変数 'ans' は、表示されているかどうか"
-"にかかわらず、最後に評価された式の値にバインドされます。'ans' 変数は対話型セッションでのみバインドされ、Julia コードが他の方法で実行される場"
+"対話型セッションを終了するには、「Ctrl-D」と入力するか (コントロール/`^` キーを `d` キーと一緒に押す)、 `exit()` と入力します。対話モードで実"
+"行すると、`julia` はプロンプトを表示し、入力を求めます。 ユーザーが `1 + 2` などの完全な式を入力し、enter キーが押されると、対話型セッション"
+"は式を評価し、その値を示します。後ろにセミコロンをつけて式を入力した場合には、評価結果は表示されません。変数 `ans` は、表示されているかどうか"
+"にかかわらず、最後に評価された式の値にバインドされます。`ans` 変数は対話型セッションでのみバインドされ、Julia コードが他の方法で実行される場"
 "合には使えません。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:27
 msgid "To evaluate expressions written in a source file `file.jl`, write `include(\"file.jl\")`."
-msgstr "ソース ファイル 'file.jl' に書かれた式を評価するには、'include(\"file.jl\") と書きます。"
+msgstr "ソース ファイル `file.jl` に書かれた式を評価するには、`include(\"file.jl\") と書きます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:30
 msgid "To run code in a file non-interactively, you can give it as the first argument to the `julia` command:"
-msgstr "ファイル内のコードを非対話的に実行するには、'julia' コマンドの最初の引数としてファイル名を指定します:"
+msgstr "ファイル内のコードを非対話的に実行するには、`julia` コマンドの最初の引数としてファイル名を指定します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:31
@@ -27783,9 +27783,9 @@ msgid ""
 "set when a Julia expression is given using the `-e` option on the command line (see the `julia` help output below) but `PROGRAM_FILE` will "
 "be empty. For example, to just print the arguments given to a script, you could do this:"
 msgstr ""
-"この例が示すように、'julia' に対する次のコマンドライン引数は、グローバル定数 'ARGS' に渡されるプログラム 'script.jl' に対するコマンドライン引"
-"数として解釈されます。スクリプト自体の名前は、グローバル 'PROGRAM_FILE' として渡されます。「ARGS」は、コマンドラインの'-e'オプションを使用し"
-"て Julia 式が指定されている場合にも設定されますが(以下の「julia」ヘルプ出力を参照)、'PROGRAM_FILE' は空になります。たとえば、スクリプトに与え"
+"この例が示すように、`julia` に対する次のコマンドライン引数は、グローバル定数 `ARGS` に渡されるプログラム `script.jl` に対するコマンドライン引"
+"数として解釈されます。スクリプト自体の名前は、グローバル `PROGRAM_FILE` として渡されます。「ARGS」は、コマンドラインの`-e`オプションを使用し"
+"て Julia 式が指定されている場合にも設定されますが(以下の「julia」ヘルプ出力を参照)、`PROGRAM_FILE` は空になります。たとえば、スクリプトに与え"
 "られた引数を表示するだけの場合は、次の操作を行います:"
 
 #. type: Plain text
@@ -27817,7 +27817,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:60
 msgid "The `--` delimiter can be used to separate command-line arguments intended for the script file from arguments intended for Julia:"
-msgstr "'--' 区切り文字は、スクリプト ファイルを対象とするコマンド ライン引数を Julia 用の引数から分離するために使用できます:"
+msgstr "`--` 区切り文字は、スクリプト ファイルを対象とするコマンド ライン引数を Julia 用の引数から分離するために使用できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:61
@@ -27840,17 +27840,17 @@ msgid ""
 "workers to spawn on the node, and defaults to 1. The optional `bind-to bind_addr[:port]` specifies the IP address and port that other "
 "workers should use to connect to this worker."
 msgstr ""
-"Julia は'-p' または '--machine-file' オプションを使用して並列モードで起動できます。'-p n' は追加で n個の ワーカー プロセスを起動し、'--"
-"machine-file ファイル' はファイル 'file' の各行で示された個数のワーカーを起動します 'file'`で定義されたマシンは２つの要求を満たしている必要が"
-"あります。1. 現在のホストと同じパスにJuliaがインストールされていること、2. パスワードなしの'ssh'ログインでアクセス可能なこと。各マシン定義"
-"は、'[count*][user@]host[:port] [bind_addr[:port]] ' の形式で行います。'user' はデフォルトで現在のユーザー、標準の ssh ポートへの 'port' で"
-"す。'count' はそのノードで起動するワーカーの数で、デフォルトは 1 です。オプションの 'bind-to bind_addr[:port]' は、他のワーカーがこのワーカー"
+"Julia は`-p` または `--machine-file` オプションを使用して並列モードで起動できます。`-p n` は追加で n個の ワーカー プロセスを起動し、`--"
+"machine-file ファイル` はファイル `file` の各行で示された個数のワーカーを起動します `file``で定義されたマシンは２つの要求を満たしている必要が"
+"あります。1. 現在のホストと同じパスにJuliaがインストールされていること、2. パスワードなしの`ssh`ログインでアクセス可能なこと。各マシン定義"
+"は、`[count*][user@]host[:port] [bind_addr[:port]] ` の形式で行います。`user` はデフォルトで現在のユーザー、標準の ssh ポートへの `port` で"
+"す。`count` はそのノードで起動するワーカーの数で、デフォルトは 1 です。オプションの `bind-to bind_addr[:port]` は、他のワーカーがこのワーカー"
 "に接続するために使用する IP アドレスとポートを指定します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:78
 msgid "If you have code that you want executed whenever Julia is run, you can put it in `~/.julia/config/startup.jl`:"
-msgstr "Julia を実行するたびに実行させたい処理は、'~/.julia/config/startup.jl' に追記してください:"
+msgstr "Julia を実行するたびに実行させたい処理は、`~/.julia/config/startup.jl` に追記してください:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:79
@@ -27866,7 +27866,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:89
 msgid "There are various ways to run Julia code and provide options, similar to those available for the `perl` and `ruby` programs:"
-msgstr "Julia コードの実行時オプションは様々で、'perl' プログラムと 'ruby' プログラムで使用できるものと似ています:"
+msgstr "Julia コードの実行時オプションは様々で、`perl` プログラムと `ruby` プログラムで使用できるものと似ています:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:90
@@ -27914,37 +27914,37 @@ msgid ""
 msgstr ""
 "|スイッチ |説明 |\n"
 "|:---                                   |:---|\n"
-"|'-v', '--version' |バージョン情報の表示 |\n"
-"|'-h', '--help' |このメッセージを印刷する |\n"
-"|'--project[={<dir>\\|@.}]`              |<dir>をホーム プロジェクト/環境として設定します。デフォルトの@.オプションは、Project.toml または JuliaProject.toml ファイルが見つかるまで、親ディレクトリを検索します。\n"
-"|'-J', '--sysimage <file>' |特定のシステム イメージ ファイルを使用して起動 |\n"
-"|'-H', '--ホーム<dir>' | Julia 実行可能ファイルの場所を設定 |\n"
-"|'--startup-file ={yes\\|no} ' | yesを選択した場合、'~/.julia/config/startup.jl'を読み込む|\n"
-"|'--handle-signals={yes\\|no} ' |Juliatのデフォルトのシグナルハンドラを有効または無効にする |\n"
-"|'---sysimage-native-code={yes\\|no} ' |使用可能な場合は、システム イメージからネイティブ コードを使用する |\n"
-"|'--compiled-modules={yes\\|no} ' |モジュールの増分プリコンパイルを有効または無効にする|\n"
-"|'-e', '--eval <expr>' |式'<expr>'を評価する |\n"
-"|'-E', '--print <expr>' |式'<expr>'を評価し、結果を表示 |\n"
-"|'-L', '--load <file>' | すべてのプロセッサで 'file ' を読み込む |\n"
-"|'-p', '--procs {N\\|auto}' |整数値 N 個の追加のローカル ワーカー プロセスを起動します。'auto' は、ローカル CPU スレッド (論理コア) の数と同じ数のワーカーを起動します。\n"
-"|'--machine-file <file>' | <file>にリストされているホストでプロセスを実行する\n"
-"|'-i' |インタラクティブモード;REPL が実行される。このとき、'isinteractive()' の戻り値はtrue となる |\n"
-"|'-q', '--quiet' |静かなスタートアップ:バナーなし、REPL警告を抑制|\n"
-"|'--banner={yes\\|no\\|auto}' |スタートアップ バナーを有効または無効にする |\n"
-"|'--color={yes\\|no\\|auto}' |テキストの色を有効または無効にする |\n"
-"|'--history-file={yes\\|no} ' |履歴の読み込みまたは保存 |\n"
-"|'--depwarn={yes\\|no\\|error}' |非推奨の構文とメソッドを使用した際の警告を有効または無効にする ('error' は警告をエラーに変える) |\n"
-"|'--warn-overwrite={yes\\|no} ' |メソッドの上書き警告を有効または無効にする|\n"
-"|'-C', '--cpu-target' <target>| 使用するCPU 機能を <target>に制限する。 使用可能なオプションを表示するには <target>に'help' を設定して Juliaを実行してください。 |\n"
-"|'-O', '--optimiza={0,1,2,3}' |最適化レベルを設定する (不指定の場合はデフォルト レベルが 2、レベルなしで使用する場合は 3)|\n"
-"|'-g', '-g' <level>|デバッグ情報生成のレベルを有効/設定する (指定されていない場合はデフォルトレベルが 1、レベルなしで使用する場合は 2) |\n"
-"|'--inline={yes\\|no}' |'@inline' 宣言のオーバーライドをも含み、インライン化が許可されるかどうかを制御する |\n"
-"|'--check-bounds={yes\\|no}' | 境界チェックを常に行うか、常に無視するかの指定。(コード上の宣言は無視されます。) |\n"
-"|'--math-mode={ieee,fast}' |安全でない浮動小数点の最適化を許可または有効にする (ここで指定した値によって、@fastmath 宣言は上書きされます )| |\n"
-"|'--code-coverage={none\\|user\\|all}' |ソース行の実行数をカウントする |\n"
-"|'--code-coverage' |'--code-coverage=user'を指定するのと等価|\n"
-"|'--track-allocation={none\\|user\\|all}' |各ソース行にで割り当てたメモリのバイト数をカウントする |\n"
-"|'--track-allocation' |'--track-allocation=user'を指定するのと等価|\n"
+"|`-v`, `--version` |バージョン情報の表示 |\n"
+"|`-h`, `--help` |このメッセージを印刷する |\n"
+"|`--project[={<dir>\\|@.}]`              |<dir>をホーム プロジェクト/環境として設定します。デフォルトの@.オプションは、Project.toml または JuliaProject.toml ファイルが見つかるまで、親ディレクトリを検索します。\n"
+"|`-J`, `--sysimage <file>` |特定のシステム イメージ ファイルを使用して起動 |\n"
+"|`-H`, `--ホーム<dir>` | Julia 実行可能ファイルの場所を設定 |\n"
+"|`--startup-file ={yes\\|no} ` | yesを選択した場合、`~/.julia/config/startup.jl`を読み込む|\n"
+"|`--handle-signals={yes\\|no} ` |Juliatのデフォルトのシグナルハンドラを有効または無効にする |\n"
+"|`---sysimage-native-code={yes\\|no} ` |使用可能な場合は、システム イメージからネイティブ コードを使用する |\n"
+"|`--compiled-modules={yes\\|no} ` |モジュールの増分プリコンパイルを有効または無効にする|\n"
+"|`-e`, `--eval <expr>` |式`<expr>`を評価する |\n"
+"|`-E`, `--print <expr>` |式`<expr>`を評価し、結果を表示 |\n"
+"|`-L`, `--load <file>` | すべてのプロセッサで `file ` を読み込む |\n"
+"|`-p`, `--procs {N\\|auto}` |整数値 N 個の追加のローカル ワーカー プロセスを起動します。`auto` は、ローカル CPU スレッド (論理コア) の数と同じ数のワーカーを起動します。\n"
+"|`--machine-file <file>` | <file>にリストされているホストでプロセスを実行する\n"
+"|`-i` |インタラクティブモード;REPL が実行される。このとき、`isinteractive()` の戻り値はtrue となる |\n"
+"|`-q`, `--quiet` |静かなスタートアップ:バナーなし、REPL警告を抑制|\n"
+"|`--banner={yes\\|no\\|auto}` |スタートアップ バナーを有効または無効にする |\n"
+"|`--color={yes\\|no\\|auto}` |テキストの色を有効または無効にする |\n"
+"|`--history-file={yes\\|no} ` |履歴の読み込みまたは保存 |\n"
+"|`--depwarn={yes\\|no\\|error}` |非推奨の構文とメソッドを使用した際の警告を有効または無効にする (`error` は警告をエラーに変える) |\n"
+"|`--warn-overwrite={yes\\|no} ` |メソッドの上書き警告を有効または無効にする|\n"
+"|`-C`, `--cpu-target` <target>| 使用するCPU 機能を <target>に制限する。 使用可能なオプションを表示するには <target>に`help` を設定して Juliaを実行してください。 |\n"
+"|`-O`, `--optimiza={0,1,2,3}` |最適化レベルを設定する (不指定の場合はデフォルト レベルが 2、レベルなしで使用する場合は 3)|\n"
+"|`-g`, `-g` <level>|デバッグ情報生成のレベルを有効/設定する (指定されていない場合はデフォルトレベルが 1、レベルなしで使用する場合は 2) |\n"
+"|`--inline={yes\\|no}` |`@inline` 宣言のオーバーライドをも含み、インライン化が許可されるかどうかを制御する |\n"
+"|`--check-bounds={yes\\|no}` | 境界チェックを常に行うか、常に無視するかの指定。(コード上の宣言は無視されます。) |\n"
+"|`--math-mode={ieee,fast}` |安全でない浮動小数点の最適化を許可または有効にする (ここで指定した値によって、@fastmath 宣言は上書きされます )| |\n"
+"|`--code-coverage={none\\|user\\|all}` |ソース行の実行数をカウントする |\n"
+"|`--code-coverage` |`--code-coverage=user`を指定するのと等価|\n"
+"|`--track-allocation={none\\|user\\|all}` |各ソース行にで割り当てたメモリのバイト数をカウントする |\n"
+"|`--track-allocation` |`--track-allocation=user`を指定するのと等価|\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:132
@@ -27956,7 +27956,7 @@ msgid ""
 "    does.\n"
 msgstr ""
 "!!! compat \"Julia1.1\"\n"
-"    Julia 1.0 では、デフォルトの '--project=@.' オプションはGitレポジトリのルートディレクトリから'Project.toml'を探すことはしませんでした。 Julia1.1からは、行います。\n"
+"    Julia 1.0 では、デフォルトの `--project=@.` オプションはGitレポジトリのルートディレクトリから`Project.toml`を探すことはしませんでした。 Julia1.1からは、行います。\n"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/getting-started.md:133
@@ -44221,7 +44221,7 @@ msgid ""
 "with a given set of argument types, [type inference](@ref dev-type-inference)  will be run on that function. This information is used by the "
 "[codegen](@ref dev-codegen) step to generate faster code."
 msgstr ""
-"代わりに、コードがコンパイルされている場合、作業の大部分は 'codegen.cpp' によって処理されます。指定された引数型のセットで Julia 関数が初めて"
+"代わりに、コードがコンパイルされている場合、作業の大部分は `codegen.cpp` によって処理されます。指定された引数型のセットで Julia 関数が初めて"
 "呼び出されるたびに、その関数に対して [型推論](@ref dev-type-inference)が実行されます。この情報は、[codegen](@ref dev-codegen)ステップでより高"
 "速なコードを生成するために使用されます。"
 
