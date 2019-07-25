@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-07-24 01:15+0000\n"
-"PO-Revision-Date: 2019-07-26 00:38+0900\n"
+"PO-Revision-Date: 2019-07-25 21:51+0000\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -21044,7 +21044,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/variables.md:142
 msgid "For more information about stylistic conventions, see the [Style Guide](@ref)."
-msgstr "文体規約の詳細については、「スタイルガイド」(@ref)をご覧ください。"
+msgstr "文体規約の詳細については、[スタイルガイド](@ref style-guide)をご覧ください。"
 
 #. type: Title #
 #: ext/julia/doc/src/manual/control-flow.md:1
@@ -27242,7 +27242,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/networking-and-streams.md:1
 #, no-wrap
 msgid "Networking and Streams"
-msgstr "[ネットワークとストリーム][@id networking-and-streams]"
+msgstr "[ネットワークとストリーム](@id networking-and-streams)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/networking-and-streams.md:8
@@ -27254,7 +27254,7 @@ msgid ""
 msgstr ""
 "Julia は、端末、パイプ、TCP ソケットなどのストリーミング I/O オブジェクトを扱う豊富なインターフェイスを提供します。このインターフェイスは、シ"
 "ステム レベルでは非同期ですが、プログラマに同期的に提示され、通常は背後にある非同期処理を考える必要はありません。これは、Julia 協調スレッド"
-"([coroutine](@refのマンタスク))機能を多用することによって達成されます。"
+"([coroutine](@ref man-tasks))機能を多用することによって達成されます。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/networking-and-streams.md:9
@@ -27679,7 +27679,7 @@ msgid ""
 "works in the same way.  To see this, consider the following simple echo server:"
 msgstr ""
 "Julia の大きな強みは、I/O が実際に非同期的に発生しているにもかかわらず、API が同期的に公開されるので、コールバックを心配したり、サーバーが確"
-"実に実行されることを確認したりする必要がなかったことです。[`connect'](@ref)を呼び出すと、現在のタスクは接続が確立されるのを待ち、その後も実行"
+"実に実行されることを確認したりする必要がなかったことです。[`connect`](@ref)を呼び出すと、現在のタスクは接続が確立されるのを待ち、その後も実行"
 "を続行しました。この一時停止では、サーバー タスクが実行を再開し (接続要求が利用可能になったため)、接続を受け入れ、メッセージを印刷し、次のク"
 "ライアントを待機しました。ReadとWriteは同じように機能します。 これを確認するために次の単純なエコー サーバーを考えてみましょう:"
 
@@ -34058,7 +34058,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/style-guide.md:1
 #, no-wrap
 msgid "Style Guide"
-msgstr "スタイルガイド"
+msgstr "[スタイルガイド](@id style-guide)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/style-guide.md:6
