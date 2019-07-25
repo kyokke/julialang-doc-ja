@@ -5,6 +5,7 @@ Julia に入門するにあたり、ドキュメントを読んだついでに�
 2019年7月現在の 最新リリースの、v1.1.1 を対象にしていますが、新しいver.が出たらそちらに途中から乗り換えるかもしれません。
 
 - [原文](https://docs.julialang.org/en/v1.1/)
+
 - 参考
  - [mnru](https://github.com/mnru) さん v1.0 訳
    - https://github.com/mnru/julia-doc-ja-v1.0-source
@@ -16,6 +17,10 @@ Julia に入門するにあたり、ドキュメントを読んだついでに�
    - https://github.com/JuliaTokyo/julia-doc-ja
    - https://julia-doc-ja.readthedocs.io/ja/latest/index.html
 
+## TODO
+
+ po4a によって生成された翻訳版 markdown においてリンク表記の途中で改行が挿入されてしまい、リンクが切れている。
+具体的には、devdocs/emal.md　の dev-tyes-inference へのリンク。この問題をどう解決するか?
 
 ## 和訳協力/誤訳の指摘について
 
