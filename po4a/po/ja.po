@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-07-24 01:15+0000\n"
-"PO-Revision-Date: 2019-07-25 13:05+0900\n"
+"PO-Revision-Date: 2019-07-25 13:53+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -4913,6 +4913,11 @@ msgid ""
 "project, without the need to rewrite everything in C/C++. Julia has a C API to make this possible. As almost all programming languages have "
 "some way to call C functions, the Julia C API can also be used to build further language bridges (e.g. calling Julia from Python or C#)."
 msgstr ""
+"「C と Fortran Code を呼び出す」(@ref Calling-C-and-Fortran-Code)で見てきたように、Julia には C で書かれた関数を呼び出す簡単で効率的な方法が"
+"あります。しかし、逆のことが必要な状況もあるでしょう C コードから Julia 関数を呼び出すということです。これは、Julia 関数をC/C++ ですべてを書"
+"き換えることなく、Julia コードをより大きな C/C+プロジェクトに統合するために使用できます。ジュリアはこれを可能にするC APIを持っています。ほと"
+"んどすべてのプログラミング言語はC関数を呼び出す何らかの方法を持っているので、Julia C APIを使用して、さらに言語ブリッジを構築することもできま"
+"す(例えば、PythonやC#からJuliaを呼び出すなど)。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/embedding.md:10
@@ -17364,7 +17369,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:1
 #, no-wrap
 msgid "Calling C and Fortran Code"
-msgstr "C, Fortran コードの呼び出し"
+msgstr "[C, Fortran コードの呼び出し](@id Calling-C-and-Fortran-Code)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:9
@@ -17378,7 +17383,7 @@ msgstr ""
 "ほとんどのコードは Julia で記述できますが、C と Fortran で既に記述されている数値計算用の高品質で成熟したライブラリが多数あります。この既存の"
 "コードを簡単に使用できるように、Julia は C 関数と Fortran 関数を簡単かつ効率的に呼び出すことができます。Julia は「定型文なし」の哲学を持って"
 "います:関数は「接着剤」コードやコード生成もしくはコンパイルなしでJulia から直接呼び出すことができます。-- 対話プロンプトからでも、です。通常"
-"の関数呼び出しのように見える ['ccall'(@ref) 構文を使用して適切な呼び出しを行うだけで実現することができます。"
+"の関数呼び出しのように見える [`ccall`](@ref) 構文を使用して適切な呼び出しを行うだけで実現することができます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:19
@@ -17440,7 +17445,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:42
 msgid "Finally, you can use [`ccall`](@ref) to actually generate a call to the library function. Arguments to [`ccall`](@ref) are as follows:"
-msgstr "最後に、['ccall`](@ref)を使用して、ライブラリ関数の呼び出しを行う実際に生成することができます。['ccall'](@ref)の引数は次のとおりです:"
+msgstr "最後に、[`ccall`](@ref)を使用して、ライブラリ関数の呼び出しを行う実際に生成することができます。['ccall'](@ref)の引数は次のとおりです:"
 
 #. type: Bullet: '1. '
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:44
@@ -17513,7 +17518,7 @@ msgid ""
 "`clock` takes no arguments and returns an [`Int32`](@ref). One common gotcha is that a 1-tuple must be written with a trailing comma. For "
 "example, to call the `getenv` function to get a pointer to the value of an environment variable, one makes a call like this:"
 msgstr ""
-"'clock' は引数を受け取らず、['Int32''](@ref)を返します。よくある落とし穴1 つは、1要素の タプルにも末尾のコンマが必要になる点です。たとえ"
+"'clock' は引数を受け取らず、[`Int32`](@ref)を返します。よくある落とし穴1 つは、1要素の タプルにも末尾のコンマが必要になる点です。たとえ"
 "ば、'getenv' 関数を呼び出して環境変数の値へのポインターを取得するには、次のような呼び出しを行います:"
 
 #. type: Plain text
@@ -17554,7 +17559,7 @@ msgid ""
 "example, the `getenv` C library function is wrapped in the following Julia function, which is a simplified version of the actual definition "
 "from [`env.jl`](https://github.com/JuliaLang/julia/blob/master/base/env.jl):"
 msgstr ""
-"実際には、特に再利用可能な機能を提供する場合の話ですが、['ccall'(@ref)を使用するコードに対して、引数を設定して、CまたはFortranのターゲット関"
+"実際には、特に再利用可能な機能を提供する場合の話ですが、[`ccall`](@ref)を使用するコードに対して、引数を設定して、CまたはFortranのターゲット関"
 "数の振る舞いのエラーチェックをして、例外をJulia側にまで伝播させるようなラッパー関数を準備することが多いです。C API と Fortran API は、エラー"
 "条件を示す方法に関して一貫性がないため、これは特に重要です。たとえば、'getenv' C ライブラリ関数は、['env.jl'] (https://github.com/JuliaLang/"
 "julia/blob/master/base/env.jl) から実際の定義の簡略化されたバージョンである次の Julia 関数にラップされます:"
@@ -17627,7 +17632,7 @@ msgstr ""
 "ンターを取得し、NULL 終端 C 文字列であると仮定してJulia 文字列にポインタを変換します。C ライブラリでは、呼び出し元にメモリを割り当てて、呼び"
 "出し先に渡して入力するように要求するこのパターンを使用するのが一般的です。このような Julia からのメモリの割り当ては、一般に、初期化されていな"
 "い配列を作成し、そのデータへのポインタを C 関数に渡すことによって行われます。配列が初期化されていないため、NULL バイトを含むことができるた"
-"め、ここで 'Cstring' 型を使用しない理由です。['ccall'](@ref)の一部として'Cstring'に変換すると、含まれる NULL バイトがチェックされるため、変換"
+"め、ここで 'Cstring' 型を使用しない理由です。[`ccall`](@ref)の一部として'Cstring'に変換すると、含まれる NULL バイトがチェックされるため、変換"
 "エラーがスローされる可能性があります。"
 
 #. type: Title ##
@@ -44284,7 +44289,7 @@ msgstr ""
 #: ext/julia/doc/src/devdocs/eval.md:84
 #, no-wrap
 msgid "[Type Inference](@id dev-type-inference)"
-msgstr ""
+msgstr "[型推論](@id dev-type-inference)"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/eval.md:92
