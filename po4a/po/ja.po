@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-07-24 01:15+0000\n"
-"PO-Revision-Date: 2019-07-25 13:01+0900\n"
+"PO-Revision-Date: 2019-07-25 13:05+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -589,9 +589,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/./index.md:22
 msgid "Please read the [release notes](NEWS.md) to see what has changed since the last release."
-msgstr ""
-"!!!メモ\n"
-"    ドキュメントはPDF形式で利用可能です: [$file]($url)。"
+msgstr "前回のリリース以降の変更内容については、[リリースノート](NEWS.md)をお読みください。"
 
 #. type: Plain text
 #: ext/julia/doc/src/./index.md:23
