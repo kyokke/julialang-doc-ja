@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-07-24 01:15+0000\n"
-"PO-Revision-Date: 2019-07-25 05:22+0000\n"
+"PO-Revision-Date: 2019-07-25 22:54+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -20802,7 +20802,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/variables.md:1
 #, no-wrap
 msgid "Variables"
-msgstr ""
+msgstr "変数"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/variables.md:5
@@ -20810,6 +20810,8 @@ msgid ""
 "A variable, in Julia, is a name associated (or bound) to a value. It's useful when you want to store a value (that you obtained after some "
 "math, for example) for later use. For example:"
 msgstr ""
+"Julia の変数は、値に関連付けられた (またはバインド) 名前です。これは、後で使用するために(たとえば、いくつかの計算の後に取得した値)を格納する"
+"場合に便利です。例えば："
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/variables.md:6
@@ -20838,6 +20840,8 @@ msgid ""
 "Julia provides an extremely flexible system for naming variables. Variable names are case-sensitive, and have no semantic meaning (that is, "
 "the language will not treat variables differently based on their names)."
 msgstr ""
+"Julia は、変数の命名システムは非常に柔軟です。変数名は大文字と小文字を区別し、意味論的な区別はありません (つまり、つけられた名前の違いよって"
+"Julia が変数の扱いをかえることは有りません)。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/variables.md:28
@@ -20862,7 +20866,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/variables.md:46
 msgid "Unicode names (in UTF-8 encoding) are allowed:"
-msgstr ""
+msgstr "ユニコード (UTF-8 エンコーディング) をもちいた命名が可能です:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/variables.md:47
@@ -20883,12 +20887,16 @@ msgid ""
 "\\hat`- *tab*-`\\_2`-*tab*. (If you find a symbol somewhere, e.g. in someone else's code, that you don't know how to type, the REPL help "
 "will tell you: just type `?` and then paste the symbol.)"
 msgstr ""
+"Julia REPL およびその他のいくつかの Julia 編集環境では、バックスラッシュ記号付きの LaTeX シンボル名を入力して、その後にタブを入力して、多く"
+"の Unicode 数学記号を入力できます。たとえば、変数名 'δ' は`\\delta`-*tab*で入力できますし、`α̂₂` は `\alpha`-*tab*-`\\hat`- *tab*-`\\_2`-*tab*"
+"で入力することができます。(もし例えば誰かのコードなどで、どのように入力すればよいかわからないシンボルを見つけた場合には、REPL のヘルプ機能が"
+"教えてくれます: `?`を押した後に、そのシンボルをペースすればよいのです。）"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/variables.md:64
 msgid ""
 "Julia will even let you redefine built-in constants and functions if needed (although this is not recommended to avoid potential confusions):"
-msgstr ""
+msgstr "Julia では、必要に応じて組み込みの定数と関数を再定義することもできます (ただし、混乱の元になるため避けることをお勧めします):"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/variables.md:65
@@ -20907,7 +20915,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/variables.md:78
 msgid "However, if you try to redefine a built-in constant or function already in use, Julia will give you an error:"
-msgstr ""
+msgstr "ただし、既に使用中の組み込み定数または関数を再定義しようとすると、Julia によってエラーが発生します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/variables.md:79
@@ -20930,7 +20938,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/variables.md:93
 #, no-wrap
 msgid "Allowed Variable Names"
-msgstr ""
+msgstr "利用可能な変数名"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/variables.md:102
@@ -20941,6 +20949,11 @@ msgid ""
 "include ! and digits (0-9 and other characters in categories Nd/No), as well as other Unicode code points: diacritics and other modifying "
 "marks (categories Mn/Mc/Me/Sk), some punctuation connectors (category Pc), primes, and a few other characters."
 msgstr ""
+"変数名は、文字 (A から Z または a-z)、アンダースコア、ユニコードの一部で、符号位置が 00A0 より大きいもの、のいずれかで始まる必要があります。"
+"特に[Unicode 文字カテゴリ](http://www.fileformat.info/info/unicode/category/index.htm) Lu/Ll/Lt/Lm/Lo/Nl (文字)、Sc/So (通貨およびその他の記"
+"号)、およびいくつかの他の文字 (Sm 数学記号のサブセットなど)が利用できます。二文字目以降は ,`!`および数字 (0 から 9 およびカテゴリ Nd/No の他"
+"の文字) だけでなく、他の符号位置のユニコードでは発音記号およびその他の修飾記号(カテゴリ Mn/Mc/Me/Sk)、一部の句読点コネクタ (カテゴリ Pc)、プ"
+"ライムおよびその他のいくつかの文字が利用可能です。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/variables.md:109
@@ -20951,11 +20964,15 @@ msgid ""
 "Kronecker product).  Operators can also be suffixed with modifying marks, primes, and sub/superscripts, e.g. `+̂ₐ″` is parsed as an infix "
 "operator with the same precedence as `+`."
 msgstr ""
+"`+` のような演算子も有効な識別子ですが、構文解析のされ方が特殊です。演算子は変数とおなじように扱われることもあります。たとえば、`(+)` は加算"
+"関数を表しますが、`(+) = f` のように代入もできます。Unicode の二項演算子 (カテゴリ Sm) のほとんどは、二項演算子として解析され、ユーザー定義の"
+"メソッドで使用できます (たとえば、`const ⊗= kron` を使用して`⊗` を中置記法のクロネッカー積として定義できます)。 演算子は、修飾記号、プライ"
+"ム、および下付・上付文字をつけることができます。(例: `+̂ₐ″`は`+` と同じ優先順位を持つ二項演算子として解析されます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/variables.md:111
 msgid "The only explicitly disallowed names for variables are the names of built-in statements:"
-msgstr ""
+msgstr "明示的に禁止されている変数名は、組み込みの予約語だけです:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/variables.md:112
@@ -20976,39 +20993,44 @@ msgid ""
 "letter open e)  and `µ` (U+00B5: micro sign) are treated as equivalent to the corresponding Greek letters, because the former are easily "
 "accessible via some input methods."
 msgstr ""
+"一部の Unicode 文字は、識別子として同等に扱われます。 文字を組み合わせた Unicode の結合文字 (アクセントなど) に対する異なる入力方法は同等のも"
+"のとして扱われます (具体的には、Julia 識別子は NFC 正規化されます)。 Unicode 文字 'ε' (U+025B: ラテン語の小文字オープン e) と 'μ' (U+00B5: ミ"
+"クロ記号) は対応するギリシャ文字と同等として扱われます。前者がいくつかの入力方法を介して簡単にアクセスできるためです。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/variables.md:127
 #, no-wrap
 msgid "Stylistic Conventions"
-msgstr ""
+msgstr "文体上の慣習"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/variables.md:131
 msgid "While Julia imposes few restrictions on valid names, it has become useful to adopt the following conventions:"
-msgstr ""
+msgstr "Juliaの妥当な名前にはほとんど制限がありませんが、以下のような慣習に従うと役立つでしょう:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/variables.md:141
 msgid "Names of variables are in lower case."
-msgstr ""
+msgstr "変数名を小文字にする。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/variables.md:141
 msgid ""
 "Word separation can be indicated by underscores (`'_'`), but use of underscores is discouraged unless the name would be hard to read "
 "otherwise."
-msgstr ""
+msgstr "語句の区切るときに、アンダースコア('_')を利用してもよい。しかし、アンダースコア無しで読みづらくなるのでなければ、使わない。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/variables.md:141
 msgid "Names of `Type`s and `Module`s begin with a capital letter and word separation is shown with upper camel case instead of underscores."
 msgstr ""
+"`型` と `モジュール` の名前は大文字で始め、単語の区切りはアンダースコアの代わりにアッパーキャメルケース(単語の最初の文字を大文字にする)を使"
+"う。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/variables.md:141
 msgid "Names of `function`s and `macro`s are in lower case, without underscores."
-msgstr ""
+msgstr "`関数` と `マクロ` の名前は、アンダースコアなしの小文字。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/variables.md:141
@@ -21016,11 +21038,13 @@ msgid ""
 "Functions that write to their arguments have names that end in `!`. These are sometimes called \"mutating\" or \"in-place\" functions "
 "because they are intended to produce changes in their arguments after the function is called, not just return a value."
 msgstr ""
+"引数の内容を変更する関数は名前の最後に!をつける。こういった関数は時折、「変異(mutating)」「上書き(in-place)」関数とよばれます。 これは，関数"
+"が呼び出された後、単に値を返すだけでなく、引数に対して変化を起こそうとするからです。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/variables.md:142
 msgid "For more information about stylistic conventions, see the [Style Guide](@ref)."
-msgstr ""
+msgstr "文体規約の詳細については、「スタイルガイド」(@ref)をご覧ください。"
 
 #. type: Title #
 #: ext/julia/doc/src/manual/control-flow.md:1
@@ -34008,7 +34032,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/style-guide.md:1
 #, no-wrap
 msgid "Style Guide"
-msgstr ""
+msgstr "スタイルガイド"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/style-guide.md:6
