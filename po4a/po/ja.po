@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-07-24 01:15+0000\n"
-"PO-Revision-Date: 2019-07-25 21:51+0000\n"
+"PO-Revision-Date: 2019-07-30 06:42+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -16,6 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 2.2.3\n"
+"X-Poedit-Bookmarks: 3850,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. type: Title =
 #: ext/julia/doc/src/./NEWS.md:2
@@ -1927,6 +1928,9 @@ msgid ""
 "Promotion](@ref conversion-and-promotion), however, shows how clever application of sufficiently advanced technology can be "
 "indistinguishable from magic. [^Clarke61]"
 msgstr ""
+"`2x + y` の定義は最初のケースでのみ使用され、`2x - y` の定義は他のケースで使用されます。関数の引数の自動キャストや変換は実行されません: "
+"Julia のすべての変換に魔術は無く、完全に明示的です。しかしながら、[変換と昇格](@ref conversion-and-promotion)は、十分高度な技術を巧妙に応用す"
+"ることでが魔法と区別できなくなることを示しています。[^Clarke61]"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/methods.md:143
@@ -3990,7 +3994,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/mathematical-operations.md:1
 #, no-wrap
 msgid "Mathematical Operations and Elementary Functions"
-msgstr ""
+msgstr "[算術演算と初等関数](@id mathematical-operations-and-elementary-functions)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:6
@@ -4273,7 +4277,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/mathematical-operations.md:178
 #, no-wrap
 msgid "Numeric Comparisons"
-msgstr ""
+msgstr "[数値比較](@id numeric-comparisons)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:181
@@ -4731,7 +4735,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:460
 msgid "See [Conversion and Promotion](@ref conversion-and-promotion) for how to define your own conversions and promotions."
-msgstr ""
+msgstr "独自の変換と昇格を定義する方法については、[変換と昇格](@ref conversion-and-promotion)を参照してください。"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/mathematical-operations.md:461
@@ -6212,6 +6216,9 @@ msgid ""
 "Functions](@ref) on them. [Conversion and Promotion](@ref conversion-and-promotion) are defined so that operations on any combination of "
 "predefined numeric types, whether primitive or composite, behave as expected."
 msgstr ""
+"Julia には、複素数と有理数の両方を組込型として持っており、それらにすべての標準 [算術演算と初等関数](@ref mathematical-operations-and-"
+"elementary-functions) をサポートしています。[変換と昇格](@ref conversion-and-promotion) は、プリミティブまたは複合型の任意の組み合わせに対す"
+"る操作が期待どおりに動作するように定義されます。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/complex-and-rational-numbers.md:8
@@ -21044,7 +21051,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/variables.md:142
 msgid "For more information about stylistic conventions, see the [Style Guide](@ref)."
-msgstr "文体規約の詳細については、[スタイルガイド](@ref style-guide)をご覧ください。"
+msgstr "文体規約の詳細については、「スタイルガイド」(@ref)をご覧ください。"
 
 #. type: Title #
 #: ext/julia/doc/src/manual/control-flow.md:1
@@ -27242,7 +27249,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/networking-and-streams.md:1
 #, no-wrap
 msgid "Networking and Streams"
-msgstr "[ネットワークとストリーム](@id networking-and-streams)"
+msgstr "[ネットワークとストリーム][@id networking-and-streams]"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/networking-and-streams.md:8
@@ -27254,7 +27261,7 @@ msgid ""
 msgstr ""
 "Julia は、端末、パイプ、TCP ソケットなどのストリーミング I/O オブジェクトを扱う豊富なインターフェイスを提供します。このインターフェイスは、シ"
 "ステム レベルでは非同期ですが、プログラマに同期的に提示され、通常は背後にある非同期処理を考える必要はありません。これは、Julia 協調スレッド"
-"([coroutine](@ref man-tasks))機能を多用することによって達成されます。"
+"([coroutine](@refのマンタスク))機能を多用することによって達成されます。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/networking-and-streams.md:9
@@ -27679,7 +27686,7 @@ msgid ""
 "works in the same way.  To see this, consider the following simple echo server:"
 msgstr ""
 "Julia の大きな強みは、I/O が実際に非同期的に発生しているにもかかわらず、API が同期的に公開されるので、コールバックを心配したり、サーバーが確"
-"実に実行されることを確認したりする必要がなかったことです。[`connect`](@ref)を呼び出すと、現在のタスクは接続が確立されるのを待ち、その後も実行"
+"実に実行されることを確認したりする必要がなかったことです。[`connect'](@ref)を呼び出すと、現在のタスクは接続が確立されるのを待ち、その後も実行"
 "を続行しました。この一時停止では、サーバー タスクが実行を再開し (接続要求が利用可能になったため)、接続を受け入れ、メッセージを印刷し、次のク"
 "ライアントを待機しました。ReadとWriteは同じように機能します。 これを確認するために次の単純なエコー サーバーを考えてみましょう:"
 
@@ -27747,7 +27754,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/networking-and-streams.md:310
 msgid "At the base of this functionality is [`getaddrinfo`](@ref), which will do the appropriate address resolution:"
-msgstr "この機能のベースになっているのは[`getaddrinfo`](@ref)で、適切なアドレス解決を行います。"
+msgstr "この機能のベースになっているのは[`getaddrinfo`](@ref)で、適切なアドレス解決を行います:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/networking-and-streams.md:311
@@ -28257,11 +28264,19 @@ msgid ""
 "concrete types can fit. This allows you, for example, to easily program to any type that is an integer, without restricting an algorithm to "
 "a specific type of integer."
 msgstr ""
+"[整数と浮動小数点数](@ref integers-and-floating-point-numbers)では、さまざまな具体的な数値を導入しました: [`Int8`](@ref)、[UInt8`](@ref)、"
+"[`Int16`](@ref)、[`UInt16`](@ref)、[`Int32`](@ref)、[UInt32`](@ref)、[`Int64`](@ref)、[UInt64]`(@ref)、[`Int128`](@ref)、[UInt128`](@ref)、"
+"[`Float16`](@ref)、[`Float32`](@ref)、および[Float64`](@ref)です。表現のサイズは異なりますが、`Int8`、`Int16`、`Int32`、`Int64`、`Int128` に"
+"は、すべて整数型が符号付き型であるという共通点があります。同様に、`UInt8`、`UInt16`、`UInt32`、`UInt64`および`UInt128`は符号なし整数型であ"
+"り、`Float16`、`Float32`、`Float64`は整数ではなく浮動小数点型とは異なります。たとえば、引数が何らかの整数である場合にのみ、コードの一部が意味"
+"をなすのが一般的ですが、実際には整数の特定の *種類* に依存しません。たとえば、最大公約数を求めるアルゴリズムは、あらゆる種類の整数に対して機"
+"能しますが、浮動小数点数では機能しません。抽象型を使用すると、型の階層を構築でき、具体的な型が適合するコンテキストを提供できます。これによ"
+"り、たとえば、アルゴリズムを特定の整数に制限することなく、整数である任意の型に対してプログラミングすることが簡単にできます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:153
 msgid "Abstract types are declared using the [`abstract type`](@ref) keyword. The general syntaxes for declaring an abstract type are:"
-msgstr ""
+msgstr "抽象型は[`abstract type`](@ref)キーワードを使用して宣言されます。抽象型を宣言するための一般的な構文は次のとおりです:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:154
@@ -32389,7 +32404,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/conversion-and-promotion.md:1
 #, no-wrap
 msgid "[Conversion and Promotion](@id conversion-and-promotion)"
-msgstr ""
+msgstr "[変換と昇格](@ref conversion-and-promotion)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/conversion-and-promotion.md:9
@@ -32400,6 +32415,10 @@ msgid ""
 "functions besides built-in mathematical operators. Traditionally, programming languages fall into two camps with respect to promotion of "
 "arithmetic arguments:"
 msgstr ""
+"Juliaは、数学演算子の引数を共通の型に昇格させるシステムを持っています。このことは、[整数と浮動小数点数](@ref integers-and-floating-point-"
+"numbers)、「算術演算と初等関数」(@ref mathematical-operations-and-elementary-functions)など、[型](@ref type)、および[メソッド](@ref method)な"
+"ど、さまざまなセクションで言及されています。このセクションでは、この型の昇格システムの仕組みと、それを新しい型に拡張して、組み込みの数学演算"
+"子やそれ以外の関数に適用する方法について説明します。従来、プログラミング言語は、算術引数の昇格をどのように扱うかで、2 つの陣営に分類されます:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/conversion-and-promotion.md:28
@@ -32927,7 +32946,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:1
 #, no-wrap
 msgid "Integers and Floating-Point Numbers"
-msgstr ""
+msgstr "[整数と浮動小数点数](@id integers-and-floating-point-numbers)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:8
@@ -32937,6 +32956,9 @@ msgid ""
 "literals.  For example, `1` is an integer literal, while `1.0` is a floating-point literal; their binary in-memory representations as "
 "objects are numeric primitives."
 msgstr ""
+"整数と浮動小数点の値は、算術と計算の基本的な構成要素です。 このような値の組み込み表現は数値プリミティブと呼ばれ、コード内の即時値としての整数"
+"と浮動小数点数の表現は数値リテラルと呼ばれます。 たとえば、`1` は整数リテラルで、`1.0` は浮動小数点リテラルです。オブジェクトとしてのバイナリ"
+"インメモリ表現は数値プリミティブです。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:16
@@ -32947,16 +32969,20 @@ msgid ""
 "[Arbitrary Precision Arithmetic](@ref), which can handle operations on numeric values that cannot be represented effectively in native "
 "hardware representations, but at the cost of relatively slower performance."
 msgstr ""
+"Julia では、様々なプリミティブ数値型を提供され、そのそれぞれの型に対して、標準的な数学関数と同様に、算術演算子とビット演算子が定義されていま"
+"す。これら数値型や演算は、最新のコンピュータでネイティブにサポートされている数値型と演算に直接対応付けられているため、Julia は計算リソースを"
+"最大限に活用できます。さらに、Julia は[任意精度演算](@ref arbitrary-precision-arithmetic)をソフトウェア的にサポートしており、ネイティブなハー"
+"ドウェア表現では表現できない数値の演算を扱えますが、パフォーマンスは比較的遅くなってしまいます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:18
 msgid "The following are Julia's primitive numeric types:"
-msgstr ""
+msgstr "Juliaのプリミティブ数値型を次に示します:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:20
 msgid "**Integer types:**"
-msgstr ""
+msgstr "**整数型:**"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:34
@@ -32976,11 +33002,24 @@ msgid ""
 "| [`UInt128`](@ref) |         | 128            | 0              | 2^128 - 1     |\n"
 "| [`Bool`](@ref)    | N/A     | 8              | `false` (0)    | `true` (1)    |\n"
 msgstr ""
+"| 型              | 符号の有無 | ビット数 | 最小値 | 最大値 |\n"
+"|:----------------- |:------- |:-------------- |:-------------- |:------------- |\n"
+"| [`Int8`](@ref)    | ✓       | 8              | -2^7           | 2^7 - 1       |\n"
+"| [`UInt8`](@ref)   |         | 8              | 0              | 2^8 - 1       |\n"
+"| [`Int16`](@ref)   | ✓       | 16             | -2^15          | 2^15 - 1      |\n"
+"| [`UInt16`](@ref)  |         | 16             | 0              | 2^16 - 1      |\n"
+"| [`Int32`](@ref)   | ✓       | 32             | -2^31          | 2^31 - 1      |\n"
+"| [`UInt32`](@ref)  |         | 32             | 0              | 2^32 - 1      |\n"
+"| [`Int64`](@ref)   | ✓       | 64             | -2^63          | 2^63 - 1      |\n"
+"| [`UInt64`](@ref)  |         | 64             | 0              | 2^64 - 1      |\n"
+"| [`Int128`](@ref)  | ✓       | 128            | -2^127         | 2^127 - 1     |\n"
+"| [`UInt128`](@ref) |         | 128            | 0              | 2^128 - 1     |\n"
+"| [`Bool`](@ref)    | N/A     | 8              | `false` (0)    | `true` (1)    |\n"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:36
 msgid "**Floating-point types:**"
-msgstr ""
+msgstr "**浮動小数点型:**"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:42
@@ -32992,6 +33031,11 @@ msgid ""
 "| [`Float32`](@ref) | [single](https://en.wikipedia.org/wiki/Single_precision_floating-point_format) | 32             |\n"
 "| [`Float64`](@ref) | [double](https://en.wikipedia.org/wiki/Double_precision_floating-point_format) | 64             |\n"
 msgstr ""
+"| 型              | 精度                                                                      | ビット数 |\n"
+"|:----------------- |:------------------------------------------------------------------------------ |:-------------- |\n"
+"| [`Float16`](@ref) | [half](https://en.wikipedia.org/wiki/Half-precision_floating-point_format)     | 16             |\n"
+"| [`Float32`](@ref) | [single](https://en.wikipedia.org/wiki/Single_precision_floating-point_format) | 32             |\n"
+"| [`Float64`](@ref) | [double](https://en.wikipedia.org/wiki/Double_precision_floating-point_format) | 64             |\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:46
@@ -33000,17 +33044,19 @@ msgid ""
 "interoperate naturally without explicit casting, thanks to a flexible, user-extensible [type promotion system](@ref conversion-and-"
 "promotion)."
 msgstr ""
+"さらに、これらのプリミティブ数値型を用いて、Juliaは [複素数と有理数](@ref) に完全対応しています。すべての数値型は明示的なキャストなしで自然に"
+"相互運用されます。これは柔軟でユーザーが拡張可能な [型昇格システム](@ref conversion-and-promotion)のおかげです。"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:47 ext/julia/doc/src/base/numbers.md:99
 #, no-wrap
 msgid "Integers"
-msgstr ""
+msgstr "整数"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:50
 msgid "Literal integers are represented in the standard manner:"
-msgstr ""
+msgstr "整数リテラルは、標準的な方法で表現できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:51
@@ -33027,6 +33073,8 @@ msgstr ""
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:61
 msgid "The default type for an integer literal depends on whether the target system has a 32-bit architecture or a 64-bit architecture:"
 msgstr ""
+"整数リテラルのデフォルトの型は、ターゲット・システムが 32 ビット・アーキテクチャーと 64 ビット・アーキテクチャーのどちらであるかによって異な"
+"ります:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:62
@@ -33044,7 +33092,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:74
 msgid "The Julia internal variable [`Sys.WORD_SIZE`](@ref) indicates whether the target system is 32-bit or 64-bit:"
-msgstr ""
+msgstr "Julia の内部変数 [`Sys.WORD_SIZE`](@ref) を見ると、ターゲット・システムが 32 ビットか 64 ビットかがわかります:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:75
@@ -33064,6 +33112,7 @@ msgstr ""
 msgid ""
 "Julia also defines the types `Int` and `UInt`, which are aliases for the system's signed and unsigned native integer types respectively:"
 msgstr ""
+"Julia には、システムの符号付きネイティブ整数型と符号なしネイティブ整数型のエイリアスである 'Int' 型と 'UInt' がそれぞれ定義されています:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:88
@@ -33088,6 +33137,8 @@ msgid ""
 "Larger integer literals that cannot be represented using only 32 bits but can be represented in 64 bits always create 64-bit integers, "
 "regardless of the system type:"
 msgstr ""
+"大きな整数リテラルで、32 ビットのみを使用して表すことができず、64 ビットで表すことができるものに対しては、システムの種類に関係なく、常に 64 "
+"ビットの整数が生成されます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:105
@@ -33104,6 +33155,8 @@ msgid ""
 "Unsigned integers are input and output using the `0x` prefix and hexadecimal (base 16) digits `0-9a-f` (the capitalized digits `A-F` also "
 "work for input). The size of the unsigned value is determined by the number of hex digits used:"
 msgstr ""
+"符号なしの整数の入出力には、`0x` プレフィックスを持つ16進数の数字 '0-9a-f' (大文字の数字 'A-F' も利用可能)を使います。符号なしの値のサイズ"
+"は、使用する16進数の桁数で決まります:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:115
@@ -33146,6 +33199,8 @@ msgid ""
 "This behavior is based on the observation that when one uses unsigned hex literals for integer values, one typically is using them to "
 "represent a fixed numeric byte sequence, rather than just an integer value."
 msgstr ""
+"こうした振る舞いは、符号なし整数の16進リテラルを使用する場合、通常は、単なる整数値というよりは、固定長バイト列として使われることが多いだろう"
+"という考察に基づいています。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:153
@@ -33153,11 +33208,13 @@ msgid ""
 "Recall that the variable [`ans`](@ref) is set to the value of the last expression evaluated in an interactive session. This does not occur "
 "when Julia code is run in other ways."
 msgstr ""
+"変数 [`ans`](@ref) には、対話型セッションで最後に評価された式の値が格納されていることを思い出してください。これは、Julia コードが対話セッショ"
+"ン以外の他の方法で実行されている場合にはあてはまりません。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:155
 msgid "Binary and octal literals are also supported:"
-msgstr ""
+msgstr "2進数・8進数リテラルにも対応しています:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:156
@@ -33190,6 +33247,9 @@ msgid ""
 "for a literal, which has the same length but leading digit `1`. That allows the user to control the size.  Values which cannot be stored in "
 "`UInt128` cannot be written as such literals."
 msgstr ""
+"16進・2進・8進リテラルに対しては、符号なし整数型が生成されます。リテラルの先頭桁を `0` で埋めない場合、バイナリ データのサイズは必要最小限の"
+"サイズになります。先頭にゼロが付加されている場合、その先頭の桁が`1`である同じ桁数のリテラルに必要な最小サイズになります。これにより、ユーザー"
+"はデータのサイズを制御できます。 `UInt128` に格納できない値は、このようなリテラルとして記述できません。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:186
@@ -33197,6 +33257,8 @@ msgid ""
 "Binary, octal, and hexadecimal literals may be signed by a `-` immediately preceding the unsigned literal. They produce an unsigned integer "
 "of the same size as the unsigned literal would do, with the two's complement of the value:"
 msgstr ""
+"2進・8進・16進リテラルは、リテラルの直前に '-' の符号をつけることができます。この場合生成されるのは、符号を付ける前の数とサイズの等しい符号な"
+"しの整数で、元の数の2の補数表現になります:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:187
@@ -33214,7 +33276,7 @@ msgstr ""
 msgid ""
 "The minimum and maximum representable values of primitive numeric types such as integers are given by the [`typemin`](@ref) and [`typemax`]"
 "(@ref) functions:"
-msgstr ""
+msgstr "整数などのプリミティブ数値型の最小・最大値は、[`typemin`](@ref) 関数と [`typemax`](@ref) 関数によって得られます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:198
@@ -33245,17 +33307,20 @@ msgid ""
 "features that have yet to be introduced, including [for loops](@ref man-loops), [Strings](@ref man-strings), and [Interpolation](@ref), but "
 "should be easy enough to understand for users with some existing programming experience.)"
 msgstr ""
+"[`typemin`](@ref)と[`typemax` ](@ref)によって返される値は、この関数に引数として与えられた型の数値になります。(上記の式では、[`for ループ`]"
+"(@ref man-loop)、[`文字列`](@ref man-string)、[`補間`](@ref)など、まだ紹介していない機能をいくつか使用していますが、プログラミング経験を持つ"
+"ユーザーにとっては十分に理解できるものでしょう。)"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:222
 #, no-wrap
 msgid "Overflow behavior"
-msgstr ""
+msgstr "オーバーフロー時の動作"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:225
 msgid "In Julia, exceeding the maximum representable value of a given type results in a wraparound behavior:"
-msgstr ""
+msgstr "Julia では、その型で表現可能な値の範囲を超えると、ラップアラウンド(循環)が発生します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:226
@@ -33279,12 +33344,16 @@ msgid ""
 "possible, explicit checking for wraparound produced by overflow is essential; otherwise, the [`BigInt`](@ref) type in [Arbitrary Precision "
 "Arithmetic](@ref)  is recommended instead."
 msgstr ""
+"したがって、Julia の整数型での演算は、実際には [モジュラー演算](https://en.wikipedia.org/wiki/Modular_arithmetic)の一形態です。 これは、現代"
+"のコンピュータに実装されている整数の基礎となる算術演算の特徴を反映しています。オーバーフローが起こり得るアプリケーションでは、オーバーフロー"
+"によって生成されるラップアラウンドを明示的にチェックすることが不可欠です。そうでなければ、代わりに[任意精度演算](@ref arbitrary-precision-"
+"arithmetic)の[`BigInt`](@ref)型を使用することをお勧めします。"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:243
 #, no-wrap
 msgid "Division errors"
-msgstr ""
+msgstr "除算エラー"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:249
@@ -33293,12 +33362,15 @@ msgid ""
 "(@ref)) by -1. Both of these cases throw a [`DivideError`](@ref).  The remainder and modulus functions (`rem` and `mod`) throw a "
 "[`DivideError`](@ref) when their second argument is zero."
 msgstr ""
+"整数除算 (`div` 関数) には 2つの例外的なケースがあります。一つは、0 除算、もうひとつは、最小の負の数 ([`typemin`](@ref)) の -1 除算です。どち"
+"らの場合も[`DivideError`](@ref)をスローします。 また、剰余関数 (`rem` と `mod`) は、2 番目の引数がゼロの場合に [`DivideError`](@ref)をスロー"
+"します。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:250
 #, no-wrap
 msgid "Floating-Point Numbers"
-msgstr ""
+msgstr "浮動小数点数"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:254
@@ -33306,6 +33378,8 @@ msgid ""
 "Literal floating-point numbers are represented in the standard formats, using [E-notation](https://en.wikipedia.org/wiki/"
 "Scientific_notation#E-notation) when necessary:"
 msgstr ""
+"浮動小数点リテラルは、必要に応じて[e-表記](https://en.wikipedia.org/wiki/Scientific_notation#E-表記)を使用して、標準フォーマットで表記されま"
+"す:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:255
@@ -33336,7 +33410,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:280
 msgid "The above results are all [`Float64`](@ref) values. Literal [`Float32`](@ref) values can be entered by writing an `f` in place of `e`:"
-msgstr ""
+msgstr "上記の結果はすべて [`Float64`](@ref) 値です。リテラル [`Float32`](@ref) 値は、'e' の代わりに 'f' を書くことによって入力できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:281
@@ -33355,7 +33429,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:293
 msgid "Values can be converted to [`Float32`](@ref) easily:"
-msgstr ""
+msgstr "値は[`Float32`](@ref)に簡単に変換できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:294
@@ -33371,7 +33445,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:304
 msgid "Hexadecimal floating-point literals are also valid, but only as [`Float64`](@ref) values, with `p` preceding the base-2 exponent:"
-msgstr ""
+msgstr "16進表記の浮動小数点リテラルも有効ですが、基数2の指数の前に 'p' をつけて利用し、値は [`Float64`](@ref)になります:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:305
@@ -33395,7 +33469,7 @@ msgstr ""
 msgid ""
 "Half-precision floating-point numbers are also supported ([`Float16`](@ref)), but they are implemented in software and use [`Float32`](@ref) "
 "for calculations."
-msgstr ""
+msgstr "半精度浮動小数点数([`Float16'](@ref))もサポートされていますが、これはソフトウェアで実装され、計算に [`Float32`](@ref) を使用します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:322
@@ -33411,7 +33485,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:331
 msgid "The underscore `_` can be used as digit separator:"
-msgstr ""
+msgstr "アンダースコア `_` は、数字区切り文字として使用できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:332
@@ -33425,7 +33499,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:337
 #, no-wrap
 msgid "Floating-point zero"
-msgstr ""
+msgstr "浮動小数点 の0"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:342
@@ -33433,6 +33507,8 @@ msgid ""
 "Floating-point numbers have [two zeros](https://en.wikipedia.org/wiki/Signed_zero), positive zero and negative zero. They are equal to each "
 "other but have different binary representations, as can be seen using the [`bitstring`](@ref) function:"
 msgstr ""
+"浮動小数点数には正と負[2 つのゼロ](https://en.wikipedia.org/wiki/Signed_zero)があります。これらは互いに等しい値ですが、異なる2進数表現を持っ"
+"ています。[`bitstring`](@ref) 関数で確認することができます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:343
@@ -33452,12 +33528,12 @@ msgstr ""
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:354
 #, no-wrap
 msgid "Special floating-point values"
-msgstr ""
+msgstr "特殊な浮動小数点の値"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:358
 msgid "There are three specified standard floating-point values that do not correspond to any point on the real number line:"
-msgstr ""
+msgstr "浮動小数点の値で実数の数直線上のどの点にも対応しない値が3つあります:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:364
@@ -33469,6 +33545,11 @@ msgid ""
 "| `-Inf16`  | `-Inf32`  | `-Inf`    | negative infinity | a value less than all finite floating-point values              |\n"
 "| `NaN16`   | `NaN32`   | `NaN`     | not a number      | a value not `==` to any floating-point value (including itself) |\n"
 msgstr ""
+"| `Float16` | `Float32` | `Float64` | 名前              | 説明                                                     |\n"
+"|:--------- |:--------- |:--------- |:----------------- |:--------------------------------------------------------------- |\n"
+"| `Inf16`   | `Inf32`   | `Inf`     | 正の無限大 | すべての有限の浮動小数点数よりも大きい値           |\n"
+"| `-Inf16`  | `-Inf32`  | `-Inf`    | 負の無限大 | すべての有限の浮動小数点よりも小さい値              |\n"
+"| `NaN16`   | `NaN32`   | `NaN`     | 非数      | どんな浮動小数点数とも `==`の成り立たない値 (自分自身とも)  |\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:368
@@ -33477,6 +33558,8 @@ msgid ""
 "Comparisons](@ref). By the [IEEE 754 standard](https://en.wikipedia.org/wiki/IEEE_754-2008), these floating-point values are the results of "
 "certain arithmetic operations:"
 msgstr ""
+"これら非有限の浮動小数点値を互いにどのように順序付けされるかについての詳細は、[数値の比較](@id numeric-comparisons)を参照してください。[IEEE "
+"754 規格](https://en.wikipedia.org/wiki/IEEE_754-2008)では、これらの浮動小数点数の値は特定の算術演算の結果として得られます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:369
@@ -33522,7 +33605,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:408
 msgid "The [`typemin`](@ref) and [`typemax`](@ref) functions also apply to floating-point types:"
-msgstr ""
+msgstr "[`typemin`](@ref)関数と[`typemax`](@ref)関数は浮動小数点型にも適用できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:409
@@ -33542,7 +33625,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:420
 #, no-wrap
 msgid "Machine epsilon"
-msgstr ""
+msgstr "マシンイプシロン"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:425
@@ -33551,11 +33634,15 @@ msgid ""
 "between two adjacent representable floating-point numbers, which is often known as [machine epsilon](https://en.wikipedia.org/wiki/"
 "Machine_epsilon)."
 msgstr ""
+"ほとんどの実数は浮動小数点数で正確に表現することができないため、多くの目的で、2つの隣接する浮動小数点数の間の距離を知ることは重要なことです。"
+"これは、[マシンイプシロン](https://en.wikipedia.org/wiki/Machine_epsilon) として知られています。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:428
 msgid "Julia provides [`eps`](@ref), which gives the distance between `1.0` and the next larger representable floating-point value:"
 msgstr ""
+"Julia では [`eps`](@ref) 関数で、各数値型を引数にとり、その型においての `1.0` という値と、その値の次に大きな浮動小数点数の間の距離を得ること"
+"ができます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:429
@@ -33579,6 +33666,9 @@ msgid ""
 "point value. That is, `eps(x)` yields a value of the same type as `x` such that `x + eps(x)` is the next representable floating-point value "
 "larger than `x`:"
 msgstr ""
+"これらの値、`2.0^-23`と`2.0^-52`はそれぞれ [`Float32`](@ref)と[`Float64`](@ref)の値です。[`eps`](@ref) 関数は、引数として浮動小数点数も受け取"
+"ることができ、その値と次に表される浮動小数点値との差の絶対値を返します。つまり`eps(x)` は `x` と同じ型の値を生成し、`x + eps(x)` は `x` より"
+"大きい次に表される浮動小数点値になります:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:446
@@ -33605,6 +33695,9 @@ msgid ""
 "exponentially as one moves farther away from zero. By definition, `eps(1.0)` is the same as `eps(Float64)` since `1.0` is a 64-bit floating-"
 "point value."
 msgstr ""
+"隣接する 2 つの 表現可能な浮動小数点数の間の距離は一定ではなく、その距離は元の値が小さいほど小さくなり、大きいほど大きくなります。つまり、表"
+"現可能な浮動小数点数の数直線は0付近で最も密度が高く、0から遠ざかるにつれて指数関数的に疎になります。定義上、`1.0` は 64 ビット浮動小数点数で"
+"あるため、`eps(1.0)` と`eps(Float64)`は同じになります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:468
@@ -33612,6 +33705,8 @@ msgid ""
 "Julia also provides the [`nextfloat`](@ref) and [`prevfloat`](@ref) functions which return the next largest or smallest representable "
 "floating-point number to the argument respectively:"
 msgstr ""
+"Julia はまた、 [`nextfloat`](@ref)関数と[`prevfloat`](@ref)関数を提供します。これらはそれぞれ、引数の値に対して、その型で表現可能な、次に大き"
+"な値、次に小さな値を返します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:469
@@ -33641,13 +33736,13 @@ msgstr ""
 msgid ""
 "This example highlights the general principle that the adjacent representable floating-point numbers also have adjacent binary integer "
 "representations."
-msgstr ""
+msgstr "この例では、隣接する表現可能な浮動小数点数は、2進数表現でもおなじく隣接する、という一般的な原則を示しています。"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:492
 #, no-wrap
 msgid "Rounding modes"
-msgstr ""
+msgstr "丸めモード"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:498
@@ -33656,6 +33751,8 @@ msgid ""
 "manner in which this rounding is done can be changed if required according to the rounding modes presented in the [IEEE 754 standard]"
 "(https://en.wikipedia.org/wiki/IEEE_754-2008)."
 msgstr ""
+"浮動小数点で正確に表現できない数は、適切な表現可能な値に丸める必要があります。丸め処理の方法は、[IEEE 754 規格](https://en.wikipedia.org/"
+"wiki/IEEE_754-2008)に複数のモードが示されており、必要に応じてそのモードを変更することができます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:501
@@ -33663,12 +33760,14 @@ msgid ""
 "The default mode used is always [`RoundNearest`](@ref), which rounds to the nearest representable value, with ties rounded towards the "
 "nearest value with an even least significant bit."
 msgstr ""
+"デフォルトの丸めモードは、常に [`最近接丸め`](@ref)で、これは、最も近い表現可能な値に丸める方法で、仮に最近接の表現可能な数が2つある場合に"
+"は、最下位ビットが偶数になるように丸めます。"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:502
 #, no-wrap
 msgid "Background and References"
-msgstr ""
+msgstr "背景と参照"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:507
@@ -33676,6 +33775,8 @@ msgid ""
 "Floating-point arithmetic entails many subtleties which can be surprising to users who are unfamiliar with the low-level implementation "
 "details. However, these subtleties are described in detail in most books on scientific computation, and also in the following references:"
 msgstr ""
+"浮動小数点演算には、低レベルの実装の詳細に慣れていないユーザーが驚くような多くの微妙な点がたくさんあります。ただし、これらの微妙な点は、科学"
+"計算に関する多くの書籍や下記の資料で詳しく説明されています:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:522
@@ -33683,6 +33784,8 @@ msgid ""
 "The definitive guide to floating point arithmetic is the [IEEE 754-2008 Standard](https://standards.ieee.org/standard/754-2008.html); "
 "however, it is not available for free online."
 msgstr ""
+"浮動小数点演算の最も信頼のおけるガイドは、[IEEE 754-2008規格](https://standard.ieee.org/standard/754-2008.html)です。ただしオンライン・無料で"
+"の利用はできません。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:522
@@ -33692,6 +33795,9 @@ msgid ""
 "numbers-are-a-leaky-abstraction/)  to some of the issues arising from how this representation differs in behavior from the idealized "
 "abstraction of real numbers."
 msgstr ""
+"浮動小数点数の表現について完結だが明快な解説として、John D.Cook'の[記事](https://www.johndcook.com/blog/2009/04/06/anatomy-of-a-floating-"
+"point-number/)を参照のこと。[イントロダクション](https://www.johndcook.com/blog/2009/04/06/numbers-a-leaky-a-leaky)では、浮動小数点数と理想化"
+"された抽象的な実数との乖離から生じる問題について書かれています。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:522
@@ -33699,6 +33805,8 @@ msgid ""
 "Also recommended is Bruce Dawson's [series of blog posts on floating-point numbers](https://randomascii.wordpress.com/2012/05/20/thats-not-"
 "normalthe-performance-of-odd-floats/)."
 msgstr ""
+"また、Bruce Dawsonの[浮動小数点数に関する一連のブログ記事](https://randomascii.wordpress.com/2012/05/20/the-normal-not-normal-of-odd-floats/)"
+"もお勧めします。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:522
@@ -33707,6 +33815,8 @@ msgid ""
 "David Goldberg's paper [What Every Computer Scientist Should Know About Floating-Point Arithmetic](http://citeseerx.ist.psu.edu/viewdoc/"
 "download?doi=10.1.1.22.6768&rep=rep1&type=pdf)."
 msgstr ""
+"浮動小数点数と及び、浮動小数点数を用いた演算で遭遇する数値精度の問題についての詳細な議論については、David Goldbergの論文[What Every Computer "
+"Scientists Should Know About](http://citeseerx.ist.ist.psu.edu/viewdoc/download?doi=10.1.1.22.6768)を参照してください。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:522
@@ -33716,12 +33826,15 @@ msgid ""
 "(https://en.wikipedia.org/wiki/William_Kahan), commonly known as the \"Father of Floating-Point\". Of particular interest may be [An "
 "Interview with the Old Man of Floating-Point](https://people.eecs.berkeley.edu/~wkahan/ieee754status/754story.html)."
 msgstr ""
+"浮動小数点数の歴史、理論、問題、および数値計算における他の多くのトピックの議論について、さらに広く扱った文書については、「浮動小数点の父」と"
+"して知られている[William Kahan](https://en.wikipedia.org/wiki/William_Kahan)の [著作集](https://people.eecs.berkeley.edu/~wkahan/)を参照して"
+"ください。特に興味深いのは「浮動小数点の老人のインタビュー」(https://people.eecs.berkeley.edu/~wkahan/ieee754status/754story.html)です。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:523
 #, no-wrap
 msgid "Arbitrary Precision Arithmetic"
-msgstr ""
+msgstr "[任意精度演算](@id arbitrary-precision-arithmetic)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:529
@@ -33730,6 +33843,9 @@ msgid ""
 "Library (GMP)](https://gmplib.org) and the [GNU MPFR Library](https://www.mpfr.org), respectively. The [`BigInt`](@ref) and [`BigFloat`]"
 "(@ref) types are available in Julia for arbitrary precision integer and floating point numbers respectively."
 msgstr ""
+"任意精度の整数と浮動小数点数を使用した計算を可能にするために、Julia は[GNU Multiple Precision Arithmetic Library(GMP)](https://gmplib.org)と"
+"[GNU MPFR Library](https://www.mpfr.org)をラップしています。[`BigInt`](@ref)と[`BigFloat`](@ref)は、それぞれ任意の精度整数と浮動小数点数で"
+"Juliaで使用できます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:533
@@ -33738,6 +33854,9 @@ msgid ""
 "`AbstractString`s.  Once created, they participate in arithmetic with all other numeric types thanks to Julia's [type promotion and "
 "conversion mechanism](@ref conversion-and-promotion):"
 msgstr ""
+"コンストラクターは、プリミティブな数値型からこれらの型を作成するために存在し、[`parse`](@ref)は`AbstractString`からそれらを構築するために使用"
+"することができます。一度こうして値を生成したら、他のすべての数値型との演算が可能です。これは Juliaの[型昇格と変換メカニズム](@ref conversion-"
+"and-promotion)によって実現されています:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:534
@@ -33764,7 +33883,7 @@ msgstr ""
 msgid ""
 "However, type promotion between the primitive types above and [`BigInt`](@ref)/[`BigFloat`](@ref)  is not automatic and must be explicitly "
 "stated."
-msgstr ""
+msgstr "ただし、プリミティブ型と [`BigInt`](@ref)や[`BigFloat`](@ref) との型昇格は自動には行われず、明示的に記述する必要があります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:554
@@ -33797,6 +33916,9 @@ msgid ""
 "the precision or the rounding can be changed only within the execution of a particular block of code by using the same functions with a `do` "
 "block:"
 msgstr ""
+"[`BigFloat`](@ref) 演算でのデフォルトの精度と丸めモードは、[`setprecision`](@ref)や[`setrounding`](@ref)を使ってグローバルに変更することがで"
+"きます。その後の全ての計算で、この変更の影響を受けます。もしくは、'do' ブロックでそれらの関数を使用し、そのコードブロック内でのみ精度や丸め"
+"モードを変更することも可能です:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:580
@@ -33822,7 +33944,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:597
 #, no-wrap
 msgid "[Numeric Literal Coefficients](@id man-numeric-literal-coefficients)"
-msgstr ""
+msgstr "[数値リテラル係数](@id man-numeric-literal-coefficients)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:602
@@ -33830,6 +33952,8 @@ msgid ""
 "To make common numeric formulae and expressions clearer, Julia allows variables to be immediately preceded by a numeric literal, implying "
 "multiplication. This makes writing polynomial expressions much cleaner:"
 msgstr ""
+"一般的な数式・式を明確にするために、Julia では変数の直前に数値リテラルを付けることで乗算を表すことができます。これにより、多項式の記述がはる"
+"かにクリーンになります:"
 
 #. type: Code fence info string
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:603 ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:616
@@ -33856,7 +33980,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:615
 msgid "It also makes writing exponential functions more elegant:"
-msgstr ""
+msgstr "また、指数関数の記述もエレガントになります:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:616
@@ -33873,11 +33997,14 @@ msgid ""
 "* x` and `√2x` is parsed as `(√2) * x`.  However, numeric literal coefficients parse similarly to unary operators when combined with "
 "exponentiation.  For example `2^3x` is parsed as `2^(3x)`, and `2x^3` is parsed as `2*(x^3)`."
 msgstr ""
+"数値リテラル係数の優先順位は、否定などの単項演算子よりもわずかに低くなります。 したがって、`-2x` は `(-2) * x` と `√2x` は `(√2) * x` として"
+"解析されます。 ただし、数値リテラル係数は、指数関数と組み合わせると、単項演算子と同様に解析されます。 たとえば、`2^3x` は `2^(3x)` として解析"
+"され、`2x^3` は `2*(x^3)` として解析されます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:629
 msgid "Numeric literals also work as coefficients to parenthesized expressions:"
-msgstr ""
+msgstr "数値リテラルは、括弧付き式に対する係数としても機能します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:630
@@ -33897,12 +34024,16 @@ msgid ""
 "    (`*`), and division (`/`, `\\`, and `//`).  This means, for example, that\n"
 "    `1 / 2im` equals `-0.5im` and `6 // 2(2 + 1)` equals `1 // 1`.\n"
 msgstr ""
+"!!!メモ\n"
+"    暗黙的な乗算に使用される数値リテラル係数の優先順位は\n"
+"    乗算(`*`)、および除算 (`/`、`\\`、および `//`) などの他の二項演算子よりも高くなります。\n"
+"    これは、例えば、`1 / 2im` は `-0.5im` に等し、`6 // 2(2+ 1)` は `1 // 1`に等しくなります。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:642
 msgid ""
 "Additionally, parenthesized expressions can be used as coefficients to variables, implying multiplication of the expression by the variable:"
-msgstr ""
+msgstr "さらに、括弧付き式は変数への係数として使用でき、式と変数の掛け算とすることができます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:643
@@ -33917,7 +34048,7 @@ msgstr ""
 msgid ""
 "Neither juxtaposition of two parenthesized expressions, nor placing a variable before a parenthesized expression, however, can be used to "
 "imply multiplication:"
-msgstr ""
+msgstr "ただし、2 つの括弧式の並べておいたり、括弧式の前に変数を配置しても、乗算とはみなされません:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:651
@@ -33937,6 +34068,9 @@ msgid ""
 "parenthetical, is interpreted as a function applied to the values in parentheses (see [Functions](@ref) for more about functions). Thus, in "
 "both of these cases, an error occurs since the left-hand value is not a function."
 msgstr ""
+"括弧式を並べる場合も、括弧式の直前に変数を置いた時も、関数の適応として解釈されます: 数値リテラルではない式の直後に括弧を付けると、括弧内の値"
+"に適用される関数として解釈されます (関数についての詳細は、[関数](@ref)の項を参照してください)。したがって、いずれの場合も、左側の値が関数では"
+"ないため、エラーが発生します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:667
@@ -33944,12 +34078,14 @@ msgid ""
 "The above syntactic enhancements significantly reduce the visual noise incurred when writing common mathematical formulae. Note that no "
 "whitespace may come between a numeric literal coefficient and the identifier or parenthesized expression which it multiplies."
 msgstr ""
+"このような構文機能の強化により、一般的な数式を記述するときに発生する視覚的なノイズが大幅に低減されます。数値リテラル係数と、乗算する識別子ま"
+"たは括弧式の間に空白が生じないことに注意してください。"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:668
 #, no-wrap
 msgid "Syntax Conflicts"
-msgstr ""
+msgstr "構文の競合"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:673
@@ -33957,44 +34093,46 @@ msgid ""
 "Juxtaposed literal coefficient syntax may conflict with two numeric literal syntaxes: hexadecimal integer literals and engineering notation "
 "for floating-point literals. Here are some situations where syntactic conflicts arise:"
 msgstr ""
+"リテラル係数を２つ並べる構文と競合するかもしれない２つの数値リテラル構文があります:16進整数リテラル と浮動小数点リテラルの指数表記です。構文"
+"上の競合が発生する状況を以下のようなものです:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:680
 msgid "The hexadecimal integer literal expression `0xff` could be interpreted as the numeric literal `0` multiplied by the variable `xff`."
-msgstr ""
+msgstr "16進整数値 `0xff` は、数値リテラル `0` と変数 `xff` の掛け算と解釈できる。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:680
 msgid ""
 "The floating-point literal expression `1e10` could be interpreted as the numeric literal `1` multiplied by the variable `e10`, and similarly "
 "with the equivalent `E` form."
-msgstr ""
+msgstr "浮動小数点リテラル `1e10` は、数値リテラル `1`と 変数 `e10` の掛け算と解釈できる。`E`形式も同様。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:680
 msgid ""
 "The 32-bit floating-point literal expression `1.5f22` could be interpreted as the numeric literal `1.5` multiplied by the variable `f22`."
-msgstr ""
+msgstr "32 ビット浮動小数点リテラル `1.5f22` は、数値リテラル`1.5` と 変数 `f22` の掛け算と解釈できる。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:682
 msgid "In all cases the ambiguity is resolved in favor of interpretation as numeric literals:"
-msgstr ""
+msgstr "どの場合についても、数値リテラルとしての解釈を優先して解決されます。つまり:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:686
 msgid "Expressions starting with `0x` are always hexadecimal literals."
-msgstr ""
+msgstr "`0x` で始まる式は、常に16進数リテラルです。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:686
 msgid "Expressions starting with a numeric literal followed by `e` or `E` are always floating-point literals."
-msgstr ""
+msgstr "数値リテラルで始まり、`e` または `E` が続く式は、常に浮動小数点リテラルです。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:686
 msgid "Expressions starting with a numeric literal followed by `f` are always 32-bit floating-point literals."
-msgstr ""
+msgstr "数値リテラルで始まり、`f` が続く式は、常に 32 ビット浮動小数点リテラルです。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:691
@@ -34003,17 +34141,19 @@ msgid ""
 "in numeric literals. Hence, expressions starting with a numeric literal followed by `F` are interpreted as the numerical literal multiplied "
 "by a variable, which means that, for example, `1.5F22` is equal to `1.5 * F22`."
 msgstr ""
+"歴史的な理由から数値リテラルの `e` に相当する `E` とは異なり、`F` は単なる文字であり、数値リテラルでは `f` のように動作しません。したがって、"
+"数値リテラルで始まり`F`が続く式は、数値リテラルに変数を掛けたものとして解釈され、例えば`1.5F22`は`1.5 * F22`に等しいことを意味します。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:692
 #, no-wrap
 msgid "Literal zero and one"
-msgstr ""
+msgstr "0と1のリテラル"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:696
 msgid "Julia provides functions which return literal 0 and 1 corresponding to a specified type or the type of a given variable."
-msgstr ""
+msgstr "Julia は、指定された型または特定の変数の型に対応するリテラル 0 と 1 を返す関数を提供します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:701
@@ -34024,6 +34164,10 @@ msgid ""
 "| [`zero(x)`](@ref) | Literal zero of type `x` or type of variable `x` |\n"
 "| [`one(x)`](@ref)  | Literal one of type `x` or type of variable `x`  |\n"
 msgstr ""
+"| 関数          | 説明                                      |\n"
+"|:----------------- |:------------------------------------------------ |\n"
+"| [`zero(x)`](@ref) | 型 `x` もしくは 変数 'x'と同じ型を持つリテラル0 |\n"
+"| [`one(x)`](@ref)  | 型 `x` もしくは 変数 'x'と同じ型を持つリテラル1  |\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:704
@@ -34031,11 +34175,13 @@ msgid ""
 "These functions are useful in [Numeric Comparisons](@ref) to avoid overhead from unnecessary [type conversion](@ref conversion-and-"
 "promotion)."
 msgstr ""
+"これらの関数は、[数値比較](@id numeric-comparisons)の際に、不要な [型変換] (@ref conversion-and-promotion) のオーバーヘッドを回避するのに役立"
+"ちます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:706
 msgid "Examples:"
-msgstr ""
+msgstr "例："
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:707
@@ -34058,7 +34204,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/style-guide.md:1
 #, no-wrap
 msgid "Style Guide"
-msgstr "[スタイルガイド](@id style-guide)"
+msgstr "スタイルガイド"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/style-guide.md:6
