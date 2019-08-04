@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-07-24 01:15+0000\n"
-"PO-Revision-Date: 2019-08-04 23:56+0900\n"
+"PO-Revision-Date: 2019-08-05 00:03+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -22679,7 +22679,7 @@ msgid ""
 "and Elementary Functions](@ref): `&` and `|`. These are normal functions, which happen to support infix operator syntax, but always evaluate "
 "their arguments:"
 msgstr ""
-"ブール演算 *なし* の短絡評価は、[算術演算と初等関数](@id mathematical-operations-and-elementary-functions)で導入されたビット毎のブール演算子"
+"ブール演算 *なし* の短絡評価は、[算術演算と初等関数](@ref mathematical-operations-and-elementary-functions)で導入されたビット毎のブール演算子"
 "で行うことができます: `&`と`|`です。これらは通常の関数で、二項演算子構文をサポートしますが、常に引数を評価します:"
 
 #. type: Plain text
@@ -28359,7 +28359,7 @@ msgid ""
 msgstr ""
 "Julia は、端末、パイプ、TCP ソケットなどのストリーミング I/O オブジェクトを扱う豊富なインターフェイスを提供します。このインターフェイスは、シ"
 "ステム レベルでは非同期ですが、プログラマに同期的に提示され、通常は背後にある非同期処理を考える必要はありません。これは、Julia 協調スレッド"
-"([coroutine](@refのマンタスク))機能を多用することによって達成されます。"
+"([coroutine](@ref man-tasks))機能を多用することによって達成されます。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/networking-and-streams.md:9
@@ -34935,8 +34935,8 @@ msgid ""
 "Comparisons](@ref). By the [IEEE 754 standard](https://en.wikipedia.org/wiki/IEEE_754-2008), these floating-point values are the results of "
 "certain arithmetic operations:"
 msgstr ""
-"これら非有限の浮動小数点値を互いにどのように順序付けされるかについての詳細は、[数値の比較](@id numeric-comparisons)を参照してください。[IEEE "
-"754 規格](https://en.wikipedia.org/wiki/IEEE_754-2008)では、これらの浮動小数点数の値は特定の算術演算の結果として得られます:"
+"これら非有限の浮動小数点値を互いにどのように順序付けされるかについての詳細は、[数値の比較](@ref numeric-comparisons)を参照してください。"
+"[IEEE 754 規格](https://en.wikipedia.org/wiki/IEEE_754-2008)では、これらの浮動小数点数の値は特定の算術演算の結果として得られます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:369
