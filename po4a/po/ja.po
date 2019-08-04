@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-07-24 01:15+0000\n"
-"PO-Revision-Date: 2019-08-04 23:22+0900\n"
+"PO-Revision-Date: 2019-08-04 23:36+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -1733,7 +1733,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/methods.md:1
 #, no-wrap
 msgid "Methods"
-msgstr ""
+msgstr "[メソッド](@id methods)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/methods.md:10
@@ -4751,7 +4751,7 @@ msgstr "真ん中の式は、`v(1) < v(2) && v(2) <= v(3)` と書かれてた場
 #: ext/julia/doc/src/manual/mathematical-operations.md:340
 #, no-wrap
 msgid "Elementary Functions"
-msgstr "[初等関数](@id elementary-functions]"
+msgstr "[初等関数](@id elementary-functions)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:346
@@ -8042,7 +8042,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/faq.md:87
 #, no-wrap
 msgid "Functions"
-msgstr ""
+msgstr "[関数](@id functions)"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/faq.md:89
@@ -31352,7 +31352,7 @@ msgid ""
 msgstr ""
 "演算子 `^` の優先順位は `*` よりも高いため ([演算子の優先順位と結合則](@ref operator-precedence-and-associativity)を参照してください)、この出"
 "力は `(3.0 * exp(4.0im)) ^ 2` と等しいはずの式 `a ^ 2` を忠実に表しません。 この問題を解決するには、出力時に式オブジェクトによって内部的に呼"
-"び出される `Base.show_unquoted(io::IO, z::Polar, indent::Int, precedence::Int)`のカスタムメソッドを作成する必要があります。"
+"び出される `Base.show_unquoted(io::IO, z::Polar, indent::Int, precedence::Int)`のカスタムメソッドを作成する必要があります:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:1306
@@ -33624,10 +33624,10 @@ msgid ""
 "arithmetic arguments:"
 msgstr ""
 "Juliaは、数学演算子の引数を共通の型に昇格させるシステムを持っています。このことは、[整数と浮動小数点数](@ref integers-and-floating-point-"
-"numbers)、[算術演算と初等関数](@ref mathematical-operations-and-elementary-functions)など、[型](@ref man-types)、および[メソッド](@ref man-"
-"method)など、さまざまなセクションで言及されています。このセクションでは、この型の昇格システムの仕組みと、それを新しい型に拡張して、組み込みの"
-"数学演算子やそれ以外の関数に適用する方法について説明します。従来、プログラミング言語は、算術引数の昇格をどのように扱うかで、2 つの陣営に分類"
-"されます:"
+"numbers)、[算術演算と初等関数](@ref mathematical-operations-and-elementary-functions)など、[型](@ref man-types)、および[メソッド](@ref "
+"methods)など、さまざまなセクションで言及されています。このセクションでは、この型の昇格システムの仕組みと、それを新しい型に拡張して、組み込み"
+"の数学演算子やそれ以外の関数に適用する方法について説明します。従来、プログラミング言語は、算術引数の昇格をどのように扱うかで、2 つの陣営に分"
+"類されます:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/conversion-and-promotion.md:28
@@ -35589,8 +35589,8 @@ msgid ""
 "both of these cases, an error occurs since the left-hand value is not a function."
 msgstr ""
 "括弧式を並べる場合も、括弧式の直前に変数を置いた時も、関数の適応として解釈されます: 数値リテラルではない式の直後に括弧を付けると、括弧内の値"
-"に適用される関数として解釈されます (関数についての詳細は、[関数](@ref)の項を参照してください)。したがって、いずれの場合も、左側の値が関数では"
-"ないため、エラーが発生します。"
+"に適用される関数として解釈されます (関数についての詳細は、[関数](@ref functions)の項を参照してください)。したがって、いずれの場合も、左側の値"
+"が関数ではないため、エラーが発生します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:667
