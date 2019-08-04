@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-07-24 01:15+0000\n"
-"PO-Revision-Date: 2019-08-04 22:32+0900\n"
+"PO-Revision-Date: 2019-08-04 23:22+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -4745,13 +4745,13 @@ msgid ""
 "comparison is undefined. It is strongly recommended not to use expressions with side effects (such\n"
 "as printing) in chained comparisons. If side effects are required, the short-circuit `&&` operator\n"
 "should be used explicitly (see [Short-Circuit Evaluation](@ref)).\n"
-msgstr "真ん中の式は、`v(1) < v(2) && v(2) <= v(3)` と書かれてた場合のように2回評価されるのではなく、1回だけ評価されています。ただし、比較連鎖の中での評価の順序は未定義です。(printなどの)副作用のある表現を使用しないことを強くお勧めします。もし副作用が必要な場合は、短絡演算子 `&&` を明示的に使用する必要があります(参照: [短絡評価](@ref))。\n"
+msgstr "真ん中の式は、`v(1) < v(2) && v(2) <= v(3)` と書かれてた場合のように2回評価されるのではなく、1回だけ評価されています。ただし、比較連鎖の中での評価の順序は未定義です。(printなどの)副作用のある表現を使用しないことを強くお勧めします。もし副作用が必要な場合は、短絡演算子 `&&` を明示的に使用する必要があります(参照: [短絡評価](@ref short-circuit-evaluation))。\n"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/mathematical-operations.md:340
 #, no-wrap
 msgid "Elementary Functions"
-msgstr "初等関数"
+msgstr "[初等関数](@id elementary-functions]"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:346
@@ -4776,7 +4776,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/mathematical-operations.md:351
 #, no-wrap
 msgid "Operator Precedence and Associativity"
-msgstr "演算子の優先順位と結合則"
+msgstr "[演算子の優先順位と結合則](@id operator-precedence-and-associativity)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:354
@@ -4932,7 +4932,7 @@ msgid ""
 msgstr ""
 "      * `T` が整数型の場合, `x` が `T`で表せない場合には`InexactError` が発生します。.\n"
 "  * `x % T` は `x` を整数型 `T`の、`2^n` を法として、`x`と合同な数に変換します。ここで `n` は `T`のビット数です。言い換えると、2進数表現を `T` で表現できるよう切り捨てをしています。\n"
-"  * [丸め関数](@ref) はオプションの引数として、型 `T` をとります。例えば, `round(Int,x)`は `Int(round(x))`の略記です。\n"
+"  * [丸め関数](@ref rounding-functions) はオプションの引数として、型 `T` をとります。例えば, `round(Int,x)`は `Int(round(x))`の略記です。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:421
@@ -5022,7 +5022,7 @@ msgstr "独自の変換と昇格を定義する方法については、[変換�
 #: ext/julia/doc/src/manual/mathematical-operations.md:461
 #, no-wrap
 msgid "Rounding functions"
-msgstr "丸め関数"
+msgstr "[丸め関数](@id rounding-functions)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:473
@@ -5165,7 +5165,7 @@ msgid ""
 "excellent pair of blog posts on the subject: [expm1, log1p, erfc](https://www.johndcook.com/blog/2010/06/07/math-library-functions-that-seem-"
 "unnecessary/), and [hypot](https://www.johndcook.com/blog/2010/06/02/whats-so-hard-about-finding-a-hypotenuse/)."
 msgstr ""
-"['hypot`](@ref)、[`expm1`](@ref)、および[`log1p`](@ref)のような関数が必要かつ有用である理由概説については、John D. Cook の優れたブログ投稿を"
+"[`hypot`](@ref)、[`expm1`](@ref)、および[`log1p`](@ref)のような関数が必要かつ有用である理由概説については、John D. Cook の優れたブログ投稿を"
 "参照してください: [expm1, log1p,erfc](https://www.johndcook.com/blog/2010/06/07/math-library-functions-that-seem-unnecessary/)、および "
 "[hypot](https://www.johndcook.com/blog/2010/06/02/whats-so-hard-about-finding-a-hypotenuse/)。"
 
@@ -5248,7 +5248,7 @@ msgstr "他の多くの特殊関数は、パッケージ[SpecialFunctions.jl](ht
 #: ext/julia/doc/src/manual/embedding.md:1
 #, no-wrap
 msgid "Embedding Julia"
-msgstr "Julia の埋め込み"
+msgstr "[Julia の埋め込み](@id embedding-julia)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/embedding.md:9
@@ -6704,6 +6704,9 @@ msgid ""
 "value, and is of particular use for complex numbers since it avoids taking a square root. [`angle`](@ref) returns the phase angle in radians "
 "(also known as the *argument* or *arg* function). The full gamut of other [Elementary Functions](@ref)  is also defined for complex numbers:"
 msgstr ""
+"通常どおり、複素数の絶対値([`abs`](@ref)) はゼロからの距離です。 [`abs2`](@ref) は絶対値の二乗を与え、平方根計算が行われないので複素数に特に"
+"使用されます。[`angle`](@ref) は、ラジアンの位相角度を返します (*argument* または *arg* 関数とも呼ばれます)。他の一通りの[初等関数](@ref "
+"elementary-functions)も複素数に対して定義されています:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/complex-and-rational-numbers.md:119
@@ -6787,6 +6790,8 @@ msgid ""
 "[`Inf`](@ref) and [`NaN`](@ref) propagate through complex numbers in the real and imaginary parts of a complex number as described in the "
 "[Special floating-point values](@ref) section:"
 msgstr ""
+"[`Inf`](@ref) および [`NaN`](@ref) は、[特殊な浮動小数点値](@ref special-floating-point-values)セクションで説明されているように、複素数の実部"
+"と虚部に伝播します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/complex-and-rational-numbers.md:172
@@ -6798,6 +6803,11 @@ msgid ""
 "julia> 1 + NaN*im\n"
 "1.0 + NaN*im\n"
 msgstr ""
+"julia> 1 + Inf*im\n"
+"1.0 + Inf*im\n"
+"\n"
+"julia> 1 + NaN*im\n"
+"1.0 + NaN*im\n"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/complex-and-rational-numbers.md:180
@@ -9477,6 +9487,9 @@ msgid ""
 "evaluated before evaluation of the operator.) Accordingly, you can also apply them using parenthesized argument lists, just as you would any "
 "other function:"
 msgstr ""
+"Julia では、ほとんどの演算子は特殊な構文をサポートする関数にすぎません。(例外は、`&&` や `||`です。[短絡評価](@ref short-circuit-evaluation)"
+"は、演算子の評価が行われる前には、オペランドが評価されていないことを要求し、これは関数の振る舞いとは異なります) したがって、他の関数と同様"
+"に、括弧付き引数リストを使用して演算子を適用することもできます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:151
@@ -14390,7 +14403,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:650
 msgid "You can use the [`occursin`](@ref) function to check if a substring is found within a string:"
-msgstr "文字列内中に特定の部分文字列のあるかどうか確認するには、[`occursin`][(@ref) 関数を使用します:"
+msgstr "文字列内中に特定の部分文字列のあるかどうか確認するには、[`occursin`](@ref) 関数を使用します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:651
@@ -22160,7 +22173,7 @@ msgstr ""
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/control-flow.md:11
 msgid "[Short-Circuit Evaluation](@ref): `&&`, `||` and chained comparisons."
-msgstr ""
+msgstr "[短絡評価](@ref short-circuit-evaluation): `&&`, `||` と比較の連鎖。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/control-flow.md:11
@@ -22533,7 +22546,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/control-flow.md:248
 #, no-wrap
 msgid "Short-Circuit Evaluation"
-msgstr ""
+msgstr "[短絡評価](@id short-circuit-evaluation)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:255
@@ -22666,6 +22679,8 @@ msgid ""
 "and Elementary Functions](@ref): `&` and `|`. These are normal functions, which happen to support infix operator syntax, but always evaluate "
 "their arguments:"
 msgstr ""
+"ブール演算 *なし* の短絡評価は、[算術演算と初等関数](@id mathematical-operations-and-elementary-functions)で導入されたビット毎のブール演算子"
+"で行うことができます: `&`と`|`です。これらは通常の関数で、二項演算子構文をサポートしますが、常に引数を評価します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:344
@@ -28332,7 +28347,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/networking-and-streams.md:1
 #, no-wrap
 msgid "Networking and Streams"
-msgstr "[ネットワークとストリーム][@id networking-and-streams]"
+msgstr "[ネットワークとストリーム](@id networking-and-streams)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/networking-and-streams.md:8
@@ -28803,7 +28818,7 @@ msgid ""
 "works in the same way.  To see this, consider the following simple echo server:"
 msgstr ""
 "Julia の大きな強みは、I/O が実際に非同期的に発生しているにもかかわらず、API が同期的に公開されるので、コールバックを心配したり、サーバーが確"
-"実に実行されることを確認したりする必要がなかったことです。[`connect'](@ref)を呼び出すと、現在のタスクは接続が確立されるのを待ち、その後も実行"
+"実に実行されることを確認したりする必要がなかったことです。[`connect`](@ref)を呼び出すと、現在のタスクは接続が確立されるのを待ち、その後も実行"
 "を続行しました。この一時停止では、サーバー タスクが実行を再開し (接続要求が利用可能になったため)、接続を受け入れ、メッセージを印刷し、次のク"
 "ライアントを待機しました。ReadとWriteは同じように機能します。 これを確認するために次の単純なエコー サーバーを考えてみましょう:"
 
@@ -29425,14 +29440,14 @@ msgid ""
 "concrete types can fit. This allows you, for example, to easily program to any type that is an integer, without restricting an algorithm to "
 "a specific type of integer."
 msgstr ""
-"[整数と浮動小数点数](@ref integers-and-floating-point-numbers)では、さまざまな具体的な数値を導入しました: [`Int8`](@ref)、[UInt8`](@ref)、"
-"[`Int16`](@ref)、[`UInt16`](@ref)、[`Int32`](@ref)、[UInt32`](@ref)、[`Int64`](@ref)、[UInt64]`(@ref)、[`Int128`](@ref)、[UInt128`](@ref)、"
-"[`Float16`](@ref)、[`Float32`](@ref)、および[Float64`](@ref)です。表現のサイズは異なりますが、`Int8`、`Int16`、`Int32`、`Int64`、`Int128` に"
-"は、すべて整数型が符号付き型であるという共通点があります。同様に、`UInt8`、`UInt16`、`UInt32`、`UInt64`および`UInt128`は符号なし整数型であ"
-"り、`Float16`、`Float32`、`Float64`は整数ではなく浮動小数点型とは異なります。たとえば、引数が何らかの整数である場合にのみ、コードの一部が意味"
-"をなすのが一般的ですが、実際には整数の特定の *種類* に依存しません。たとえば、最大公約数を求めるアルゴリズムは、あらゆる種類の整数に対して機"
-"能しますが、浮動小数点数では機能しません。抽象型を使用すると、型の階層を構築でき、具体的な型が適合するコンテキストを提供できます。これによ"
-"り、たとえば、アルゴリズムを特定の整数に制限することなく、整数である任意の型に対してプログラミングすることが簡単にできます。"
+"[整数と浮動小数点数](@ref integers-and-floating-point-numbers)では、さまざまな具体的な数値を導入しました: [`Int8`](@ref)、[`UInt8`](@ref)、"
+"[`Int16`](@ref)、[`UInt16`](@ref)、[`Int32`](@ref)、[`UInt32`](@ref)、[`Int64`](@ref)、[`UInt64]`(@ref)、[`Int128`](@ref)、[`UInt128`]"
+"(@ref)、[`Float16`](@ref)、[`Float32`](@ref)、および[`Float64`](@ref)です。表現のサイズは異なりますが、`Int8`、`Int16`、`Int32`、`Int64`、"
+"`Int128` には、すべて整数型が符号付き型であるという共通点があります。同様に、`UInt8`、`UInt16`、`UInt32`、`UInt64`および`UInt128`は符号なし整"
+"数型であり、`Float16`、`Float32`、`Float64`は整数ではなく浮動小数点型とは異なります。たとえば、引数が何らかの整数である場合にのみ、コードの一"
+"部が意味をなすのが一般的ですが、実際には整数の特定の *種類* に依存しません。たとえば、最大公約数を求めるアルゴリズムは、あらゆる種類の整数に"
+"対して機能しますが、浮動小数点数では機能しません。抽象型を使用すると、型の階層を構築でき、具体的な型が適合するコンテキストを提供できます。こ"
+"れにより、たとえば、アルゴリズムを特定の整数に制限することなく、整数である任意の型に対してプログラミングすることが簡単にできます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:153
@@ -31335,6 +31350,9 @@ msgid ""
 "represent the expression `a ^ 2` which should be equal to `(3.0 * exp(4.0im)) ^ 2`.  To solve this issue, we must make a custom method for "
 "`Base.show_unquoted(io::IO, z::Polar, indent::Int, precedence::Int)`, which is called internally by the expression object when printing:"
 msgstr ""
+"演算子 `^` の優先順位は `*` よりも高いため ([演算子の優先順位と結合則](@ref operator-precedence-and-associativity)を参照してください)、この出"
+"力は `(3.0 * exp(4.0im)) ^ 2` と等しいはずの式 `a ^ 2` を忠実に表しません。 この問題を解決するには、出力時に式オブジェクトによって内部的に呼"
+"び出される `Base.show_unquoted(io::IO, z::Polar, indent::Int, precedence::Int)`のカスタムメソッドを作成する必要があります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:1306
@@ -33606,9 +33624,10 @@ msgid ""
 "arithmetic arguments:"
 msgstr ""
 "Juliaは、数学演算子の引数を共通の型に昇格させるシステムを持っています。このことは、[整数と浮動小数点数](@ref integers-and-floating-point-"
-"numbers)、「算術演算と初等関数」(@ref mathematical-operations-and-elementary-functions)など、[型](@ref type)、および[メソッド](@ref method)な"
-"ど、さまざまなセクションで言及されています。このセクションでは、この型の昇格システムの仕組みと、それを新しい型に拡張して、組み込みの数学演算"
-"子やそれ以外の関数に適用する方法について説明します。従来、プログラミング言語は、算術引数の昇格をどのように扱うかで、2 つの陣営に分類されます:"
+"numbers)、[算術演算と初等関数](@ref mathematical-operations-and-elementary-functions)など、[型](@ref man-types)、および[メソッド](@ref man-"
+"method)など、さまざまなセクションで言及されています。このセクションでは、この型の昇格システムの仕組みと、それを新しい型に拡張して、組み込みの"
+"数学演算子やそれ以外の関数に適用する方法について説明します。従来、プログラミング言語は、算術引数の昇格をどのように扱うかで、2 つの陣営に分類"
+"されます:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/conversion-and-promotion.md:28
@@ -34599,8 +34618,8 @@ msgid ""
 "should be easy enough to understand for users with some existing programming experience.)"
 msgstr ""
 "[`typemin`](@ref)と[`typemax`](@ref)によって返される値は、この関数に引数として与えられた型の数値になります。(上記の式では、[for ループ](@ref "
-"man-loop)、[文字列](@ref man-string)、[式展開](@ref command-interpolation)など、まだ紹介していない機能をいくつか使用していますが、プログラミ"
-"ング経験を持つユーザーにとっては十分に理解できるものでしょう。)"
+"man-loops)、[文字列](@ref man-strings)、[式展開](@ref command-interpolation)など、まだ紹介していない機能をいくつか使用していますが、プログラ"
+"ミング経験を持つユーザーにとっては十分に理解できるものでしょう。)"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:222
@@ -34886,7 +34905,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:354
 #, no-wrap
 msgid "Special floating-point values"
-msgstr "特殊な浮動小数点の値"
+msgstr "[特殊な浮動小数点の値](@id special-floating-point-values)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:358
@@ -45703,15 +45722,14 @@ msgstr ""
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/reflection.md:83
-#, fuzzy
 msgid ""
 "As discussed in the [Metaprogramming](@ref) section, the [`macroexpand`](@ref) function gives the unquoted and interpolated expression "
 "(`Expr`) form for a given macro. To use `macroexpand`, `quote` the expression block itself (otherwise, the macro will be evaluated and the "
 "result will be passed instead!). For example:"
 msgstr ""
-"[メタプログラミング](@ref metaprogramming)セクションで説明したように、['マクロ展開'@ref) 関数は、特定のマクロに引用符で囲まれていない式と補間"
-"式 ('Expr') フォームを提供します。'マクロ展開' を使用するには、式ブロック自体を 'quote' (それ以外の場合は、マクロが評価され、代わりに結果が渡"
-"されます)。例えば："
+"[メタプログラミング](@ref metaprogramming)セクションで説明したように、[`macroexpand`](@ref) 関数は、引用符をとりさり、式展開がされた式"
+"(`Expr`) の形式を提供します。`macroexpand` を使用するには、式ブロック自体に引用符を付けます (そうでなければ、マクロが評価され、代わりに結果が"
+"渡されます)。例えば:"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/reflection.md:84
@@ -48582,6 +48600,8 @@ msgid ""
 "However, the [Embedding Julia](@ref) section of the manual is also required reading at this point, for covering other details of boxing and "
 "unboxing various types, and understanding the gc interactions."
 msgstr ""
+"ただし、マニュアルの [Julia の埋め込み](@ref embedding-julia)セクションは、この時点で読んで置くべきです。様々な型のboxing/unboxing の詳細や、"
+"gc の相互作用などのトピックをカバーできるでしょう。"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/object.md:90
