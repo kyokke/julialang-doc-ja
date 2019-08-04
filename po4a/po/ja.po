@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-07-24 01:15+0000\n"
-"PO-Revision-Date: 2019-08-04 23:51+0900\n"
+"PO-Revision-Date: 2019-08-04 23:56+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -10659,7 +10659,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/metaprogramming.md:1
 #, no-wrap
 msgid "Metaprogramming"
-msgstr "[メタプログラミング](@id metaprogramming)"
+msgstr "[メタプログラミング](@id Metaprogramming)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/metaprogramming.md:13
@@ -14534,7 +14534,7 @@ msgstr ""
 "な状況のために、Julia は [非標準文字列リテラル] (@ref non-standard-string-literals)を提供しています。非標準の文字列リテラルは、通常の二重引用"
 "符で囲まれた文字列リテラルのように見えますが、リテラルの前に識別子がつけられていて、通常の文字列リテラルとは異なる動作をします。正規表現、バ"
 "イト配列リテラル、およびバージョン番号リテラルは、以下に説明するように、非標準文字列リテラルの例です。その他の例は[メタプログラミング](@ref "
-"metaprogramming)セクションで示されています。"
+"Metaprogramming)セクションで示されています。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/strings.md:699
@@ -33625,7 +33625,7 @@ msgid ""
 msgstr ""
 "Juliaは、数学演算子の引数を共通の型に昇格させるシステムを持っています。このことは、[整数と浮動小数点数](@ref integers-and-floating-point-"
 "numbers)、[算術演算と初等関数](@ref mathematical-operations-and-elementary-functions)など、[型](@ref man-types)、および[メソッド](@ref "
-"methods)など、さまざまなセクションで言及されています。このセクションでは、この型の昇格システムの仕組みと、それを新しい型に拡張して、組み込み"
+"Methods)など、さまざまなセクションで言及されています。このセクションでは、この型の昇格システムの仕組みと、それを新しい型に拡張して、組み込み"
 "の数学演算子やそれ以外の関数に適用する方法について説明します。従来、プログラミング言語は、算術引数の昇格をどのように扱うかで、2 つの陣営に分"
 "類されます:"
 
@@ -35589,7 +35589,7 @@ msgid ""
 "both of these cases, an error occurs since the left-hand value is not a function."
 msgstr ""
 "括弧式を並べる場合も、括弧式の直前に変数を置いた時も、関数の適応として解釈されます: 数値リテラルではない式の直後に括弧を付けると、括弧内の値"
-"に適用される関数として解釈されます (関数についての詳細は、[関数](@ref functions)の項を参照してください)。したがって、いずれの場合も、左側の値"
+"に適用される関数として解釈されます (関数についての詳細は、[関数](@ref Functions)の項を参照してください)。したがって、いずれの場合も、左側の値"
 "が関数ではないため、エラーが発生します。"
 
 #. type: Plain text
@@ -45727,7 +45727,7 @@ msgid ""
 "(`Expr`) form for a given macro. To use `macroexpand`, `quote` the expression block itself (otherwise, the macro will be evaluated and the "
 "result will be passed instead!). For example:"
 msgstr ""
-"[メタプログラミング](@ref metaprogramming)セクションで説明したように、[`macroexpand`](@ref) 関数は、引用符をとりさり、式展開がされた式"
+"[メタプログラミング](@ref Metaprogramming)セクションで説明したように、[`macroexpand`](@ref) 関数は、引用符をとりさり、式展開がされた式"
 "(`Expr`) の形式を提供します。`macroexpand` を使用するには、式ブロック自体に引用符を付けます (そうでなければ、マクロが評価され、代わりに結果が"
 "渡されます)。例えば:"
 
