@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-07-24 01:15+0000\n"
-"PO-Revision-Date: 2019-08-04 10:43+0900\n"
+"PO-Revision-Date: 2019-08-04 22:32+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -1078,7 +1078,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/running-external-programs.md:75
 #, no-wrap
 msgid "[Interpolation](@id command-interpolation)"
-msgstr ""
+msgstr "[式展開](@id command-interpolation)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/running-external-programs.md:80
@@ -6548,7 +6548,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/complex-and-rational-numbers.md:1
 #, no-wrap
 msgid "Complex and Rational Numbers"
-msgstr ""
+msgstr "[複素数と有理数](@id complex-and-rational-numbers)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/complex-and-rational-numbers.md:7
@@ -14390,7 +14390,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:650
 msgid "You can use the [`occursin`](@ref) function to check if a substring is found within a string:"
-msgstr "文字列内中に特定の部分文字列のあるかどうか確認するには、[`occursin`[(@ref) 関数を使用します:"
+msgstr "文字列内中に特定の部分文字列のあるかどうか確認するには、[`occursin`][(@ref) 関数を使用します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:651
@@ -31525,11 +31525,15 @@ msgid ""
 "is used together with somebody else's. Within a module, you can control which names from other modules are visible (via importing), and "
 "specify which of your names are intended to be public (via exporting)."
 msgstr ""
+"Julia のモジュールは独立した変数のワークスペースであり、新しいグローバル スコープを導入します。モジュールは、`module Name ... end ` で構文的"
+"に区切られています。 モジュールを使用すると、(グローバル変数として知られる)最上位の定義を行うことができて、かつ、自分のコードと他のユーザーの"
+"コードとを一緒に使用する際に名前の競合を心配しなくてすみます。モジュール内では、他のモジュールから参照する名前を (インポートして) 制御し、自"
+"分のモジュール内のどの名前を(エクスポートで) パブリックにするかを指定することができます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:11
 msgid "The following example demonstrates the major features of modules. It is not meant to be run, but is shown for illustrative purposes:"
-msgstr ""
+msgstr "次の例は、モジュールの主な機能を示しています。これは説明用のためのもので、実際に実行するために書かれたコードではありません:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:12
@@ -31554,11 +31558,31 @@ msgid ""
 "show(io::IO, a::MyType) = print(io, \"MyType $(a.x)\")\n"
 "end\n"
 msgstr ""
+"module MyModule\n"
+"using Lib\n"
+"\n"
+"using BigLib: thing1, thing2\n"
+"\n"
+"import Base.show\n"
+"\n"
+"export MyType, foo\n"
+"\n"
+"struct MyType\n"
+"    x\n"
+"end\n"
+"\n"
+"bar(x) = 2x\n"
+"foo(a::MyType) = bar(a.x) + 1\n"
+"\n"
+"show(io::IO, a::MyType) = print(io, \"MyType $(a.x)\")\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:35
 msgid "Note that the style is not to indent the body of the module, since that would typically lead to whole files being indented."
 msgstr ""
+"表記スタイル上の注意点は、モジュールの本体をインデントしないということでしょう。インデントするとなると、通常はファイル全体がインデントされる"
+"ことになってしまいます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:38
@@ -31566,6 +31590,8 @@ msgid ""
 "This module defines a type `MyType`, and two functions. Function `foo` and type `MyType` are exported, and so will be available for "
 "importing into other modules.  Function `bar` is private to `MyModule`."
 msgstr ""
+"このモジュールでは、型 `MyType` と 2 つの関数を定義されています。関数 `foo` と型 `MyType` がエクスポートされ、他のモジュールへのインポートに"
+"使用できるようになります。 関数 `bar` は `MyModule` 内でのみ使用するプライベートな関数です。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:44
@@ -31575,6 +31601,9 @@ msgid ""
 "it is found there.  This means that all uses of that global within the current module will resolve to the definition of that variable in "
 "`Lib`."
 msgstr ""
+"`using Lib`と宣言することで、必要に応じて `Lib` というモジュールを使用して名前を解決します。現在のモジュールに定義がないグローバル変数が検出"
+"されると、システムは`Lib` によってエクスポートされた変数の中からその変数を検索し、そこに見つかった場合はインポートします。 つまり、現在のモ"
+"ジュール内でグローバル変数を使うと全て`Lib` 内の同名の変数定義によって解決されることを意味します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:48
@@ -33565,7 +33594,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/conversion-and-promotion.md:1
 #, no-wrap
 msgid "[Conversion and Promotion](@id conversion-and-promotion)"
-msgstr "[変換と昇格](@ref conversion-and-promotion)"
+msgstr "[変換と昇格](@id conversion-and-promotion)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/conversion-and-promotion.md:9
@@ -34205,8 +34234,9 @@ msgid ""
 "interoperate naturally without explicit casting, thanks to a flexible, user-extensible [type promotion system](@ref conversion-and-"
 "promotion)."
 msgstr ""
-"さらに、これらのプリミティブ数値型を用いて、Juliaは [複素数と有理数](@ref) に完全対応しています。すべての数値型は明示的なキャストなしで自然に"
-"相互運用されます。これは柔軟でユーザーが拡張可能な [型昇格システム](@ref conversion-and-promotion)のおかげです。"
+"さらに、これらのプリミティブ数値型を用いて、Juliaは [複素数と有理数](@ref complex-and-rational-numbers) に完全対応しています。すべての数値型"
+"は明示的なキャストなしで自然に相互運用されます。これは柔軟でユーザーが拡張可能な [型昇格システム](@ref conversion-and-promotion)のおかげで"
+"す。"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:47 ext/julia/doc/src/base/numbers.md:99
@@ -34568,9 +34598,9 @@ msgid ""
 "features that have yet to be introduced, including [for loops](@ref man-loops), [Strings](@ref man-strings), and [Interpolation](@ref), but "
 "should be easy enough to understand for users with some existing programming experience.)"
 msgstr ""
-"[`typemin`](@ref)と[`typemax` ](@ref)によって返される値は、この関数に引数として与えられた型の数値になります。(上記の式では、[`for ループ`]"
-"(@ref man-loop)、[`文字列`](@ref man-string)、[`補間`](@ref)など、まだ紹介していない機能をいくつか使用していますが、プログラミング経験を持つ"
-"ユーザーにとっては十分に理解できるものでしょう。)"
+"[`typemin`](@ref)と[`typemax`](@ref)によって返される値は、この関数に引数として与えられた型の数値になります。(上記の式では、[for ループ](@ref "
+"man-loop)、[文字列](@ref man-string)、[式展開](@ref command-interpolation)など、まだ紹介していない機能をいくつか使用していますが、プログラミ"
+"ング経験を持つユーザーにとっては十分に理解できるものでしょう。)"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:222
@@ -34782,7 +34812,7 @@ msgstr ""
 msgid ""
 "Half-precision floating-point numbers are also supported ([`Float16`](@ref)), but they are implemented in software and use [`Float32`](@ref) "
 "for calculations."
-msgstr "半精度浮動小数点数([`Float16'](@ref))もサポートされていますが、これはソフトウェアで実装され、計算に [`Float32`](@ref) を使用します。"
+msgstr "半精度浮動小数点数([`Float16`](@ref))もサポートされていますが、これはソフトウェアで実装され、計算に [`Float32`](@ref) を使用します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:322
@@ -35167,8 +35197,8 @@ msgid ""
 "The default mode used is always [`RoundNearest`](@ref), which rounds to the nearest representable value, with ties rounded towards the "
 "nearest value with an even least significant bit."
 msgstr ""
-"デフォルトの丸めモードは、常に [`最近接丸め`](@ref)で、これは、最も近い表現可能な値に丸める方法で、仮に最近接の表現可能な数が2つある場合に"
-"は、最下位ビットが偶数になるように丸めます。"
+"デフォルトの丸めモードは、常に [`RoundNearest`](@ref)(最近接丸め)で、これは、最も近い表現可能な値に丸める方法で、仮に最近接の表現可能な数が2"
+"つある場合には、最下位ビットが偶数になるように丸めます。"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:502
