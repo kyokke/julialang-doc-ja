@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-07-24 01:15+0000\n"
-"PO-Revision-Date: 2019-07-31 14:38+0900\n"
+"PO-Revision-Date: 2019-08-04 10:43+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 2.2.3\n"
-"X-Poedit-Bookmarks: 565,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
+"X-Poedit-Bookmarks: 1626,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. type: Title =
 #: ext/julia/doc/src/./NEWS.md:2
@@ -1919,6 +1919,17 @@ msgid ""
 "julia> f(2, 3)\n"
 "1\n"
 msgstr ""
+"julia> f(2.0, 3.0)\n"
+"7.0\n"
+"\n"
+"julia> f(2, 3.0)\n"
+"1.0\n"
+"\n"
+"julia> f(2.0, 3)\n"
+"1.0\n"
+"\n"
+"julia> f(2, 3)\n"
+"1\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/methods.md:140
@@ -4092,6 +4103,14 @@ msgid ""
 "julia> 3*2/12\n"
 "0.5\n"
 msgstr ""
+"julia> 1 + 2 + 3\n"
+"6\n"
+"\n"
+"julia> 1 - 2\n"
+"-1\n"
+"\n"
+"julia> 3*2/12\n"
+"0.5\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:51
@@ -4170,6 +4189,26 @@ msgid ""
 "julia> ~UInt8(123)\n"
 "0x84\n"
 msgstr ""
+"julia> ~123\n"
+"-124\n"
+"\n"
+"julia> 123 & 234\n"
+"106\n"
+"\n"
+"julia> 123 | 234\n"
+"251\n"
+"\n"
+"julia> 123 ⊻ 234\n"
+"145\n"
+"\n"
+"julia> xor(123, 234)\n"
+"145\n"
+"\n"
+"julia> ~UInt32(123)\n"
+"0xffffff84\n"
+"\n"
+"julia> ~UInt8(123)\n"
+"0x84\n"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/mathematical-operations.md:92
@@ -4200,6 +4239,14 @@ msgid ""
 "julia> x\n"
 "4\n"
 msgstr ""
+"julia> x = 1\n"
+"1\n"
+"\n"
+"julia> x += 3\n"
+"4\n"
+"\n"
+"julia> x\n"
+"4\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:111
@@ -4210,7 +4257,7 @@ msgstr "すべての二項算術演算子とビット演算子の代入バージ
 #: ext/julia/doc/src/manual/mathematical-operations.md:112
 #, no-wrap
 msgid "+=  -=  *=  /=  \\=  ÷=  %=  ^=  &=  |=  ⊻=  >>>=  >>=  <<=\n"
-msgstr ""
+msgstr "+=  -=  *=  /=  \\=  ÷=  %=  ^=  &=  |=  ⊻=  >>>=  >>=  <<=\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:119
@@ -4231,6 +4278,9 @@ msgid ""
 "    julia> x = 0x01; typeof(x)\n"
 "    UInt8\n"
 msgstr ""
+"    ```jldoctest\n"
+"    julia> x = 0x01; typeof(x)\n"
+"    UInt8\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:126
@@ -4239,6 +4289,8 @@ msgid ""
 "    julia> x *= 2 # Same as x = x * 2\n"
 "    2\n"
 msgstr ""
+"    julia> x *= 2 # Same as x = x * 2\n"
+"    2\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:130
@@ -4248,6 +4300,9 @@ msgid ""
 "    Int64\n"
 "    ```\n"
 msgstr ""
+"    julia> typeof(x)\n"
+"    Int64\n"
+"    ```\n"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/mathematical-operations.md:131
@@ -4277,6 +4332,11 @@ msgid ""
 "  8\n"
 " 27\n"
 msgstr ""
+"julia> [1,2,3] .^ 3\n"
+"3-element Array{Int64,1}:\n"
+"  1\n"
+"  8\n"
+" 27\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:163
@@ -4398,6 +4458,38 @@ msgid ""
 "julia> 3 < -0.5\n"
 "false\n"
 msgstr ""
+"julia> 1 == 1\n"
+"true\n"
+"\n"
+"julia> 1 == 2\n"
+"false\n"
+"\n"
+"julia> 1 != 2\n"
+"true\n"
+"\n"
+"julia> 1 == 1.0\n"
+"true\n"
+"\n"
+"julia> 1 < 2\n"
+"true\n"
+"\n"
+"julia> 1.0 > 3\n"
+"false\n"
+"\n"
+"julia> 1 >= 1.0\n"
+"true\n"
+"\n"
+"julia> -1 <= 1\n"
+"true\n"
+"\n"
+"julia> -1 <= -1\n"
+"true\n"
+"\n"
+"julia> -1 <= -2\n"
+"false\n"
+"\n"
+"julia> 3 < -0.5\n"
+"false\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:230
@@ -4454,6 +4546,17 @@ msgid ""
 "julia> NaN > NaN\n"
 "false\n"
 msgstr ""
+"julia> NaN == NaN\n"
+"false\n"
+"\n"
+"julia> NaN != NaN\n"
+"true\n"
+"\n"
+"julia> NaN < NaN\n"
+"false\n"
+"\n"
+"julia> NaN > NaN\n"
+"false\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:254
@@ -4467,6 +4570,8 @@ msgid ""
 "julia> [1 NaN] == [1 NaN]\n"
 "false\n"
 msgstr ""
+"julia> [1 NaN] == [1 NaN]\n"
+"false\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:262
@@ -4509,6 +4614,14 @@ msgid ""
 "julia> isequal(NaN, NaN32)\n"
 "true\n"
 msgstr ""
+"julia> isequal(NaN, NaN)\n"
+"true\n"
+"\n"
+"julia> isequal([1 NaN], [1 NaN])\n"
+"true\n"
+"\n"
+"julia> isequal(NaN, NaN32)\n"
+"true\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:284
@@ -4525,6 +4638,11 @@ msgid ""
 "julia> isequal(-0.0, 0.0)\n"
 "false\n"
 msgstr ""
+"julia> -0.0 == 0.0\n"
+"true\n"
+"\n"
+"julia> isequal(-0.0, 0.0)\n"
+"false\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:295
@@ -4568,6 +4686,8 @@ msgid ""
 "julia> 1 < 2 <= 2 < 3 == 3 > 2 >= 1 == 1 < 3 != 5\n"
 "true\n"
 msgstr ""
+"julia> 1 < 2 <= 2 < 3 == 3 > 2 >= 1 == 1 < 3 != 5\n"
+"true\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:315
@@ -4602,6 +4722,19 @@ msgid ""
 "1\n"
 "false\n"
 msgstr ""
+"julia> v(x) = (println(x); x)\n"
+"v (generic function with 1 method)\n"
+"\n"
+"julia> v(1) < v(2) <= v(3)\n"
+"2\n"
+"1\n"
+"3\n"
+"true\n"
+"\n"
+"julia> v(1) > v(2) <= v(3)\n"
+"2\n"
+"1\n"
+"false\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:339
@@ -4729,6 +4862,11 @@ msgid ""
 "julia> Base.operator_precedence(:sin), Base.operator_precedence(:+=), Base.operator_precedence(:(=))  # (Note the necessary parens on `:(=)`)\n"
 "(0, 1, 1)\n"
 msgstr ""
+"julia> Base.operator_precedence(:+), Base.operator_precedence(:*), Base.operator_precedence(:.)\n"
+"(11, 13, 17)\n"
+"\n"
+"julia> Base.operator_precedence(:sin), Base.operator_precedence(:+=), Base.operator_precedence(:(=))  # (Note the necessary parens on `:(=)`)\n"
+"(0, 1, 1)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:392
@@ -4745,6 +4883,11 @@ msgid ""
 "julia> Base.operator_associativity(:⊗), Base.operator_associativity(:sin), Base.operator_associativity(:→)\n"
 "(:left, :none, :right)\n"
 msgstr ""
+"julia> Base.operator_associativity(:-), Base.operator_associativity(:+), Base.operator_associativity(:^)\n"
+"(:left, :none, :right)\n"
+"\n"
+"julia> Base.operator_associativity(:⊗), Base.operator_associativity(:sin), Base.operator_associativity(:→)\n"
+"(:left, :none, :right)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:403
@@ -4835,6 +4978,40 @@ msgid ""
 "Stacktrace:\n"
 "[...]\n"
 msgstr ""
+"julia> Int8(127)\n"
+"127\n"
+"\n"
+"julia> Int8(128)\n"
+"ERROR: InexactError: trunc(Int8, 128)\n"
+"Stacktrace:\n"
+"[...]\n"
+"\n"
+"julia> Int8(127.0)\n"
+"127\n"
+"\n"
+"julia> Int8(3.14)\n"
+"ERROR: InexactError: Int8(3.14)\n"
+"Stacktrace:\n"
+"[...]\n"
+"\n"
+"julia> Int8(128.0)\n"
+"ERROR: InexactError: Int8(128.0)\n"
+"Stacktrace:\n"
+"[...]\n"
+"\n"
+"julia> 127 % Int8\n"
+"127\n"
+"\n"
+"julia> 128 % Int8\n"
+"-128\n"
+"\n"
+"julia> round(Int8,127.4)\n"
+"127\n"
+"\n"
+"julia> round(Int8,127.6)\n"
+"ERROR: InexactError: trunc(Int8, 128.0)\n"
+"Stacktrace:\n"
+"[...]\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:460
@@ -5013,6 +5190,11 @@ msgid ""
 "asinh  acosh  atanh  acoth  asech  acsch\n"
 "sinc   cosc\n"
 msgstr ""
+"sin    cos    tan    cot    sec    csc\n"
+"sinh   cosh   tanh   coth   sech   csch\n"
+"asin   acos   atan   acot   asec   acsc\n"
+"asinh  acosh  atanh  acoth  asech  acsch\n"
+"sinc   cosc\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:537
@@ -5046,6 +5228,8 @@ msgid ""
 "sind   cosd   tand   cotd   secd   cscd\n"
 "asind  acosd  atand  acotd  asecd  acscd\n"
 msgstr ""
+"sind   cosd   tand   cotd   secd   cscd\n"
+"asind  acosd  atand  acotd  asecd  acscd\n"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/mathematical-operations.md:550
@@ -5064,7 +5248,7 @@ msgstr "他の多くの特殊関数は、パッケージ[SpecialFunctions.jl](ht
 #: ext/julia/doc/src/manual/embedding.md:1
 #, no-wrap
 msgid "Embedding Julia"
-msgstr ""
+msgstr "Julia の埋め込み"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/embedding.md:9
@@ -8677,13 +8861,13 @@ msgstr ""
 #: ext/julia/doc/src/manual/faq.md:651
 #, no-wrap
 msgid "Packages and Modules"
-msgstr ""
+msgstr "パッケージとモジュール"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/faq.md:653
 #, no-wrap
 msgid "What is the difference between \"using\" and \"import\"?"
-msgstr ""
+msgstr "`using`と`import` の違いは何ですか?"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/faq.md:659
@@ -8692,6 +8876,9 @@ msgid ""
 "with `using` you need to say `function Foo.bar(..` to extend module Foo's function bar with a new method, but with `import Foo.bar`, you "
 "only need to say `function bar(...` and it automatically extends module Foo's function bar."
 msgstr ""
+"違いは1つしかありませんが、表面的に(構文的に)はその違いはごく些細なものに見えるかもしれません。`using` と `import` の違いは、`using` ではモ"
+"ジュール Foo の関数 barを 新しいメソッドで拡張するときには、`function Foo.bar(..`と書く必要があります。`import Foo.bar`を使ったときには"
+"`function bar(...` と書くだけでモジュール Foo の関数 barが自動的に拡張されます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/faq.md:667
@@ -8702,6 +8889,11 @@ msgid ""
 "you'll replace the other module's implementation of `bar(s::AbstractString)` with your new implementation, which could easily do something "
 "completely different (and break all/many future usages of the other functions in module Foo that depend on calling bar)."
 msgstr ""
+"こうやって別々の構文を与えられるほどに重要な理由は、存在を知らなった関数を誤って拡張してしまうとそれがバグの温床となってしまうので、そういっ"
+"たことを避けたい、ということです。これは、文字列や整数のような共通の型を受け取るメソッドで発生する可能性が最も高いです。'import' を使用する場"
+"合は、他のモジュールの 'bar(s:AbstractString)' の実装を新しい実装に置き換えることになります。その実装は いとも簡単に置き換え前と全く異なる振"
+"る舞いをさせることができます(が、そうすることによって、関数 bar の呼び出しに依存しているモジュール Fooで定義された別の関数群を将来的に使う際"
+"に大いに問題になるでしょう)"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/faq.md:668
@@ -10454,7 +10646,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/metaprogramming.md:1
 #, no-wrap
 msgid "Metaprogramming"
-msgstr ""
+msgstr "[メタプログラミング](@id metaprogramming)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/metaprogramming.md:13
@@ -12812,7 +13004,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/strings.md:1
 #, no-wrap
 msgid "[Strings](@id man-strings)"
-msgstr ""
+msgstr "[文字列](@id man-strings)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:20
@@ -12831,11 +13023,21 @@ msgid ""
 "clear error message, rather than silently introducing corrupt results. When this happens, modifying the code to handle non-ASCII data is "
 "straightforward."
 msgstr ""
+"文字列は、文字の有限列です。しかし文字とは何であるか、と問うてみると問題は複雑であることに気づきます。英語を話す人にとってよく知る文字とは、"
+"文字'A'、'B'、'C'等と数字や一般的な句読点です。これらの文字と0から127までの整数値とのマッピングは[ASCII](https://en.wikipedia.org/wiki/ASCII)"
+"標準によって標準化されています。もちろん、文字には、英語以外で使われる数々の文字が含まれるわけです。アクセントやその他の変更を加えた変形ASCII"
+"文字、キリル文字やギリシャ語などの関連スクリプト、ASCIIや英語とは全く関係のない言語体系である、アラビア語、中国語、ヘブライ語、ヒンディー語、"
+"日本語、韓国語などです。[Unicode](https://en.wikipedia.org/wiki/Unicode)標準は、文字が正確に何であるかの複雑さに取り組み、この問題に対処する"
+"決定的な標準として広く受け入れられています。ニーズに応じて、これらの複雑さを完全に無視して、ASCII 文字のみが存在するふりをするか、ASCII 以外"
+"のテキストを処理するときに発生する可能性のある文字またはエンコーディングを扱うコードを記述できます。Julia はプレーンな ASCII テキストをシンプ"
+"ルかつ効率的に処理し、Unicode の処理も可能な限りシンプルで効率的に処理します。特に、ASCII 文字列を処理するときには、C スタイルの文字列コード"
+"を記述でき、パフォーマンスとセマンティクスの両方で期待どおりに動作します。このようなコードで ASCII 以外のテキストが検出された場合は、間違った"
+"結果をただ返すのではなく明確なエラー メッセージで正常に失敗します。この場合、ASCII 以外のデータを処理するようにコードを変更するのは簡単です。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:22
 msgid "There are a few noteworthy high-level features about Julia's strings:"
-msgstr ""
+msgstr "Juliaには、文字列に関係するいくつかの注目すべき高度な機能があります:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/strings.md:42
@@ -12844,6 +13046,9 @@ msgid ""
 "(https://en.wikipedia.org/wiki/Unicode) characters via the [UTF-8](https://en.wikipedia.org/wiki/UTF-8) encoding. (A [`transcode`](@ref) "
 "function is provided to convert to/from other Unicode encodings.)"
 msgstr ""
+"ジュリアの文字列 (および文字列リテラル) に使用される組み込みの具体的な型は [`String`](@ref)です。 これは[UTF-8](https://en.wikipedia.org/"
+"wiki/UTF-8)エンコーディングによる[Unicode](https://en.wikipedia.org/wiki/UTF-8)の全範囲をサポートしています。(他の Unicode エンコーディングと"
+"の間で変換するために[`transcode`](@ref) 関数が提供されます。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/strings.md:42
@@ -12852,6 +13057,9 @@ msgid ""
 "for other encodings).  If you define a function expecting a string argument, you should declare the type as `AbstractString` in order to "
 "accept any string type."
 msgstr ""
+"すべての文字列型は抽象型 `AbstractString`のサブタイプであり、外部パッケージは追加の `AbstractString` サブタイプを定義します (例えば他のエン"
+"コーディング用などに)。 文字列引数を必要とする関数を定義する場合は、任意の文字列型を受け入れるために、型を 'AbstractString' として宣言する必"
+"要があります。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/strings.md:42
@@ -12860,6 +13068,9 @@ msgid ""
 "(@ref). The built-in [`Char`](@ref) subtype of `AbstractChar` is a 32-bit primitive type that can represent any Unicode character (and which "
 "is based on the UTF-8 encoding)."
 msgstr ""
+"C や Java と同様に、そしてほとんどの動的言語とは異なり、Julia には[`AbstractChar`](@ref)と呼ばれる単一の文字を表すファーストクラスの型があり"
+"ます。'AbstractChar' の組み込みの [`Char`](@ref) サブタイプは、任意の Unicode 文字を表すことができる 32 ビット プリミティブ型です (UTF-8 エン"
+"コーディングに基づいています)。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/strings.md:42
@@ -12867,6 +13078,8 @@ msgid ""
 "As in Java, strings are immutable: the value of an `AbstractString` object cannot be changed.  To construct a different string value, you "
 "construct a new string from parts of other strings."
 msgstr ""
+"Java と同様に、文字列は不変(イミュータブル)であり、'AbstractString' オブジェクトの値は変更できません。 別の文字列値を作成するには、他の文字列"
+"の一部から新しい文字列を作成します。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/strings.md:42
@@ -12875,12 +13088,14 @@ msgid ""
 "instead an exception is thrown. This allows for efficient indexing into strings by the byte index of an encoded representation rather than "
 "by a character index, which cannot be implemented both efficiently and simply for variable-width encodings of Unicode strings."
 msgstr ""
+"概念的には、文字列はインデックスから文字への *部分関数* です。これにより、文字インデックスではなく、エンコードされた表現のバイト インデックス"
+"によって文字列に効率的にインデックスを作成できます。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/strings.md:43
 #, no-wrap
 msgid "[Characters](@id man-characters)"
-msgstr ""
+msgstr "[文字](@id man-characters)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:52
@@ -12890,6 +13105,10 @@ msgid ""
 "Code_point).  (Julia packages may define other subtypes of `AbstractChar`, e.g. to optimize operations for other [text encodings](https://en."
 "wikipedia.org/wiki/Character_encoding).) Here is how `Char` values are input and shown:"
 msgstr ""
+"`Char`型の値は単一の文字を表します: これは、特別なリテラル表現と適切な算術動作を持つ 32 ビットプリミティブ型であり、[Unicode コードポイント]"
+"(https://en.wikipedia.org/wiki/Code_point)を表す数値に変換できます。 (Juliaパッケージは`AbstractChar`の他のサブタイプを定義することができま"
+"す。例えば 他の[テキストエンコーディング](https://en.wikipedia.org/wiki/Character_encoding)の操作の最適化などのために) `Char` 値の入力方法を"
+"次に示します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:53
@@ -12901,11 +13120,16 @@ msgid ""
 "julia> typeof(ans)\n"
 "Char\n"
 msgstr ""
+"julia> 'x'\n"
+"'x': ASCII/Unicode U+0078 (category Ll: Letter, lowercase)\n"
+"\n"
+"julia> typeof(ans)\n"
+"Char\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:62
 msgid "You can easily convert a `Char` to its integer value, i.e. code point:"
-msgstr ""
+msgstr "'Char' を整数値(コード ポイント)に簡単に変換できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:63
@@ -12917,12 +13141,17 @@ msgid ""
 "julia> typeof(ans)\n"
 "Int64\n"
 msgstr ""
+"julia> Int('x')\n"
+"120\n"
+"\n"
+"julia> typeof(ans)\n"
+"Int64\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:73
 msgid ""
 "On 32-bit architectures, [`typeof(ans)`](@ref) will be [`Int32`](@ref). You can convert an integer value back to a `Char` just as easily:"
-msgstr ""
+msgstr "32 ビット アーキテクチャでは、[`typeof(ans)`](@ref) は [`Int32`](@ref)になります。整数値を `Char` に簡単に変換できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:74
@@ -12931,6 +13160,8 @@ msgid ""
 "julia> Char(120)\n"
 "'x': ASCII/Unicode U+0078 (category Ll: Letter, lowercase)\n"
 msgstr ""
+"julia> Char(120)\n"
+"'x': ASCII/Unicode U+0078 (category Ll: Letter, lowercase)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:82
@@ -12938,6 +13169,8 @@ msgid ""
 "Not all integer values are valid Unicode code points, but for performance, the `Char` conversion does not check that every character value "
 "is valid. If you want to check that each converted value is a valid code point, use the [`isvalid`](@ref) function:"
 msgstr ""
+"すべての整数値が有効な Unicode コード ポイントであるとは言えませんが、パフォーマンス向上のため、'Char' 変換では、すべての引数が有効なコードポ"
+"イントであるかの確認は行いません。変換された各値が有効なコード ポイントであるか確認する場合は、[`isvalid`](@ref) 関数を使用します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:83
@@ -12949,6 +13182,11 @@ msgid ""
 "julia> isvalid(Char, 0x110000)\n"
 "false\n"
 msgstr ""
+"julia> Char(0x110000)\n"
+"'\\U110000': Unicode U+110000 (category In: Invalid, too high)\n"
+"\n"
+"julia> isvalid(Char, 0x110000)\n"
+"false\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:94
@@ -12957,6 +13195,8 @@ msgid ""
 "assigned intelligible meanings yet, nor are they necessarily interpretable by applications, but all of these values are considered to be "
 "valid Unicode characters."
 msgstr ""
+"現時点では、有効な Unicode コード ポイントは `U+00` から `U+d7ff` と `U+e000` から `U+10ffff` です。これらはすべてまだわかりやすい意味を割り"
+"当てられていないし、アプリケーションによって必ずしも解釈できるわけではありませんが、これらの値はすべて有効な Unicode 文字と見なされます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:98
@@ -12964,6 +13204,8 @@ msgid ""
 "You can input any Unicode character in single quotes using `\\u` followed by up to four hexadecimal digits or `\\U` followed by up to eight "
 "hexadecimal digits (the longest valid value only requires six):"
 msgstr ""
+"単一引用符の中で、`\\u' を使用してその後に16進数で最大 4桁、または '\\U' の後に16進数で最大 8 桁(最長有効値は 6 桁)で、任意のUnicode 文字を入"
+"力できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:99
@@ -12981,6 +13223,17 @@ msgid ""
 "julia> '\\U10ffff'\n"
 "'\\U10ffff': Unicode U+10ffff (category Cn: Other, not assigned)\n"
 msgstr ""
+"julia> '\\u0'\n"
+"'\\0': ASCII/Unicode U+0000 (category Cc: Other, control)\n"
+"\n"
+"julia> '\\u78'\n"
+"'x': ASCII/Unicode U+0078 (category Ll: Letter, lowercase)\n"
+"\n"
+"julia> '\\u2200'\n"
+"'∀': Unicode U+2200 (category Sm: Symbol, math)\n"
+"\n"
+"julia> '\\U10ffff'\n"
+"'\\U10ffff': Unicode U+10ffff (category Cn: Other, not assigned)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:117
@@ -12989,6 +13242,9 @@ msgid ""
 "generic, escaped `\\u` or `\\U` input forms. In addition to these Unicode escape forms, all of [C's traditional escaped input forms](https://"
 "en.wikipedia.org/wiki/C_syntax#Backslash_escapes)  can also be used:"
 msgstr ""
+"Julia は、システムのロケールと言語の設定を使用して、どの文字をそのまま支障なく出力できるか、どの文字が、`\\u` や `\\U` を使った一般系で出力す"
+"る必要があるかを判断します。これらの Unicode エスケープ形式に加えて、[C言語のエスケープ形式](https://en.wikipedia.org/wiki/"
+"C_syntax#Backslash_escapes) もすべて使用できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:118
@@ -13012,11 +13268,28 @@ msgid ""
 "julia> Int('\\177')\n"
 "127\n"
 msgstr ""
+"julia> Int('\\0')\n"
+"0\n"
+"\n"
+"julia> Int('\\t')\n"
+"9\n"
+"\n"
+"julia> Int('\\n')\n"
+"10\n"
+"\n"
+"julia> Int('\\e')\n"
+"27\n"
+"\n"
+"julia> Int('\\x7f')\n"
+"127\n"
+"\n"
+"julia> Int('\\177')\n"
+"127\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:139
 msgid "You can do comparisons and a limited amount of arithmetic with `Char` values:"
-msgstr ""
+msgstr "'Char'値では、いくつかの限定された算術演算と比較演算を行うことができます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:140
@@ -13037,24 +13310,38 @@ msgid ""
 "julia> 'A' + 1\n"
 "'B': ASCII/Unicode U+0042 (category Lu: Letter, uppercase)\n"
 msgstr ""
+"julia> 'A' < 'a'\n"
+"true\n"
+"\n"
+"julia> 'A' <= 'a' <= 'Z'\n"
+"false\n"
+"\n"
+"julia> 'A' <= 'X' <= 'Z'\n"
+"true\n"
+"\n"
+"julia> 'x' - 'a'\n"
+"23\n"
+"\n"
+"julia> 'A' + 1\n"
+"'B': ASCII/Unicode U+0042 (category Lu: Letter, uppercase)\n"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/strings.md:157
 #, no-wrap
 msgid "String Basics"
-msgstr ""
+msgstr "文字列の基礎"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:160
 msgid "String literals are delimited by double quotes or triple double quotes:"
-msgstr ""
+msgstr "文字列リテラルは、二重引用符または三重引用符で区切られます:"
 
 #. type: Code fence info string
 #: ext/julia/doc/src/manual/strings.md:161 ext/julia/doc/src/manual/strings.md:171 ext/julia/doc/src/manual/strings.md:193
 #: ext/julia/doc/src/manual/strings.md:203 ext/julia/doc/src/manual/strings.md:218 ext/julia/doc/src/manual/strings.md:225
 #, no-wrap
 msgid "jldoctest helloworldstring"
-msgstr ""
+msgstr "jldoctest helloworldstring"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:161
@@ -13066,11 +13353,16 @@ msgid ""
 "julia> \"\"\"Contains \"quote\" characters\"\"\"\n"
 "\"Contains \\\"quote\\\" characters\"\n"
 msgstr ""
+"julia> str = \"Hello, world.\\n\"\n"
+"\"Hello, world.\\n\"\n"
+"\n"
+"julia> \"\"\"Contains \"quote\" characters\"\"\"\n"
+"\"Contains \\\"quote\\\" characters\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:170
 msgid "If you want to extract a character from a string, you index into it:"
-msgstr ""
+msgstr "文字列から文字を抽出する場合は、その文字列にインデックスを使います:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:171
@@ -13085,6 +13377,14 @@ msgid ""
 "julia> str[end]\n"
 "'\\n': ASCII/Unicode U+000a (category Cc: Other, control)\n"
 msgstr ""
+"julia> str[1]\n"
+"'H': ASCII/Unicode U+0048 (category Lu: Letter, uppercase)\n"
+"\n"
+"julia> str[6]\n"
+"',': ASCII/Unicode U+002c (category Po: Punctuation, other)\n"
+"\n"
+"julia> str[end]\n"
+"'\\n': ASCII/Unicode U+000a (category Cc: Other, control)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:189
@@ -13095,11 +13395,16 @@ msgid ""
 "objects is found at index 1. (As we will see below, this does not necessarily mean that the last element is found at index `n`, where `n` is "
 "the length of the string.)"
 msgstr ""
+"文字列を含む多くの Julia オブジェクトは、整数でインデックスづけができます。最初の要素のインデックスは [`firstindex(str)`](@ref)で、最後の要素"
+"のインデックスは [`lastindex(str)`](@ref)で取得できます。キーワード 'end' は、インデックス操作時に、指定された次元の最後のインデックスを示す"
+"短縮形として使用できます。 Julia のほとんどのインデックスづけは 1 から始まります: 多くの整数インデックス付きオブジェクトの最初の要素はイン"
+"デックス 1 です。(後で示しますが、これは必ずしも最後の要素がインデックス 'n' にあり、'n' が文字列の長さであることを意味するわけではありませ"
+"ん。）"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:192
 msgid "You can perform arithmetic and other operations with [`end`](@ref), just like a normal value:"
-msgstr ""
+msgstr "通常の値と同様に、[`end`](@ref)に対して算術演算やその他の演算を実行できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:193
@@ -13111,11 +13416,16 @@ msgid ""
 "julia> str[end÷2]\n"
 "' ': ASCII/Unicode U+0020 (category Zs: Separator, space)\n"
 msgstr ""
+"julia> str[end-1]\n"
+"'.': ASCII/Unicode U+002e (category Po: Punctuation, other)\n"
+"\n"
+"julia> str[end÷2]\n"
+"' ': ASCII/Unicode U+0020 (category Zs: Separator, space)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:202
 msgid "Using an index less than 1 or greater than `end` raises an error:"
-msgstr ""
+msgstr "1より小さいインデックスや、`end` より大きいインデックスを使うとエラーが発生します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:203
@@ -13132,11 +13442,21 @@ msgid ""
 "Stacktrace:\n"
 "[...]\n"
 msgstr ""
+"julia> str[0]\n"
+"ERROR: BoundsError: attempt to access \"Hello, world.\\n\"\n"
+"  at index [0]\n"
+"[...]\n"
+"\n"
+"julia> str[end+1]\n"
+"ERROR: BoundsError: attempt to access \"Hello, world.\\n\"\n"
+"  at index [15]\n"
+"Stacktrace:\n"
+"[...]\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:217
 msgid "You can also extract a substring using range indexing:"
-msgstr ""
+msgstr "範囲インデックスを使用して部分文字列を抽出することもできます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:218
@@ -13145,11 +13465,13 @@ msgid ""
 "julia> str[4:9]\n"
 "\"lo, wo\"\n"
 msgstr ""
+"julia> str[4:9]\n"
+"\"lo, wo\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:224
 msgid "Notice that the expressions `str[k]` and `str[k:k]` do not give the same result:"
-msgstr ""
+msgstr "`str[k]` と `str[k:k]` は同じ結果を与えないことに注意してください:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:225
@@ -13161,13 +13483,18 @@ msgid ""
 "julia> str[6:6]\n"
 "\",\"\n"
 msgstr ""
+"julia> str[6]\n"
+"',': ASCII/Unicode U+002c (category Po: Punctuation, other)\n"
+"\n"
+"julia> str[6:6]\n"
+"\",\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:235
 msgid ""
 "The former is a single character value of type `Char`, while the latter is a string value that happens to contain only a single character. "
 "In Julia these are very different things."
-msgstr ""
+msgstr "前者は`Char`型の単一の文字値で、後者は 1 文字だけを含む文字列値です。Julia ではこれらは全く異なるものです。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:239
@@ -13175,6 +13502,8 @@ msgid ""
 "Range indexing makes a copy of the selected part of the original string.  Alternatively, it is possible to create a view into a string using "
 "the type [`SubString`](@ref), for example:"
 msgstr ""
+"範囲インデックスによる配列の参照は元の文字列の選択部分のコピーを作成します。 または、型 [`SubString`](@ref) を使用して、文字列に対するビュー"
+"を作成することもできます。例えば:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:240
@@ -13189,17 +13518,25 @@ msgid ""
 "julia> typeof(substr)\n"
 "SubString{String}\n"
 msgstr ""
+"julia> str = \"long string\"\n"
+"\"long string\"\n"
+"\n"
+"julia> substr = SubString(str, 1, 4)\n"
+"\"long\"\n"
+"\n"
+"julia> typeof(substr)\n"
+"SubString{String}\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:253
 msgid "Several standard functions like [`chop`](@ref), [`chomp`](@ref) or [`strip`](@ref)  return a [`SubString`](@ref)."
-msgstr ""
+msgstr "[`chop`](@ref), [`chomp`](@ref) や [`strip`](@ref) のような いくつかの標準的な関数は戻り値として [`SubString`](@ref)を返します。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/strings.md:254
 #, no-wrap
 msgid "Unicode and UTF-8"
-msgstr ""
+msgstr "UnicodeとUTF-8"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:259
@@ -13208,13 +13545,16 @@ msgid ""
 "can be represented using Unicode `\\u` and `\\U` escape sequences, as well as all the standard C escape sequences. These can likewise be "
 "used to write string literals:"
 msgstr ""
+"Julia はUnicode 文字と Unicode 文字列を完全にサポートしています。[前述](@ref man-characters)のように、文字リテラルでは、すべての標準 C エス"
+"ケープ シーケンスと同様に、Unicode `\\u` ,`\\U` エスケープ シーケンスを使ってUnicode の符号位置を表現することができます。すべての標準 C エス"
+"ケープ シーケンスを使用して表すことができます。これらは文字列リテラルの書き込みでも同様です:"
 
 #. type: Code fence info string
 #: ext/julia/doc/src/manual/strings.md:260 ext/julia/doc/src/manual/strings.md:274 ext/julia/doc/src/manual/strings.md:297
 #: ext/julia/doc/src/manual/strings.md:317 ext/julia/doc/src/manual/strings.md:338
 #, no-wrap
 msgid "jldoctest unicodestring"
-msgstr ""
+msgstr "jldoctest unicodestring"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:260
@@ -13223,6 +13563,8 @@ msgid ""
 "julia> s = \"\\u2200 x \\u2203 y\"\n"
 "\"∀ x ∃ y\"\n"
 msgstr ""
+"julia> s = \"\\u2200 x \\u2203 y\"\n"
+"\"∀ x ∃ y\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:273
@@ -13234,6 +13576,12 @@ msgid ""
 "character. This means that not every byte index into a UTF-8 string is necessarily a valid index for a character. If you index into a string "
 "at such an invalid byte index, an error is thrown:"
 msgstr ""
+"これら Unicode 文字がエスケープされて表示されるか、特殊文字として表示されるかは、ターミナルのロケール設定と Unicode への対応状況によって異な"
+"ります。文字列リテラルは、UTF-8 でエンコードされます。UTF-8 は可変長エンコーディングであり、すべての文字が同じバイト数でエンコードされるわけ"
+"ではありません。UTF-8 では、ASCII 文字 (コード ポイントが 0x80 (128) 未満の文字は、ASCIIの場合と同様に1 バイトでエンコードされます。コード ポ"
+"イント 0x80 以上は複数のバイト(1 字あたり最大 4文字まで)を使用してエンコードされます。つまり、UTF-8 文字列に入るすべてのバイトインデックスが"
+"必ずしも文字の有効なインデックスであるとは限りません。このような無効なバイト インデックスで文字列にインデックスを作成すると、エラーがスローさ"
+"れます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:274
@@ -13254,6 +13602,20 @@ msgid ""
 "julia> s[4]\n"
 "' ': ASCII/Unicode U+0020 (category Zs: Separator, space)\n"
 msgstr ""
+"julia> s[1]\n"
+"'∀': Unicode U+2200 (category Sm: Symbol, math)\n"
+"\n"
+"julia> s[2]\n"
+"ERROR: StringIndexError(\"∀ x ∃ y\", 2)\n"
+"[...]\n"
+"\n"
+"julia> s[3]\n"
+"ERROR: StringIndexError(\"∀ x ∃ y\", 3)\n"
+"Stacktrace:\n"
+"[...]\n"
+"\n"
+"julia> s[4]\n"
+"' ': ASCII/Unicode U+0020 (category Zs: Separator, space)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:294
@@ -13261,11 +13623,15 @@ msgid ""
 "In this case, the character `∀` is a three-byte character, so the indices 2 and 3 are invalid and the next character's index is 4; this next "
 "valid index can be computed by [`nextind(s,1)`](@ref), and the next index after that by `nextind(s,4)` and so on."
 msgstr ""
+"この場合、文字 `∀`は 3 バイト文字なので、インデックス 2 と 3 は無効で、次の文字のインデックスは 4 です。これは[`nextind(s,1)`](@ref)で計算で"
+"き、さらにその次の文字のインデックスは`nextind(s,4)`と続きます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:296
 msgid "Extraction of a substring using range indexing also expects valid byte indices or an error is thrown:"
 msgstr ""
+"部分文字列を取り出す範囲インデックスでも、有効なバイト インデックスが与えられることが想定されており、それが満たされない場合はエラーがスローさ"
+"れます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:297
@@ -13282,6 +13648,16 @@ msgid ""
 "julia> s[1:4]\n"
 "\"∀ \"\n"
 msgstr ""
+"julia> s[1:1]\n"
+"\"∀\"\n"
+"\n"
+"julia> s[1:2]\n"
+"ERROR: StringIndexError(\"∀ x ∃ y\", 2)\n"
+"Stacktrace:\n"
+"[...]\n"
+"\n"
+"julia> s[1:4]\n"
+"\"∀ \"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:316
@@ -13294,6 +13670,8 @@ msgid ""
 "since each character in a string must have its own index. The following is an inefficient and\n"
 "verbose way to iterate through the characters of `s`:\n"
 msgstr ""
+"可変長エンコーディングのため、文字列内の文字数 ([`length(s)`](@ref))は、最後のインデックスと常に同じであるとは限りません。インデックス 1 から [`lastindex(s)`] (@ref) に至るまで、文字列`s`へのインデックス呼び出しを繰り返すと\n"
+"適正なインデックスでは、`s` を構成うる一連の文字が返され、それ以外ではエラーが投げられます。したがって、文字列内のそれぞれの文字は固有のインデックスを持っているため、バイトインデックスと文字列の各文字を同一視する対応関係 `length(s)<= lastindex(s)`が得られるわけです。以下は非効率かつ冗長ではありますが、文字列 `s` に対する反復を行う方法です:\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:317
@@ -13314,6 +13692,20 @@ msgid ""
 "\n"
 "y\n"
 msgstr ""
+"julia> for i = firstindex(s):lastindex(s)\n"
+"           try\n"
+"               println(s[i])\n"
+"           catch\n"
+"               # ignore the index error\n"
+"           end\n"
+"       end\n"
+"∀\n"
+"\n"
+"x\n"
+"\n"
+"∃\n"
+"\n"
+"y\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:337
@@ -13321,6 +13713,8 @@ msgid ""
 "The blank lines actually have spaces on them. Fortunately, the above awkward idiom is unnecessary for iterating through the characters in a "
 "string, since you can just use the string as an iterable object, no exception handling required:"
 msgstr ""
+"空白行には実際には空白文字があります。幸いなことに、文字列内の文字を反復処理する場合は、文字列を反復可能オブジェクトとして使用できるので、例"
+"外処理は必要なく、上記の厄介なイディオムは不要です:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:338
@@ -13337,6 +13731,16 @@ msgid ""
 "\n"
 "y\n"
 msgstr ""
+"julia> for c in s\n"
+"           println(c)\n"
+"       end\n"
+"∀\n"
+"\n"
+"x\n"
+"\n"
+"∃\n"
+"\n"
+"y\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:356
@@ -13345,41 +13749,44 @@ msgid ""
 "situations a rule is that when parsing a sequence of code units from left to right characters are formed by the longest sequence of 8-bit "
 "code units that matches the start of one of the following bit patterns (each `x` can be `0` or `1`):"
 msgstr ""
+"Julia の文字列には、無効なUTF-8コード単位シーケンスを含めることができます。この仕組みによって、任意のバイト シーケンスを 'String' として扱う"
+"ことができます。このような状況では、左から右の文字までのコード単位のシーケンスを解析する場合、文字列は、次のいずれかのビット パターンの先頭に"
+"一致し、最も長い8 ビット コード単位のシーケンスよって形成されます (各 'x' は '0' または '1' になります)。:"
 
 #. type: Bullet: '* '
 #: ext/julia/doc/src/manual/strings.md:363
 msgid "`0xxxxxxx`;"
-msgstr ""
+msgstr "`0xxxxxxx`;"
 
 #. type: Bullet: '* '
 #: ext/julia/doc/src/manual/strings.md:363
 msgid "`110xxxxx` `10xxxxxx`;"
-msgstr ""
+msgstr "`110xxxxx` `10xxxxxx`;"
 
 #. type: Bullet: '* '
 #: ext/julia/doc/src/manual/strings.md:363
 msgid "`1110xxxx` `10xxxxxx` `10xxxxxx`;"
-msgstr ""
+msgstr "`1110xxxx` `10xxxxxx` `10xxxxxx`;"
 
 #. type: Bullet: '* '
 #: ext/julia/doc/src/manual/strings.md:363
 msgid "`11110xxx` `10xxxxxx` `10xxxxxx` `10xxxxxx`;"
-msgstr ""
+msgstr "`11110xxx` `10xxxxxx` `10xxxxxx` `10xxxxxx`;"
 
 #. type: Bullet: '* '
 #: ext/julia/doc/src/manual/strings.md:363
 msgid "`10xxxxxx`;"
-msgstr ""
+msgstr "`10xxxxxx`;"
 
 #. type: Bullet: '* '
 #: ext/julia/doc/src/manual/strings.md:363
 msgid "`11111xxx`."
-msgstr ""
+msgstr "`11111xxx`."
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:366
 msgid "In particular this implies that overlong and too high code unit sequences are accepted.  This rule is best explained by an example:"
-msgstr ""
+msgstr "特に、これは、冗長だったり、値が大きすぎるコードも受け入れられることを意味します。 実例で説明するほうがよく理解できるでしょう:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:367
@@ -13407,6 +13814,27 @@ msgid ""
 "julia> foreach(display, s2)\n"
 "'\\U1fffff': Unicode U+1fffff (category In: Invalid, too high)\n"
 msgstr ""
+"julia> s = \"\\xc0\\xa0\\xe2\\x88\\xe2|\"\n"
+"\"\\xc0\\xa0\\xe2\\x88\\xe2|\"\n"
+"\n"
+"julia> foreach(display, s)\n"
+"'\\xc0\\xa0': [overlong] ASCII/Unicode U+0020 (category Zs: Separator, space)\n"
+"'\\xe2\\x88': Malformed UTF-8 (category Ma: Malformed, bad data)\n"
+"'\\xe2': Malformed UTF-8 (category Ma: Malformed, bad data)\n"
+"'|': ASCII/Unicode U+007c (category Sm: Symbol, math)\n"
+"\n"
+"julia> isvalid.(collect(s))\n"
+"4-element BitArray{1}:\n"
+" false\n"
+" false\n"
+" false\n"
+"  true\n"
+"\n"
+"julia> s2 = \"\\xf7\\xbf\\xbf\\xbf\"\n"
+"\"\\U1fffff\"\n"
+"\n"
+"julia> foreach(display, s2)\n"
+"'\\U1fffff': Unicode U+1fffff (category In: Invalid, too high)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:398
@@ -13417,6 +13845,10 @@ msgid ""
 "code unit 5 forms a malformed character because `|` is not a valid continuation to it. Finally the string `s2` contains one too high code "
 "point."
 msgstr ""
+"文字列`s`のはじめの２つの符号単位は、空白文字の冗長なエンコーディングです。これは無効なものですが、文字列の中では1バイト文字として受け入れら"
+"れます。その次（３，４番め)の符号単位は、3バイトのUTFF-8文字の始まりとして有効ですが、5つめの符号単位`\\xe2`はその続きとして無効です。した"
+"がって３，４番めの符号単位も文字列の一部として不正な形式ということになります。5つめの符号単位の続きに`|`がくることはなく有効でないので、5番目"
+"の符号単位も不正な形式です。最後に、文字列`s2`は、符号位置が大きすぎます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:406
@@ -13427,23 +13859,28 @@ msgid ""
 "encoding issues, see the section below on [byte array literals](@ref man-byte-array-literals).  The [`transcode`](@ref) function is provided "
 "to convert data between the various UTF-xx encodings, primarily for working with external data and libraries."
 msgstr ""
+"Julia はデフォルトで UTF-8 エンコーディングを使用しますが、パッケージを加えて、その他に新しいエンコーディングのサポートを追加することができま"
+"す。 たとえば、[`LegacyStrings.jl`](https://github.com/JuliaStrings/LegacyStrings.jl)パッケージは`UTF16String` と `UTF32String` 型を実装しま"
+"す。他のエンコーディングとそのサポートの実装方法については、当面はこのドキュメントでは説明しません。UTF-8 エンコーディングの問題の詳細につい"
+"ては、以下の[バイト配列リテラル](@ref man-byte-array-literals)のセクションを参照してください。 [`transcode`](@ref)関数は、主に外部データやラ"
+"イブラリを操作するために、さまざまなUTF-xxエンコーディング間でデータを変換するために提供されます。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/strings.md:407
 #, no-wrap
 msgid "[Concatenation](@id man-concatenation)"
-msgstr ""
+msgstr "[連結](@id man-concatenation)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:410
 msgid "One of the most common and useful string operations is concatenation:"
-msgstr ""
+msgstr "最も一般的で有用な文字列操作の 1 つは、連結です:"
 
 #. type: Code fence info string
 #: ext/julia/doc/src/manual/strings.md:411 ext/julia/doc/src/manual/strings.md:452 ext/julia/doc/src/manual/strings.md:480
 #, no-wrap
 msgid "jldoctest stringconcat"
-msgstr ""
+msgstr "jldoctest stringconcat"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:411
@@ -13458,6 +13895,14 @@ msgid ""
 "julia> string(greet, \", \", whom, \".\\n\")\n"
 "\"Hello, world.\\n\"\n"
 msgstr ""
+"julia> greet = \"Hello\"\n"
+"\"Hello\"\n"
+"\n"
+"julia> whom = \"world\"\n"
+"\"world\"\n"
+"\n"
+"julia> string(greet, \", \", whom, \".\\n\")\n"
+"\"Hello, world.\\n\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:426
@@ -13466,6 +13911,8 @@ msgid ""
 "contain different characters than the input strings, and its number of characters may be lower than sum of numbers of characters of the "
 "concatenated strings, e.g.:"
 msgstr ""
+"無効な UTF-8 文字列を連結する場合など起こりうる潜在的な危険に注意をはらうことは重要です。 連結後の文字列には、入力文字列とは異なる文字が含ま"
+"れている場合があり、その文字数は連結文字列の文字数の合計よりも小さくなる場合があります。例えば:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:427
@@ -13489,6 +13936,23 @@ msgid ""
 " 1\n"
 " 1\n"
 msgstr ""
+"julia> a, b = \"\\xe2\\x88\", \"\\x80\"\n"
+"(\"\\xe2\\x88\", \"\\x80\")\n"
+"\n"
+"julia> c = a*b\n"
+"\"∀\"\n"
+"\n"
+"julia> collect.([a, b, c])\n"
+"3-element Array{Array{Char,1},1}:\n"
+" ['\\xe2\\x88']\n"
+" ['\\x80']\n"
+" ['∀']\n"
+"\n"
+"julia> length.([a, b, c])\n"
+"3-element Array{Int64,1}:\n"
+" 1\n"
+" 1\n"
+" 1\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:449
@@ -13496,11 +13960,13 @@ msgid ""
 "This situation can happen only for invalid UTF-8 strings. For valid UTF-8 strings concatenation preserves all characters in strings and "
 "additivity of string lengths."
 msgstr ""
+"このようなことが起こるのは、無効な UTF-8 文字列のときだけです。有効な UTF-8 文字列の連結では、文字列内のすべての文字も、文字列の文字数の合計"
+"も保持されます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:451
 msgid "Julia also provides [`*`](@ref) for string concatenation:"
-msgstr ""
+msgstr "ジュリアは、文字列連結に [`*`](@ref) も使うことができます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:452
@@ -13509,6 +13975,8 @@ msgid ""
 "julia> greet * \", \" * whom * \".\\n\"\n"
 "\"Hello, world.\\n\"\n"
 msgstr ""
+"julia> greet * \", \" * whom * \".\\n\"\n"
+"\"Hello, world.\\n\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:459
@@ -13516,6 +13984,8 @@ msgid ""
 "While `*` may seem like a surprising choice to users of languages that provide `+` for string concatenation, this use of `*` has precedent "
 "in mathematics, particularly in abstract algebra."
 msgstr ""
+"文字列連結に `+` を使う言語のユーザーにとって、これは驚くべき選択肢のように思えるかもしれませんが、この `*` の使用は、特に抽象代数での先例が"
+"あります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:467
@@ -13526,6 +13996,10 @@ msgid ""
 "* B != B * A`. As with matrix multiplication, string concatenation is noncommutative: `greet * whom != whom * greet`. As such, `*` is a more "
 "natural choice for an infix string concatenation operator, consistent with common mathematical use."
 msgstr ""
+"数学では、`+` は通常、*可換*演算を示し、そこでは、オペランド順序は関係ありません。これに対応する例は、行列の足し算で、同じ形状を持つ行列 `A` "
+"と `B`に対して `A + B = B + A` が成り立ちます。対照的に、`*` は通常、*非可換*演算を示し、そこでは、オペランドの順序が重要です。これに対応する"
+"例は行列の乗算で、一般的には `A * B != B * A` です。行列乗算と同様に、文字列連結は非可換です: `挨拶 * 誰が *誰が * 挨拶する`そのため、`*` "
+"は、一般的な数学での使用例とも一致し、文字列連結の二項演算子として、より自然な選択です。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:473
@@ -13535,12 +14009,15 @@ msgid ""
 "commutative, the operation is typically represented as `\\cdot`, `*`, or a similar symbol, rather than `+`, which as stated usually implies "
 "commutativity."
 msgstr ""
+"より正確には、すべての有限長文字列 *S* と文字列連結演算子 `*` は [自由モノイド](https://en.wikipedia.org/wiki/Free_monoid)(*S*、`*`)を形成し"
+"ます。このセットの 単位元は空文字列 `\"\"` です。自由モノイドが非可換のときはいつでも、演算子の表記には`\\cdot`、`*`、またはそれらと同様に非"
+"可換の演算に対応する記号を用います。通常は可換である`+`は使われません。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/strings.md:474
 #, no-wrap
 msgid "[Interpolation](@id string-interpolation)"
-msgstr ""
+msgstr "[文字列展開](@id string-interpolation)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:479
@@ -13548,6 +14025,8 @@ msgid ""
 "Constructing strings using concatenation can become a bit cumbersome, however. To reduce the need for these verbose calls to [`string`]"
 "(@ref) or repeated multiplications, Julia allows interpolation into string literals using `$`, as in Perl:"
 msgstr ""
+"連結を使用して文字列を構築することは少し面倒な場合があります。[`string`](@ref)関数の冗長な呼び出しや、乗算を何度も行うことが必要になる機会を"
+"減らすため、Julia は Perl のように '$' を使用して文字列リテラルの展開ができます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:480
@@ -13556,6 +14035,8 @@ msgid ""
 "julia> \"$greet, $whom.\\n\"\n"
 "\"Hello, world.\\n\"\n"
 msgstr ""
+"julia> \"$greet, $whom.\\n\"\n"
+"\"Hello, world.\\n\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:487
@@ -13563,13 +14044,15 @@ msgid ""
 "This is more readable and convenient and equivalent to the above string concatenation -- the system rewrites this apparent single string "
 "literal into a concatenation of string literals with variables."
 msgstr ""
+"これは、読みやすく便利で、上記の文字列連結と等価です。システムはこの見かけ上単一な文字列リテラルを変数を持った文字列リテラルの連結に書き換え"
+"ます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:490
 msgid ""
 "The shortest complete expression after the `$` is taken as the expression whose value is to be interpolated into the string. Thus, you can "
 "interpolate any expression into a string using parentheses:"
-msgstr ""
+msgstr "`$` に続く最短の完全な式が、値を文字列に展開する対象になります。かっこを使用すれば任意の式を文字列展開の対象にできます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:491
@@ -13578,6 +14061,8 @@ msgid ""
 "julia> \"1 + 2 = $(1 + 2)\"\n"
 "\"1 + 2 = 3\"\n"
 msgstr ""
+"julia> \"1 + 2 = $(1 + 2)\"\n"
+"\"1 + 2 = 3\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:499
@@ -13585,6 +14070,8 @@ msgid ""
 "Both concatenation and string interpolation call [`string`](@ref) to convert objects into string form. Most non-`AbstractString` objects are "
 "converted to strings closely corresponding to how they are entered as literal expressions:"
 msgstr ""
+"連結と文字列展開は、オブジェクトを文字列形式に変換するために[`string`](@ref)を呼び出します。`AbstractString` ではないオブジェクトは、大体の場"
+"合 そのオブジェクトがリテラル式として入力されるときの書き方に近い文字列に変換されます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:500
@@ -13599,6 +14086,14 @@ msgid ""
 "julia> \"v: $v\"\n"
 "\"v: [1, 2, 3]\"\n"
 msgstr ""
+"julia> v = [1,2,3]\n"
+"3-element Array{Int64,1}:\n"
+" 1\n"
+" 2\n"
+" 3\n"
+"\n"
+"julia> \"v: $v\"\n"
+"\"v: [1, 2, 3]\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:513
@@ -13606,6 +14101,8 @@ msgid ""
 "[`string`](@ref) is the identity for `AbstractString` and `AbstractChar` values, so these are interpolated into strings as themselves, "
 "unquoted and unescaped:"
 msgstr ""
+"[`string`](@ref) は 'AbstractString' および 'AbstractChar' に対しては、恒等写像的に働くので、引用符を取り去り、エスケープが処理された文字列に"
+"展開されます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:514
@@ -13617,11 +14114,16 @@ msgid ""
 "julia> \"hi, $c\"\n"
 "\"hi, x\"\n"
 msgstr ""
+"julia> c = 'x'\n"
+"'x': ASCII/Unicode U+0078 (category Ll: Letter, lowercase)\n"
+"\n"
+"julia> \"hi, $c\"\n"
+"\"hi, x\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:523
 msgid "To include a literal `$` in a string literal, escape it with a backslash:"
-msgstr ""
+msgstr "文字列リテラルに `$` を含めるには、バックスラッシュでエスケープします:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:524
@@ -13630,19 +14132,21 @@ msgid ""
 "julia> print(\"I have \\$100 in my account.\\n\")\n"
 "I have $100 in my account.\n"
 msgstr ""
+"julia> print(\"I have \\$100 in my account.\\n\")\n"
+"I have $100 in my account.\n"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/strings.md:529
 #, no-wrap
 msgid "Triple-Quoted String Literals"
-msgstr ""
+msgstr "三重引用符文字列リテラル"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:533
 msgid ""
 "When strings are created using triple-quotes (`\"\"\"...\"\"\"`) they have some special behavior that can be useful for creating longer "
 "blocks of text."
-msgstr ""
+msgstr "文字列を三重引用符 (`\"\"\"...\"\"\"`) を使用して作成すると、長いテキスト ブロックを作成するのに役立つ特殊な挙動をします。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:536
@@ -13650,6 +14154,8 @@ msgid ""
 "First, triple-quoted strings are also dedented to the level of the least-indented line.  This is useful for defining strings within code "
 "that is indented. For example:"
 msgstr ""
+"まず、三重引用符で囲まれた文字列も、最もインデントの少ない行までデデントされます。 これは、インデントされたコード内で文字列を定義する場合に便"
+"利です。例えば："
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:537
@@ -13661,11 +14167,16 @@ msgid ""
 "         \"\"\"\n"
 "\"  Hello,\\n  world.\\n\"\n"
 msgstr ""
+"julia> str = \"\"\"\n"
+"           Hello,\n"
+"           world.\n"
+"         \"\"\"\n"
+"\"  Hello,\\n  world.\\n\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:546
 msgid "In this case the final (empty) line before the closing `\"\"\"` sets the indentation level."
-msgstr ""
+msgstr "この場合、文字列終了時の `\"\"\"` の手前の(空)行が基準インデントレベルとして設定されます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:553
@@ -13675,6 +14186,9 @@ msgid ""
 "lines, excluding the text following the opening `\"\"\"`, the common starting sequence is removed (including lines containing only spaces "
 "and tabs if they start with this sequence), e.g.:"
 msgstr ""
+"デデントのレベルは、文字列リテラル中の全行が共通に持つスペースやタブの最長幅で決まります。ただし、文字列開始行が`\"\"\"` の後、スペースまたは"
+"タブしか持たない場合、文字列開始行を除いた全ての行(ちなみに、文字列終了の`\"\"\"`を含む行は常に含まれます)において判断されます。そして、文字"
+"列開始行の `\"\"\"`の後のテキストを除くすべての行 (スペースとタブのみを含む行も含む) から、上述の共通の開始シーケンスが削除されます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:553
@@ -13685,22 +14199,26 @@ msgid ""
 "           a test\"\"\"\n"
 "\"    This\\nis\\n  a test\"\n"
 msgstr ""
+"julia> \"\"\"    This\n"
+"         is\n"
+"           a test\"\"\"\n"
+"\"    This\\nis\\n  a test\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:562
 msgid "Next, if the opening `\"\"\"` is followed by a newline, the newline is stripped from the resulting string."
-msgstr ""
+msgstr "次に、文字列開始の `\"\"\"`のすぐ後の改行は、結果の文字列から削除されます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:563
 #, no-wrap
 msgid "\"\"\"hello\"\"\"\n"
-msgstr ""
+msgstr "\"\"\"hello\"\"\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:568
 msgid "is equivalent to"
-msgstr ""
+msgstr "と"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:569
@@ -13709,11 +14227,13 @@ msgid ""
 "\"\"\"\n"
 "hello\"\"\"\n"
 msgstr ""
+"\"\"\"\n"
+"hello\"\"\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:575
 msgid "but"
-msgstr ""
+msgstr "は、等価ですが"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:576
@@ -13723,16 +14243,19 @@ msgid ""
 "\n"
 "hello\"\"\"\n"
 msgstr ""
+"\"\"\"\n"
+"\n"
+"hello\"\"\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:583
 msgid "will contain a literal newline at the beginning."
-msgstr ""
+msgstr "は、文字列のはじめに改行リテラルを含みます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:585
 msgid "Stripping of the newline is performed after the dedentation. For example:"
-msgstr ""
+msgstr "改行削除は、デデントの後に実行されます。例えば:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:586
@@ -13743,16 +14266,20 @@ msgid ""
 "         world.\"\"\"\n"
 "\"Hello,\\nworld.\"\n"
 msgstr ""
+"julia> \"\"\"\n"
+"         Hello,\n"
+"         world.\"\"\"\n"
+"\"Hello,\\nworld.\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:594
 msgid "Trailing whitespace is left unaltered."
-msgstr ""
+msgstr "末尾の空白は変更されません。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:596
 msgid "Triple-quoted string literals can contain `\"` symbols without escaping."
-msgstr ""
+msgstr "三重引用符で囲まれた文字列リテラルには、エスケープせずに `\"` 記号を含めることができます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:601
@@ -13761,17 +14288,20 @@ msgid ""
 "your editor uses a carriage return `\\r` (CR) or CRLF combination to end lines. To include a CR in a string, use an explicit escape `\\r`; "
 "for example, you can enter the literal string `\"a CRLF line ending\\r\\n\"`."
 msgstr ""
+"注意すべきなのは、文字列内に改行 (LF) 文字 `\\n` になるということです。単一引用符と三 重引用符のどちらを使用する場合でも、エディターが改行 `"
+"\\r` (CR) や、 CRLF を使用して行を終了する場合でも、この動作は変わりません。CR を文字列に含めるには、明示的なエスケープ `\\r` を使用します。"
+"たとえば、リテラル文字列 `\"CRLF 行末\\r\\n\"`というような文字列リテラルが入力できます。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/strings.md:602
 #, no-wrap
 msgid "Common Operations"
-msgstr ""
+msgstr "よくある文字列操作"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:605
 msgid "You can lexicographically compare strings using the standard comparison operators:"
-msgstr ""
+msgstr "文字列を辞書的に比較するには、標準の比較演算子を使用します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:606
@@ -13789,11 +14319,22 @@ msgid ""
 "julia> \"1 + 2 = 3\" == \"1 + 2 = $(1 + 2)\"\n"
 "true\n"
 msgstr ""
+"julia> \"abracadabra\" < \"xylophone\"\n"
+"true\n"
+"\n"
+"julia> \"abracadabra\" == \"xylophone\"\n"
+"false\n"
+"\n"
+"julia> \"Hello, world.\" != \"Goodbye, world.\"\n"
+"true\n"
+"\n"
+"julia> \"1 + 2 = 3\" == \"1 + 2 = $(1 + 2)\"\n"
+"true\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:622
 msgid "You can search for the index of a particular character using the [`findfirst`](@ref) and [`findlast`](@ref) functions:"
-msgstr ""
+msgstr "特定の文字のインデックスを検索するときには、[`findfirst`](@ref)および[`findlast`](@ref)関数を使用します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:623
@@ -13807,11 +14348,18 @@ msgid ""
 "\n"
 "julia> findfirst(isequal('z'), \"xylophone\")\n"
 msgstr ""
+"julia> findfirst(isequal('o'), \"xylophone\")\n"
+"4\n"
+"\n"
+"julia> findlast(isequal('o'), \"xylophone\")\n"
+"7\n"
+"\n"
+"julia> findfirst(isequal('z'), \"xylophone\")\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:635
 msgid "You can start the search for a character at a given offset by using the functions [`findnext`](@ref) and [`findprev`](@ref):"
-msgstr ""
+msgstr "特定のオフセットで文字の検索を開始するには、関数 [`findnext`](@ref)と[`findprev`](@ref)を使用します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:636
@@ -13828,11 +14376,21 @@ msgid ""
 "\n"
 "julia> findnext(isequal('o'), \"xylophone\", 8)\n"
 msgstr ""
+"julia> findnext(isequal('o'), \"xylophone\", 1)\n"
+"4\n"
+"\n"
+"julia> findnext(isequal('o'), \"xylophone\", 5)\n"
+"7\n"
+"\n"
+"julia> findprev(isequal('o'), \"xylophone\", 5)\n"
+"4\n"
+"\n"
+"julia> findnext(isequal('o'), \"xylophone\", 8)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:650
 msgid "You can use the [`occursin`](@ref) function to check if a substring is found within a string:"
-msgstr ""
+msgstr "文字列内中に特定の部分文字列のあるかどうか確認するには、[`occursin`[(@ref) 関数を使用します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:651
@@ -13850,16 +14408,27 @@ msgid ""
 "julia> occursin('o', \"Xylophon\")\n"
 "true\n"
 msgstr ""
+"julia> occursin(\"world\", \"Hello, world.\")\n"
+"true\n"
+"\n"
+"julia> occursin(\"o\", \"Xylophon\")\n"
+"true\n"
+"\n"
+"julia> occursin(\"a\", \"Xylophon\")\n"
+"false\n"
+"\n"
+"julia> occursin('o', \"Xylophon\")\n"
+"true\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:666
 msgid "The last example shows that [`occursin`](@ref) can also look for a character literal."
-msgstr ""
+msgstr "最後の例は、[`occursin`](@ref)も文字リテラルを探すことができる、という例です。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:668
 msgid "Two other handy string functions are [`repeat`](@ref) and [`join`](@ref):"
-msgstr ""
+msgstr "[`repeat`](@ref)と[`join`](@ref)はまた別の便利な文字列関数です:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:669
@@ -13871,11 +14440,16 @@ msgid ""
 "julia> join([\"apples\", \"bananas\", \"pineapples\"], \", \", \" and \")\n"
 "\"apples, bananas and pineapples\"\n"
 msgstr ""
+"julia> repeat(\".:Z:.\", 10)\n"
+"\".:Z:..:Z:..:Z:..:Z:..:Z:..:Z:..:Z:..:Z:..:Z:..:Z:.\"\n"
+"\n"
+"julia> join([\"apples\", \"bananas\", \"pineapples\"], \", \", \" and \")\n"
+"\"apples, bananas and pineapples\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:678
 msgid "Some other useful functions include:"
-msgstr ""
+msgstr "その他の便利な機能には、次のようなものがあります:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/strings.md:688
@@ -13883,52 +14457,56 @@ msgid ""
 "[`firstindex(str)`](@ref) gives the minimal (byte) index that can be used to index into `str` (always 1 for strings, not necessarily true "
 "for other containers)."
 msgstr ""
+"[`firstindex(str)`](@ref) は、`str` の最小 (バイト) インデックスが得られます (文字列の場合は常に 1 ですが、他のコンテナでは必ずしも当てはまり"
+"ません)。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/strings.md:688
 msgid "[`lastindex(str)`](@ref) gives the maximal (byte) index that can be used to index into `str`."
-msgstr ""
+msgstr "[`lastindex(str)`](@ref) は`str` の最大の(バイト)インデックスが得られます。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/strings.md:688
 msgid "[`length(str)`](@ref) the number of characters in `str`."
-msgstr ""
+msgstr "[`length(str)`](@ref) `str` の文字数。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/strings.md:688
 msgid "[`length(str, i, j)`](@ref) the number of valid character indices in `str` from `i` to `j`."
-msgstr ""
+msgstr "[`length(str, i, j)`](@ref) は `str` のインデックス `i` から `j`までの間にある、有効な文字インデックスの数が得られます。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/strings.md:688
 msgid "[`ncodeunits(str)`](@ref) number of [code units](https://en.wikipedia.org/wiki/Character_encoding#Terminology) in a string."
-msgstr ""
+msgstr "[`ncodeunits(str)`](@ref) 文字列中の[符号単位](https://en.wikipedia.org/wiki/Character_encoding#Terminology)の数 。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/strings.md:688
 msgid "[`codeunit(str, i)`](@ref) gives the code unit value in the string `str` at index `i`."
-msgstr ""
+msgstr "[`codeunit(str, i)`](@ref) は `str` のインデックス `i` の符号単位の値が得られます。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/strings.md:688
 msgid "[`thisind(str, i)`](@ref) given an arbitrary index into a string find the first index of the character into which the index points."
 msgstr ""
+"[`thisind(str, i)`](@ref) は 任意のバイトインデックス `i` に対して、そのインデックスが指すバイトデータが属する文字の最初のインデックスが得ら"
+"れます。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/strings.md:688
 msgid "[`nextind(str, i, n=1)`](@ref) find the start of the `n`th character starting after index `i`."
-msgstr ""
+msgstr "[`nextind(str, i, n=1)`](@ref) でインデックス`i` から後ろに数えて、`n`個めの文字の最初のインデックスが得られます。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/strings.md:688
 msgid "[`prevind(str, i, n=1)`](@ref) find the start of the `n`th character starting before index `i`."
-msgstr ""
+msgstr "[`prevind(str, i, n=1)`](@ref) でインデックス`i` から前に数えて、`n`個めの文字の最初のインデックスが得られます。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/strings.md:689
 #, no-wrap
 msgid "[Non-Standard String Literals](@id non-standard-string-literals)"
-msgstr ""
+msgstr "[非標準文字列リテラル](@id non-standard-string-literals)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:698
@@ -13939,12 +14517,17 @@ msgid ""
 "string literal.  Regular expressions, byte array literals and version number literals, as described below, are some examples of non-standard "
 "string literals. Other examples are given in the [Metaprogramming](@ref) section."
 msgstr ""
+"文字列を作成さいたり使用するけれども、標準的な文字列構成の振る舞いが、その時必要とされているものとは違う、という状況があるでしょう。このよう"
+"な状況のために、Julia は [非標準文字列リテラル] (@ref non-standard-string-literals)を提供しています。非標準の文字列リテラルは、通常の二重引用"
+"符で囲まれた文字列リテラルのように見えますが、リテラルの前に識別子がつけられていて、通常の文字列リテラルとは異なる動作をします。正規表現、バ"
+"イト配列リテラル、およびバージョン番号リテラルは、以下に説明するように、非標準文字列リテラルの例です。その他の例は[メタプログラミング](@ref "
+"metaprogramming)セクションで示されています。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/strings.md:699
 #, no-wrap
 msgid "Regular Expressions"
-msgstr ""
+msgstr "正規表現"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:708
@@ -13955,6 +14538,11 @@ msgid ""
 "efficiently search for patterns in strings. In Julia, regular expressions are input using non-standard string literals prefixed with various "
 "identifiers beginning with `r`. The most basic regular expression literal without any options turned on just uses `r\"...\"`:"
 msgstr ""
+"Julia には Perl 互換の正規表現 (正規表現) があり、[PCRE] (http://www.pcre.org/) ライブラリによって提供されます。正規表現は 2 つの点で文字列に"
+"関連しています: 明らかな関連は、正規表現が文字列内の規則的なパターンを見つけるために使用されるということです。もう 1 つは、正規表現自体が文字"
+"列として入力され、文字列内のパターンを効率的に検索するためのステート マシンとして解析されることです。Julia では、正規表現は `r` で始まるさま"
+"ざまな識別子を接頭辞に持つ非標準文字列リテラルを使用して入力されます。オプションを有効にしていない最も基本的な正規表現リテラルは、`r\"...\"`"
+"とします:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:709
@@ -13966,11 +14554,16 @@ msgid ""
 "julia> typeof(ans)\n"
 "Regex\n"
 msgstr ""
+"julia> r\"^\\s*(?:#|$)\"\n"
+"r\"^\\s*(?:#|$)\"\n"
+"\n"
+"julia> typeof(ans)\n"
+"Regex\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:718
 msgid "To check if a regex matches a string, use [`occursin`](@ref):"
-msgstr ""
+msgstr "文字列の中に正規表現がとマッチするパターンがあるかを確認するには、['occursin`](@ref) を使用します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:719
@@ -13982,6 +14575,11 @@ msgid ""
 "julia> occursin(r\"^\\s*(?:#|$)\", \"# a comment\")\n"
 "true\n"
 msgstr ""
+"julia> occursin(r\"^\\s*(?:#|$)\", \"not a comment\")\n"
+"false\n"
+"\n"
+"julia> occursin(r\"^\\s*(?:#|$)\", \"# a comment\")\n"
+"true\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:731
@@ -13990,6 +14588,9 @@ msgid ""
 "Commonly, however, one wants to know not just whether a string matched, but also *how* it matched. To capture this information about a "
 "match, use the [`match`](@ref) function instead:"
 msgstr ""
+"ここでわかるように、[`occursin`](@ref)は単に true または false を返し、指定された正規表現にマッチするパターンが文字列内にあるかどうかを示しま"
+"す。しかし、一般的には、マッチしているかどうかだけでなく、*どのように* マッチしているかどうかを知りたいでしょう。そのためには、代わりに "
+"[`match`](@ref) 関数を使用します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:732
@@ -14000,6 +14601,10 @@ msgid ""
 "julia> match(r\"^\\s*(?:#|$)\", \"# a comment\")\n"
 "RegexMatch(\"#\")\n"
 msgstr ""
+"julia> match(r\"^\\s*(?:#|$)\", \"not a comment\")\n"
+"\n"
+"julia> match(r\"^\\s*(?:#|$)\", \"# a comment\")\n"
+"RegexMatch(\"#\")\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:742
@@ -14007,6 +14612,8 @@ msgid ""
 "If the regular expression does not match the given string, [`match`](@ref) returns [`nothing`](@ref)  -- a special value that does not print "
 "anything at the interactive prompt. Other than not printing, it is a completely normal value and you can test for it programmatically:"
 msgstr ""
+"正規表現が指定された文字列にマッチしない場合、[`match`](@ref) は [`nothing`](@ref) を返します。これは対話型プロンプトで何も出力がされない特別"
+"な値です。出力がされない以外は、完全に正常な値であり、プログラムでテストできます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:743
@@ -14019,6 +14626,12 @@ msgid ""
 "    println(\"blank or comment\")\n"
 "end\n"
 msgstr ""
+"m = match(r\"^\\s*(?:#|$)\", line)\n"
+"if m === nothing\n"
+"    println(\"not a comment\")\n"
+"else\n"
+"    println(\"blank or comment\")\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:757
@@ -14028,6 +14641,9 @@ msgid ""
 "portion of the substring that matches, but perhaps we want to capture any non-blank text after the comment character. We could do the "
 "following:"
 msgstr ""
+"正規表現がマッチする場合、[`match`](@ref) によって返される値は `RegexMatch`オブジェクトです。このオブジェクトは、どの様にその式がマッチしたか"
+"を記録します。例えば、パターンと一致する部分文字列全体や、パターンを構成する要素と一致した(これを今後「補足」といいます)部分文字列の情報など"
+"です。この例では、部分文字列を補足するだけですが、コメントの後の、空白以外の文字列も補足したいでしょう。その場合は、以下のようにします:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:758
@@ -14036,11 +14652,13 @@ msgid ""
 "julia> m = match(r\"^\\s*(?:#\\s*(.*?)\\s*$|$)\", \"# a comment \")\n"
 "RegexMatch(\"# a comment \", 1=\"a comment\")\n"
 msgstr ""
+"julia> m = match(r\"^\\s*(?:#\\s*(.*?)\\s*$|$)\", \"# a comment \")\n"
+"RegexMatch(\"# a comment \", 1=\"a comment\")\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:765
 msgid "When calling [`match`](@ref), you have the option to specify an index at which to start the search. For example:"
-msgstr ""
+msgstr "[`match`](@ref)を呼び出すときには、検索を開始位置をインデックスで指定することができます。例えば:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:766
@@ -14055,31 +14673,39 @@ msgid ""
 "julia> m = match(r\"[0-9]\",\"aaaa1aaaa2aaaa3\",11)\n"
 "RegexMatch(\"3\")\n"
 msgstr ""
+"julia> m = match(r\"[0-9]\",\"aaaa1aaaa2aaaa3\",1)\n"
+"RegexMatch(\"1\")\n"
+"\n"
+"julia> m = match(r\"[0-9]\",\"aaaa1aaaa2aaaa3\",6)\n"
+"RegexMatch(\"2\")\n"
+"\n"
+"julia> m = match(r\"[0-9]\",\"aaaa1aaaa2aaaa3\",11)\n"
+"RegexMatch(\"3\")\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:778
 msgid "You can extract the following info from a `RegexMatch` object:"
-msgstr ""
+msgstr "'RegexMatch' オブジェクトからは以下の情報を抽出できます:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/strings.md:783
 msgid "the entire substring matched: `m.match`"
-msgstr ""
+msgstr "マッチした部分文字列の全体: `m.match`"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/strings.md:783
 msgid "the captured substrings as an array of strings: `m.captures`"
-msgstr ""
+msgstr "文字列の配列として補足された部分文字列: `m.captures`"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/strings.md:783
 msgid "the offset at which the whole match begins: `m.offset`"
-msgstr ""
+msgstr "最初のマッチ開始位置であるオフセットインデックス: `m.offset`"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/strings.md:783
 msgid "the offsets of the captured substrings as a vector: `m.offsets`"
-msgstr ""
+msgstr "補足された部分文字列それぞれに対するオフセット値をベクトルの形式で : `m.offsets`"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:787
@@ -14087,12 +14713,15 @@ msgid ""
 "For when a capture doesn't match, instead of a substring, `m.captures` contains `nothing` in that position, and `m.offsets` has a zero "
 "offset (recall that indices in Julia are 1-based, so a zero offset into a string is invalid). Here is a pair of somewhat contrived examples:"
 msgstr ""
+"正規表現バターンの各要素のうち、部分文字列として補足されるものがない場合、その補足されなかったパターン要素に対応する位置で、`m.captures` は"
+"`nothing` を、`m.offsets` は オフセット0 を要素に持ちます。(Julia のインデックスは 1 から始まっているので、文字列へのゼロ オフセットは無効で"
+"す)。やや工夫された例を次に示します:"
 
 #. type: Code fence info string
 #: ext/julia/doc/src/manual/strings.md:788 ext/julia/doc/src/manual/strings.md:835
 #, no-wrap
 msgid "jldoctest acdmatch"
-msgstr ""
+msgstr "jldoctest acdmatch"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:788
@@ -14140,11 +14769,52 @@ msgid ""
 " 0\n"
 " 2\n"
 msgstr ""
+"julia> m = match(r\"(a|b)(c)?(d)\", \"acd\")\n"
+"RegexMatch(\"acd\", 1=\"a\", 2=\"c\", 3=\"d\")\n"
+"\n"
+"julia> m.match\n"
+"\"acd\"\n"
+"\n"
+"julia> m.captures\n"
+"3-element Array{Union{Nothing, SubString{String}},1}:\n"
+" \"a\"\n"
+" \"c\"\n"
+" \"d\"\n"
+"\n"
+"julia> m.offset\n"
+"1\n"
+"\n"
+"julia> m.offsets\n"
+"3-element Array{Int64,1}:\n"
+" 1\n"
+" 2\n"
+" 3\n"
+"\n"
+"julia> m = match(r\"(a|b)(c)?(d)\", \"ad\")\n"
+"RegexMatch(\"ad\", 1=\"a\", 2=nothing, 3=\"d\")\n"
+"\n"
+"julia> m.match\n"
+"\"ad\"\n"
+"\n"
+"julia> m.captures\n"
+"3-element Array{Union{Nothing, SubString{String}},1}:\n"
+" \"a\"\n"
+" nothing\n"
+" \"d\"\n"
+"\n"
+"julia> m.offset\n"
+"1\n"
+"\n"
+"julia> m.offsets\n"
+"3-element Array{Int64,1}:\n"
+" 1\n"
+" 0\n"
+" 2\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:834
 msgid "It is convenient to have captures returned as an array so that one can use destructuring syntax to bind them to local variables:"
-msgstr ""
+msgstr "補足したもの一つ一つをばらけてローカル変数に束縛できるよう、配列として返せると便利です:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:835
@@ -14153,11 +14823,13 @@ msgid ""
 "julia> first, second, third = m.captures; first\n"
 "\"a\"\n"
 msgstr ""
+"julia> first, second, third = m.captures; first\n"
+"\"a\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:842
 msgid "Captures can also be accessed by indexing the `RegexMatch` object with the number or name of the capture group:"
-msgstr ""
+msgstr "補足したものは、`RegexMatch` オブジェクトの補足したグループを数字や名前でインデックスづけして取り出すこともできます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:843
@@ -14172,6 +14844,14 @@ msgid ""
 "julia> m[2]\n"
 "\"45\"\n"
 msgstr ""
+"julia> m=match(r\"(?<hour>\\d+):(?<minute>\\d+)\",\"12:45\")\n"
+"RegexMatch(\"12:45\", hour=\"12\", minute=\"45\")\n"
+"\n"
+"julia> m[:minute]\n"
+"\"45\"\n"
+"\n"
+"julia> m[2]\n"
+"\"45\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:858
@@ -14181,7 +14861,7 @@ msgid ""
 "to refer to the nth capture group and prefixing the substitution string with `s`. Capture group\n"
 "0 refers to the entire match object. Named capture groups can be referenced in the substitution\n"
 "with `\\g<groupname>`. For example:\n"
-msgstr ""
+msgstr "[`replace`](@ref) を使用して文字列置換を行う場合にも、キャプチャは参照することができます。n番目の補足グループは`\\n`で参照できます。置換文字列には `s`を接頭辞として付けます。0番目の補足グループは一致したオブジェクト全体を参照するのに使います。名前付けした補足グループは、`g<groupname>`の形式で置換の中で参照できます。例えば:\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:859
@@ -14190,12 +14870,14 @@ msgid ""
 "julia> replace(\"first second\", r\"(\\w+) (?<agroup>\\w+)\" => s\"\\g<agroup> \\1\")\n"
 "\"second first\"\n"
 msgstr ""
+"julia> replace(\"first second\", r\"(\\w+) (?<agroup>\\w+)\" => s\"\\g<agroup> \\1\")\n"
+"\"second first\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:865
 #, no-wrap
 msgid "Numbered capture groups can also be referenced as `\\g<n>` for disambiguation, as in:\n"
-msgstr ""
+msgstr "曖昧さを避ける為に、番号付けした補足グループも`g<n>`で、参照することができます:\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:866
@@ -14204,6 +14886,8 @@ msgid ""
 "julia> replace(\"a\", r\".\" => s\"\\g<0>1\")\n"
 "\"a1\"\n"
 msgstr ""
+"julia> replace(\"a\", r\".\" => s\"\\g<0>1\")\n"
+"\"a1\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:874
@@ -14212,6 +14896,8 @@ msgid ""
 "mark. These flags have the same meaning as they do in Perl, as explained in this excerpt from the [perlre manpage](http://perldoc.perl.org/"
 "perlre.html#Modifiers):"
 msgstr ""
+"正規表現の動作は、閉じる側の二重引用符の後にフラグ `i`、`m`、`s`、および `x` の組み合わせを付けて変更できます。これらのフラグは、Perlの意味と"
+"同じです:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:875
@@ -14245,11 +14931,23 @@ msgid ""
 "    treated as a metacharacter introducing a comment, just as in\n"
 "    ordinary code.\n"
 msgstr ""
+"i   大文字と小文字を区別しないでパターンマッチを行います。\n"
+"\n"
+"    ロケールマッチングが有効な場合、符号位置 255以下に対しては、現在のロケールから、255より大きな符号位置に対しては、ユニコードのルールからケースマップが作成されます。\n"
+"ただし ユニコードルールと、非ユニコードルールの境界をまたぐ(符号位置が 255以下と 256以上) 場合のマッチは失敗するでしょう。\n"
+"\n"
+"m   文字列を複数行とみなします。つまり、\"^\" と \"$\" の解釈を 文字列の開始と終了とマッチするのではなく、文字列内のどの行の開始・終了ともマッチするような動作になります。\n"
+"\n"
+"s   文字列を1行とみなします。つまり、 \".\" が、どんな文字ともマッチするようになります。それがたとえ、改行のように通常マッチしない文字だったとしてもです。\n"
+"\n"
+"    as r\"\"ms, というように、mとsが一緒に使われると、\".\" はどんな文字ともマッチしながら、\"^\" と\"$\" はそれぞれ、改行の前後とマッチするようになります。\n"
+"\n"
+"x   正規表現パーサに、バックスラッシュ付きもしく文字列クラス内の空白を除いたほとんどの空白を無視するよう指示します。これによって、正規表現を部分毎に分けて(少しだけ)見やすくすることができます。'#' もコメントを導入するメタ文字として扱われます。一般的なコードと同様ですね。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:906
 msgid "For example, the following regex has all three flags turned on:"
-msgstr ""
+msgstr "たとえば、次の正規表現では、3 つのフラグがすべてオンになっています:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:907
@@ -14261,6 +14959,11 @@ msgid ""
 "julia> match(r\"a+.*b+.*?d$\"ism, \"Goodbye,\\nOh, angry,\\nBad world\\n\")\n"
 "RegexMatch(\"angry,\\nBad world\")\n"
 msgstr ""
+"julia> r\"a+.*b+.*?d$\"ism\n"
+"r\"a+.*b+.*?d$\"ims\n"
+"\n"
+"julia> match(r\"a+.*b+.*?d$\"ism, \"Goodbye,\\nOh, angry,\\nBad world\\n\")\n"
+"RegexMatch(\"angry,\\nBad world\")\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:918
@@ -14268,6 +14971,8 @@ msgid ""
 "The `r\"...\"` literal is constructed without interpolation and unescaping (except for quotation mark `\"` which still has to be escaped). "
 "Here is an example showing the difference from standard string literals:"
 msgstr ""
+"`r\"...\"` リテラルは、展開とエスケープ処理を行いません。 (エスケープする必要があります 引用符 `\"'` は除きます)。以下は、標準の文字列リテラ"
+"ルとの違いを示す例です:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:919
@@ -14288,6 +14993,20 @@ msgid ""
 "julia> \"\\x\"\n"
 "ERROR: syntax: invalid escape sequence\n"
 msgstr ""
+"julia> x = 10\n"
+"10\n"
+"\n"
+"julia> r\"$x\"\n"
+"r\"$x\"\n"
+"\n"
+"julia> \"$x\"\n"
+"\"10\"\n"
+"\n"
+"julia> r\"\\x\"\n"
+"r\"\\x\"\n"
+"\n"
+"julia> \"\\x\"\n"
+"ERROR: syntax: invalid escape sequence\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:938
@@ -14295,6 +15014,8 @@ msgid ""
 "Triple-quoted regex strings, of the form `r\"\"\"...\"\"\"`, are also supported (and may be convenient for regular expressions containing "
 "quotation marks or newlines)."
 msgstr ""
+"`r\"\"\"...\"\"\"`で書かれる三重引用符で囲まれた正規表現文字列もサポートされています (引用符や改行を含む正規表現の場合に便利な場合がありま"
+"す)。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:940
@@ -14303,6 +15024,9 @@ msgid ""
 "and other string operations when constructing the regex string. Any of the regex codes above can be used within the single string argument "
 "to `Regex()`. Here are some examples:"
 msgstr ""
+"`Regex()` コンストラクターを使用して、プログラムで有効な正規表現文字列を作成できます。 これにより、正規表現文字列を構築するときに、文字列変数"
+"やその他の文字列操作の結果を使用できます。これまでに見てきた正規表現はいずれも、単一の文字列引数で 'Regex()' に使用できます。いくつかの例を次"
+"に示します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:941
@@ -14331,12 +15055,34 @@ msgid ""
 "julia> match(regex_name,\"[Jon]\") === nothing\n"
 "true\n"
 msgstr ""
+"julia> using Dates\n"
+"\n"
+"julia> d = Date(1962,7,10)\n"
+"1962-07-10\n"
+"\n"
+"julia> regex_d = Regex(\"Day \" * string(day(d)))\n"
+"r\"Day 10\"\n"
+"\n"
+"julia> match(regex_d, \"It happened on Day 10\")\n"
+"RegexMatch(\"Day 10\")\n"
+"\n"
+"julia> name = \"Jon\"\n"
+"\"Jon\"\n"
+"\n"
+"julia> regex_name = Regex(\"[\\\"( ]$name[\\\") ]\")  # interpolate value of name\n"
+"r\"[\\\"( ]Jon[\\\") ]\"\n"
+"\n"
+"julia> match(regex_name,\" Jon \")\n"
+"RegexMatch(\" Jon \")\n"
+"\n"
+"julia> match(regex_name,\"[Jon]\") === nothing\n"
+"true\n"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/strings.md:966
 #, no-wrap
 msgid "[Byte Array Literals](@id man-byte-array-literals)"
-msgstr ""
+msgstr "[バイト配列リテラル](@id man-byte-array-literals)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:972
@@ -14345,21 +15091,24 @@ msgid ""
 "read only literal byte arrays -- i.e. arrays of [`UInt8`](@ref) values. The type of those objects is `CodeUnits{UInt8, String}`.  The rules "
 "for byte array literals are the following:"
 msgstr ""
+"もう 1 つの便利な非標準文字列リテラルは、バイト配列文字列リテラルです。`b\"...\"` のように書きます。この形式では、読み取り専用のリテラルバイ"
+"ト配列、つまり[`UInt8`](@ref) 値の配列を表すのに、文字列表記を使用することができます。これらのオブジェクトの型は'CodeUnits{UInt8, String}'で"
+"す。 バイト配列リテラルの規則は次のとおりです:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/strings.md:976
 msgid "ASCII characters and ASCII escapes produce a single byte."
-msgstr ""
+msgstr "ASCII 文字と ASCII エスケープは、1 バイトを生成します。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/strings.md:976
 msgid "`\\x` and octal escape sequences produce the *byte* corresponding to the escape value."
-msgstr ""
+msgstr "`\\x` および8進としてエスケープした文字は、エスケープ値に対応する *バイト* を生成します。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/strings.md:976
 msgid "Unicode escape sequences produce a sequence of bytes encoding that code point in UTF-8."
-msgstr ""
+msgstr "Unicode エスケープ列はは、UTF-8 の符号位置をエンコードしたバイト列を生成します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:981
@@ -14368,6 +15117,9 @@ msgid ""
 "first two rules, but here these rules agree. Together, these rules allow one to easily use ASCII characters, arbitrary byte values, and "
 "UTF-8 sequences to produce arrays of bytes. Here is an example using all three:"
 msgstr ""
+"`\\x` と 0x80 (128) 未満の8進エスケープの動作は最初の 2 つのルールの両方でカバーされるので、ルールの間には重なりがある、といえますが、これら"
+"の規則の間に矛盾はありません。これらの規則を組み合わせることで、ASCII 文字、任意のバイト値、および UTF-8 シーケンスを簡単に使用してバイトの配"
+"列を生成できます。3 つすべてを使用する例を次に示します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:982
@@ -14384,6 +15136,16 @@ msgid ""
 " 0x88\n"
 " 0x80\n"
 msgstr ""
+"julia> b\"DATA\\xff\\u2200\"\n"
+"8-element Base.CodeUnits{UInt8,String}:\n"
+" 0x44\n"
+" 0x41\n"
+" 0x54\n"
+" 0x41\n"
+" 0xff\n"
+" 0xe2\n"
+" 0x88\n"
+" 0x80\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:998
@@ -14391,6 +15153,8 @@ msgid ""
 "The ASCII string \"DATA\" corresponds to the bytes 68, 65, 84, 65. `\\xff` produces the single byte 255.  The Unicode escape `\\u2200` is "
 "encoded in UTF-8 as the three bytes 226, 136, 128. Note that the resulting byte array does not correspond to a valid UTF-8 string:"
 msgstr ""
+"ASCII 文字列 \"DATA\" は、バイト 68、65、84、65 に対応します。`\\xff` は単一バイト 255 を生成します。 Unicode エスケープ `\\u2200` は UTF-8 "
+"で 3 バイト 226、136、128 としてエンコードされます。結果のバイト配列は、有効な UTF-8 文字列に対応しないことに注意してください:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:999
@@ -14399,6 +15163,8 @@ msgid ""
 "julia> isvalid(\"DATA\\xff\\u2200\")\n"
 "false\n"
 msgstr ""
+"julia> isvalid(\"DATA\\xff\\u2200\")\n"
+"false\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:1006
@@ -14406,6 +15172,8 @@ msgid ""
 "As it was mentioned `CodeUnits{UInt8,String}` type behaves like read only array of `UInt8` and if you need a standard vector you can convert "
 "it using `Vector{UInt8}`:"
 msgstr ""
+"前述のように、`CodeUnits{UInt8,String}`型の振る舞いは読み取り専用の`UInt8`配列です。もし、標準的なベクトルの振る舞いが必要ならば、"
+"`Vector{UInt8}`を使って変換してください:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:1007
@@ -14430,6 +15198,24 @@ msgid ""
 " 0x32\n"
 " 0x33\n"
 msgstr ""
+"julia> x = b\"123\"\n"
+"3-element Base.CodeUnits{UInt8,String}:\n"
+" 0x31\n"
+" 0x32\n"
+" 0x33\n"
+"\n"
+"julia> x[1]\n"
+"0x31\n"
+"\n"
+"julia> x[1] = 0x32\n"
+"ERROR: setindex! not defined for Base.CodeUnits{UInt8,String}\n"
+"[...]\n"
+"\n"
+"julia> Vector{UInt8}(x)\n"
+"3-element Array{UInt8,1}:\n"
+" 0x31\n"
+" 0x32\n"
+" 0x33\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:1031
@@ -14437,6 +15223,8 @@ msgid ""
 "Also observe the significant distinction between `\\xff` and `\\uff`: the former escape sequence encodes the *byte 255*, whereas the latter "
 "escape sequence represents the *code point 255*, which is encoded as two bytes in UTF-8:"
 msgstr ""
+"また、`\\xff` と `\\uff` には重大な違いがあります: 前者のエスケープ シーケンスは *バイト 255*をエンコードしますが、後者のエスケープ シーケン"
+"スは*符号位置 255* を表し、UTF-8 では 2 バイトとしてエンコードされます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:1032
@@ -14451,11 +15239,19 @@ msgid ""
 " 0xc3\n"
 " 0xbf\n"
 msgstr ""
+"julia> b\"\\xff\"\n"
+"1-element Base.CodeUnits{UInt8,String}:\n"
+" 0xff\n"
+"\n"
+"julia> b\"\\uff\"\n"
+"2-element Base.CodeUnits{UInt8,String}:\n"
+" 0xc3\n"
+" 0xbf\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:1044
 msgid "Character literals use the same behavior."
-msgstr ""
+msgstr "文字リテラルも同じ動作をします。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:1051
@@ -14465,6 +15261,10 @@ msgid ""
 "`\\uff`, however, there is a major difference: the former escapes all encode single bytes, which -- unless followed by very specific "
 "continuation bytes -- do not form valid UTF-8 data, whereas the latter escapes all represent Unicode code points with two-byte encodings."
 msgstr ""
+"符号位置が`\\u80` より小さい場合は、各符号位置での UTF-8 エンコーディングは、対応する `\\x` エスケープによって生成される単一バイトにすぎませ"
+"ん。この違いを無視しても問題ありません。ただし、エスケープ `\\x80` から `\\xff` までを、`\\u80`から`\\uff`までと比較すると大きな違いがありま"
+"す: 前者はすべて単一バイトにエンコードされますが、ごく一部のバイト列を除いて無効なUTF-8データになります。後者はすべてUnicodeの符号位置を表現"
+"し、2 バイトエンコーディングされます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:1057
@@ -14474,12 +15274,16 @@ msgid ""
 "must-know-about-unicode-and-character-sets-no-excuses/).  It's an excellent introduction to Unicode and UTF-8, and may help alleviate some "
 "confusion regarding the matter."
 msgstr ""
+"もし このことに大変混乱しているようならば、 [\"The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode "
+"and Character Sets\"](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-"
+"know-about-unicode-and-character-sets-no-excuses/)を読んでみてください。UnicodeとUTF-8に関する優れた入門記事なので、混乱を軽減する助けになる"
+"でしょう。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/strings.md:1058
 #, no-wrap
 msgid "[Version Number Literals](@id man-version-number-literals)"
-msgstr ""
+msgstr "[バージョン番号リテラル](@id man-version-number-literals)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:1069
@@ -14491,6 +15295,11 @@ msgid ""
 "version literal, everything except the major version number is optional, therefore e.g.  `v\"0.2\"` is equivalent to `v\"0.2.0\"` (with "
 "empty pre-release/build annotations), `v\"2\"` is equivalent to `v\"2.0.0\"`, and so on."
 msgstr ""
+"バージョン番号は、[`v\"...\"`](@ref @v_str)とう形式の非標準文字列リテラルで簡単に表現できます。 バージョン番号リテラルは[`VersionNumber`]"
+"(@ref)オブジェクトを作成します。これは、[セマンティック・バージョニング](https://semver.org/)の仕様に従って、メジャー、マイナー、パッチの数値"
+"で構成され、その後、プレリリースとビルドの英数字による注釈が続きます。たとえば、`v\"0.2.1-rc1+win64`はメジャーバージョン`0`、マイナーバージョ"
+"ン`2`、パッチバージョン`1`、プレリリース`rc1`、ビルド`win64`に分割されます。バージョンリテラルを入力する場合、メジャーバージョン番号以外のす"
+"べてがオプションです。 「v\"0.2\"」は「v」0.2.0\"(空のプレリリース/ビルドア釈付き)、\"v\"2\"``は\"v\"2.0.0\"と同等です。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:1073
@@ -14499,6 +15308,8 @@ msgid ""
 "(@ref) holds Julia version number as a `VersionNumber` object, and therefore one can define some version-specific behavior using simple "
 "statements as:"
 msgstr ""
+"`VersionNumber` オブジェクトは、2 つ以上のバージョンを簡単かつ正確に比較するのに役立ちます。 たとえば、定数 [`VERSION`](@ref) は Julia バー"
+"ジョン番号を `VersionNumber` オブジェクトとして保持するため、単純なステートメントを使用してバージョン固有の動作を次のように定義できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:1074
@@ -14508,6 +15319,9 @@ msgid ""
 "    # do something specific to 0.2 release series\n"
 "end\n"
 msgstr ""
+"if v\"0.2\" <= VERSION < v\"0.3-\"\n"
+"    # do something specific to 0.2 release series\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:1086
@@ -14519,7 +15333,7 @@ msgid ""
 "code would only run with stable `0.2` versions, and exclude such versions as `v\"0.3.0-rc1\"`. In\n"
 "order to also allow for unstable (i.e. pre-release) `0.2` versions, the lower bound check should\n"
 "be modified like this: `v\"0.2-\" <= VERSION`.\n"
-msgstr ""
+msgstr "上記の例では、非標準バージョン番号 `v\"0.3-\"が使用され、末尾に`-`が使われているのに注意してください: この表記法Juliaによる標準の拡張で、そのバージョンが全てのプレリリースを含み、`0.3`のリリースよりバージョンが低いことを示します。したがって、上記のコード例の意味は、`if` で囲まれたコードが、安定版の `0.2` のみで実行可能で、`v\"0.3.0-rc1` などのバージョンでは実行されないということになります。また、不安定な(すなわちプレリリースの)`0.2`バージョンも許可するには、下限チェッを次のように変更してください: `v\"0.2-\" <= VERSION`。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:1091
@@ -14529,7 +15343,7 @@ msgid ""
 "an upper limit on build versions, e.g.  `VERSION > v\"0.2-rc1+\"` can be used to mean any version\n"
 "above `0.2-rc1` and any of its builds: it will return `false` for version `v\"0.2-rc1+win64\"` and\n"
 "`true` for `v\"0.2-rc2\"`.\n"
-msgstr ""
+msgstr "別の非標準のバージョン仕様拡張機能として、末尾に `+`をつけてビルドバージョンの上限(例えば)を表すことができます。例えば、 `VERSION > v\"0.2-rc1+\"`は、`0.2-rc1`以上の任意のバージョンを表すので、例えば `v\"0.2-rc1+win64\"`に対しては `false` を返し、`v\"0.2-rc2\"`に対して`true`を返します。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:1096
@@ -14538,6 +15352,8 @@ msgid ""
 "there's a good reason not to), but they must not be used as the actual version number of anything, as they are invalid in the semantic "
 "versioning scheme."
 msgstr ""
+"このような特別なバージョンを使った比較は非常に実践的です(特に、後続の `-` は、正当な理由がない限り常に上限で使用する必要があります)が、セマン"
+"ティック バージョニングの方式としては無効なものなので、実際のバージョン番号として使用してはなりません。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:1099
@@ -14545,12 +15361,14 @@ msgid ""
 "Besides being used for the [`VERSION`](@ref) constant, `VersionNumber` objects are widely used in the `Pkg` module, to specify packages "
 "versions and their dependencies."
 msgstr ""
+"[`VERSION`](@ref) 定数に使う以外に、`VersionNumber` オブジェクトは`Pkg` でパッケージのバージョンとその依存関係を指定するのに広く使われていま"
+"す。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/strings.md:1100
 #, no-wrap
 msgid "[Raw String Literals](@id man-raw-string-literals)"
-msgstr ""
+msgstr "[生文字列リテラル](@id man-raw-string-literals)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:1108
@@ -14559,6 +15377,9 @@ msgid ""
 "literals create ordinary `String` objects which contain the enclosed contents exactly as entered with no interpolation or unescaping. This "
 "is useful for strings which contain code or markup in other languages which use `$` or `\\` as special characters."
 msgstr ""
+"式展開やエスケープ処理のない生文字列は、`raw\"...'`' という形式の非標準文字列リテラルで表現できます。生文字列リテラルは、引用符の中身を式展開"
+"やエスケープ処理することなくそのまま含んだ通常の`String`オブジェクトを作成します。これは、`$` または `\\` を特殊文字として使用する他言語の"
+"コードまたはマークアップ言語を含む文字列に便利です。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:1113
@@ -14566,6 +15387,8 @@ msgid ""
 "The exception is that quotation marks still must be escaped, e.g. `raw\"\\\"\"` is equivalent to `\"\\\"\"`.  To make it possible to express "
 "all strings, backslashes then also must be escaped, but only when appearing right before a quote character:"
 msgstr ""
+"例外は、引用符をエスケープする必要がある場合です。例えば`raw\"\\\"\"` は`\"\\\"\"`と同等です。 すべての文字列を表現しようとすると、引用符文字"
+"の直前に表示される場合だけですが、バックスラッシュもエスケープする必要があります:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:1114
@@ -14574,6 +15397,8 @@ msgid ""
 "julia> println(raw\"\\\\ \\\\\\\"\")\n"
 "\\\\ \\\"\n"
 msgstr ""
+"julia> println(raw\"\\\\ \\\\\\\"\")\n"
+"\\\\ \\\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:1122
@@ -14582,6 +15407,8 @@ msgid ""
 "backslash character escapes the backslash that follows it, and the last backslash escapes a quote, since these backslashes appear before a "
 "quote."
 msgstr ""
+"最初の 2 つのバックスラッシュは、引用符文字の前にないため、そのまま出力されることに注意してください。 ただし、次のバックスラッシュは、その後"
+"に続くバックスラッシュをエスケープし、最後のバックスラッシュは引用符の前に表示されるので、引用符をエスケープします。"
 
 #. type: Title #
 #: ext/julia/doc/src/manual/parallel-computing.md:1
@@ -17675,6 +18502,14 @@ msgid ""
 "julia> typeof(ans)\n"
 "Int32\n"
 msgstr ""
+"julia> t = ccall((:clock, \"libc\"), Int32, ())\n"
+"2292761\n"
+"\n"
+"julia> t\n"
+"2292761\n"
+"\n"
+"julia> typeof(ans)\n"
+"Int32\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:82
@@ -17695,6 +18530,11 @@ msgid ""
 "julia> unsafe_string(path)\n"
 "\"/bin/bash\"\n"
 msgstr ""
+"julia> path = ccall((:getenv, \"libc\"), Cstring, (Cstring,), \"SHELL\")\n"
+"Cstring(@0x00007fff5fbffc45)\n"
+"\n"
+"julia> unsafe_string(path)\n"
+"\"/bin/bash\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:94
@@ -17702,6 +18542,8 @@ msgid ""
 "Note that the argument type tuple must be written as `(Cstring,)`, rather than `(Cstring)`. This is because `(Cstring)` is just the "
 "expression `Cstring` surrounded by parentheses, rather than a 1-tuple containing `Cstring`:"
 msgstr ""
+"Note that the argument type tuple must be written as `(Cstring,)`, rather than `(Cstring)`. This is because `(Cstring)` is just the "
+"expression `Cstring` surrounded by parentheses, rather than a 1-tuple containing `Cstring`:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:95
@@ -17713,6 +18555,11 @@ msgid ""
 "julia> (Cstring,)\n"
 "(Cstring,)\n"
 msgstr ""
+"julia> (Cstring)\n"
+"Cstring\n"
+"\n"
+"julia> (Cstring,)\n"
+"(Cstring,)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:109
@@ -17741,6 +18588,14 @@ msgid ""
 "    unsafe_string(val)\n"
 "end\n"
 msgstr ""
+"function getenv(var::AbstractString)\n"
+"    val = ccall((:getenv, \"libc\"),\n"
+"                Cstring, (Cstring,), var)\n"
+"    if val == C_NULL\n"
+"        error(\"getenv: undefined variable: \", var)\n"
+"    end\n"
+"    unsafe_string(val)\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:125
@@ -17762,6 +18617,11 @@ msgid ""
 "julia> getenv(\"FOOBAR\")\n"
 "getenv: undefined variable: FOOBAR\n"
 msgstr ""
+"julia> getenv(\"SHELL\")\n"
+"\"/bin/bash\"\n"
+"\n"
+"julia> getenv(\"FOOBAR\")\n"
+"getenv: undefined variable: FOOBAR\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:135
@@ -17781,6 +18641,14 @@ msgid ""
 "    return unsafe_string(pointer(hostname))\n"
 "end\n"
 msgstr ""
+"function gethostname()\n"
+"    hostname = Vector{UInt8}(undef, 128)\n"
+"    ccall((:gethostname, \"libc\"), Int32,\n"
+"          (Ptr{UInt8}, Csize_t),\n"
+"          hostname, sizeof(hostname))\n"
+"    hostname[end] = 0; # ensure null-termination\n"
+"    return unsafe_string(pointer(hostname))\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:156
@@ -20997,6 +21865,21 @@ msgid ""
 "julia> x = \"Hello World!\"\n"
 "\"Hello World!\"\n"
 msgstr ""
+"# Assign the value 10 to the variable x\n"
+"julia> x = 10\n"
+"10\n"
+"\n"
+"# Doing math with x's value\n"
+"julia> x + 1\n"
+"11\n"
+"\n"
+"# Reassign x's value\n"
+"julia> x = 1 + 1\n"
+"2\n"
+"\n"
+"# You can assign values of other types, like strings of text\n"
+"julia> x = \"Hello World!\"\n"
+"\"Hello World!\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/variables.md:27
@@ -21026,6 +21909,20 @@ msgid ""
 "julia> UniversalDeclarationOfHumanRightsStart = \"人人生而自由，在尊严和权利上一律平等。\"\n"
 "\"人人生而自由，在尊严和权利上一律平等。\"\n"
 msgstr ""
+"julia> x = 1.0\n"
+"1.0\n"
+"\n"
+"julia> y = -3\n"
+"-3\n"
+"\n"
+"julia> Z = \"My string\"\n"
+"\"My string\"\n"
+"\n"
+"julia> customary_phrase = \"Hello world!\"\n"
+"\"Hello world!\"\n"
+"\n"
+"julia> UniversalDeclarationOfHumanRightsStart = \"人人生而自由，在尊严和权利上一律平等。\"\n"
+"\"人人生而自由，在尊严和权利上一律平等。\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/variables.md:46
@@ -21042,6 +21939,11 @@ msgid ""
 "julia> 안녕하세요 = \"Hello\"\n"
 "\"Hello\"\n"
 msgstr ""
+"julia> δ = 0.00001\n"
+"1.0e-5\n"
+"\n"
+"julia> 안녕하세요 = \"Hello\"\n"
+"\"Hello\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/variables.md:61
@@ -21075,6 +21977,14 @@ msgid ""
 "julia> sqrt = 4\n"
 "4\n"
 msgstr ""
+"julia> pi = 3\n"
+"3\n"
+"\n"
+"julia> pi\n"
+"3\n"
+"\n"
+"julia> sqrt = 4\n"
+"4\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/variables.md:78
@@ -21097,6 +22007,17 @@ msgid ""
 "julia> sqrt = 4\n"
 "ERROR: cannot assign variable Base.sqrt from module Main\n"
 msgstr ""
+"julia> pi\n"
+"π = 3.1415926535897...\n"
+"\n"
+"julia> pi = 3\n"
+"ERROR: cannot assign variable MathConstants.pi from module Main\n"
+"\n"
+"julia> sqrt(100)\n"
+"10.0\n"
+"\n"
+"julia> sqrt = 4\n"
+"ERROR: cannot assign variable Base.sqrt from module Main\n"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/variables.md:93
@@ -21148,6 +22069,11 @@ msgid ""
 "julia> try = \"No\"\n"
 "ERROR: syntax: unexpected \"=\"\n"
 msgstr ""
+"julia> else = false\n"
+"ERROR: syntax: unexpected \"else\"\n"
+"\n"
+"julia> try = \"No\"\n"
+"ERROR: syntax: unexpected \"=\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/variables.md:126
@@ -27754,6 +28680,16 @@ msgid ""
 "       end\n"
 "Task (runnable) @0x00007fd31dc11ae0\n"
 msgstr ""
+"julia> using Sockets\n"
+"\n"
+"julia> @async begin\n"
+"           server = listen(2000)\n"
+"           while true\n"
+"               sock = accept(server)\n"
+"               println(\"Hello World\\n\")\n"
+"           end\n"
+"       end\n"
+"Task (runnable) @0x00007fd31dc11ae0\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/networking-and-streams.md:210
@@ -27791,6 +28727,26 @@ msgid ""
 "julia> listen(\"\\\\\\\\.\\\\pipe\\\\testsocket\") # Listens on a Windows named pipe\n"
 "Sockets.PipeServer(active)\n"
 msgstr ""
+"julia> listen(2000) # Listens on localhost:2000 (IPv4)\n"
+"Sockets.TCPServer(active)\n"
+"\n"
+"julia> listen(ip\"127.0.0.1\",2000) # Equivalent to the first\n"
+"Sockets.TCPServer(active)\n"
+"\n"
+"julia> listen(ip\"::1\",2000) # Listens on localhost:2000 (IPv6)\n"
+"Sockets.TCPServer(active)\n"
+"\n"
+"julia> listen(IPv4(0),2001) # Listens on port 2001 on all IPv4 interfaces\n"
+"Sockets.TCPServer(active)\n"
+"\n"
+"julia> listen(IPv6(0),2001) # Listens on port 2001 on all IPv6 interfaces\n"
+"Sockets.TCPServer(active)\n"
+"\n"
+"julia> listen(\"testsocket\") # Listens on a UNIX domain socket\n"
+"Sockets.PipeServer(active)\n"
+"\n"
+"julia> listen(\"\\\\\\\\.\\\\pipe\\\\testsocket\") # Listens on a Windows named pipe\n"
+"Sockets.PipeServer(active)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/networking-and-streams.md:246
@@ -27821,6 +28777,10 @@ msgid ""
 "\n"
 "julia> Hello World\n"
 msgstr ""
+"julia> connect(2000)\n"
+"TCPSocket(open, 0 bytes waiting)\n"
+"\n"
+"julia> Hello World\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/networking-and-streams.md:258
@@ -27873,6 +28833,27 @@ msgid ""
 "julia> println(clientside,\"Hello World from the Echo Server\")\n"
 "Hello World from the Echo Server\n"
 msgstr ""
+"julia> @async begin\n"
+"           server = listen(2001)\n"
+"           while true\n"
+"               sock = accept(server)\n"
+"               @async while isopen(sock)\n"
+"                   write(sock, readline(sock, keep=true))\n"
+"               end\n"
+"           end\n"
+"       end\n"
+"Task (runnable) @0x00007fd31dc12e60\n"
+"\n"
+"julia> clientside = connect(2001)\n"
+"TCPSocket(RawFD(28) open, 0 bytes waiting)\n"
+"\n"
+"julia> @async while isopen(clientside)\n"
+"           write(stdout, readline(clientside, keep=true))\n"
+"       end\n"
+"Task (runnable) @0x00007fd31dc11870\n"
+"\n"
+"julia> println(clientside,\"Hello World from the Echo Server\")\n"
+"Hello World from the Echo Server\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/networking-and-streams.md:292
@@ -27883,7 +28864,7 @@ msgstr "他のストリームと同様に、[`close`](@ref)を使用してソケ
 #: ext/julia/doc/src/manual/networking-and-streams.md:293
 #, no-wrap
 msgid "julia> close(clientside)\n"
-msgstr ""
+msgstr "julia> close(clientside)\n"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/networking-and-streams.md:297
@@ -27907,6 +28888,8 @@ msgid ""
 "julia> connect(\"google.com\", 80)\n"
 "TCPSocket(RawFD(30) open, 0 bytes waiting)\n"
 msgstr ""
+"julia> connect(\"google.com\", 80)\n"
+"TCPSocket(RawFD(30) open, 0 bytes waiting)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/networking-and-streams.md:310
@@ -27920,6 +28903,8 @@ msgid ""
 "julia> getaddrinfo(\"google.com\")\n"
 "ip\"74.125.226.225\"\n"
 msgstr ""
+"julia> getaddrinfo(\"google.com\")\n"
+"ip\"74.125.226.225\"\n"
 
 #. type: Title #
 #: ext/julia/doc/src/manual/getting-started.md:1
@@ -27955,6 +28940,11 @@ msgid ""
 "import Markdown\n"
 "Markdown.parse(\"```\\n\\$ julia\\n\\n$(banner)\\njulia> 1 + 2\\n3\\n\\njulia> ans\\n3\\n```\")\n"
 msgstr ""
+"io = IOBuffer()\n"
+"Base.banner(io)\n"
+"banner = String(take!(io))\n"
+"import Markdown\n"
+"Markdown.parse(\"```\\n\\$ julia\\n\\n$(banner)\\njulia> 1 + 2\\n3\\n\\njulia> ans\\n3\\n```\")\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:25
@@ -27985,7 +28975,7 @@ msgstr "ファイル内のコードを非対話的に実行するには、`julia
 #: ext/julia/doc/src/manual/getting-started.md:31
 #, no-wrap
 msgid "$ julia script.jl arg1 arg2...\n"
-msgstr ""
+msgstr "$ julia script.jl arg1 arg2...\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:41
@@ -28009,6 +28999,10 @@ msgid ""
 "foo\n"
 "bar\n"
 msgstr ""
+"$ julia -e 'println(PROGRAM_FILE); for x in ARGS; println(x); end' foo bar\n"
+"\n"
+"foo\n"
+"bar\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:50
@@ -28025,6 +29019,11 @@ msgid ""
 "foo\n"
 "bar\n"
 msgstr ""
+"$ echo 'println(PROGRAM_FILE); for x in ARGS; println(x); end' > script.jl\n"
+"$ julia script.jl foo bar\n"
+"script.jl\n"
+"foo\n"
+"bar\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:60
@@ -28035,7 +29034,7 @@ msgstr "`--` 区切り文字は、スクリプト ファイルを対象とする
 #: ext/julia/doc/src/manual/getting-started.md:61
 #, no-wrap
 msgid "$ julia --color=yes -O -- foo.jl arg1 arg2..\n"
-msgstr ""
+msgstr "$ julia --color=yes -O -- foo.jl arg1 arg2..\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:66
@@ -28074,6 +29073,11 @@ msgid ""
 "\n"
 "...\n"
 msgstr ""
+"$ echo 'println(\"Greetings! 你好! 안녕하세요?\")' > ~/.julia/config/startup.jl\n"
+"$ julia\n"
+"Greetings! 你好! 안녕하세요?\n"
+"\n"
+"...\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:89
@@ -28084,7 +29088,7 @@ msgstr "Julia コードの実行時オプションは様々で、`perl` プロ�
 #: ext/julia/doc/src/manual/getting-started.md:90
 #, no-wrap
 msgid "julia [switches] -- [programfile] [args...]\n"
-msgstr ""
+msgstr "julia [switches] -- [programfile] [args...]\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/getting-started.md:127
@@ -28189,7 +29193,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/types.md:1
 #, no-wrap
 msgid "[Types](@id man-types)"
-msgstr ""
+msgstr "[型](@id man-types)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:11
@@ -33225,6 +34229,11 @@ msgid ""
 "julia> 1234\n"
 "1234\n"
 msgstr ""
+"julia> 1\n"
+"1\n"
+"\n"
+"julia> 1234\n"
+"1234\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:61
@@ -33245,6 +34254,13 @@ msgid ""
 "julia> typeof(1)\n"
 "Int64\n"
 msgstr ""
+"# 32-bit system:\n"
+"julia> typeof(1)\n"
+"Int32\n"
+"\n"
+"# 64-bit system:\n"
+"julia> typeof(1)\n"
+"Int64\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:74
@@ -33263,6 +34279,13 @@ msgid ""
 "julia> Sys.WORD_SIZE\n"
 "64\n"
 msgstr ""
+"# 32-bit system:\n"
+"julia> Sys.WORD_SIZE\n"
+"32\n"
+"\n"
+"# 64-bit system:\n"
+"julia> Sys.WORD_SIZE\n"
+"64\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:87
@@ -33287,6 +34310,17 @@ msgid ""
 "julia> UInt\n"
 "UInt64\n"
 msgstr ""
+"# 32-bit system:\n"
+"julia> Int\n"
+"Int32\n"
+"julia> UInt\n"
+"UInt32\n"
+"\n"
+"# 64-bit system:\n"
+"julia> Int\n"
+"Int64\n"
+"julia> UInt\n"
+"UInt64\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:104
@@ -33305,6 +34339,9 @@ msgid ""
 "julia> typeof(3000000000)\n"
 "Int64\n"
 msgstr ""
+"# 32-bit or 64-bit system:\n"
+"julia> typeof(3000000000)\n"
+"Int64\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:114
@@ -33349,6 +34386,35 @@ msgid ""
 "julia> typeof(ans)\n"
 "UInt128\n"
 msgstr ""
+"julia> 0x1\n"
+"0x01\n"
+"\n"
+"julia> typeof(ans)\n"
+"UInt8\n"
+"\n"
+"julia> 0x123\n"
+"0x0123\n"
+"\n"
+"julia> typeof(ans)\n"
+"UInt16\n"
+"\n"
+"julia> 0x1234567\n"
+"0x01234567\n"
+"\n"
+"julia> typeof(ans)\n"
+"UInt32\n"
+"\n"
+"julia> 0x123456789abcdef\n"
+"0x0123456789abcdef\n"
+"\n"
+"julia> typeof(ans)\n"
+"UInt64\n"
+"\n"
+"julia> 0x11112222333344445555666677778888\n"
+"0x11112222333344445555666677778888\n"
+"\n"
+"julia> typeof(ans)\n"
+"UInt128\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:150
@@ -33395,6 +34461,23 @@ msgid ""
 "julia> typeof(ans)\n"
 "UInt128\n"
 msgstr ""
+"julia> 0b10\n"
+"0x02\n"
+"\n"
+"julia> typeof(ans)\n"
+"UInt8\n"
+"\n"
+"julia> 0o010\n"
+"0x08\n"
+"\n"
+"julia> typeof(ans)\n"
+"UInt8\n"
+"\n"
+"julia> 0x00000000000000001111222233334444\n"
+"0x00000000000000001111222233334444\n"
+"\n"
+"julia> typeof(ans)\n"
+"UInt128\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:182
@@ -33427,6 +34510,11 @@ msgid ""
 "julia> -0x0002\n"
 "0xfffe\n"
 msgstr ""
+"julia> -0x2\n"
+"0xfe\n"
+"\n"
+"julia> -0x0002\n"
+"0xfffe\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:197
@@ -33456,6 +34544,22 @@ msgid ""
 " UInt64: [0,18446744073709551615]\n"
 "UInt128: [0,340282366920938463463374607431768211455]\n"
 msgstr ""
+"julia> (typemin(Int32), typemax(Int32))\n"
+"(-2147483648, 2147483647)\n"
+"\n"
+"julia> for T in [Int8,Int16,Int32,Int64,Int128,UInt8,UInt16,UInt32,UInt64,UInt128]\n"
+"           println(\"$(lpad(T,7)): [$(typemin(T)),$(typemax(T))]\")\n"
+"       end\n"
+"   Int8: [-128,127]\n"
+"  Int16: [-32768,32767]\n"
+"  Int32: [-2147483648,2147483647]\n"
+"  Int64: [-9223372036854775808,9223372036854775807]\n"
+" Int128: [-170141183460469231731687303715884105728,170141183460469231731687303715884105727]\n"
+"  UInt8: [0,255]\n"
+" UInt16: [0,65535]\n"
+" UInt32: [0,4294967295]\n"
+" UInt64: [0,18446744073709551615]\n"
+"UInt128: [0,340282366920938463463374607431768211455]\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:221
@@ -33492,6 +34596,14 @@ msgid ""
 "julia> x + 1 == typemin(Int64)\n"
 "true\n"
 msgstr ""
+"julia> x = typemax(Int64)\n"
+"9223372036854775807\n"
+"\n"
+"julia> x + 1\n"
+"-9223372036854775808\n"
+"\n"
+"julia> x + 1 == typemin(Int64)\n"
+"true\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:242
@@ -33563,6 +34675,26 @@ msgid ""
 "julia> 2.5e-4\n"
 "0.00025\n"
 msgstr ""
+"julia> 1.0\n"
+"1.0\n"
+"\n"
+"julia> 1.\n"
+"1.0\n"
+"\n"
+"julia> 0.5\n"
+"0.5\n"
+"\n"
+"julia> .5\n"
+"0.5\n"
+"\n"
+"julia> -1.23\n"
+"-1.23\n"
+"\n"
+"julia> 1e10\n"
+"1.0e10\n"
+"\n"
+"julia> 2.5e-4\n"
+"0.00025\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:280
@@ -33582,6 +34714,14 @@ msgid ""
 "julia> 2.5f-4\n"
 "0.00025f0\n"
 msgstr ""
+"julia> 0.5f0\n"
+"0.5f0\n"
+"\n"
+"julia> typeof(ans)\n"
+"Float32\n"
+"\n"
+"julia> 2.5f-4\n"
+"0.00025f0\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:293
@@ -33598,6 +34738,11 @@ msgid ""
 "julia> typeof(ans)\n"
 "Float32\n"
 msgstr ""
+"julia> Float32(-1.5)\n"
+"-1.5f0\n"
+"\n"
+"julia> typeof(ans)\n"
+"Float32\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:304
@@ -33620,6 +34765,17 @@ msgid ""
 "julia> typeof(ans)\n"
 "Float64\n"
 msgstr ""
+"julia> 0x1p0\n"
+"1.0\n"
+"\n"
+"julia> 0x1.8p3\n"
+"12.0\n"
+"\n"
+"julia> 0x.4p-1\n"
+"0.125\n"
+"\n"
+"julia> typeof(ans)\n"
+"Float64\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:321
@@ -33638,6 +34794,11 @@ msgid ""
 "julia> 2*Float16(4.)\n"
 "Float16(8.0)\n"
 msgstr ""
+"julia> sizeof(Float16(4.))\n"
+"2\n"
+"\n"
+"julia> 2*Float16(4.)\n"
+"Float16(8.0)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:331
@@ -33651,6 +34812,8 @@ msgid ""
 "julia> 10_000, 0.000_000_005, 0xdead_beef, 0b1011_0010\n"
 "(10000, 5.0e-9, 0xdeadbeef, 0xb2)\n"
 msgstr ""
+"julia> 10_000, 0.000_000_005, 0xdead_beef, 0b1011_0010\n"
+"(10000, 5.0e-9, 0xdeadbeef, 0xb2)\n"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:337
@@ -33680,6 +34843,14 @@ msgid ""
 "julia> bitstring(-0.0)\n"
 "\"1000000000000000000000000000000000000000000000000000000000000000\"\n"
 msgstr ""
+"julia> 0.0 == -0.0\n"
+"true\n"
+"\n"
+"julia> bitstring(0.0)\n"
+"\"0000000000000000000000000000000000000000000000000000000000000000\"\n"
+"\n"
+"julia> bitstring(-0.0)\n"
+"\"1000000000000000000000000000000000000000000000000000000000000000\"\n"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:354
@@ -33758,6 +34929,41 @@ msgid ""
 "julia> 0 * Inf\n"
 "NaN\n"
 msgstr ""
+"julia> 1/Inf\n"
+"0.0\n"
+"\n"
+"julia> 1/0\n"
+"Inf\n"
+"\n"
+"julia> -5/0\n"
+"-Inf\n"
+"\n"
+"julia> 0.000001/0\n"
+"Inf\n"
+"\n"
+"julia> 0/0\n"
+"NaN\n"
+"\n"
+"julia> 500 + Inf\n"
+"Inf\n"
+"\n"
+"julia> 500 - Inf\n"
+"-Inf\n"
+"\n"
+"julia> Inf + Inf\n"
+"Inf\n"
+"\n"
+"julia> Inf - Inf\n"
+"NaN\n"
+"\n"
+"julia> Inf * Inf\n"
+"Inf\n"
+"\n"
+"julia> Inf / Inf\n"
+"NaN\n"
+"\n"
+"julia> 0 * Inf\n"
+"NaN\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:408
@@ -33777,6 +34983,14 @@ msgid ""
 "julia> (typemin(Float64),typemax(Float64))\n"
 "(-Inf, Inf)\n"
 msgstr ""
+"julia> (typemin(Float16),typemax(Float16))\n"
+"(-Inf16, Inf16)\n"
+"\n"
+"julia> (typemin(Float32),typemax(Float32))\n"
+"(-Inf32, Inf32)\n"
+"\n"
+"julia> (typemin(Float64),typemax(Float64))\n"
+"(-Inf, Inf)\n"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:420
@@ -33814,6 +35028,14 @@ msgid ""
 "julia> eps() # same as eps(Float64)\n"
 "2.220446049250313e-16\n"
 msgstr ""
+"julia> eps(Float32)\n"
+"1.1920929f-7\n"
+"\n"
+"julia> eps(Float64)\n"
+"2.220446049250313e-16\n"
+"\n"
+"julia> eps() # same as eps(Float64)\n"
+"2.220446049250313e-16\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:445
@@ -33843,6 +35065,17 @@ msgid ""
 "julia> eps(0.0)\n"
 "5.0e-324\n"
 msgstr ""
+"julia> eps(1.0)\n"
+"2.220446049250313e-16\n"
+"\n"
+"julia> eps(1000.)\n"
+"1.1368683772161603e-13\n"
+"\n"
+"julia> eps(1e-27)\n"
+"1.793662034335766e-43\n"
+"\n"
+"julia> eps(0.0)\n"
+"5.0e-324\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:465
@@ -33887,6 +35120,23 @@ msgid ""
 "julia> bitstring(nextfloat(x))\n"
 "\"00111111101000000000000000000001\"\n"
 msgstr ""
+"julia> x = 1.25f0\n"
+"1.25f0\n"
+"\n"
+"julia> nextfloat(x)\n"
+"1.2500001f0\n"
+"\n"
+"julia> prevfloat(x)\n"
+"1.2499999f0\n"
+"\n"
+"julia> bitstring(prevfloat(x))\n"
+"\"00111111100111111111111111111111\"\n"
+"\n"
+"julia> bitstring(x)\n"
+"\"00111111101000000000000000000000\"\n"
+"\n"
+"julia> bitstring(nextfloat(x))\n"
+"\"00111111101000000000000000000001\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:491
@@ -34034,6 +35284,20 @@ msgid ""
 "julia> factorial(BigInt(40))\n"
 "815915283247897734345611269596115894272000000000\n"
 msgstr ""
+"julia> BigInt(typemax(Int64)) + 1\n"
+"9223372036854775808\n"
+"\n"
+"julia> parse(BigInt, \"123456789012345678901234567890\") + 1\n"
+"123456789012345678901234567891\n"
+"\n"
+"julia> parse(BigFloat, \"1.23456789012345678901\")\n"
+"1.234567890123456789010000000000000000000000000000000000000000000000000000000004\n"
+"\n"
+"julia> BigFloat(2.0^66) / 3\n"
+"2.459565876494606882133333333333333333333333333333333333333333333333333333333344e+19\n"
+"\n"
+"julia> factorial(BigInt(40))\n"
+"815915283247897734345611269596115894272000000000\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:553
@@ -34064,6 +35328,23 @@ msgid ""
 "julia> typeof(y)\n"
 "BigInt\n"
 msgstr ""
+"julia> x = typemin(Int64)\n"
+"-9223372036854775808\n"
+"\n"
+"julia> x = x - 1\n"
+"9223372036854775807\n"
+"\n"
+"julia> typeof(x)\n"
+"Int64\n"
+"\n"
+"julia> y = BigInt(typemin(Int64))\n"
+"-9223372036854775808\n"
+"\n"
+"julia> y = y - 1\n"
+"-9223372036854775809\n"
+"\n"
+"julia> typeof(y)\n"
+"BigInt\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:579
@@ -34096,6 +35377,20 @@ msgid ""
 "       end\n"
 "1.1000000000004\n"
 msgstr ""
+"julia> setrounding(BigFloat, RoundUp) do\n"
+"           BigFloat(1) + parse(BigFloat, \"0.1\")\n"
+"       end\n"
+"1.100000000000000000000000000000000000000000000000000000000000000000000000000003\n"
+"\n"
+"julia> setrounding(BigFloat, RoundDown) do\n"
+"           BigFloat(1) + parse(BigFloat, \"0.1\")\n"
+"       end\n"
+"1.099999999999999999999999999999999999999999999999999999999999999999999999999986\n"
+"\n"
+"julia> setprecision(40) do\n"
+"           BigFloat(1) + parse(BigFloat, \"0.1\")\n"
+"       end\n"
+"1.1000000000004\n"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:597
@@ -34118,7 +35413,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:651
 #, no-wrap
 msgid "jldoctest numeric-coefficients"
-msgstr ""
+msgstr "jldoctest numeric-coefficients"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:603
@@ -34133,6 +35428,14 @@ msgid ""
 "julia> 1.5x^2 - .5x + 1\n"
 "13.0\n"
 msgstr ""
+"julia> x = 3\n"
+"3\n"
+"\n"
+"julia> 2x^2 - 3x + 1\n"
+"10\n"
+"\n"
+"julia> 1.5x^2 - .5x + 1\n"
+"13.0\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:615
@@ -34146,6 +35449,8 @@ msgid ""
 "julia> 2^2x\n"
 "64\n"
 msgstr ""
+"julia> 2^2x\n"
+"64\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:627
@@ -34170,6 +35475,8 @@ msgid ""
 "julia> 2(x-1)^2 - 3(x-1) + 1\n"
 "3\n"
 msgstr ""
+"julia> 2(x-1)^2 - 3(x-1) + 1\n"
+"3\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:639
@@ -34199,6 +35506,8 @@ msgid ""
 "julia> (x-1)x\n"
 "6\n"
 msgstr ""
+"julia> (x-1)x\n"
+"6\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:650
@@ -34217,6 +35526,11 @@ msgid ""
 "julia> x(x+1)\n"
 "ERROR: MethodError: objects of type Int64 are not callable\n"
 msgstr ""
+"julia> (x-1)(x+1)\n"
+"ERROR: MethodError: objects of type Int64 are not callable\n"
+"\n"
+"julia> x(x+1)\n"
+"ERROR: MethodError: objects of type Int64 are not callable\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:663
@@ -34356,6 +35670,17 @@ msgid ""
 "julia> one(BigFloat)\n"
 "1.0\n"
 msgstr ""
+"julia> zero(Float32)\n"
+"0.0f0\n"
+"\n"
+"julia> zero(1.0)\n"
+"0.0\n"
+"\n"
+"julia> one(Int32)\n"
+"1\n"
+"\n"
+"julia> one(BigFloat)\n"
+"1.0\n"
 
 #. type: Title #
 #: ext/julia/doc/src/manual/style-guide.md:1
@@ -37065,7 +38390,7 @@ msgstr ""
 #: ext/julia/doc/src/base/numbers.md:41
 #, no-wrap
 msgid "Data Formats"
-msgstr ""
+msgstr "データ形式"
 
 #. type: Plain text
 #: ext/julia/doc/src/base/numbers.md:43
@@ -44348,11 +45673,15 @@ msgstr ""
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/reflection.md:83
+#, fuzzy
 msgid ""
 "As discussed in the [Metaprogramming](@ref) section, the [`macroexpand`](@ref) function gives the unquoted and interpolated expression "
 "(`Expr`) form for a given macro. To use `macroexpand`, `quote` the expression block itself (otherwise, the macro will be evaluated and the "
 "result will be passed instead!). For example:"
 msgstr ""
+"[メタプログラミング](@ref metaprogramming)セクションで説明したように、['マクロ展開'@ref) 関数は、特定のマクロに引用符で囲まれていない式と補間"
+"式 ('Expr') フォームを提供します。'マクロ展開' を使用するには、式ブロック自体を 'quote' (それ以外の場合は、マクロが評価され、代わりに結果が渡"
+"されます)。例えば："
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/reflection.md:84
