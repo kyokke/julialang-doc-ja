@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-07-24 01:15+0000\n"
-"PO-Revision-Date: 2019-08-04 23:36+0900\n"
+"PO-Revision-Date: 2019-08-04 23:51+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -1733,7 +1733,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/methods.md:1
 #, no-wrap
 msgid "Methods"
-msgstr "[メソッド](@id methods)"
+msgstr "[メソッド](@id Methods)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/methods.md:10
@@ -8042,7 +8042,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/faq.md:87
 #, no-wrap
 msgid "Functions"
-msgstr "[関数](@id functions)"
+msgstr "[関数](@id Functions)"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/faq.md:89
@@ -14576,7 +14576,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:718
 msgid "To check if a regex matches a string, use [`occursin`](@ref):"
-msgstr "文字列の中に正規表現がとマッチするパターンがあるかを確認するには、['occursin`](@ref) を使用します:"
+msgstr "文字列の中に正規表現がとマッチするパターンがあるかを確認するには、[`occursin`](@ref) を使用します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:719
