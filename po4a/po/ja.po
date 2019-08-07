@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-07-24 01:15+0000\n"
-"PO-Revision-Date: 2019-08-05 00:05+0900\n"
+"PO-Revision-Date: 2019-08-07 10:04+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 2.2.3\n"
-"X-Poedit-Bookmarks: 1626,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
+"X-Poedit-Bookmarks: 3526,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. type: Title =
 #: ext/julia/doc/src/./NEWS.md:2
@@ -4871,7 +4871,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:392
 msgid "A symbol representing the operator associativity can also be found by calling the built-in function `Base.operator_associativity`:"
-msgstr "演算子を表すシンボルの結合則も組み込み関数 'Base.operator_associaivity' を呼び出すことによっても見つけることができます:"
+msgstr "演算子を表すシンボルの結合則も組み込み関数 `Base.operator_associaivity` を呼び出すことによっても見つけることができます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:393
@@ -4896,7 +4896,7 @@ msgid ""
 "Similarly, such operators are assigned associativity `:none`."
 msgstr ""
 "`:sin` などのシンボルは `0` を返します。この値は引数に与えられたシンボルが演算子として無効であることを表しているだけで、優先順位が最も低いと"
-"いうことではありません。同様に、このような演算子には結合性は ':none' が割り当てられます。"
+"いうことではありません。同様に、このような演算子には結合性は `:none` が割り当てられます。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/mathematical-operations.md:404
@@ -5218,7 +5218,7 @@ msgid ""
 "In order to compute trigonometric functions with degrees instead of radians, suffix the function with `d`. For example, [`sind(x)`](@ref) "
 "computes the sine of `x` where `x` is specified in degrees.  The complete list of trigonometric functions with degree variants is:"
 msgstr ""
-"ラジアンの代わりに\"度\"を使用して三角関数を計算するには、関数の接尾辞を 'd' で囲みます。たとえば、[`sind(x)`](@ref)は`x`が\"度\"で指定される"
+"ラジアンの代わりに\"度\"を使用して三角関数を計算するには、関数の接尾辞を `d` で囲みます。たとえば、[`sind(x)`](@ref)は`x`が\"度\"で指定される"
 "`x`のsinを計算します。 \"度\"を入力に使用した三角関数の完全なリストは次のとおりです:"
 
 #. type: Plain text
@@ -8900,8 +8900,8 @@ msgid ""
 "completely different (and break all/many future usages of the other functions in module Foo that depend on calling bar)."
 msgstr ""
 "こうやって別々の構文を与えられるほどに重要な理由は、存在を知らなった関数を誤って拡張してしまうとそれがバグの温床となってしまうので、そういっ"
-"たことを避けたい、ということです。これは、文字列や整数のような共通の型を受け取るメソッドで発生する可能性が最も高いです。'import' を使用する場"
-"合は、他のモジュールの 'bar(s:AbstractString)' の実装を新しい実装に置き換えることになります。その実装は いとも簡単に置き換え前と全く異なる振"
+"たことを避けたい、ということです。これは、文字列や整数のような共通の型を受け取るメソッドで発生する可能性が最も高いです。`import` を使用する場"
+"合は、他のモジュールの `bar(s:AbstractString)` の実装を新しい実装に置き換えることになります。その実装は いとも簡単に置き換え前と全く異なる振"
 "る舞いをさせることができます(が、そうすることによって、関数 bar の呼び出しに依存しているモジュール Fooで定義された別の関数群を将来的に使う際"
 "に大いに問題になるでしょう)"
 
@@ -13037,7 +13037,7 @@ msgid ""
 "straightforward."
 msgstr ""
 "文字列は、文字の有限列です。しかし文字とは何であるか、と問うてみると問題は複雑であることに気づきます。英語を話す人にとってよく知る文字とは、"
-"文字'A'、'B'、'C'等と数字や一般的な句読点です。これらの文字と0から127までの整数値とのマッピングは[ASCII](https://en.wikipedia.org/wiki/ASCII)"
+"文字`A`、`B`、`C`等と数字や一般的な句読点です。これらの文字と0から127までの整数値とのマッピングは[ASCII](https://en.wikipedia.org/wiki/ASCII)"
 "標準によって標準化されています。もちろん、文字には、英語以外で使われる数々の文字が含まれるわけです。アクセントやその他の変更を加えた変形ASCII"
 "文字、キリル文字やギリシャ語などの関連スクリプト、ASCIIや英語とは全く関係のない言語体系である、アラビア語、中国語、ヘブライ語、ヒンディー語、"
 "日本語、韓国語などです。[Unicode](https://en.wikipedia.org/wiki/Unicode)標準は、文字が正確に何であるかの複雑さに取り組み、この問題に対処する"
@@ -13071,7 +13071,7 @@ msgid ""
 "accept any string type."
 msgstr ""
 "すべての文字列型は抽象型 `AbstractString`のサブタイプであり、外部パッケージは追加の `AbstractString` サブタイプを定義します (例えば他のエン"
-"コーディング用などに)。 文字列引数を必要とする関数を定義する場合は、任意の文字列型を受け入れるために、型を 'AbstractString' として宣言する必"
+"コーディング用などに)。 文字列引数を必要とする関数を定義する場合は、任意の文字列型を受け入れるために、型を `AbstractString` として宣言する必"
 "要があります。"
 
 #. type: Bullet: '  * '
@@ -13082,7 +13082,7 @@ msgid ""
 "is based on the UTF-8 encoding)."
 msgstr ""
 "C や Java と同様に、そしてほとんどの動的言語とは異なり、Julia には[`AbstractChar`](@ref)と呼ばれる単一の文字を表すファーストクラスの型があり"
-"ます。'AbstractChar' の組み込みの [`Char`](@ref) サブタイプは、任意の Unicode 文字を表すことができる 32 ビット プリミティブ型です (UTF-8 エン"
+"ます。`AbstractChar` の組み込みの [`Char`](@ref) サブタイプは、任意の Unicode 文字を表すことができる 32 ビット プリミティブ型です (UTF-8 エン"
 "コーディングに基づいています)。"
 
 #. type: Bullet: '  * '
@@ -13091,7 +13091,7 @@ msgid ""
 "As in Java, strings are immutable: the value of an `AbstractString` object cannot be changed.  To construct a different string value, you "
 "construct a new string from parts of other strings."
 msgstr ""
-"Java と同様に、文字列は不変(イミュータブル)であり、'AbstractString' オブジェクトの値は変更できません。 別の文字列値を作成するには、他の文字列"
+"Java と同様に、文字列は不変(イミュータブル)であり、`AbstractString` オブジェクトの値は変更できません。 別の文字列値を作成するには、他の文字列"
 "の一部から新しい文字列を作成します。"
 
 #. type: Bullet: '  * '
@@ -13217,7 +13217,7 @@ msgid ""
 "You can input any Unicode character in single quotes using `\\u` followed by up to four hexadecimal digits or `\\U` followed by up to eight "
 "hexadecimal digits (the longest valid value only requires six):"
 msgstr ""
-"単一引用符の中で、`\\u' を使用してその後に16進数で最大 4桁、または '\\U' の後に16進数で最大 8 桁(最長有効値は 6 桁)で、任意のUnicode 文字を入"
+"単一引用符の中で、`\\u` を使用してその後に16進数で最大 4桁、または `\\U` の後に16進数で最大 8 桁(最長有効値は 6 桁)で、任意のUnicode 文字を入"
 "力できます:"
 
 #. type: Plain text
@@ -31533,7 +31533,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/modules.md:1
 #, no-wrap
 msgid "[Modules](@id modules)"
-msgstr ""
+msgstr "[モジュール](@id Modules)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:8
@@ -31629,6 +31629,8 @@ msgid ""
 "The statement `using BigLib: thing1, thing2` brings just the identifiers `thing1` and `thing2` into scope from module `BigLib`. If these "
 "names refer to functions, adding methods to them will not be allowed (you may only \"use\" them, not extend them)."
 msgstr ""
+"`using BigLib: thing1, thing2` とう宣言で、`thing1` と `thing2` という識別子が `BigLib` から現在のスコープに持ち込まれる。もしそれらの名前"
+"が、関数を参照するものならば、メソッドの追加は許されません(メソッドを使用するだけで、拡張は許されない)。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:52
@@ -31636,6 +31638,8 @@ msgid ""
 "The `import` keyword supports the same syntax as `using`, but only operates on a single name at a time. It does not add modules to be "
 "searched the way `using` does. `import` also differs from `using` in that functions imported using `import` can be extended with new methods."
 msgstr ""
+"`import` キーワードは `using` と同じ構文をサポートしますが、一度に 1 つの名前でのみ動作します。`using`のようにモジュール全体を検索対象に追加"
+"することはできません。`import` を使用してインポートされた関数は新しいメソッドで拡張できるという点で、`using` とは異なります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:55
@@ -31643,6 +31647,8 @@ msgid ""
 "In `MyModule` above we wanted to add a method to the standard `show` function, so we had to write `import Base.show`. Functions whose names "
 "are only visible via `using` cannot be extended."
 msgstr ""
+"上記の`MyModule`では、標準の`show`関数にメソッドを追加したかったので、`import Base.show`と書く必要が有りました。名前が `using` を介してのみ参"
+"照できる関数は拡張できません。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:59
@@ -31650,17 +31656,20 @@ msgid ""
 "Once a variable is made visible via `using` or `import`, a module may not create its own variable with the same name. Imported variables are "
 "read-only; assigning to a global variable always affects a variable owned by the current module, or else raises an error."
 msgstr ""
+"`using` または `import` を使用して変数が一度参照されると、その変数と同じ名前を持つ変数を、モジュール内に独自に定義することはできなくなりま"
+"す。インポートされた変数は読み取り専用です。グローバル変数に代入は、常に現在のモジュールが所有する変数に対するものです。そうでなければエラー"
+"が発生します。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/modules.md:60
 #, no-wrap
 msgid "Summary of module usage"
-msgstr ""
+msgstr "モジュールの使用法のまとめ"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:64
 msgid "To load a module, two main keywords can be used: `using` and `import`. To understand their differences, consider the following example:"
-msgstr ""
+msgstr "モジュールを読み込むには、`using` と `import` の2つの主要キーワードが利用できます。両者の違いを理解するには、次の例を考えてください:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:65
@@ -31676,6 +31685,15 @@ msgid ""
 "\n"
 "end\n"
 msgstr ""
+"module MyModule\n"
+"\n"
+"export x, y\n"
+"\n"
+"x() = \"x\"\n"
+"y() = \"y\"\n"
+"p() = \"p\"\n"
+"\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:80
@@ -31683,6 +31701,8 @@ msgid ""
 "In this module we export the `x` and `y` functions (with the keyword `export`), and also have the non-exported function `p`. There are "
 "several different ways to load the Module and its inner functions into the current workspace:"
 msgstr ""
+"このモジュールは、関数 `x` と 関数 `y` を(キーワード `export`を用いて) エクスポートし、それとは別にエクスポートされていない関数 `p` も定義さ"
+"れています。モジュールとその内部関数を現在のワークスペースにロードするには、いくつかの異なる方法があります:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:88
@@ -31696,12 +31716,19 @@ msgid ""
 "| `import MyModule.x, MyModule.p` | `x` and `p`                                                                     | `x` and `p`                                 |\n"
 "| `import MyModule: x, p`         | `x` and `p`                                                                     | `x` and `p`                                 |\n"
 msgstr ""
+"| インポートするコマンド                  | スコープに導入されるもの                                                      | メソッド拡張に利用できるもの              |\n"
+"|:------------------------------- |:------------------------------------------------------------------------------- |:------------------------------------------- |\n"
+"| `using MyModule`                | All `export`ed names (`x` and `y`), `MyModule.x`, `MyModule.y` and `MyModule.p` | `MyModule.x`, `MyModule.y` and `MyModule.p` |\n"
+"| `using MyModule: x, p`          | `x` and `p`                                                                     |                                             |\n"
+"| `import MyModule`               | `MyModule.x`, `MyModule.y` and `MyModule.p`                                     | `MyModule.x`, `MyModule.y` and `MyModule.p` |\n"
+"| `import MyModule.x, MyModule.p` | `x` and `p`                                                                     | `x` and `p`                                 |\n"
+"| `import MyModule: x, p`         | `x` and `p`                                                                     | `x` and `p`                                 |\n"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/modules.md:89
 #, no-wrap
 msgid "Modules and files"
-msgstr ""
+msgstr "モジュールとファイル"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:93
@@ -31709,6 +31736,8 @@ msgid ""
 "Files and file names are mostly unrelated to modules; modules are associated only with module expressions. One can have multiple files per "
 "module, and multiple modules per file:"
 msgstr ""
+"ファイルとファイル名は、ほとんどモジュールとは無関係です。モジュールはモジュール式にのみ関連付けられています。1 つのモジュールが複数のファイ"
+"ルをまたぐこともできますし、複数のモジュールを同じ1つのファイルに定義することもできます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:94
@@ -31721,6 +31750,12 @@ msgid ""
 "\n"
 "end\n"
 msgstr ""
+"module Foo\n"
+"\n"
+"include(\"file1.jl\")\n"
+"include(\"file2.jl\")\n"
+"\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:106
@@ -31728,6 +31763,8 @@ msgid ""
 "Including the same code in different modules provides mixin-like behavior. One could use this to run the same code with different base "
 "definitions, for example testing code by running it with \"safe\" versions of some operators:"
 msgstr ""
+"異なるモジュールに同じコードを含めると、mixin のような動作が提供されます。これを使用して、異なる基本定義で同じコードを実行できます。例えば、"
+"それを実行することである処理を「安全バージョン」実行してコードを検査することができます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:107
@@ -31742,17 +31779,25 @@ msgid ""
 "include(\"mycode.jl\")\n"
 "end\n"
 msgstr ""
+"module Normal\n"
+"include(\"mycode.jl\")\n"
+"end\n"
+"\n"
+"module Testing\n"
+"include(\"safe_operators.jl\")\n"
+"include(\"mycode.jl\")\n"
+"end\n"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/modules.md:118
 #, no-wrap
 msgid "Standard modules"
-msgstr ""
+msgstr "標準モジュール"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:121
 msgid "There are three important standard modules: Main, Core, and Base."
-msgstr ""
+msgstr "3つの重要な標準モジュールがあります。 Mainモジュール、Coreモジュール、Baseモジュールです。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:124
@@ -31760,6 +31805,8 @@ msgid ""
 "Main is the top-level module, and Julia starts with Main set as the current module.  Variables defined at the prompt go in Main, and "
 "`varinfo()` lists variables in Main."
 msgstr ""
+"Mainは最上位のモジュールであり、JuliaはMainを現在のモジュールに設定することから処理を開始します。 プロンプトで定義された変数はMainに格納さ"
+"れ、`varinfo()` で Mainの変数の一覧を確認することができます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:128
@@ -31767,6 +31814,8 @@ msgid ""
 "Core contains all identifiers considered \"built in\" to the language, i.e. part of the core language and not libraries. Every module "
 "implicitly specifies `using Core`, since you can't do anything without those definitions."
 msgstr ""
+"Core には、言語に対して「組み込み」と見なされるすべての識別子、つまりライブラリではなく言語のコア実装の一部が含まれます。これらの定義なしでは"
+"何も実行できないため、すべてのモジュールは暗黙的に `using Core` を行っています。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:131
@@ -31774,12 +31823,14 @@ msgid ""
 "Base is a module that contains basic functionality (the contents of base/). All modules implicitly contain `using Base`, since this is "
 "needed in the vast majority of cases."
 msgstr ""
+"Baseは、基本機能(Base/の内容)を含むモジュールです。ほとんどの場合必要とされるので、すべてのモジュールに暗黙的に 'using Base' が含まれていま"
+"す。"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/modules.md:132
 #, no-wrap
 msgid "Default top-level definitions and bare modules"
-msgstr ""
+msgstr "デフォルトの最上位定義とベアモジュール"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:137
@@ -31787,6 +31838,8 @@ msgid ""
 "In addition to `using Base`, modules also automatically contain definitions of the `eval` and `include` functions, which evaluate "
 "expressions/files within the global scope of that module."
 msgstr ""
+"`using Base`に加えて、モジュールには 'eval'関数と 'include' 関数の定義も自動的に含まれ、そのモジュールのグローバルスコープ内の式やファイルを"
+"評価します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:141
@@ -31794,6 +31847,8 @@ msgid ""
 "If these default definitions are not wanted, modules can be defined using the keyword `baremodule` instead (note: `Core` is still imported, "
 "as per above). In terms of `baremodule`, a standard `module` looks like this:"
 msgstr ""
+"これらのデフォルトの定義が不要な場合は、代わりにキーワード `baremodule` を使用してモジュールを定義できます (注: `baremodule`キーワードを使っ"
+"ても `Core` はインポートされます)。`baremodule` の使用、という観点から、標準的なモジュールの動作を見てみると:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:142
@@ -31810,12 +31865,22 @@ msgid ""
 "\n"
 "end\n"
 msgstr ""
+"baremodule Mod\n"
+"\n"
+"using Base\n"
+"\n"
+"eval(x) = Core.eval(Mod, x)\n"
+"include(p) = Base.include(Mod, p)\n"
+"\n"
+"...\n"
+"\n"
+"end\n"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/modules.md:155
 #, no-wrap
 msgid "Relative and absolute module paths"
-msgstr ""
+msgstr "相対モジュールパスと絶対モジュールパス"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:160
@@ -31823,6 +31888,8 @@ msgid ""
 "Given the statement `using Foo`, the system consults an internal table of top-level modules to look for one named `Foo`. If the module does "
 "not exist, the system attempts to `require(:Foo)`, which typically results in loading code from an installed package."
 msgstr ""
+"`using Foo` 文を記述されていると、システムは最上位モジュールの内部テーブルを参照して `Foo` という名前のモジュールを探します。モジュールが存在"
+"しない場合、システムは `require(:Foo)` を試み、通常はインストールされたパッケージからコードを読み込みます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:165
@@ -31831,6 +31898,9 @@ msgid ""
 "The first is to use an absolute path, for example `using Base.Sort`. The second is to use a relative path, which makes it easier to import "
 "submodules of the current module or any of its enclosing modules:"
 msgstr ""
+"しかし、一部のモジュールにはサブモジュールが含むものがあり、最上位以外の(Mainから直接アクセスできない)モジュールにアクセスする必要がある場合"
+"があります。これを行うには 2 つの方法があります。1 つ目は、`using Base.Sort` などのように絶対パスを使用することです。2 つ目は相対パスを使用す"
+"る方法で、現在のモジュールや、サブモジュールを含むモジュールから、サブモジュールのインポートを簡単におこなえます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:166
@@ -31847,6 +31917,16 @@ msgid ""
 "...\n"
 "end\n"
 msgstr ""
+"module Parent\n"
+"\n"
+"module Utils\n"
+"...\n"
+"end\n"
+"\n"
+"using .Utils\n"
+"\n"
+"...\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:183
@@ -31855,17 +31935,21 @@ msgid ""
 "starting the `using` path with a period. Adding more leading periods moves up additional levels in the module hierarchy. For example "
 "`using ..Utils` would look for `Utils` in `Parent`'s enclosing module rather than in `Parent` itself."
 msgstr ""
+"ここではモジュール `Parent` にはサブモジュール `Utils` が含まれており、`Parent` のコードは `Utils` の内容を参照する必要があります。これは、"
+"`using` 対象のパスをピリオドから開始することによって行われます。先頭にさらにもう一つピリオドを追加すると、モジュール階層のレベルが上がりま"
+"す。たとえば、`using ..Utils`は`Parent`モジュール自体ではなく、またさらにその上の`Parent`モジュールを含むモジュール階層で、`Utils` を探しま"
+"す。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:185
 msgid "Note that relative-import qualifiers are only valid in `using` and `import` statements."
-msgstr ""
+msgstr "相対インポート修飾子は`using` ステートメントと `import` ステートメントでのみ有効です。"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/modules.md:186
 #, no-wrap
 msgid "Module file paths"
-msgstr ""
+msgstr "モジュールファイルパス"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:190
@@ -31873,12 +31957,14 @@ msgid ""
 "The global variable [`LOAD_PATH`](@ref) contains the directories Julia searches for modules when calling `require`. It can be extended using "
 "[`push!`](@ref):"
 msgstr ""
+"グローバル変数 [`LOAD_PATH`](@ref) には、`require` を呼び出すときにJulia がモジュールを検索するディレクトリが含まれています。これは [`push!`]"
+"(@ref)を使用して拡張することができます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:191
 #, no-wrap
 msgid "push!(LOAD_PATH, \"/Path/To/My/Module/\")\n"
-msgstr ""
+msgstr "push!(LOAD_PATH, \"/Path/To/My/Module/\")\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:198
@@ -31886,12 +31972,14 @@ msgid ""
 "Putting this statement in the file `~/.julia/config/startup.jl` will extend [`LOAD_PATH`](@ref) on every Julia startup. Alternatively, the "
 "module load path can be extended by defining the environment variable `JULIA_LOAD_PATH`."
 msgstr ""
+"この文をファイル `~/.julia/config/startup.jl`に入れておくと、Julia の起動のたびに [`LOAD_PATH`](@ref)が拡張されます。また、環境変数 "
+"`JULIA_LOAD_PATH`を定義することで、モジュールのロードパスを拡張することもできます。"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/modules.md:199
 #, no-wrap
 msgid "Namespace miscellanea"
-msgstr ""
+msgstr "名前空間に関する雑記"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:207
@@ -31902,6 +31990,10 @@ msgid ""
 "must use `Base.:+` to refer to it. If the operator is more than one character in length you must surround it in brackets, such as: `Base.:"
 "(==)`."
 msgstr ""
+"名前が修飾されている場合 (例: `Base.sin`) は、エクスポートされていない場合でもアクセスできます。 これは、多くの場合、デバッグ時に便利です。修"
+"飾名を関数名として使用してメソッドを追加することもできます。ただし、構文のあいまいさが生じるため、別のモジュールに含まれる関数で、例えば演算"
+"子`Base.+`のように関数名が記号のみで構成されるものにメソッドを追加したいときには、その関数を参照するのに `Base.:+` を使用してください。演算子"
+"が複数文字の場合は、次のように括弧で囲んでください: `Base.:(==)`."
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:210
@@ -31909,11 +32001,15 @@ msgid ""
 "Macro names are written with `@` in import and export statements, e.g. `import Mod.@mac`. Macros in other modules can be invoked as `Mod."
 "@mac` or `@Mod.mac`."
 msgstr ""
+"インポートおよびエクスポート文の中で、マクロ名は`@`を付けて`import Mod.@mac`のように書かれます。他のモジュールのマクロは`Mod.@mac` または "
+"`@Mod.mac` のようにして呼び出すことができます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:213
 msgid "The syntax `M.x = y` does not work to assign a global in another module; global assignment is always module-local."
 msgstr ""
+"構文 `M.x = y` という構文では、別のモジュールのグローバル変数に代入をすることはできません。グローバル変数の代入は常にローカルなモジュールで行"
+"われます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:216
@@ -31921,12 +32017,14 @@ msgid ""
 "A variable name can be \"reserved\" without assigning to it by declaring it as `global x`.  This prevents name conflicts for globals "
 "initialized after load time."
 msgstr ""
+"変数名は、`global x` のように最上位で宣言することで、変数への代入を行うこと無く、名前を予約することができます。これにより、ロード後に初期化さ"
+"れるグローバル変数名の競合を防ぐことができます。"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/modules.md:217
 #, no-wrap
 msgid "Module initialization and precompilation"
-msgstr ""
+msgstr "モジュールの初期化とプリコンパイル"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:222
@@ -31934,6 +32032,9 @@ msgid ""
 "Large modules can take several seconds to load because executing all of the statements in a module often involves compiling a large amount "
 "of code.  Julia creates precompiled caches of the module to reduce this time."
 msgstr ""
+"大きなモジュールの読み込みには数秒かかることがあります。モジュール内のすべてのステートメントを実行するには、多くの場合、大量のコードをコンパ"
+"イルする必要があるためです。 Julia は、この時間を短縮するために、モジュールの事前コンパイル済みキャッシュファイルを作成しておいて、この時間を"
+"短縮します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:230
@@ -31944,6 +32045,11 @@ msgid ""
 "`import` whenever any of its dependencies change; dependencies are modules it imports, the Julia build, files it includes, or explicit "
 "dependencies declared by `include_dependency(path)` in the module file(s)."
 msgstr ""
+"インクリメンタルプリコンパイルされたモジュールファイルは、`import` や `using` が使われてモジュールがロードする際に自動的に作成されます。これ"
+"により、初めてインポートしたときに自動的にコンパイルされます。または、手動で `Base.compilecache(Module Name)`としてコンパイルさせることもでき"
+"ます。得られたキャッシュファイルは、`DEPOT_PATH[1]/compiled/` に格納されます。その後、依存関係が変更されるたびに、モジュールは自動的に "
+"`using`または`import`時に再コンパイルされます。ここでいう依存関係とは、インポートするモジュール、Julia のビルド、include されｒファイル、また"
+"はモジュール ファイル内の `include_dependency(path)` によって宣言された明示的な依存関係などのことです。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:239
@@ -31955,6 +32061,12 @@ msgid ""
 "current process and won't recompile those modules, even if their files change or disappear, in order to avoid creating incompatibilities "
 "between the running system and the precompile cache."
 msgstr ""
+"ファイルの依存関係については、依存関係の変更があったかどうかは、`include` によって読み込まれたり、`include_dependency` によって明示的に追加さ"
+"れた各ファイルについて、その更新時刻 (mtime) が変わっていないかどうか、あるいは (1秒以下の精度でmtime をコピーできないシステムに対応するため"
+"に)最も近い秒に切り捨てられた変更時間と等しいかどうかで判断されます。また、`require` の検索ロジックで選択されたファイルへのパスが、プリコンパ"
+"イル ファイルを作成したパスと一致するかどうかも考慮されます。また、現在のプロセスが既に読み込んでいる一連の依存関係も考慮されます。実行中のシ"
+"ステムとプリコンパイル キャッシュの間に不整合が生じないように、実行中にファイルが変更されたり削除されても、それらのモジュールを再コンパイルし"
+"ません。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:246
@@ -31964,6 +32076,10 @@ msgid ""
 "cause `using` / `import` to load it directly into the current process and skip the precompile and caching.  This also thereby prevents the "
 "module from being imported by any other precompiled module."
 msgstr ""
+"モジュールを事前コンパイルするのが安全でないことがわかっている場合 (その理由の一例はこの後に述べますが) 、モジュール ファイル(通常はファイル"
+"の上部)に `__precompile__(false)`を記入してください。 これにより、`Base.compilecache` がエラーをスローして、`using` / `import` が現在のプロセ"
+"スに直接そのモジュールを読み込み、プリコンパイルとキャッシュをスキップします。 これにより、モジュールが他のプリコンパイル済みモジュールによっ"
+"てインポートされるのを防ぐことができます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:260
@@ -31977,6 +32093,14 @@ msgid ""
 "should not be – captured in the compiled image. It will be called after the module is loaded into a process, including if it is being loaded "
 "into an incremental compile (`--output-incremental=yes`), but not if it is being loaded into a full-compilation process."
 msgstr ""
+"モジュールのコードを書いているときには、増分共有ライブラリの作成に固有の特定の動作に注意する必要があります。たとえば、外部状態は保持されませ"
+"ん。 これに対応するために、*実行時* に 処理される必要のある初期化ステップと、*コンパイル時*に処理してもよいステップとを明示的に分離してくださ"
+"い。Julia では、モジュールに `__init__()`関数を定義し、ここに、実行時に処理される必要がある初期化ステップを書くことができます。この関数は(`--"
+"output-*`による)コンパイル中には呼び出されず、 コードが実行されている間に 1 回だけ実行されると想定できます。 もちろん、必要に応じて手動で呼び"
+"出すこともできますが、デフォルトでは、この関数が、処理を実行中マシンの計算状態を扱っていると想定できます。ここでいう計算状態とは、プリコンパ"
+"イルイメージに含まれる必要がない - むしろ含まれてはいけない ようなモノを表します。この `__init__()`関数は、モジュールがプロセスにロードされた"
+"あとで、呼ばれます。これは、インクリメンタル コンパイル (`-output-incremental=yes`) でロードされる場合も該当しますが、フルコンパイルプロセス"
+"にロードされる場合は該当しません。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:267
@@ -31986,6 +32110,10 @@ msgid ""
 "statements in the module have been executed). Because it is called after the module is fully imported, any submodules or other imported "
 "modules have their `__init__` functions called *before* the `__init__` of the enclosing module."
 msgstr ""
+"特に、モジュール内に`__init__()`関数を定義した場合、(例えば、`import`、`using`、`require`などを用いて)モジュールがロードされた*直後*、初めて"
+"の実行時に `__init__()`関数が呼ばれます。 (つまり、モジュール内のすべての文が実行された後に`__init__` は 1 回だけ呼び出されます)。モジュール"
+"が完全にインポートされた後に呼び出されるため、サブモジュールやその他のインポートされたモジュールの `__init__()`関数はそれを囲むモジュールの"
+"`__init__`よりも *前に* 呼び出されます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:275
@@ -31996,6 +32124,11 @@ msgid ""
 "value of a `void *foo_data()` function defined by `libfoo` -- this constant must be initialized at runtime (not at compile time) because the "
 "pointer address will change from run to run.  You could accomplish this by defining the following `__init__` function in your module:"
 msgstr ""
+"`__init__` の 2 つの典型的な用途は、外部 C ライブラリのランタイム初期化関数を呼び出し、外部ライブラリによって返されるポインターを含むグローバ"
+"ル定数を初期化することです。 たとえば、実行時に `foo_init()` 初期化関数を呼び出す必要がある C ライブラリ `libfoo` を呼び出すとします。"
+"`libfoo` で定義された `void *foo_data()` 関数の戻り値を保持するグローバル定数 `foo_data_ptr` も定義するとします。この時、ポインタのアドレスは"
+"実行するごとに変わるため、`foo_data_ptr` は(コンパイル時ではなく)実行時に初期化する必要があります。これは、モジュール内に次のような`__init__`"
+"関数を定義すれば、実行できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:276
@@ -32008,6 +32141,12 @@ msgid ""
 "    nothing\n"
 "end\n"
 msgstr ""
+"const foo_data_ptr = Ref{Ptr{Cvoid}}(0)\n"
+"function __init__()\n"
+"    ccall((:foo_init, :libfoo), Cvoid, ())\n"
+"    foo_data_ptr[] = ccall((:foo_data, :libfoo), Ptr{Cvoid}, ())\n"
+"    nothing\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:290
@@ -32016,6 +32155,9 @@ msgid ""
 "language. But by making it a constant at global scope, we can ensure that the type is known to the compiler and allow it to generate better "
 "optimized code. Obviously, any other globals in your module that depends on `foo_data_ptr` would also have to be initialized in `__init__`."
 msgstr ""
+"`__init__`のような関数内でグローバルにシンボルを定義することは可能であることに注目してください。これは動的言語を使用する利点の 1 つですが、グ"
+"ローバルスコープで定数とすることで、コンパイラが型を認識し、より最適化されたコードを生成できるようになります。明らかに、モジュール内の他のグ"
+"ローバルも `foo_data_ptr` に依存するものについては、`__init__` で初期化する必要があります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:297
@@ -32025,6 +32167,10 @@ msgid ""
 "returns a raw pointer value must be called at runtime for precompilation to work (Ptr objects will turn into null pointers unless they are "
 "hidden inside an isbits object). This includes the return values of the Julia functions `cfunction` and `pointer`."
 msgstr ""
+"`ccall` を使わずに生成されるほとんどの Julia オブジェクトを含む定数は`__init__` に配置する必要はありません。 そういう定数の定義は、プリコンパ"
+"イルでき、キャッシュされたモジュールイメージからロードすることができます。これには、配列のようにヒープを割り当てられた複雑なオブジェクトも含"
+"まれますが、生のポインター値を返すルーチンは、プリコンパイルがうまく動作するように実行時に呼び出す必要があります(Ptr オブジェクトは、isbits "
+"オブジェクト内に隠されていない限り、null ポインターに なります)。これには、Julia 関数 `cfunction` と `pointer`の戻り値が含まれます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:308
@@ -32037,6 +32183,12 @@ msgid ""
 "within your `__init__` function. Alternatively, you can use the `IdDict` dictionary type, which is specially handled by precompilation so "
 "that it is safe to initialize at compile-time."
 msgstr ""
+"辞書型、集合型、または一般に`hash(key)`メソッドの出力に何らか依存するものは取り扱いが厄介なケースです。key が数値、文字列、シンボル、範"
+"囲、'Expr'、またはこれらの型の複合型 (配列、タプル、集合、Pairなどを介して) である一般的なケースでは、プリコンパイルしても安全です。 ただし、"
+"いくつかのキー型、例えば `Function`、`DataType`  そして `hash`メソッドを定義していない汎用ユーザー定義の型などについは、フォールバック `hash`"
+"メソッドは、(`objectid` を介する) オブジェクトのメモリ アドレスに依存しており、実行するたびに変更されるかもしれません。これらのキータイプのい"
+"ずれかを持っている場合、または安全であると確信が持てない場合は、`__init__` 関数内からこの辞書を初期化できます。あるいは、`IdDict`辞書型を使う"
+"こともできます。これはコンパイル時に安全に初期化できるように、プリコンパイルによって特殊な処理がされます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:313
@@ -32045,16 +32197,19 @@ msgid ""
 "In this mode, it will often be much more clearly apparent that Julia is a compiler which allows execution of arbitrary Julia code, not a "
 "standalone interpreter that also generates compiled code."
 msgstr ""
+"プリコンパイルを使用する場合は、コンパイル フェーズと実行フェーズの違いを明確に理解しておく必要があります。このモードでは、Julia がコンパイル"
+"済みコードを生成するスタンドアロンインタプリタではなく、任意の Julia コードの実行を可能にするコンパイラであることが明らかになることがよくあり"
+"ます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:315
 msgid "Other known potential failure scenarios include:"
-msgstr ""
+msgstr "その他既知の失敗しがちなシナリオは下記の通りです:"
 
 #. type: Bullet: '1. '
 #: ext/julia/doc/src/manual/modules.md:318
 msgid "Global counters (for example, for attempting to uniquely identify objects) Consider the following code snippet:"
-msgstr ""
+msgstr "グローバルカウンター(例えば、オブジェクトを一意に識別する)について、次のコードを考えてみましょう:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:319
@@ -32067,6 +32222,12 @@ msgid ""
 "       end\n"
 "   end\n"
 msgstr ""
+"   mutable struct UniquedById\n"
+"       myid::Int\n"
+"       let counter = 0\n"
+"           UniquedById() = new(counter += 1)\n"
+"       end\n"
+"   end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:331
@@ -32075,7 +32236,7 @@ msgid ""
 "   while the intent of this code was to give every instance a unique id, the counter value is recorded\n"
 "   at the end of compilation. All subsequent usages of this incrementally compiled module will start\n"
 "   from that same counter value.\n"
-msgstr ""
+msgstr "   このコードの目的は、すべてのインスタンスに一意の ID を与えるものでしたが、コンパイルの最後にカウンタ値はが記録されます。このあとで、インクリメンタルコンパイルされたモジュールが使われるときはいつも、同じカウンタ値から起動します。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:334
@@ -32083,7 +32244,7 @@ msgstr ""
 msgid ""
 "   Note that `objectid` (which works by hashing the memory pointer) has similar issues (see notes\n"
 "   on `Dict` usage below).\n"
-msgstr ""
+msgstr "   `objectid` は、メモリポインタをハッシュするものですが、似たような問題があることに注意 ( 下記の `Dict` 用法参照 ) 。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:344
@@ -32099,6 +32260,10 @@ msgid ""
 "4. Creating accidental \"copies\" of global state from another module, by referencing it directly instead\n"
 "   of via its lookup path. For example, (in global scope):\n"
 msgstr ""
+"   もう 1 つの方法は、マクロを使用して [`@__MODULE__`](@ref) をキャプチャし、現在の 'カウンタ' 値を使用して単独で格納することです。ただし、このグローバル状態に依存しないようにコードを再設計するほうがよいかもしれません。\n"
+"2. 連想コレクション (`Dict` や `Set` など) は `__init__`で再ハッシュする必要があります。(将来的には、初期化関数を登録するメカニズムが提供されるかもしれません)。\n"
+"3. コンパイル時の副作用の影響はは実行時にも残ります。例: 他の Julia モジュールの配列またはその他の変数の内容の変更、ファイルまたはデバイスを開くためにハンドルの保持、他のシステム リソース (メモリを含む) へのポインターの格納。\n"
+"4. ルックアップパスではなく、直接参照をすることで、別のモジュールからグローバルな状態の「コピー」を意図せず作成してしまうこと。例えば、(グローバルスコープでは):\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:345
@@ -32110,13 +32275,18 @@ msgid ""
 "   # or move the assignment into the runtime:\n"
 "   __init__() = global mystdout = Base.stdout #= also works =#\n"
 msgstr ""
+"   #mystdout = Base.stdout #= will not work correctly, since this will copy Base.stdout into this module =#\n"
+"   # instead use accessor functions:\n"
+"   getstdout() = Base.stdout #= best option =#\n"
+"   # or move the assignment into the runtime:\n"
+"   __init__() = global mystdout = Base.stdout #= also works =#\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:355
 msgid ""
 "Several additional restrictions are placed on the operations that can be done while precompiling code to help the user avoid other wrong-"
 "behavior situations:"
-msgstr ""
+msgstr "コードのプリコンパイル中に可能な処理には様々な制限が課されます。ユーザーが間違った状況を避けるのを支援するためです:"
 
 #. type: Bullet: '1. '
 #: ext/julia/doc/src/manual/modules.md:361
@@ -32124,21 +32294,25 @@ msgid ""
 "Calling [`eval`](@ref) to cause a side-effect in another module. This will also cause a warning to be emitted when the incremental "
 "precompile flag is set."
 msgstr ""
+"別のモジュールで副作用を引き起こす[`eval`](@ref)の呼び出し。また、インクリメンタルなプリコンパイルのフラグが設定されている時には警告が出力さ"
+"れます。"
 
 #. type: Bullet: '2. '
 #: ext/julia/doc/src/manual/modules.md:361
 msgid "`global const` statements from local scope after `__init__()` has been started (see issue #12010 for plans to add an error for this)"
 msgstr ""
+"`__init__()`が処理開始された後の ローカルスコープからの `global const` 宣言 (これに対してエラーを発生させようという計画については、issue "
+"#12010 を参照)"
 
 #. type: Bullet: '3. '
 #: ext/julia/doc/src/manual/modules.md:361
 msgid "Replacing a module is a runtime error while doing an incremental precompile."
-msgstr ""
+msgstr "モジュールの置き換えは、増分プリコンパイルの実行中にランタイム エラーを引き起こします。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:363
 msgid "A few other points to be aware of:"
-msgstr ""
+msgstr "その他の注意点は次のとおりです:"
 
 #. type: Bullet: '1. '
 #: ext/julia/doc/src/manual/modules.md:379
@@ -32146,11 +32320,13 @@ msgid ""
 "No code reload / cache invalidation is performed after changes are made to the source files themselves, (including by [`Pkg.update`], and no "
 "cleanup is done after [`Pkg.rm`]"
 msgstr ""
+"ソース ファイル自体に変更が加えられた([`Pkg.update`] 含む)後に 、コードの再読み込み/キャッシュの無効化は実行されません 、['Pkg.rm'] の後にク"
+"リーンアップは行われません"
 
 #. type: Bullet: '2. '
 #: ext/julia/doc/src/manual/modules.md:379
 msgid "The memory sharing behavior of a reshaped array is disregarded by precompilation (each view gets its own copy)"
-msgstr ""
+msgstr "Reshape された配列のメモリ共有動作は、プリコンパイルによって無視されます (各ビューは独自のコピーを取得します)"
 
 #. type: Bullet: '3. '
 #: ext/julia/doc/src/manual/modules.md:379
@@ -32159,11 +32335,14 @@ msgid ""
 "runtime, or the BinDeps `@checked_lib` macro. Sometimes this is unavoidable.  However, when possible, it can be good practice to copy "
 "resources into the module at compile-time so they won't need to be found at runtime."
 msgstr ""
+"コンパイル時と実行時の間にファイルシステムが変更されないことを期待するもの: 例えば、[`@__FILE__`](@ref)/`source_path()`で実行時にリソースを探"
+"すためとか、BinDeps の `@checked_lib` マクロなど。こういうことは避けられないことがあります。ただし、可能であれば、コンパイル時にリソースをモ"
+"ジュールにコピーしておいて、実行時にそのリソースを探す必要を無くしておくのはよいプラクティスです。"
 
 #. type: Bullet: '4. '
 #: ext/julia/doc/src/manual/modules.md:379
 msgid "`WeakRef` objects and finalizers are not currently handled properly by the serializer (this will be fixed in an upcoming release)."
-msgstr ""
+msgstr "`WeakRef` オブジェクトとファイナライザは、現在シリアライザーによって適切に処理されていません (これは今後のリリースで修正されます)。"
 
 #. type: Bullet: '5. '
 #: ext/julia/doc/src/manual/modules.md:379
@@ -32173,6 +32352,9 @@ msgid ""
 "outcome you desire. It is not necessarily an error to do this, but you simply need to be prepared that the system will try to copy some of "
 "these and to create a single unique instance of others."
 msgstr ""
+"通常は、シリアライザーを混乱させ、望まぬ結果を導く可能性があるため、`Method`, `MethodInstance`, `MethodTable`, `TypeMapLeve`, `TypeMapEntry` "
+"そしてこれらのオブジェクトのフィールドなどの、内部メタデータオブジェクトのインスタンスへの参照を補足しないようにすることをお考めします。参照"
+"を補足することは必ずしもエラーではありませんが、システムがこれらの一部をコピーし、単一・唯一のインスタンスを作成するようにすればよい話です。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:385
@@ -32183,12 +32365,17 @@ msgid ""
 "command line flag is passed to `Pkg.build` to disable automatic precompilation triggering when installing, updating, and explicitly building "
 "packages."
 msgstr ""
+"モジュールの開発中に、インクリメンタルプリコンパイルをオフにすると便利な場合があります。コマンドラインフラグ `--compiled-modules={yes|no}` を"
+"使用すると、モジュールのプリコンパイルのオンとオフを切り替うことができます。Julia が `--compiled-modules=no` で起動すると、モジュールとモ"
+"ジュールの依存関係を読み込むときに、コンパイル キャッシュ内のシリアル化されたモジュールは無視されます。`--compiled-modules=no`にしていても"
+"`Base.compilecache` は手動で呼び出すことができます。このコマンド ライン フラグの状態は `Pkg.build` に渡され、パッケージのインストール、更新、"
+"および明示的なビルド時に自動プリコンパイルトリガを無効にします。"
 
 #. type: Title #
 #: ext/julia/doc/src/manual/arrays.md:1
 #, no-wrap
 msgid "[Multi-dimensional Arrays](@id man-multi-dim-arrays)"
-msgstr ""
+msgstr "[多次元配列](@id man-multi-dim-arrays)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/arrays.md:10
@@ -45945,15 +46132,14 @@ msgstr ""
 
 #. type: Bullet: '12. '
 #: ext/julia/doc/src/devdocs/eval.md:59
-#, fuzzy
 msgid ""
 "If instead, the code is compiled, the bulk of the work is handled by `codegen.cpp`. Whenever a Julia function is called for the first time "
 "with a given set of argument types, [type inference](@ref dev-type-inference)  will be run on that function. This information is used by the "
 "[codegen](@ref dev-codegen) step to generate faster code."
 msgstr ""
-"代わりに、コードがコンパイルされている場合、作業の大部分は `codegen.cpp` によって処理されます。指定された引数型のセットで Julia 関数が初めて"
-"呼び出されるたびに、その関数に対して [型推論](@ref dev-type-inference)が実行されます。この情報は、[codegen](@ref dev-codegen)ステップでより高"
-"速なコードを生成するために使用されます。"
+"代わりに、コードがコンパイルされている場合、作業の大部分は `codegen.cpp` によって処理されます。型指定された引数とともに、Julia 関数が初めて呼"
+"ばれるときはいつも、その関数で  [型推論](@ref dev-type-inference)が実行されます。この情報は、[codegen](@ref dev-codegen)ステップでより高速な"
+"コードを生成するために使用されます。"
 
 #. type: Bullet: '13. '
 #: ext/julia/doc/src/devdocs/eval.md:59
