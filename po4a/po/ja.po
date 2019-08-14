@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-07-24 01:15+0000\n"
-"PO-Revision-Date: 2019-08-07 10:04+0900\n"
+"PO-Revision-Date: 2019-08-14 10:56+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 2.2.3\n"
-"X-Poedit-Bookmarks: 3526,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
+"X-Poedit-Bookmarks: 1144,0,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. type: Title =
 #: ext/julia/doc/src/./NEWS.md:2
@@ -646,8 +646,8 @@ msgid ""
 "tips) section before trying anything else. Once you understand how Julia works, it's easy to write code that's nearly as fast as C."
 msgstr ""
 "JuliaのコンパイラはPythonやRのような言語で使われているインタプリタとは異なるので、Juliaのパフォーマンスは最初は直観的ではないことがわかりま"
-"す。プログラムが遅いと思われる場合は、何かを試す前に[Performance　Tips](@ref man-performance-tips)セクションを読むことを強くお勧めします。"
-"Juliaのしくみを理解すれば、Cと同じくらい速いコードを書くのは簡単です。"
+"す。プログラムが遅いと思われる場合は、何かを試す前に[パフォーマンス・ティップス](@ref man-performance-tips)セクションを読むことを強くお勧めし"
+"ます。Juliaのしくみを理解すれば、Cと同じくらい速いコードを書くのは簡単です。"
 
 #. type: Plain text
 #: ext/julia/doc/src/./index.md:61
@@ -2876,7 +2876,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/methods.md:765
 #, no-wrap
 msgid "Parametrically-constrained Varargs methods"
-msgstr ""
+msgstr "[パラメータ制限付きの可変引数メソッド](@id parametrically-constrained-varargs-methods]"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/methods.md:770
@@ -2933,7 +2933,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/methods.md:800
 #, no-wrap
 msgid "Note on Optional and keyword Arguments"
-msgstr ""
+msgstr "[オプション引数・キーワード引数に関する注記](@id note-on-optional-and-keyword-arguments]"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/methods.md:804
@@ -4372,7 +4372,7 @@ msgid ""
 "infix syntax `A ⊗ B` for Kronecker products ([`kron`](@ref)), then `[A,B] .⊗ [C,D]` will compute `[A⊗C, B⊗D]` with no additional coding."
 msgstr ""
 "ドット構文は、ユーザーが定義した演算子にも適用できます。 たとえば、クローネッカー積([`kron`](@ref))に便利なイン二項演算構文 `A ⊗ B`を使うため"
-"に`⊗(A,B) = kron(A,B)` を定義した場合 、`[A,B] .⊗[C,D]` は追加のコーディングなしで '[A⊗B, B⊗D]' を計算します。"
+"に`⊗(A,B) = kron(A,B)` を定義した場合 、`[A,B] .⊗[C,D]` は追加のコーディングなしで `[A⊗B, B⊗D]` を計算します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:177
@@ -4380,7 +4380,7 @@ msgid ""
 "Combining dot operators with numeric literals can be ambiguous.  For example, it is not clear whether `1.+x` means `1. + x` or `1 .+ x`.  "
 "Therefore this syntax is disallowed, and spaces must be used around the operator in such cases."
 msgstr ""
-"ドット演算子と数値リテラルの組み合わせがあいまいになる場合があります。 たとえば、`1.+x` が '1. +x` と `1 .+ x`のどちらを意味するかは自明では"
+"ドット演算子と数値リテラルの組み合わせがあいまいになる場合があります。 たとえば、`1.+x` が `1. +x` と `1 .+ x`のどちらを意味するかは自明では"
 "ありません。したがって、この構文は許可されず、このような場合は演算子の周囲にスペースを使用する必要があります。"
 
 #. type: Title ##
@@ -4518,7 +4518,7 @@ msgstr "`Inf` はそれ自体と等しく、`NaN` を除く他のすべてより
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/mathematical-operations.md:236
 msgid "`-Inf` is equal to itself and less then everything else except `NaN`."
-msgstr "'-Inf' はそれ自体に等しく、'NaN' を除く他のすべての数より小さい。"
+msgstr "`-Inf` はそれ自体に等しく、`NaN` を除く他のすべての数より小さい。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/mathematical-operations.md:236
@@ -4842,7 +4842,7 @@ msgid ""
 "For a complete list of *every* Julia operator's precedence, see the top of this file: [`src/julia-parser.scm`](https://github.com/JuliaLang/"
 "julia/blob/master/src/julia-parser.scm)"
 msgstr ""
-"Julia における *全ての* 演算子の優先順位の完全なリストは、このファイルの上部を参照してください: [src/julia-parser.scm'](https://github.com/"
+"Julia における *全ての* 演算子の優先順位の完全なリストは、このファイルの上部を参照してください: [`src/julia-parser.scm`](https://github.com/"
 "juliaLang/julia/blob/master/src/julia-parser.scm)"
 
 #. type: Plain text
@@ -9257,7 +9257,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/functions.md:1
 #, no-wrap
 msgid "[Functions](@id man-functions)"
-msgstr ""
+msgstr "[関数](@id man-functions)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:6
@@ -9266,6 +9266,8 @@ msgid ""
 "functions, in the sense that functions can alter and be affected by the global state of the program. The basic syntax for defining functions "
 "in Julia is:"
 msgstr ""
+"Julia では、関数は引数値のタプルを受け取って、戻り値を返すオブジェクトです。Julia 関数は、グローバル変数の状態を変えたり、グローバル変数の状"
+"態に影響を受けたりするという点で、純粋な数学関数ではありません。関数を定義する基本的な構文は次のとおりです:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:7
@@ -9276,6 +9278,10 @@ msgid ""
 "       end\n"
 "f (generic function with 1 method)\n"
 msgstr ""
+"julia> function f(x,y)\n"
+"           x + y\n"
+"       end\n"
+"f (generic function with 1 method)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:16
@@ -9283,6 +9289,7 @@ msgid ""
 "There is a second, more terse syntax for defining a function in Julia. The traditional function declaration syntax demonstrated above is "
 "equivalent to the following compact \"assignment form\":"
 msgstr ""
+"もっと簡潔に関数を定義する第二の構文があります。上記に示した従来の関数宣言構文と次のようなコンパクトな代入方式は同等の関数定義を行います:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:17
@@ -9291,6 +9298,8 @@ msgid ""
 "julia> f(x,y) = x + y\n"
 "f (generic function with 1 method)\n"
 msgstr ""
+"julia> f(x,y) = x + y\n"
+"f (generic function with 1 method)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:26
@@ -9299,11 +9308,13 @@ msgid ""
 "Expressions](@ref man-compound-expressions)). Short, simple function definitions are common in Julia. The short function syntax is "
 "accordingly quite idiomatic, considerably reducing both typing and visual noise."
 msgstr ""
+"代入方式では、関数の本体は単一の式である必要がありますが、複合式を指定できます ([複合式](@ref man-compound-expressions)を参照)。短くて単純な"
+"関数定義は、Julia でよく使われます。この構文は非常に慣用的であり、コーディング時のタイプ量と視覚的なノイズの両方を大幅に削減してくれます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:28
 msgid "A function is called using the traditional parenthesis syntax:"
-msgstr ""
+msgstr "関数は、従来の括弧構文を使用して呼び出されます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:29
@@ -9312,11 +9323,13 @@ msgid ""
 "julia> f(2,3)\n"
 "5\n"
 msgstr ""
+"julia> f(2,3)\n"
+"5\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:36
 msgid "Without parentheses, the expression `f` refers to the function object, and can be passed around like any value:"
-msgstr ""
+msgstr "括弧を使用しない場合、式 `f` は関数オブジェクトを参照し、任意の値と同様に変数に渡すことができます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:37
@@ -9327,11 +9340,15 @@ msgid ""
 "julia> g(2,3)\n"
 "5\n"
 msgstr ""
+"julia> g = f;\n"
+"\n"
+"julia> g(2,3)\n"
+"5\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:45
 msgid "As with variables, Unicode can also be used for function names:"
-msgstr ""
+msgstr "変数と同様に、関数名にもUnicode を使用できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:46
@@ -9343,12 +9360,17 @@ msgid ""
 "julia> ∑(2, 3)\n"
 "5\n"
 msgstr ""
+"julia> ∑(x,y) = x + y\n"
+"∑ (generic function with 1 method)\n"
+"\n"
+"julia> ∑(2, 3)\n"
+"5\n"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/functions.md:54
 #, no-wrap
 msgid "Argument Passing Behavior"
-msgstr ""
+msgstr "引数渡しの振る舞い"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:62
@@ -9358,12 +9380,15 @@ msgid ""
 "they refer to are identical to the passed values. Modifications to mutable values (such as `Array`s) made within a function will be visible "
 "to the caller. This is the same behavior found in Scheme, most Lisps, Python, Ruby and Perl, among other dynamic languages."
 msgstr ""
+"Julia 関数の引数は、\"共有渡し\" と呼ばれる慣例に従います。関数に渡した引数はコピーされません。関数引数そのものは、新しい変数 *バインディング"
+"* (値を参照できる新しい場所) として振る舞いますが、参照する値は渡された値と同一のものです。ミュータブル(変更可能)な値(配列など)に対して、関数"
+"内で行われた変更は呼び出し側からも見えます。これは、Scheme、ほとんどのLisp 、Python、Ruby、Perlその他の動的言語で見られる動作と同じです。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/functions.md:63
 #, no-wrap
 msgid "The `return` Keyword"
-msgstr ""
+msgstr "`return` キーワード"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:70
@@ -9373,6 +9398,9 @@ msgid ""
 "other imperative or functional languages, the `return` keyword causes a function to return immediately, providing an expression whose value "
 "is returned:"
 msgstr ""
+"関数の戻り値は、最後に評価された式の値であり、デフォルトでは関数定義の本体の最後の式です。前節で挙げた 関数 `f`の例では式 `x + y` がこれに当"
+"たります。C や他のほとんどの命令型言語や関数型言語の大部分はが、`return` キーワードによって、関数の実行が即時に終了し、指定された式を戻り値と"
+"します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:71
@@ -9383,11 +9411,15 @@ msgid ""
 "    x + y\n"
 "end\n"
 msgstr ""
+"function g(x,y)\n"
+"    return x * y\n"
+"    x + y\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:80
 msgid "Since function definitions can be entered into interactive sessions, it is easy to compare these definitions:"
-msgstr ""
+msgstr "関数定義は対話型セッションで入力できるため、これらの定義を簡単に比較できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:81
@@ -9408,6 +9440,20 @@ msgid ""
 "julia> g(2,3)\n"
 "6\n"
 msgstr ""
+"julia> f(x,y) = x + y\n"
+"f (generic function with 1 method)\n"
+"\n"
+"julia> function g(x,y)\n"
+"           return x * y\n"
+"           x + y\n"
+"       end\n"
+"g (generic function with 1 method)\n"
+"\n"
+"julia> f(2,3)\n"
+"5\n"
+"\n"
+"julia> g(2,3)\n"
+"6\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:103
@@ -9417,6 +9463,9 @@ msgid ""
 "`return` is of real use. Here, for example, is a function that computes the hypotenuse length of a right triangle with sides of length `x` "
 "and `y`, avoiding overflow:"
 msgstr ""
+"もちろん、純粋な線形関数 `g`では、`return` をつかう意味はありません。`x + y` という式は評価されず、単に`x * y` を関数の最後の式にすれば "
+"`return` を省略できるためです。ただし、他の制御フローと組み合わる場合、`return` は実用的です。たとえば、オーバーフローを回避しながら `x` と "
+"`y` の辺を持つ直角三角形の斜辺の長さを計算する関数は下記のようになります:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:104
@@ -9440,6 +9489,23 @@ msgid ""
 "julia> hypot(3, 4)\n"
 "5.0\n"
 msgstr ""
+"julia> function hypot(x,y)\n"
+"           x = abs(x)\n"
+"           y = abs(y)\n"
+"           if x > y\n"
+"               r = y/x\n"
+"               return x*sqrt(1+r*r)\n"
+"           end\n"
+"           if y == 0\n"
+"               return zero(x)\n"
+"           end\n"
+"           r = x/y\n"
+"           return y*sqrt(1+r*r)\n"
+"       end\n"
+"hypot (generic function with 1 method)\n"
+"\n"
+"julia> hypot(3, 4)\n"
+"5.0\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:127
@@ -9447,13 +9513,15 @@ msgid ""
 "There are three possible points of return from this function, returning the values of three different expressions, depending on the values "
 "of `x` and `y`. The `return` on the last line could be omitted since it is the last expression."
 msgstr ""
+"この関数から、呼び出し側に戻るポイントは 3 箇所あり、`x` と `y` の値に応じて 3 つの異なる式の値を返します。最後の行の `return` は最後の式であ"
+"るため省略できます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:130
 msgid ""
 "A return type can also be specified in the function declaration using the `::` operator. This converts the return value to the specified "
 "type."
-msgstr ""
+msgstr "戻り値の型は、`::` 演算子を使用して関数宣言で指定することもできます。これにより、戻り値が指定された型に変換されます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:131
@@ -9466,18 +9534,26 @@ msgid ""
 "julia> typeof(g(1, 2))\n"
 "Int8\n"
 msgstr ""
+"julia> function g(x, y)::Int8\n"
+"           return x * y\n"
+"       end;\n"
+"\n"
+"julia> typeof(g(1, 2))\n"
+"Int8\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:142
 msgid ""
 "This function will always return an `Int8` regardless of the types of `x` and `y`.  See [Type Declarations](@ref) for more on return types."
 msgstr ""
+"この関数は、`x` と `y` の型に関係なく、常に `Int8` を返します。 戻り値の型の詳細については、[型宣言](@ref type-declarations)を参照してくださ"
+"い。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/functions.md:143
 #, no-wrap
 msgid "Operators Are Functions"
-msgstr ""
+msgstr "演算子は関数である"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:150
@@ -9501,6 +9577,11 @@ msgid ""
 "julia> +(1,2,3)\n"
 "6\n"
 msgstr ""
+"julia> 1 + 2 + 3\n"
+"6\n"
+"\n"
+"julia> +(1,2,3)\n"
+"6\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:162
@@ -9509,6 +9590,8 @@ msgid ""
 "internally. This also means that you can assign and pass around operators such as [`+`](@ref) and [`*`](@ref) just like you would with other "
 "function values:"
 msgstr ""
+"上記コードにおける１つ目の例の二項演算形式は、２つ目の例の関数適用形式と全く同等です。実は、前者は内部で関数呼び出しを行っているのです。これ"
+"はまた、他の関数と同様に[`+`](@ref)や[`*`](@ref)]などの演算子は、代入や受け渡しが可能だということです:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:163
@@ -9519,22 +9602,26 @@ msgid ""
 "julia> f(1,2,3)\n"
 "6\n"
 msgstr ""
+"julia> f = +;\n"
+"\n"
+"julia> f(1,2,3)\n"
+"6\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:171
 msgid "Under the name `f`, the function does not support infix notation, however."
-msgstr ""
+msgstr "ただし、`f` という名前では、この関数は二項演算形式を利用できません。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/functions.md:172
 #, no-wrap
 msgid "Operators With Special Names"
-msgstr ""
+msgstr "特殊な名前の演算子"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:175
 msgid "A few special expressions correspond to calls to functions with non-obvious names. These are:"
-msgstr ""
+msgstr "通常の用法では見た目からはわからない名前で関数呼び出しできる特殊な式がいくつかあります:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:186
@@ -9551,12 +9638,22 @@ msgid ""
 "| `A.n`             | [`getproperty`](@ref Base.getproperty) |\n"
 "| `A.n = x`         | [`setproperty!`](@ref Base.setproperty!) |\n"
 msgstr ""
+"| 式        | 呼び出し名                   |\n"
+"|:----------------- |:----------------------- |\n"
+"| `[A B C ...]`     | [`hcat`](@ref)          |\n"
+"| `[A; B; C; ...]`  | [`vcat`](@ref)          |\n"
+"| `[A B; C D; ...]` | [`hvcat`](@ref)         |\n"
+"| `A'`              | [`adjoint`](@ref)       |\n"
+"| `A[i]`            | [`getindex`](@ref)      |\n"
+"| `A[i] = x`        | [`setindex!`](@ref)     |\n"
+"| `A.n`             | [`getproperty`](@ref Base.getproperty) |\n"
+"| `A.n = x`         | [`setproperty!`](@ref Base.setproperty!) |\n"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/functions.md:187
 #, no-wrap
 msgid "[Anonymous Functions](@id man-anonymous-functions)"
-msgstr ""
+msgstr "[無名関数](@id man-anonymous-functions)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:194
@@ -9565,6 +9662,9 @@ msgid ""
 "called using the standard function call syntax from the variable they have been assigned to. They can be used as arguments, and they can be "
 "returned as values. They can also be created anonymously, without being given a name, using either of these syntaxes:"
 msgstr ""
+"Julia では 関数は[ファーストクラスのオブジェクト](https://en.wikipedia.org/wiki/First-class_citizen)です。:変数に代入ができ、代入された変数か"
+"ら標準的な関数呼び出し構文を使って関数を呼び出すことができます。これらは関数の引数としても、戻り値としても使うことができます。また、 下記の構"
+"文のいずれかを使用して、名前を付けず作成することができます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:195
@@ -9578,6 +9678,13 @@ msgid ""
 "       end\n"
 "#3 (generic function with 1 method)\n"
 msgstr ""
+"julia> x -> x^2 + 2x - 1\n"
+"#1 (generic function with 1 method)\n"
+"\n"
+"julia> function (x)\n"
+"           x^2 + 2x - 1\n"
+"       end\n"
+"#3 (generic function with 1 method)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:208
@@ -9585,6 +9692,8 @@ msgid ""
 "This creates a function taking one argument `x` and returning the value of the polynomial `x^2 + 2x - 1` at that value. Notice that the "
 "result is a generic function, but with a compiler-generated name based on consecutive numbering."
 msgstr ""
+"これにより、引数 `x` を受け取って、その値を用いて計算した、多項式 `x^2 + 2x - 1`の値を返す関数が作成されます。ここで生成される関数は、汎化関"
+"数ですが、コンパイラで生成した通し番号に基づいた名前を持つ点に注意してください。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:212
@@ -9592,6 +9701,8 @@ msgid ""
 "The primary use for anonymous functions is passing them to functions which take other functions as arguments. A classic example is [`map`]"
 "(@ref), which applies a function to each value of an array and returns a new array containing the resulting values:"
 msgstr ""
+"無名関数の主な用途は、他の関数を引数に取る関数に渡すことです。典型的な例は[`map`(@ref)]で、配列の各値に対して関数を適用し、その結果を新しい配"
+"列として返します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:213
@@ -9603,6 +9714,11 @@ msgid ""
 " 4.0\n"
 " 2.0\n"
 msgstr ""
+"julia> map(round, [1.2,3.5,1.7])\n"
+"3-element Array{Float64,1}:\n"
+" 1.0\n"
+" 4.0\n"
+" 2.0\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:225
@@ -9611,6 +9727,9 @@ msgid ""
 "ready-to-use, named function does not exist. In these situations, the anonymous function construct allows easy creation of a single-use "
 "function object without needing a name:"
 msgstr ""
+"もし、変換を行う名前付きの関数があって、[`map`](@ref)関数の第一引数に渡せるのであれば、問題は有りません。しかし、多くの場合、すぐに使用できる"
+"名前付き関数は存在しません。このような状況では、無名関数nの機能を使えば、その時限りの、名前を必要としない関数オブジェクトを簡単に生成すること"
+"ができます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:226
@@ -9622,6 +9741,11 @@ msgid ""
 " 14\n"
 " -2\n"
 msgstr ""
+"julia> map(x -> x^2 + 2x - 1, [1,3,-1])\n"
+"3-element Array{Int64,1}:\n"
+"  2\n"
+" 14\n"
+" -2\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:238
@@ -9631,13 +9755,13 @@ msgid ""
 "A zero-argument anonymous function is written as `()->3`. The idea of a function with no arguments\n"
 "may seem strange, but is useful for \"delaying\" a computation. In this usage, a block of code is\n"
 "wrapped in a zero-argument function, which is later invoked by calling it as `f`.\n"
-msgstr ""
+msgstr "複数の引数を受けとる無名関数は、`(x,y,z)->2x+y-z`のような構文を使用して記述できます。ゼロ引数の匿名関数は `()->3` のように書かれます。引数のない関数の考えは奇妙に見えるかもしれませんが、計算を「遅らせる」ために役立ちます。この使用法では、コードブロックを後でゼロ引数関数で囲っておき、後で`f` のように呼んで実行します。\n"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/functions.md:239
 #, no-wrap
 msgid "Tuples"
-msgstr ""
+msgstr "タプル"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:246
@@ -9646,6 +9770,9 @@ msgid ""
 "length container that can hold any values, but cannot be modified (it is *immutable*).  Tuples are constructed with commas and parentheses, "
 "and can be accessed via indexing:"
 msgstr ""
+"Julia には、関数引数と戻り値に密接に関連する *tuple* と呼ばれる組み込みのデータ構造があります。 タプルは、任意の値を保持できる固定長のコンテ"
+"ナーですが、その中身を変更することはできません (*immutable*)。 タプルはカンマと括弧で構成され、インデックスつかってアクセスすることができま"
+"す:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:247
@@ -9663,6 +9790,17 @@ msgid ""
 "julia> x[2]\n"
 "\"hello\"\n"
 msgstr ""
+"julia> (1, 1+1)\n"
+"(1, 2)\n"
+"\n"
+"julia> (1,)\n"
+"(1,)\n"
+"\n"
+"julia> x = (0.0, \"hello\", 6*7)\n"
+"(0.0, \"hello\", 42)\n"
+"\n"
+"julia> x[2]\n"
+"\"hello\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:264
@@ -9670,17 +9808,19 @@ msgid ""
 "Notice that a length-1 tuple must be written with a comma, `(1,)`, since `(1)` would just be a parenthesized value.  `()` represents the "
 "empty (length-0) tuple."
 msgstr ""
+"長さ 1 のタプルは後ろにカンマを付けて、`(1,)`とすることに注意してください。`(1)` は括弧付きの値にすぎないから(タプルであることが示すためには"
+"カンマが必要)です。 `()` は空の (長さ-0) タプルを表します。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/functions.md:265
 #, no-wrap
 msgid "Named Tuples"
-msgstr ""
+msgstr "名前付きタプル"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:269
 msgid "The components of tuples can optionally be named, in which case a *named tuple* is constructed:"
-msgstr ""
+msgstr "タプルの各要素にはオプションで名前をつけることができます。このばあい、*名前付きタプル*が生成されます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:270
@@ -9692,17 +9832,22 @@ msgid ""
 "julia> x.a\n"
 "1\n"
 msgstr ""
+"julia> x = (a=1, b=1+1)\n"
+"(a = 1, b = 2)\n"
+"\n"
+"julia> x.a\n"
+"1\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:280
 msgid "Named tuples are very similar to tuples, except that fields can additionally be accessed by name using dot syntax (`x.a`)."
-msgstr ""
+msgstr "名前付きタプルはタプルに非常によく似ていますが、そのフィールドに対して、ドット構文 (`x.a`) を使用して名前でアクセスできます。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/functions.md:281
 #, no-wrap
 msgid "Multiple Return Values"
-msgstr ""
+msgstr "複数の戻り値"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:287
@@ -9711,12 +9856,14 @@ msgid ""
 "needing parentheses, thereby providing an illusion that multiple values are being returned, rather than a single tuple value. For example, "
 "the following function returns a pair of values:"
 msgstr ""
+"Julia では、複数の値をもつタプルを返すことで、擬似的に複数の値を返すことができます。ただし、タプルは括弧を使わなくても作成および分割できるた"
+"め、コード上、単一のタプル値ではなく複数の値が返されているような錯覚を与えます。たとえば、次の関数は、値のペアを返します:"
 
 #. type: Code fence info string
 #: ext/julia/doc/src/manual/functions.md:288 ext/julia/doc/src/manual/functions.md:298 ext/julia/doc/src/manual/functions.md:306
 #, no-wrap
 msgid "jldoctest foofunc"
-msgstr ""
+msgstr "jldoctest foofunc"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:288
@@ -9727,11 +9874,15 @@ msgid ""
 "       end\n"
 "foo (generic function with 1 method)\n"
 msgstr ""
+"julia> function foo(a,b)\n"
+"           a+b, a*b\n"
+"       end\n"
+"foo (generic function with 1 method)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:297
 msgid "If you call it in an interactive session without assigning the return value anywhere, you will see the tuple returned:"
-msgstr ""
+msgstr "戻り値をどの変数にも代入せずに、対話型セッションで呼び出すとタプルが返されます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:298
@@ -9740,6 +9891,8 @@ msgid ""
 "julia> foo(2,3)\n"
 "(5, 6)\n"
 msgstr ""
+"julia> foo(2,3)\n"
+"(5, 6)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:305
@@ -9747,6 +9900,8 @@ msgid ""
 "A typical usage of such a pair of return values, however, extracts each value into a variable.  Julia supports simple tuple \"destructuring"
 "\" that facilitates this:"
 msgstr ""
+"ただし、このように戻り値を組みにして返す用法をよく使うのは、それぞれの値を取り出して変数に代入する場合でしょう。Julia では、これを容易にする"
+"単純なタプルの分割をサポートしています:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:306
@@ -9761,11 +9916,19 @@ msgid ""
 "julia> y\n"
 "6\n"
 msgstr ""
+"julia> x, y = foo(2,3)\n"
+"(5, 6)\n"
+"\n"
+"julia> x\n"
+"5\n"
+"\n"
+"julia> y\n"
+"6\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:318
 msgid "You can also return multiple values via an explicit usage of the `return` keyword:"
-msgstr ""
+msgstr "`return` キーワードを明示的に使用して複数の値を返すこともできます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:319
@@ -9775,17 +9938,20 @@ msgid ""
 "    return a+b, a*b\n"
 "end\n"
 msgstr ""
+"function foo(a,b)\n"
+"    return a+b, a*b\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:326
 msgid "This has the exact same effect as the previous definition of `foo`."
-msgstr ""
+msgstr "これは既出の `foo` の定義と同等の効果があります。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/functions.md:327
 #, no-wrap
 msgid "Argument destructuring"
-msgstr ""
+msgstr "引数の分割"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:332
@@ -9793,6 +9959,8 @@ msgid ""
 "The destructuring feature can also be used within a function argument.  If a function argument name is written as a tuple (e.g. `(x, y)`) "
 "instead of just a symbol, then an assignment `(x, y) = argument` will be inserted for you:"
 msgstr ""
+"引数の分割機能は、関数引数の中でも使用できます。 関数引数名が単なる記号ではなくタプル (例: `(x, y)`)  のように書かれている場合、代入関数 "
+"`(x, y) = 引数` が挿入されます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:333
@@ -9805,19 +9973,25 @@ msgid ""
 "julia> range(minmax(10, 2))\n"
 "8\n"
 msgstr ""
+"julia> minmax(x, y) = (y < x) ? (y, x) : (x, y)\n"
+"\n"
+"julia> range((min, max)) = max - min\n"
+"\n"
+"julia> range(minmax(10, 2))\n"
+"8\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:345
 msgid ""
 "Notice the extra set of parentheses in the definition of `range`.  Without those, `range` would be a two-argument function, and this example "
 "would not work."
-msgstr ""
+msgstr "`range` の定義で余計な括弧があるのに注目してください。これがなければ、`range` は 2 引数関数になり、この例では機能しません。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/functions.md:346
 #, no-wrap
 msgid "Varargs Functions"
-msgstr ""
+msgstr "可変引数関数"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:351
@@ -9826,13 +10000,15 @@ msgid ""
 "\"varargs\" functions, which is short for \"variable number of arguments\". You can define a varargs function by following the last argument "
 "with an ellipsis:"
 msgstr ""
+"任意の個数の引数を取る関数を記述できると便利なことがよくあります。 このような関数は、伝統的に\"varargs\"関数として知られており、これは"
+"\"variable number of arguments\" (変数数の引数) の略です。varargs 関数を定義するには、最後の引数の後に、省略記号をつけると定義できます:"
 
 #. type: Code fence info string
 #: ext/julia/doc/src/manual/functions.md:352 ext/julia/doc/src/manual/functions.md:361 ext/julia/doc/src/manual/functions.md:384
 #: ext/julia/doc/src/manual/functions.md:395 ext/julia/doc/src/manual/functions.md:411
 #, no-wrap
 msgid "jldoctest barfunc"
-msgstr ""
+msgstr "jldoctest barfunc"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:352
@@ -9841,6 +10017,8 @@ msgid ""
 "julia> bar(a,b,x...) = (a,b,x)\n"
 "bar (generic function with 1 method)\n"
 msgstr ""
+"julia> bar(a,b,x...) = (a,b,x)\n"
+"bar (generic function with 1 method)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:360
@@ -9848,6 +10026,8 @@ msgid ""
 "The variables `a` and `b` are bound to the first two argument values as usual, and the variable `x` is bound to an iterable collection of "
 "the zero or more values passed to `bar` after its first two arguments:"
 msgstr ""
+"変数 `a` と `b` は通常どおり最初の 2 つの引数の値にバインドされ、変数 `x` は最初の 2 つの引数の後に `bar` に渡された 0 個以上の値のイテラブル"
+"なコレクションにバインドされます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:361
@@ -9865,11 +10045,22 @@ msgid ""
 "julia> bar(1,2,3,4,5,6)\n"
 "(1, 2, (3, 4, 5, 6))\n"
 msgstr ""
+"julia> bar(1,2)\n"
+"(1, 2, ())\n"
+"\n"
+"julia> bar(1,2,3)\n"
+"(1, 2, (3,))\n"
+"\n"
+"julia> bar(1, 2, 3, 4)\n"
+"(1, 2, (3, 4))\n"
+"\n"
+"julia> bar(1,2,3,4,5,6)\n"
+"(1, 2, (3, 4, 5, 6))\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:376
 msgid "In all these cases, `x` is bound to a tuple of the trailing values passed to `bar`."
-msgstr ""
+msgstr "いずれの場合も、`x` は `bar` に渡された後続の値からなるタプルにバインドされます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:379
@@ -9877,6 +10068,8 @@ msgid ""
 "It is possible to constrain the number of values passed as a variable argument; this will be discussed later in [Parametrically-constrained "
 "Varargs methods](@ref)."
 msgstr ""
+"可変引数として渡される値の数を制限することが可能です。これについては、後で[パラメータ制限付きの可変引数メソッド](@ref parametrically-"
+"constrained-varargs-methods]で説明します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:383
@@ -9884,6 +10077,8 @@ msgid ""
 "On the flip side, it is often handy to \"splat\" the values contained in an iterable collection into a function call as individual "
 "arguments. To do this, one also uses `...` but in the function call instead:"
 msgstr ""
+"また、多くの場合、イテラブル コレクションに含まれる値と関数呼び出しに個別の引数とを \"接合\" すると便利です。これを行うには、関数呼び出しで "
+"`...` を使用します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:384
@@ -9895,13 +10090,18 @@ msgid ""
 "julia> bar(1,2,x...)\n"
 "(1, 2, (3, 4))\n"
 msgstr ""
+"julia> x = (3, 4)\n"
+"(3, 4)\n"
+"\n"
+"julia> bar(1,2,x...)\n"
+"(1, 2, (3, 4))\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:394
 msgid ""
 "In this case a tuple of values is spliced into a varargs call precisely where the variable number of arguments go. This need not be the "
 "case, however:"
-msgstr ""
+msgstr "この場合は、タプルの値が可変引数呼び出しに接合されていますが、引数の数がタプルの要素数と等しいので、接合する必要はありません:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:395
@@ -9919,11 +10119,22 @@ msgid ""
 "julia> bar(x...)\n"
 "(1, 2, (3, 4))\n"
 msgstr ""
+"julia> x = (2, 3, 4)\n"
+"(2, 3, 4)\n"
+"\n"
+"julia> bar(1,x...)\n"
+"(1, 2, (3, 4))\n"
+"\n"
+"julia> x = (1, 2, 3, 4)\n"
+"(1, 2, 3, 4)\n"
+"\n"
+"julia> bar(x...)\n"
+"(1, 2, (3, 4))\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:410
 msgid "Furthermore, the iterable object splatted into a function call need not be a tuple:"
-msgstr ""
+msgstr "さらに、関数呼び出しと接合するイテラブルオブジェクトはタプルである必要がありません:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:411
@@ -9947,11 +10158,28 @@ msgid ""
 "julia> bar(x...)\n"
 "(1, 2, (3, 4))\n"
 msgstr ""
+"julia> x = [3,4]\n"
+"2-element Array{Int64,1}:\n"
+" 3\n"
+" 4\n"
+"\n"
+"julia> bar(1,2,x...)\n"
+"(1, 2, (3, 4))\n"
+"\n"
+"julia> x = [1,2,3,4]\n"
+"4-element Array{Int64,1}:\n"
+" 1\n"
+" 2\n"
+" 3\n"
+" 4\n"
+"\n"
+"julia> bar(x...)\n"
+"(1, 2, (3, 4))\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:433
 msgid "Also, the function that arguments are splatted into need not be a varargs function (although it often is):"
-msgstr ""
+msgstr "また、引数を接合する関数は、可変引数でなくても構いません(可変引数であることの方が多いですが):"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:434
@@ -9978,19 +10206,39 @@ msgid ""
 "Closest candidates are:\n"
 "  baz(::Any, ::Any) at none:1\n"
 msgstr ""
+"julia> baz(a,b) = a + b;\n"
+"\n"
+"julia> args = [1,2]\n"
+"2-element Array{Int64,1}:\n"
+" 1\n"
+" 2\n"
+"\n"
+"julia> baz(args...)\n"
+"3\n"
+"\n"
+"julia> args = [1,2,3]\n"
+"3-element Array{Int64,1}:\n"
+" 1\n"
+" 2\n"
+" 3\n"
+"\n"
+"julia> baz(args...)\n"
+"ERROR: MethodError: no method matching baz(::Int64, ::Int64, ::Int64)\n"
+"Closest candidates are:\n"
+"  baz(::Any, ::Any) at none:1\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:459
 msgid ""
 "As you can see, if the wrong number of elements are in the splatted container, then the function call will fail, just as it would if too "
 "many arguments were given explicitly."
-msgstr ""
+msgstr "この通り、接合するコンテナの要素数が適切でない場合、関数呼び出しは失敗します。明示的に与える引数が多い場合と同じです。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/functions.md:460
 #, no-wrap
 msgid "Optional Arguments"
-msgstr ""
+msgstr "オプション引数"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:467
@@ -9999,6 +10247,9 @@ msgid ""
 "example, the function [`Date(y, [m, d])`](@ref)  from `Dates` module constructs a `Date` type for a given year `y`, month `m` and day `d`.  "
 "However, `m` and `d` arguments are optional and their default value is `1`.  This behavior can be expressed concisely as:"
 msgstr ""
+"多くの場合、関数引数には適切なデフォルト値があるため、すべての呼び出しで明示的に渡す必要はないかもしれません。たとえば、 `Dates`モジュールの"
+"[`Date(y, [m, d])`](@ref) 関数は、特定の`y`年`m`月`d`日の `Date` 型を構成しますが、`m` と `d` 引数は省略可能で、デフォルト値は `1`です。 この"
+"動作は、次のように簡潔に表すことができます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:468
@@ -10010,18 +10261,23 @@ msgid ""
 "    return Date(UTD(totaldays(y, m, d)))\n"
 "end\n"
 msgstr ""
+"function Date(y::Int64, m::Int64=1, d::Int64=1)\n"
+"    err = validargs(Date, y, m, d)\n"
+"    err === nothing || throw(err)\n"
+"    return Date(UTD(totaldays(y, m, d)))\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:478
 msgid "Observe, that this definition calls another method of `Date` function that takes one argument of `UTInstant{Day}` type."
-msgstr ""
+msgstr "見ての通り、この定義は、`UTInstant{Day}` 型の 1 つの引数を受け取る `Date` 関数の別のメソッドを呼び出します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:481
 msgid ""
 "With this definition, the function can be called with either one, two or three arguments, and `1` is automatically passed when any of the "
 "arguments is not specified:"
-msgstr ""
+msgstr "この定義によって，関数は 1 つ、2 つ、または 3 つの引数で呼び出され、引数のいずれかが指定されていない場合には `1` が自動的に渡されます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:482
@@ -10038,6 +10294,16 @@ msgid ""
 "julia> Date(2000)\n"
 "2000-01-01\n"
 msgstr ""
+"julia> using Dates\n"
+"\n"
+"julia> Date(2000, 12, 12)\n"
+"2000-12-12\n"
+"\n"
+"julia> Date(2000, 12)\n"
+"2000-12-01\n"
+"\n"
+"julia> Date(2000)\n"
+"2000-01-01\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:498
@@ -10045,12 +10311,15 @@ msgid ""
 "Optional arguments are actually just a convenient syntax for writing multiple method definitions with different numbers of arguments (see "
 "[Note on Optional and keyword Arguments](@ref)).  This can be checked for our `Date` function example by calling `methods` function."
 msgstr ""
+"オプション引数は、実際には、異なる数の引数を持つ複数のメソッド定義を記述するための便利な構文です ([オプション引数・キーワード引数に関する注"
+"記](@ref note-on-optional-and-keyword-arguments]を参照)。 これは`methods`関数を呼び出すことによって、例に挙げた`Date`関数の例をチェックするこ"
+"とができます。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/functions.md:499
 #, no-wrap
 msgid "Keyword Arguments"
-msgstr ""
+msgstr "キーワード引数"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:504
@@ -10059,6 +10328,8 @@ msgid ""
 "difficult. Keyword arguments can make these complex interfaces easier to use and extend by allowing arguments to be identified by name "
 "instead of only by position."
 msgstr ""
+"関数の中には、引数の数が多いもの、多数の挙動を持つものがあり、このような関数の呼び出し方法を覚えておくのは難しいことがあります。キーワード引"
+"数を使用すると、引数を位置だけではなく名前で識別できるようになるので、これらの複雑なインターフェイスを使いやすくし、拡張も容易になります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:511
@@ -10068,11 +10339,15 @@ msgid ""
 "width. Notice that this serves two purposes. The call is easier to read, since we can label an argument with its meaning. It also becomes "
 "possible to pass any subset of a large number of arguments, in any order."
 msgstr ""
+"たとえば、線をプロットする関数 `plot` を考えてみましょう。この関数には、線のスタイル、幅、色などを制御するための多くのオプションがあります。"
+"キーワード引数を受け入れる場合、可能な呼び出しは `plot(x, y, width=2)` のようになり、線の太さのみを指定することができます。キーワード引数には"
+"2 つの目的があることに注意して下さい。引数に意味を付けることができるため、関数コールの可読性が上がります。また、多数の引数の任意の部分集合を"
+"任意の順序で渡すことができます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:513
 msgid "Functions with keyword arguments are defined using a semicolon in the signature:"
-msgstr ""
+msgstr "キーワード引数を持つ関数は、シグネチャ内のセミコロンを使用して定義されます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:514
@@ -10082,6 +10357,9 @@ msgid ""
 "    ###\n"
 "end\n"
 msgstr ""
+"function plot(x, y; style=\"solid\", width=1, color=\"black\")\n"
+"    ###\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:523
@@ -10089,6 +10367,8 @@ msgid ""
 "When the function is called, the semicolon is optional: one can either call `plot(x, y, width=2)` or `plot(x, y; width=2)`, but the former "
 "style is more common. An explicit semicolon is required only for passing varargs or computed keywords as described below."
 msgstr ""
+"関数が呼び出す時に、セミコロンは省略可能です: 呼び出し方は、`plot(x, y, width=2)` または `plot(x, y; width=2)`ですが、前者ga\n"
+"より一般的です。以下に説明するように varargs または計算済みのキーワードを渡す場合には、明示的なセミコロンが必要になります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:527
@@ -10096,11 +10376,13 @@ msgid ""
 "Keyword argument default values are evaluated only when necessary (when a corresponding keyword argument is not passed), and in left-to-"
 "right order. Therefore default expressions may refer to prior keyword arguments."
 msgstr ""
+"キーワード引数のデフォルト値は、必要な場合 (対応する値が渡されずに)、必要になったときだけ、左から右の順番で評価されます。したがって、デフォル"
+"トの式は評価済みのキーワード引数を参照しても構いません。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:529
 msgid "The types of keyword arguments can be made explicit as follows:"
-msgstr ""
+msgstr "キーワード引数の型は、次のように明示的に指定できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:530
@@ -10110,11 +10392,14 @@ msgid ""
 "    ###\n"
 "end\n"
 msgstr ""
+"function f(;x::Int=1)\n"
+"    ###\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:537
 msgid "Extra keyword arguments can be collected using `...`, as in varargs functions:"
-msgstr ""
+msgstr "追加のキーワード引数はvarargs 関数のように `...` を使用して収集できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:538
@@ -10124,6 +10409,9 @@ msgid ""
 "    ###\n"
 "end\n"
 msgstr ""
+"function f(x; y=0, kwargs...)\n"
+"    ###\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:547
@@ -10131,6 +10419,8 @@ msgid ""
 "Inside `f`, `kwargs` will be a key-value iterator over a named tuple. Named tuples (as well as dictionaries with keys of `Symbol`) can be "
 "passed as keyword arguments using a semicolon in a call, e.g. `f(x, z=1; kwargs...)`."
 msgstr ""
+"例の関数`f` の内部では、`kwargs` は名前付きタプル上でのkey-value イテレータとして処理されます。名前付きタプルは、(`Symbol`をキーに持つ辞書と"
+"同じ様に) キーワード引数として関数にわたすことができて、呼び出時にはセミコロンを使います。(例: `f(x、 z=1; kwargs...)`)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:551
@@ -10138,6 +10428,8 @@ msgid ""
 "If a keyword argument is not assigned a default value in the method definition, then it is *required*: an [`UndefKeywordError`](@ref) "
 "exception will be thrown if the caller does not assign it a value:"
 msgstr ""
+"キーワード引数がメソッド定義にデフォルト値を割り当てられていない場合、その引数は*必須*ということになります。呼び出し元で値を割り当てなけれ"
+"ば、[`UndefKeywordError`](@ref) 例外がスローされます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:551
@@ -10149,6 +10441,11 @@ msgid ""
 "f(3, y=5) # ok, y is assigned\n"
 "f(3)      # throws UndefKeywordError(:y)\n"
 msgstr ""
+"function f(x; y)\n"
+"    ###\n"
+"end\n"
+"f(3, y=5) # ok, y is assigned\n"
+"f(3)      # throws UndefKeywordError(:y)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:562
@@ -10157,7 +10454,7 @@ msgid ""
 "One can also pass `key => value` expressions after a semicolon. For example, `plot(x, y; :width => 2)`\n"
 "is equivalent to `plot(x, y, width=2)`. This is useful in situations where the keyword name is computed\n"
 "at runtime.\n"
-msgstr ""
+msgstr "セミコロンの後に `key => value`の形式で渡すこともできます。たとえば、`plot(x, y; :width => 2)`は`plot(x, y, width=2)`と同等です。これは、実行時に、キーワード名が計算される場合に便利です。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:569
@@ -10167,19 +10464,22 @@ msgid ""
 "takes precedence; in this example, `width` is certain to have the value `2`. However, explicitly specifying the same keyword argument "
 "multiple times, for example `plot(x, y, width=2, width=3)`, is not allowed and results in a syntax error."
 msgstr ""
+"キーワード引数の性質上、同じ引数を複数回指定することが可能です。 たとえば、`plot(x, y; options..., width=2)` という呼び出しでは、`options` 構"
+"造体にも `width` の値が含まれている可能性があります。このような場合、一番右で入力された値が優先されます。この例では、`width` 必ず`2`になりま"
+"す。ただし、`plot(x,y, width=2, width=3)`のようにキーワード引数を複数回明示的に指定することは許可されず、構文エラーが発生します。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/functions.md:570
 #, no-wrap
 msgid "Evaluation Scope of Default Values"
-msgstr ""
+msgstr "デフォルト値の評価スコープ"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:575
 msgid ""
 "When optional and keyword argument default expressions are evaluated, only *previous* arguments are in scope.  For example, given this "
 "definition:"
-msgstr ""
+msgstr "オプション引数とキーワード引数のデフォルトの式が評価される時、スコープに入るのは、*既出の* 引数のみです。 たとえば、次の関数定義では:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:576
@@ -10189,17 +10489,20 @@ msgid ""
 "    ###\n"
 "end\n"
 msgstr ""
+"function f(x, a=b, b=1)\n"
+"    ###\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:583
 msgid "the `b` in `a=b` refers to a `b` in an outer scope, not the subsequent argument `b`."
-msgstr ""
+msgstr "`a=b` の `b` は、後続の引数 `b` ではなく、外側のスコープ内の `b` を指します。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/functions.md:584
 #, no-wrap
 msgid "Do-Block Syntax for Function Arguments"
-msgstr ""
+msgstr "関数引数の対するDoのブロック構文"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:590
@@ -10208,6 +10511,8 @@ msgid ""
 "especially awkward to write when the function argument requires multiple lines. As an example, consider calling [`map`](@ref) on a function "
 "with several cases:"
 msgstr ""
+"関数を他の関数に引数として渡すことは強力な手法ですが、その構文は必ずしも手軽ではありません。関数引数が複数行を必要とする場合、このような呼び"
+"出しは特に扱いにくいです。たとえば、いくつかのケースを持つ関数で [`map`](@ref) を呼び出すとすると:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:591
@@ -10224,11 +10529,21 @@ msgid ""
 "       end,\n"
 "    [A, B, C])\n"
 msgstr ""
+"map(x->begin\n"
+"           if x < 0 && iseven(x)\n"
+"               return 0\n"
+"           elseif x == 0\n"
+"               return 1\n"
+"           else\n"
+"               return x\n"
+"           end\n"
+"       end,\n"
+"    [A, B, C])\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:605
 msgid "Julia provides a reserved word `do` for rewriting this code more clearly:"
-msgstr ""
+msgstr "Julia は、このコードをより明確に書き直すための予約語 `do` を提供します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:606
@@ -10244,6 +10559,15 @@ msgid ""
 "    end\n"
 "end\n"
 msgstr ""
+"map([A, B, C]) do x\n"
+"    if x < 0 && iseven(x)\n"
+"        return 0\n"
+"    elseif x == 0\n"
+"        return 1\n"
+"    else\n"
+"        return x\n"
+"    end\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:621
@@ -10252,7 +10576,7 @@ msgid ""
 "The `do x` syntax creates an anonymous function with argument `x` and passes it as the first argument\n"
 "to [`map`](@ref). Similarly, `do a,b` would create a two-argument anonymous function, and a\n"
 "plain `do` would declare that what follows is an anonymous function of the form `() -> ...`.\n"
-msgstr ""
+msgstr "`do x` 構文は引数 `x` を持つ無名関数を作成し、その関数を [`map`](@ref)へ最初の引数として渡します。同様に、`do a,b` は 2 引数の無名関数を作成し、単に `do` と書けば、引数の無い `() -> ...` という形の無名関数であることを宣言になります。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:625
@@ -10260,6 +10584,8 @@ msgid ""
 "How these arguments are initialized depends on the \"outer\" function; here, [`map`](@ref) will sequentially set `x` to `A`, `B`, `C`, "
 "calling the anonymous function on each, just as would happen in the syntax `map(func, [A, B, C])`."
 msgstr ""
+"これらの引数がどのように初期化されるかは、外側の 関数によって異なります。ここで、[`map`](@ref)は、構文 `map(func,[A,B,C])`とした時と同様に`x`"
+"を`A`、`B`、`C`に順番に設定し、その都度無名関数が呼び出されます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:630
@@ -10268,6 +10594,9 @@ msgid ""
 "possible uses quite different from [`map`](@ref), such as managing system state. For example, there is a version of [`open`](@ref) that runs "
 "code ensuring that the opened file is eventually closed:"
 msgstr ""
+"この構文を使用すると、関数呼び出しは通常のコード ブロックのように見えるため、簡単に、効果的に言語を拡張しやすくなります。システム状態の管理な"
+"ど、[`map`](@ref)とは大きく異なる用途が多く考えられまるでしょう。たとえば、開かれたファイルが最終的に閉じられることを確認するように [`open`]"
+"(@ref) に手を加えることができます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:631
@@ -10277,11 +10606,14 @@ msgid ""
 "    write(io, data)\n"
 "end\n"
 msgstr ""
+"open(\"outfile\", \"w\") do io\n"
+"    write(io, data)\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:638
 msgid "This is accomplished by the following definition:"
-msgstr ""
+msgstr "次の様に定義をすればよいです:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:639
@@ -10296,6 +10628,14 @@ msgid ""
 "    end\n"
 "end\n"
 msgstr ""
+"function open(f::Function, args...)\n"
+"    io = open(args...)\n"
+"    try\n"
+"        f(io)\n"
+"    finally\n"
+"        close(io)\n"
+"    end\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:654
@@ -10304,6 +10644,9 @@ msgid ""
 "the `do ... end` block. After your function exits, [`open`](@ref)  will make sure that the stream is properly closed, regardless of whether "
 "your function exited normally or threw an exception. (The `try/finally` construct will be described in [Control Flow](@ref).)"
 msgstr ""
+"ここで、[`open`](@ref) は、まず書き込み用のファイルを開き、出力ストリームを `do...end` ブロックで定義された無名関数に渡します。関数が終了した"
+"後、[`open`](@ref) はストリームが適切に閉じれれたかどうかを確認します。 これは、無名関数が正常に終了するのか、例外が投げられたかに関わらず、"
+"です。(`try/finally` については[制御フロー](@ref control-flow)で説明します)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:657
@@ -10311,6 +10654,7 @@ msgid ""
 "With the `do` block syntax, it helps to check the documentation or implementation to know how the arguments of the user function are "
 "initialized."
 msgstr ""
+"`do` ブロック構文を使用すると、ドキュメントまたは実装をチェックして、ユーザー関数の引数がどのように初期化されるかを理解するの助けになります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:662
@@ -10319,12 +10663,15 @@ msgid ""
 "above example of `open...do` is captured from the outer scope. Captured variables can create performance challenges as discussed in "
 "[performance tips](@ref man-performance-tips)."
 msgstr ""
+"`do` ブロックは、他の内部関数と同様に、取り囲むスコープの変数を補足することができます。たとえば、上記の例の `open...do`で変数`data`を外側のス"
+"コープから補足しています。キャプチャされます。キャプチャすると、[パフォーマンス・ティップス](@ref man-performance-tips)で説明するように、パ"
+"フォーマンス上の困難が生じる可能性があります。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/functions.md:664
 #, no-wrap
 msgid "[Dot Syntax for Vectorizing Functions](@id man-vectorized)"
-msgstr ""
+msgstr "[関数をベクトル化するDot構文](@id man-vectorized)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:675
@@ -10337,6 +10684,13 @@ msgid ""
 "`f` can be applied elementwise to any array (or other collection) with the syntax `f.(A)`.  For example, `sin` can be applied to all "
 "elements in the vector `A` like so:"
 msgstr ""
+"技術計算向けのプログラミング言語では、関数の「ベクトル化」バージョンがあることが一般的です。これは所与の関数 `f(x)` を配列 `A` の各要素に適用"
+"するもので、`f(A)` と書く新しい配列を生成します。この種の構文はデータ処理に便利ですが、他の言語では、パフォーマンスを得るためにも必要になるこ"
+"とがあります。もし、ループ処理が遅ければ、「ベクトル化」バージョンの関数がより低水準な言語で書かれた速いライブラリーコードを呼ぶのです。"
+"Julia では、ベクター化された関数はパフォーマンスに必要なの*ではありません*。実際に自分でループを書いた方がよいこともあります ([パフォーマン"
+"ス・ティップス](@ref man-performance-tips)参照)が、それでも、ベクトル化ができるのは便利です。そのような利便性のため、*すべての* Julia 関数 "
+"`f` は、`f.(A)` という構文で任意の配列 (またはその他のコレクション) に要素毎に関数を適用できます。 たとえば、ベクトル `A` のすべての要素に "
+"`sin` を以下のように適用できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:676
@@ -10354,6 +10708,17 @@ msgid ""
 " 0.9092974268256817\n"
 " 0.1411200080598672\n"
 msgstr ""
+"julia> A = [1.0, 2.0, 3.0]\n"
+"3-element Array{Float64,1}:\n"
+" 1.0\n"
+" 2.0\n"
+" 3.0\n"
+"\n"
+"julia> sin.(A)\n"
+"3-element Array{Float64,1}:\n"
+" 0.8414709848078965\n"
+" 0.9092974268256817\n"
+" 0.1411200080598672\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:693
@@ -10361,6 +10726,8 @@ msgid ""
 "Of course, you can omit the dot if you write a specialized \"vector\" method of `f`, e.g. via `f(A::AbstractArray) = map(f, A)`, and this is "
 "just as efficient as `f.(A)`. But that approach requires you to decide in advance which functions you want to vectorize."
 msgstr ""
+"もちろん、`f`の特殊な「ベクトル」版メソッド、例えば`f(A:AbstractArray)= map(f,A)`を自作して使用すればドットを省略することもでき、演算効率も同"
+"じになります。しかし、この方法では、どの関数をベクトル化したいのか事前に決めておく必要があります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:700
@@ -10370,6 +10737,10 @@ msgid ""
 "will return a new array consisting of `f(pi,a)` for each `a` in `A`, and `f.(vector1,vector2)` will return a new vector consisting of "
 "`f(vector1[i],vector2[i])` for each index `i` (throwing an exception if the vectors have different length)."
 msgstr ""
+"より一般的には、`f.(args...)` は実際には `broadcast(f, args...)` に相当します。これは、複数のアレイ(異なる形状であってもよい)、または配列とス"
+"カラーの組み合わせを操作するものです。([ブロードキャスト](@ref Broadcasting)を参照)。たとえば、`f(x,y) = 3x + 4y` を定義した場合、`f.(pi,A)` "
+"は `A` の各要素 `a` に対する `f(pi,a)` からなる新しい配列を返し、`f.(vector1,vector2)`の場合は各インデックス `f(vector1[i]、vector2)`からなる"
+"新しいベクトルを返します(ベクトルの長さが異なるときには例外を投げます)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:701
@@ -10393,6 +10764,23 @@ msgid ""
 " 26.0\n"
 " 33.0\n"
 msgstr ""
+"julia> f(x,y) = 3x + 4y;\n"
+"\n"
+"julia> A = [1.0, 2.0, 3.0];\n"
+"\n"
+"julia> B = [4.0, 5.0, 6.0];\n"
+"\n"
+"julia> f.(pi, A)\n"
+"3-element Array{Float64,1}:\n"
+" 13.42477796076938\n"
+" 17.42477796076938\n"
+" 21.42477796076938\n"
+"\n"
+"julia> f.(A, B)\n"
+"3-element Array{Float64,1}:\n"
+" 19.0\n"
+" 26.0\n"
+" 33.0\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:730
@@ -10408,6 +10796,8 @@ msgid ""
 "a \"non-dot\" function call is encountered; for example, in `sin.(sort(cos.(X)))` the `sin` and `cos`\n"
 "loops cannot be merged because of the intervening `sort` function.\n"
 msgstr ""
+"さらに、*ネストした* `f.(args...)` の呼出は、単一のブロードキャストのループに*融合され*ます。例えば、`sin.(cos.(X))`は、`broadcast(x->sin(cos(x)), X)` と等価で、`[sin(cos(x)) for x in X]` に似ています。これは配列`X`に対する一重のループになっており、計算結果の配列を一つだけアロケートします。[対象的に、通常のベクトル化した言語では、`sin(cos(X))` とすると、まずはじめに`tmp=cos(X)`に対してテンポラリの配列のためにメモリをアロケートし、その後、`sin(tmp)`を別のループで計算、結果を格納する第二の配列を生成します。] Julia でのこのループ融合は、起こる場合も起こらない場合もあるような、コンパイルの最適化ではなく、ネストした\n"
+"`f(args...)` 呼出がある時に*構文的に保証されているもの*です。技術的には、この融合は、「ドットを使わない関数呼び出し」に出会うと直ちにストップします。例えば、`sin(sort(cos(X)))` では、`sin` と `cos`のループは`sort`関数を挟んでいるため、融合されません。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:740
@@ -10419,6 +10809,12 @@ msgid ""
 "side is an array-indexing expression, e.g. `X[2:end] .= sin.(Y)`, then it translates to `broadcast!` on a `view`, e.g.  `broadcast!(sin, "
 "view(X, 2:lastindex(X)), Y)`, so that the left-hand side is updated in-place."
 msgstr ""
+"最後に、演算効率が最大となるのは、通常、ベクトル化した操作の出力配列が *事前に確保されて*おり、関数を何度も呼び出す度に、新しい出力用の配列を"
+"アロケートしなくてもよいときです。([出力の事前割当](@ref pre-allocating-outputs)参照)。これを行うための便利な構文が、`X .= ...` です。これは "
+"`broadcast!(identity, X, ...)`と等価ですが、`broadcast!` ループはどんなにネストされた\"dot\" 呼び出しとも融合される点だけ異なります。たとえ"
+"ば、`X .= sin` は、`broadcast!(sin, X, Y)` と等価で、`X`を`sin(Y)`で上書きします。左辺が配列インデックス式である場合、例えば`X[2:end] .= sin."
+"(Y)`は、`view`に対する`broadcast!` に変換されます。例えば、 `broadcast!(sin, view(X, 2:lastindex(X))、Y)` で、左辺がインプレースで更新されま"
+"す。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:745
@@ -10427,6 +10823,8 @@ msgid ""
 "macro [`@.`](@ref @__dot__) is provided to convert *every* function call, operation, and assignment in an expression into the \"dotted\" "
 "version."
 msgstr ""
+"たくさんの演算子や関数の呼び出しにドットをつけると式が長ったらしくなり、可読性も低下するため、 [`@.`](@ref @__dot__)マクロが提供されていま"
+"す。これを使うと、行内の*全ての*関数よびだし、演算子、代入が「ドット付き」バージョンになります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:746
@@ -10443,6 +10841,16 @@ msgid ""
 " -0.8360218615377305\n"
 " -0.6080830096407656\n"
 msgstr ""
+"julia> Y = [1.0, 2.0, 3.0, 4.0];\n"
+"\n"
+"julia> X = similar(Y); # pre-allocate output array\n"
+"\n"
+"julia> @. X = sin(cos(Y)) # equivalent to X .= sin.(cos.(Y))\n"
+"4-element Array{Float64,1}:\n"
+"  0.5143952585235492\n"
+" -0.4042391538522658\n"
+" -0.8360218615377305\n"
+" -0.6080830096407656\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:763
@@ -10452,13 +10860,13 @@ msgid ""
 "they are equivalent to `broadcast` calls and are fused with other nested \"dot\" calls.\n"
 " `X .+= Y` etcetera is equivalent to `X .= X .+ Y` and results in a fused in-place assignment;\n"
 " see also [dot operators](@ref man-dot-operators).\n"
-msgstr ""
+msgstr "`.+`のような二項 (もしくは単項)演算子は、同じ仕組みで扱われます。これは `broadcast`呼出と同等で、他のネストした「ドット」呼び出しと融合します。`X .+= Y` は `X .= X .+ Y` と同等で、融合した上書き代入を行います。 [ドット演算子](@ref man-dot-operators)も参照のこと 。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:765
 #, no-wrap
 msgid "You can also combine dot operations with function chaining using [`|>`](@ref), as in this example:\n"
-msgstr ""
+msgstr "次の例のように、[`|>`](@ref)を使用してドット操作と関数の連鎖を組み合わせることもできます:\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:765
@@ -10472,12 +10880,19 @@ msgid ""
 "   -4\n"
 " true\n"
 msgstr ""
+"julia> [1:5;] .|> [x->x^2, inv, x->2*x, -, isodd]\n"
+"5-element Array{Real,1}:\n"
+"    1\n"
+"    0.5\n"
+"    6\n"
+"   -4\n"
+" true\n"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/functions.md:775
 #, no-wrap
 msgid "Further Reading"
-msgstr ""
+msgstr "参考文献"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:781
@@ -10487,6 +10902,10 @@ msgid ""
 "applicable to all types of arguments. The type system is described in [Types](@ref man-types) and defining a function in terms of methods "
 "chosen by multiple dispatch on run-time argument types is described in [Methods](@ref)."
 msgstr ""
+"本節の説明は、関数定義の完全な全体像からはほど遠いということを言わねばなりません。Julia は洗練された型システムを持ち、引数型に対して多重ディ"
+"スパッチ利用可能です。本節で示した例はいずれも、引数に対する型アノテーションをつけておらず、すべての型の引数に適用できます。型システムについ"
+"ては[型](@ref man-types)セクションで説明されています。実行時引数の型による多重ディスパッチを行い、そこで選択されるメソッドに関して関数を定義"
+"する方法については[メソッド](@ref Methods)で説明されています。"
 
 #. type: Title #
 #: ext/julia/doc/src/manual/workflow-tips.md:1
@@ -15516,10 +15935,13 @@ msgstr ""
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:50
+#, fuzzy
 msgid ""
 "The section on [`Task`](@ref)s in [Control Flow](@ref) discussed the execution of multiple functions in a co-operative manner. [`Channel`]"
 "(@ref)s can be quite useful to pass data between running tasks, particularly those involving I/O operations."
 msgstr ""
+"[タスク](@ref)の[制御フロー](@id control-flow)のセクションでは、複数の関数の実行について協調的に議論しました。['チャンネル'](@ref)は、実行中"
+"のタスク、特に I/O 操作を含むタスク間でデータを渡すのに非常に役立ちます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:55
@@ -22153,7 +22575,7 @@ msgstr "文体規約の詳細については、「スタイルガイド」(@ref)
 #: ext/julia/doc/src/manual/control-flow.md:1
 #, no-wrap
 msgid "Control Flow"
-msgstr ""
+msgstr "[制御フロー](@id control-flow)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:4
@@ -22183,7 +22605,7 @@ msgstr ""
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/control-flow.md:11
 msgid "[Exception Handling](@ref): `try`-`catch`, [`error`](@ref) and [`throw`](@ref)."
-msgstr ""
+msgstr "[例外処理](@ref exception-handlin): `try`-`catch`、[`error`](@ref)と[`throw`](@ref)。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/control-flow.md:11
@@ -22981,7 +23403,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/control-flow.md:550
 #, no-wrap
 msgid "Exception Handling"
-msgstr ""
+msgstr "[例外処理](@id exception-handlin)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:556
@@ -22990,19 +23412,22 @@ msgid ""
 "the exceptional condition to either terminate the program while printing a diagnostic error message, or if the programmer has provided code "
 "to handle such exceptional circumstances then allow that code to take the appropriate action."
 msgstr ""
+"予想外の状況が発生すると、関数が呼び出し元に妥当な値を返すことができないことがあります。このような事態に対する最善の策は、プログラムを終了さ"
+"せることかもしれませんし、状況報告のエラーメッセージを出力することかもしれません。あるいは、もしプログラマがこのような例外的な状況を上手く扱"
+"うコードを提供しているならば、そのコードが適切なアクションを実行できるようにするのがよいかもしれません。"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/control-flow.md:557
 #, no-wrap
 msgid "Built-in `Exception`s"
-msgstr ""
+msgstr "組み込みの例外"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:561
 msgid ""
 "`Exception`s are thrown when an unexpected condition has occurred. The built-in `Exception`s listed below all interrupt the normal flow of "
 "control."
-msgstr ""
+msgstr "例外は、予期しない状態が発生したときにスローされます。以下に示す組み込みの'Exception'は、通常の制御フローを中断します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:588
@@ -23035,11 +23460,37 @@ msgid ""
 "| [`UndefVarError`](@ref)       |\n"
 "| [`StringIndexError`](@ref)    |\n"
 msgstr ""
+"| `Exception`                   |\n"
+"|:----------------------------- |\n"
+"| [`ArgumentError`](@ref)       |\n"
+"| [`BoundsError`](@ref)         |\n"
+"| [`CompositeException`](@ref)  |\n"
+"| [`DivideError`](@ref)         |\n"
+"| [`DomainError`](@ref)         |\n"
+"| [`EOFError`](@ref)            |\n"
+"| [`ErrorException`](@ref)      |\n"
+"| [`InexactError`](@ref)        |\n"
+"| [`InitError`](@ref)           |\n"
+"| [`InterruptException`](@ref)  |\n"
+"| `InvalidStateException`       |\n"
+"| [`KeyError`](@ref)            |\n"
+"| [`LoadError`](@ref)           |\n"
+"| [`OutOfMemoryError`](@ref)    |\n"
+"| [`ReadOnlyMemoryError`](@ref) |\n"
+"| [`RemoteException`](@ref)     |\n"
+"| [`MethodError`](@ref)         |\n"
+"| [`OverflowError`](@ref)       |\n"
+"| [`Meta.ParseError`](@ref)     |\n"
+"| [`SystemError`](@ref)         |\n"
+"| [`TypeError`](@ref)           |\n"
+"| [`UndefRefError`](@ref)       |\n"
+"| [`UndefVarError`](@ref)       |\n"
+"| [`StringIndexError`](@ref)    |\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:591
 msgid "For example, the [`sqrt`](@ref) function throws a [`DomainError`](@ref) if applied to a negative real value:"
-msgstr ""
+msgstr "たとえば、[`sqrt`](@ref) 関数は、負の実値に適用された場合に [`'DomainError`](@ref) をスローします:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:592
@@ -23051,23 +23502,28 @@ msgid ""
 "Stacktrace:\n"
 "[...]\n"
 msgstr ""
+"julia> sqrt(-1)\n"
+"ERROR: DomainError with -1.0:\n"
+"sqrt will only return a complex result if called with a complex argument. Try sqrt(Complex(x)).\n"
+"Stacktrace:\n"
+"[...]\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:601
 msgid "You may define your own exceptions in the following way:"
-msgstr ""
+msgstr "独自の例外は、次の方法で定義できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:602
 #, no-wrap
 msgid "julia> struct MyCustomException <: Exception end\n"
-msgstr ""
+msgstr "julia> struct MyCustomException <: Exception end\n"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/control-flow.md:606
 #, no-wrap
 msgid "The [`throw`](@ref) function"
-msgstr ""
+msgstr "[`throw`](@ref) 関数"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:611
@@ -23075,6 +23531,8 @@ msgid ""
 "Exceptions can be created explicitly with [`throw`](@ref). For example, a function defined only for nonnegative numbers could be written to "
 "[`throw`](@ref) a [`DomainError`](@ref) if the argument is negative:"
 msgstr ""
+"例外は [`throw`](@ref)を使用して明示的に発生させられます。たとえば、負以外の数値に対してのみ定義された関数は、引数が負の場合は[`DomainError`]"
+"(@ref)を[`throw`](@ref) するようにコーディングされます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:612
@@ -23092,6 +23550,17 @@ msgid ""
 "Stacktrace:\n"
 " [1] f(::Int64) at ./none:1\n"
 msgstr ""
+"julia> f(x) = x>=0 ? exp(-x) : throw(DomainError(x, \"argument must be nonnegative\"))\n"
+"f (generic function with 1 method)\n"
+"\n"
+"julia> f(1)\n"
+"0.36787944117144233\n"
+"\n"
+"julia> f(-1)\n"
+"ERROR: DomainError with -1:\n"
+"argument must be nonnegative\n"
+"Stacktrace:\n"
+" [1] f(::Int64) at ./none:1\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:628
@@ -23099,6 +23568,8 @@ msgid ""
 "Note that [`DomainError`](@ref) without parentheses is not an exception, but a type of exception.  It needs to be called to obtain an "
 "`Exception` object:"
 msgstr ""
+"[`DomainError`](@ref) は括弧をつけない場合は、例外ではなく、例外の型を表す点に注意してください。 例外オブジェクトを取得するには、括弧を付けて"
+"関数呼び出しを行う必要があります:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:629
@@ -23110,11 +23581,16 @@ msgid ""
 "julia> typeof(DomainError) <: Exception\n"
 "false\n"
 msgstr ""
+"julia> typeof(DomainError(nothing)) <: Exception\n"
+"true\n"
+"\n"
+"julia> typeof(DomainError) <: Exception\n"
+"false\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:638
 msgid "Additionally, some exception types take one or more arguments that are used for error reporting:"
-msgstr ""
+msgstr "さらに、一部の例外の型は、エラー報告に使用される 1 つ以上の引数を受け取ります:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:639
@@ -23123,11 +23599,13 @@ msgid ""
 "julia> throw(UndefVarError(:x))\n"
 "ERROR: UndefVarError: x not defined\n"
 msgstr ""
+"julia> throw(UndefVarError(:x))\n"
+"ERROR: UndefVarError: x not defined\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:646
 msgid "This mechanism can be implemented easily by custom exception types following the way [`UndefVarError`](@ref)  is written:"
-msgstr ""
+msgstr "独自の例外型を書いて、[`UndefVarError`](@ref) と同様の仕組みを実装するのは簡単です:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:647
@@ -23139,6 +23617,11 @@ msgid ""
 "\n"
 "julia> Base.showerror(io::IO, e::MyUndefVarError) = print(io, e.var, \" not defined\")\n"
 msgstr ""
+"julia> struct MyUndefVarError <: Exception\n"
+"           var::Symbol\n"
+"       end\n"
+"\n"
+"julia> Base.showerror(io::IO, e::MyUndefVarError) = print(io, e.var, \" not defined\")\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:658
@@ -23148,18 +23631,23 @@ msgid ""
 "    When writing an error message, it is preferred to make the first word lowercase. For example,\n"
 "    `size(A) == size(B) || throw(DimensionMismatch(\"size of A not equal to size of B\"))`\n"
 msgstr ""
+"!!! note\n"
+"    エラーメッセージを書くときには、最初の文字を小文字で書くことが好ましいです。例えば、\n"
+"`size(A) == size(B) || throw(DimensionMismatch(\"size of A not equal to size of B\"))`\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:660
 #, no-wrap
 msgid "    is preferred over\n"
-msgstr ""
+msgstr "    の方が\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:662
 #, no-wrap
 msgid "    `size(A) == size(B) || throw(DimensionMismatch(\"Size of A not equal to size of B\"))`.\n"
 msgstr ""
+"    `size(A) == size(B) || throw(DimensionMismatch(\"Size of A not equal to size of B\"))`.\n"
+"より好ましいです。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:665
@@ -23168,17 +23656,19 @@ msgid ""
 "    However, sometimes it makes sense to keep the uppercase first letter, for instance if an argument\n"
 "    to a function is a capital letter: `size(A,1) == size(B,2) || throw(DimensionMismatch(\"A has first dimension...\"))`.\n"
 msgstr ""
+"    ただし、意図的に最初の文字を大文字にすることもあります。例えば、関数の引数が大文字の場合:\n"
+"    `size(A,1) == size(B,2) || throw(DimensionMismatch(\"A has first dimension...\"))`.\n"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/control-flow.md:666 ext/julia/doc/src/base/base.md:304
 #, no-wrap
 msgid "Errors"
-msgstr ""
+msgstr "エラー"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:670
 msgid "The [`error`](@ref) function is used to produce an [`ErrorException`](@ref) that interrupts the normal flow of control."
-msgstr ""
+msgstr "[`error`](@ref) 関数は、制御の通常の流れを中断する [`ErrorException`](@ref) を生成するために使用されます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:674
@@ -23186,12 +23676,14 @@ msgid ""
 "Suppose we want to stop execution immediately if the square root of a negative number is taken.  To do this, we can define a fussy version "
 "of the [`sqrt`](@ref) function that raises an error if its argument is negative:"
 msgstr ""
+"負の数の平方根が取得された場合、すぐに実行を停止するとします。 これを行うには、引数が負の場合にエラーを発生させる小うるさいバージョンの "
+"[`sqrt`](@ref) 関数を定義できます:"
 
 #. type: Code fence info string
 #: ext/julia/doc/src/manual/control-flow.md:675 ext/julia/doc/src/manual/control-flow.md:694
 #, no-wrap
 msgid "jldoctest fussy_sqrt; filter = r\"Stacktrace:(\\n \\[[0-9]+\\].*)*\""
-msgstr ""
+msgstr "jldoctest fussy_sqrt; filter = r\"Stacktrace:(\\n \\[[0-9]+\\].*)*\""
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:675
@@ -23210,6 +23702,18 @@ msgid ""
 " [2] fussy_sqrt(::Int64) at ./none:1\n"
 " [3] top-level scope\n"
 msgstr ""
+"julia> fussy_sqrt(x) = x >= 0 ? sqrt(x) : error(\"negative x not allowed\")\n"
+"fussy_sqrt (generic function with 1 method)\n"
+"\n"
+"julia> fussy_sqrt(2)\n"
+"1.4142135623730951\n"
+"\n"
+"julia> fussy_sqrt(-1)\n"
+"ERROR: negative x not allowed\n"
+"Stacktrace:\n"
+" [1] error at ./error.jl:33 [inlined]\n"
+" [2] fussy_sqrt(::Int64) at ./none:1\n"
+" [3] top-level scope\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:693
@@ -23217,6 +23721,8 @@ msgid ""
 "If `fussy_sqrt` is called with a negative value from another function, instead of trying to continue execution of the calling function, it "
 "returns immediately, displaying the error message in the interactive session:"
 msgstr ""
+"`fussy_sqrt` が別の関数から負の値で呼び出された場合、(`fussy_sqrt` 以降の)関数呼び出し続けようとせず、すぐにreturnして、対話型セッションにエ"
+"ラー メッセージを表示します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:694
@@ -23244,12 +23750,33 @@ msgid ""
 " [3] verbose_fussy_sqrt(::Int64) at ./none:3\n"
 " [4] top-level scope\n"
 msgstr ""
+"julia> function verbose_fussy_sqrt(x)\n"
+"           println(\"before fussy_sqrt\")\n"
+"           r = fussy_sqrt(x)\n"
+"           println(\"after fussy_sqrt\")\n"
+"           return r\n"
+"       end\n"
+"verbose_fussy_sqrt (generic function with 1 method)\n"
+"\n"
+"julia> verbose_fussy_sqrt(2)\n"
+"before fussy_sqrt\n"
+"after fussy_sqrt\n"
+"1.4142135623730951\n"
+"\n"
+"julia> verbose_fussy_sqrt(-1)\n"
+"before fussy_sqrt\n"
+"ERROR: negative x not allowed\n"
+"Stacktrace:\n"
+" [1] error at ./error.jl:33 [inlined]\n"
+" [2] fussy_sqrt at ./none:1 [inlined]\n"
+" [3] verbose_fussy_sqrt(::Int64) at ./none:3\n"
+" [4] top-level scope\n"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/control-flow.md:718
 #, no-wrap
 msgid "The `try/catch` statement"
-msgstr ""
+msgstr "`try/catch`文"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:723
@@ -23257,6 +23784,8 @@ msgid ""
 "The `try/catch` statement allows for `Exception`s to be tested for. For example, a customized square root function can be written to "
 "automatically call either the real or complex square root method on demand using `Exception`s :"
 msgstr ""
+"`try/catch` 文を使用すると、例外を検査できます。たとえば、 `Exception` を使用して、実数引数向け平方根メソッドと複素数引数向けの平方根メソッド"
+"をオンデマンドで呼び分けるようにカスタマイズされた平方根関数を以下のように書くことができます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:724
@@ -23275,6 +23804,18 @@ msgid ""
 "julia> f(-1)\n"
 "0.0 + 1.0im\n"
 msgstr ""
+"julia> f(x) = try\n"
+"           sqrt(x)\n"
+"       catch\n"
+"           sqrt(complex(x, 0))\n"
+"       end\n"
+"f (generic function with 1 method)\n"
+"\n"
+"julia> f(1)\n"
+"1.0\n"
+"\n"
+"julia> f(-1)\n"
+"0.0 + 1.0im\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:741
@@ -23282,6 +23823,8 @@ msgid ""
 "It is important to note that in real code computing this function, one would compare `x` to zero instead of catching an exception. The "
 "exception is much slower than simply comparing and branching."
 msgstr ""
+"実際にこの関数が計算されるときには、例外を補足するのではなく、`x` と0を比較する点に注意して下さい。例外は、単純な比較や分岐よりもはるかに遅い"
+"のです。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:745
@@ -23289,6 +23832,8 @@ msgid ""
 "`try/catch` statements also allow the `Exception` to be saved in a variable. The following contrived example calculates the square root of "
 "the second element of `x` if `x` is indexable, otherwise assumes `x` is a real number and returns its square root:"
 msgstr ""
+"`try/catch` 文では、例外を変数に保存することもできます。以下の例では、不自然ではありますが、`x` がインデックス可能な場合は `x` の 2 番目の要"
+"素の平方根を計算し、それ以外の場合は `x` が実数であると仮定し、その平方根を返します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:746
@@ -23320,6 +23865,31 @@ msgid ""
 "Stacktrace:\n"
 "[...]\n"
 msgstr ""
+"julia> sqrt_second(x) = try\n"
+"           sqrt(x[2])\n"
+"       catch y\n"
+"           if isa(y, DomainError)\n"
+"               sqrt(complex(x[2], 0))\n"
+"           elseif isa(y, BoundsError)\n"
+"               sqrt(x)\n"
+"           end\n"
+"       end\n"
+"sqrt_second (generic function with 1 method)\n"
+"\n"
+"julia> sqrt_second([1 4])\n"
+"2.0\n"
+"\n"
+"julia> sqrt_second([1 -4])\n"
+"0.0 + 2.0im\n"
+"\n"
+"julia> sqrt_second(9)\n"
+"3.0\n"
+"\n"
+"julia> sqrt_second(-9)\n"
+"ERROR: DomainError with -9.0:\n"
+"sqrt will only return a complex result if called with a complex argument. Try sqrt(Complex(x)).\n"
+"Stacktrace:\n"
+"[...]\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:777
@@ -23327,17 +23897,19 @@ msgid ""
 "Note that the symbol following `catch` will always be interpreted as a name for the exception, so care is needed when writing `try/catch` "
 "expressions on a single line. The following code will *not* work to return the value of `x` in case of an error:"
 msgstr ""
+"`catch` に続くシンボルは常に例外の名前として解釈されるので、`try/catch` 式を1 行で記述する場合は注意が必要です。次のコードは、エラーが発生し"
+"た場合に `x` の値を返しません:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:778
 #, no-wrap
 msgid "try bad() catch x end\n"
-msgstr ""
+msgstr "try bad() catch x end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:783
 msgid "Instead, use a semicolon or insert a line break after `catch`:"
-msgstr ""
+msgstr "代わりに、`catch` の後にセミコロンを使用するか改行を挿入します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:784
@@ -23350,6 +23922,12 @@ msgid ""
 "    x\n"
 "end\n"
 msgstr ""
+"try bad() catch; x end\n"
+"\n"
+"try bad()\n"
+"catch\n"
+"    x\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:798
@@ -23359,12 +23937,15 @@ msgid ""
 "higher level is desirable. Julia provides the [`rethrow`](@ref), [`backtrace`](@ref), [`catch_backtrace`](@ref)  and [`Base.catch_stack`]"
 "(@ref) functions for more advanced error handling."
 msgstr ""
+"`try/catch`の威力は、深くネストされた計算から、関数コールのスタックにおいてはるかに上のレベルに飛び越えて戻ることができる点にあります。エラー"
+"が発生していない場合でも、スタックを飛び越えて戻り、より上の階層に値を渡せる機能は欲しい物です。Juliaは、[`rethrow`](@ref)、"
+"[`backtrace`(@ref)]、[`catch_backtrace`](@ref)そして[`Base.catch_stack`](@ref)といったより高度なエラー処理のための関数を提供します。"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/control-flow.md:799
 #, no-wrap
 msgid "`finally` Clauses"
-msgstr ""
+msgstr "`finally`節"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:806
@@ -23373,11 +23954,15 @@ msgid ""
 "done when the code is finished. Exceptions potentially complicate this task, since they can cause a block of code to exit before reaching "
 "its normal end. The `finally` keyword provides a way to run some code when a given block of code exits, regardless of how it exits."
 msgstr ""
+"状態変化を生じるコード、ファイルなどのリソースを使用するコードでは、通常、コードの終了時に実行するべきクリーンアップ作業 (ファイルを閉じるな"
+"ど) があります。例外を使うとこのようなタスクを複雑になる可能性があります。というのも、例外によって、対象のコードブロックが、正常終了処理に至"
+"る前に、実行が終了されしまう可能性があるからです。`finally` キーワードは、終了方法に関係なく、特定のコード ブロックが終了したときにいくつかの"
+"コードを実行する方法を提供します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:808
 msgid "For example, here is how we can guarantee that an opened file is closed:"
-msgstr ""
+msgstr "ここでは、開いたファイルを必ず閉じることを保証するコード例を挙げます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:809
@@ -23390,6 +23975,12 @@ msgid ""
 "    close(f)\n"
 "end\n"
 msgstr ""
+"f = open(\"file\")\n"
+"try\n"
+"    # operate on file f\n"
+"finally\n"
+"    close(f)\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:822
@@ -23398,6 +23989,9 @@ msgid ""
 "block exits due to an exception, the exception will continue propagating. A `catch` block may be combined with `try` and `finally` as well. "
 "In this case the `finally` block will run after `catch` has handled the error."
 msgstr ""
+"プログラム制御が `try`ブロックを離れる時 (たとえば`return`による場合、または正常終了の場合など)、`close(f)` が実行されます。`try` ブロックが"
+"例外によって終了した場合、例外は引き続き伝播します。`catch`ブロックは、`try`, `finally`と組み合わせても構いません。この場合、`finally` ブロッ"
+"クは `catch` がエラーを処理した後に実行されます。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/control-flow.md:823
@@ -24666,7 +25260,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/performance-tips.md:1
 #, no-wrap
 msgid "[Performance Tips](@id man-performance-tips)"
-msgstr ""
+msgstr "[パフォーマンス・ティップス](@id man-performance-tips)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:5
@@ -24885,11 +25479,15 @@ msgstr ""
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:132
+#, fuzzy
 msgid ""
 "In some situations, your function may need to allocate memory as part of its operation, and this can complicate the simple picture above. In "
 "such cases, consider using one of the [tools](@ref tools)  below to diagnose problems, or write a version of your function that separates "
 "allocation from its algorithmic aspects (see [Pre-allocating outputs](@ref))."
 msgstr ""
+"状況によっては、関数が操作の一部としてメモリを割り当てる必要があり、上記の単純な図が複雑になる可能性があります。このような場合は、以下の "
+"[ツール] (@ref ツール) のいずれかを使用して問題を診断するか、割り当てをアルゴリズム的な側面から分離する関数のバージョンを記述することを検討し"
+"てください ([出力の事前割当](@ref pre-allocating-outputs)参照)。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:136
@@ -26033,7 +26631,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/performance-tips.md:845
 #, no-wrap
 msgid "Pre-allocating outputs"
-msgstr ""
+msgstr "[出力の事前割当](@id pre-allocating-outputs)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:849
@@ -29292,7 +29890,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/types.md:54
 #, no-wrap
 msgid "Type Declarations"
-msgstr ""
+msgstr "[型宣言](@id type-declarations)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:58
@@ -33591,7 +34189,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/arrays.md:827
 #, no-wrap
 msgid "Broadcasting"
-msgstr ""
+msgstr "[ブロードキャスト](@id Broadcasting)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/arrays.md:832
@@ -35591,7 +36189,7 @@ msgid ""
 "block:"
 msgstr ""
 "[`BigFloat`](@ref) 演算でのデフォルトの精度と丸めモードは、[`setprecision`](@ref)や[`setrounding`](@ref)を使ってグローバルに変更することがで"
-"きます。その後の全ての計算で、この変更の影響を受けます。もしくは、'do' ブロックでそれらの関数を使用し、そのコードブロック内でのみ精度や丸め"
+"きます。その後の全ての計算で、この変更の影響を受けます。もしくは、`do` ブロックでそれらの関数を使用し、そのコードブロック内でのみ精度や丸め"
 "モードを変更することも可能です:"
 
 #. type: Plain text
@@ -35873,8 +36471,8 @@ msgid ""
 msgstr ""
 "| 関数          | 説明                                      |\n"
 "|:----------------- |:------------------------------------------------ |\n"
-"| [`zero(x)`](@ref) | 型 `x` もしくは 変数 'x'と同じ型を持つリテラル0 |\n"
-"| [`one(x)`](@ref)  | 型 `x` もしくは 変数 'x'と同じ型を持つリテラル1  |\n"
+"| [`zero(x)`](@ref) | 型 `x` もしくは 変数 `x`と同じ型を持つリテラル0 |\n"
+"| [`one(x)`](@ref)  | 型 `x` もしくは 変数 `x`と同じ型を持つリテラル1  |\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:704
