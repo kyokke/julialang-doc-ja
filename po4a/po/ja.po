@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-07-24 01:15+0000\n"
-"PO-Revision-Date: 2019-08-14 10:56+0900\n"
+"PO-Revision-Date: 2019-08-14 12:22+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 2.2.3\n"
-"X-Poedit-Bookmarks: 1144,0,-1,-1,-1,-1,-1,-1,-1,-1\n"
+"X-Poedit-Bookmarks: 1144,0,681,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. type: Title =
 #: ext/julia/doc/src/./NEWS.md:2
@@ -2933,7 +2933,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/methods.md:800
 #, no-wrap
 msgid "Note on Optional and keyword Arguments"
-msgstr "[オプション引数・キーワード引数に関する注記](@id note-on-optional-and-keyword-arguments]"
+msgstr "[オプション引数・キーワード引数に関する注記](@id note-on-optional-and-keyword-arguments)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/methods.md:804
@@ -9388,7 +9388,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/functions.md:63
 #, no-wrap
 msgid "The `return` Keyword"
-msgstr "`return` キーワード"
+msgstr "[`return` キーワード](@id the-return-keyword)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:70
@@ -9991,7 +9991,7 @@ msgstr "`range` の定義で余計な括弧があるのに注目してくださ�
 #: ext/julia/doc/src/manual/functions.md:346
 #, no-wrap
 msgid "Varargs Functions"
-msgstr "可変引数関数"
+msgstr "[可変引数関数](@id Varargs-Functions)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:351
@@ -10312,7 +10312,7 @@ msgid ""
 "[Note on Optional and keyword Arguments](@ref)).  This can be checked for our `Date` function example by calling `methods` function."
 msgstr ""
 "オプション引数は、実際には、異なる数の引数を持つ複数のメソッド定義を記述するための便利な構文です ([オプション引数・キーワード引数に関する注"
-"記](@ref note-on-optional-and-keyword-arguments]を参照)。 これは`methods`関数を呼び出すことによって、例に挙げた`Date`関数の例をチェックするこ"
+"記](@ref note-on-optional-and-keyword-arguments)を参照)。 これは`methods`関数を呼び出すことによって、例に挙げた`Date`関数の例をチェックするこ"
 "とができます。"
 
 #. type: Title ##
@@ -10646,7 +10646,7 @@ msgid ""
 msgstr ""
 "ここで、[`open`](@ref) は、まず書き込み用のファイルを開き、出力ストリームを `do...end` ブロックで定義された無名関数に渡します。関数が終了した"
 "後、[`open`](@ref) はストリームが適切に閉じれれたかどうかを確認します。 これは、無名関数が正常に終了するのか、例外が投げられたかに関わらず、"
-"です。(`try/finally` については[制御フロー](@ref control-flow)で説明します)"
+"です。(`try/finally` については[制御フロー](@ref Control-Flow)で説明します)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:657
@@ -10810,11 +10810,11 @@ msgid ""
 "view(X, 2:lastindex(X)), Y)`, so that the left-hand side is updated in-place."
 msgstr ""
 "最後に、演算効率が最大となるのは、通常、ベクトル化した操作の出力配列が *事前に確保されて*おり、関数を何度も呼び出す度に、新しい出力用の配列を"
-"アロケートしなくてもよいときです。([出力の事前割当](@ref pre-allocating-outputs)参照)。これを行うための便利な構文が、`X .= ...` です。これは "
-"`broadcast!(identity, X, ...)`と等価ですが、`broadcast!` ループはどんなにネストされた\"dot\" 呼び出しとも融合される点だけ異なります。たとえ"
-"ば、`X .= sin` は、`broadcast!(sin, X, Y)` と等価で、`X`を`sin(Y)`で上書きします。左辺が配列インデックス式である場合、例えば`X[2:end] .= sin."
-"(Y)`は、`view`に対する`broadcast!` に変換されます。例えば、 `broadcast!(sin, view(X, 2:lastindex(X))、Y)` で、左辺がインプレースで更新されま"
-"す。"
+"アロケートしなくてもよいときです。([出力の事前割当](@ref Pre-allocating-outputs) 参照)。これを行うための便利な構文が、`X .= ...` です。これ"
+"は `broadcast!(identity, X, ...)`と等価ですが、`broadcast!` ループはどんなにネストされた\"dot\" 呼び出しとも融合される点だけ異なります。たと"
+"えば、`X .= sin` は、`broadcast!(sin, X, Y)` と等価で、`X`を`sin(Y)`で上書きします。左辺が配列インデックス式である場合、例えば`X[2:end] .= "
+"sin.(Y)`は、`view`に対する`broadcast!` に変換されます。例えば、 `broadcast!(sin, view(X, 2:lastindex(X))、Y)` で、左辺がインプレースで更新さ"
+"れます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/functions.md:745
@@ -15940,7 +15940,7 @@ msgid ""
 "The section on [`Task`](@ref)s in [Control Flow](@ref) discussed the execution of multiple functions in a co-operative manner. [`Channel`]"
 "(@ref)s can be quite useful to pass data between running tasks, particularly those involving I/O operations."
 msgstr ""
-"[タスク](@ref)の[制御フロー](@id control-flow)のセクションでは、複数の関数の実行について協調的に議論しました。['チャンネル'](@ref)は、実行中"
+"[タスク](@ref)の[制御フロー](@id Control-Flow)のセクションでは、複数の関数の実行について協調的に議論しました。['チャンネル'](@ref)は、実行中"
 "のタスク、特に I/O 操作を含むタスク間でデータを渡すのに非常に役立ちます。"
 
 #. type: Plain text
@@ -22575,7 +22575,7 @@ msgstr "文体規約の詳細については、「スタイルガイド」(@ref)
 #: ext/julia/doc/src/manual/control-flow.md:1
 #, no-wrap
 msgid "Control Flow"
-msgstr "[制御フロー](@id control-flow)"
+msgstr "[制御フロー](@id Control-Flow)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:4
@@ -23490,7 +23490,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:591
 msgid "For example, the [`sqrt`](@ref) function throws a [`DomainError`](@ref) if applied to a negative real value:"
-msgstr "たとえば、[`sqrt`](@ref) 関数は、負の実値に適用された場合に [`'DomainError`](@ref) をスローします:"
+msgstr "たとえば、[`sqrt`](@ref) 関数は、負の実値に適用された場合に [`DomainError`](@ref) をスローします:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:592
@@ -25487,7 +25487,7 @@ msgid ""
 msgstr ""
 "状況によっては、関数が操作の一部としてメモリを割り当てる必要があり、上記の単純な図が複雑になる可能性があります。このような場合は、以下の "
 "[ツール] (@ref ツール) のいずれかを使用して問題を診断するか、割り当てをアルゴリズム的な側面から分離する関数のバージョンを記述することを検討し"
-"てください ([出力の事前割当](@ref pre-allocating-outputs)参照)。"
+"てください ([出力の事前割当](@ref Pre-allocating-outputs)参照)。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:136
@@ -26631,7 +26631,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/performance-tips.md:845
 #, no-wrap
 msgid "Pre-allocating outputs"
-msgstr "[出力の事前割当](@id pre-allocating-outputs)"
+msgstr "[出力の事前割当](@id Pre-allocating-outputs)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:849
@@ -32131,7 +32131,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/modules.md:1
 #, no-wrap
 msgid "[Modules](@id modules)"
-msgstr "[モジュール](@id Modules)"
+msgstr "[モジュール](@id modules)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:8
