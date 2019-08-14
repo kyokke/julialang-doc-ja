@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-07-24 01:15+0000\n"
-"PO-Revision-Date: 2019-08-14 12:22+0900\n"
+"PO-Revision-Date: 2019-08-14 13:51+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -6081,13 +6081,13 @@ msgstr ""
 #: ext/julia/doc/src/manual/noteworthy-differences.md:1
 #, no-wrap
 msgid "Noteworthy Differences from other Languages"
-msgstr ""
+msgstr "他の言語との注目すべき違い"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/noteworthy-differences.md:3
 #, no-wrap
 msgid "Noteworthy differences from MATLAB"
-msgstr ""
+msgstr "MATLAB との注目すべき違い"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/noteworthy-differences.md:8
@@ -6095,11 +6095,13 @@ msgid ""
 "Although MATLAB users may find Julia's syntax familiar, Julia is not a MATLAB clone. There are major syntactic and functional differences. "
 "The following are some noteworthy differences that may trip up Julia users accustomed to MATLAB:"
 msgstr ""
+"MATLAB ユーザーはジュリアの構文を親しみやすいと思うかもしれませんが、Juliaは MATLAB クローンではありません。構文や機能の違いは大きいです。"
+"MATLAB に慣れているJuliaユーザーがつまずきやすい注目すべき違いは次のとおりです:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/noteworthy-differences.md:83
 msgid "Julia arrays are indexed with square brackets, `A[i,j]`."
-msgstr ""
+msgstr "Julia の配列は角かっこで `A[i,j]`のようにインデックス付けされる。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/noteworthy-differences.md:83
@@ -6179,12 +6181,39 @@ msgid ""
 "  * The analogue of extracting (or \"dereferencing\") all elements of a cell array, e.g. in `vertcat(A{:})`\n"
 "    in MATLAB, is written using the splat operator in Julia, e.g. as `vcat(A...)`.\n"
 msgstr ""
+"  * Juliaでは、配列は他の変数に代入してもコピーされません。 `A = B`の後、`B`の要素を変更すると `A`も同様に変更されます\n"
+"  * Juliaでは、値は関数に渡されてもコピーされません。関数が配列を変更すると、その変更は呼び出し元にも影響を与えます。\n"
+"  * Juliaでは、代入文の中で配列のサイズが自動的に拡張されません。 MATLABでは `a(4)= 3.2`で`a = [0 0 0 3.2]`が生成され、その後`a(5)= 7`とすると` a = [0 0 0 3.2 7] `と配列のサイズが大きくなります。対して、Juliaで `a [5] = 7`とすると、`a`の長さが5より場合、もしくは、この代入式が識別子`a`を初めて使用する式である場合には、エラーが発生します。Juliaには、[`push!`](@ref)関数や[`append!`](@ref)関数があり、ベクトルのサイズを拡張する手段として、MATLABの `a(end + 1)= val`よりもはるかに効率的です。\n"
+"  *虚数単位 `sqrt(-1)`は、MATLABでは`i`や` j`が用いられますが、Juliaでは[`im`](@ref)と表記します。\n"
+"  * Juliaでは、小数点のない数値リテラル( `42`など)は浮動小数点ではなく整数を作成します。任意の大きな整数リテラルがサポートされています。その結果、`2 ^ -1`のようないくつかの演算は、「演算結果が整数ではない」というドメインエラーが発生します(詳細については、[ドメインエラーに関するFAQ](@ref faq-domain-errors)を参照)。\n"
+"  * Juliaでは、複数の値が返され、タプルとして割り当てられます。例えば `(a,b) = (1,2)` や `a, b = 1, 2` という具合です。MATLABの `nargout`は、呼び出し側から期待される戻り値の数に基づいて選択的な処理をを行うもので、MATLABではよく使用されますが、Julia では使用できません。代わりに、ユーザーはオプション引数、キーワード引数の機能を使って、似たようなことをできます。\n"
+"  * Juliaは真の1次元配列を持っています。列ベクトルは、サイズが`N`で、`Nx1`ではありません。例えば、[`rand(N)`](@ref)は1次元配列を作成します。\n"
+"  * Juliaでは、 `[x、y、z]`は常に `x`、` y`、 `z`を含む3要素の配列を構築します。\n"
+"     - 最初の( \"垂直方向の\")次元で連結するには、[`vcat(x、y、z)`](@ref)を使うか、配列の要素をセミコロンで分割します( `[x; y; z]`)。\n"
+"     - 2番目の( \"水平方向の\")次元で連結するには、[`hcat(x、y、z)`](@ref)を使うか、配列の要素をスペースで分割します( `[x y z]`)。\n"
+"     - ブロック行列を構築する(最初の2つの次元で連結する)には、[`hvcat`](@ref)を使うか、スペースとセミコロンを組み合わせます( `[a b; c d]`)。\n"
+"  * Juliaでは、 `a：b`と` a：b：c`は `AbstractRange`オブジェクトを構成します。 MATLABのように完全なベクトルを作成するには、[`collect(a：b)`](@ref)を使用してください。しかし、一般的には `collect`を呼び出す必要はありません。 AbstractRangeオブジェクトはほとんどのケースで通常の配列のように振る舞いますが、その値を遅延計算するためより効率的です。完全な配列ではなく特殊化されたオブジェクトを作成するというこのパターンはよく使用されていて、[`range`](@ref)のような関数や、` enumerate`や、`zip` のようなイテレータでも見られます。特殊オブジェクトは、通常の配列のように使用することができます。\n"
+"  * Juliaの関数は、最後の式または `return`キーワードから戻り値を返します。MATLABのように、関数定義で戻り値の名前を列挙するのではありません。(詳細は[returnキーワード](@ref the-return-keyword)を参照)。\n"
+"  * Juliaスクリプトには関数をいくつでも含めることができ、ファイルがロードされれば、すべての関数定義は外部から見えます。現在の作業ディレクトリの外にあるファイルからも関数定義はロードすることができます。\n"
+"  * Juliaでは、[`sum`](@ref)、[` prod`](@ref)、[`max`](@ref)のような簡約処理は、`sum(A)`のように単一の引数で呼び出された場合、全ての要素に対して行われます。たとえ `A`が2次元以上だったとしても、です。\n"
+"  * Juliaでは、[`rand()`](@ref)のように、ゼロ引数で関数を呼び出すには括弧を使用する必要があります。\n"
+"  * Juliaは、文を終了するのにセミコロンを使用することを推奨していません。（対話式プロンプトでの実行を除き）式の結果が自動出力されませんので（出力を抑制したいのだとしても)コードの行末にセミコロンを使う必要はありません。[`println`](@ref)または[`@printf`](@ref)を使ってプリント出力することができます。\n"
+"  * Juliaでは、 `A`と` B`が配列の場合、 `A == B`のような論理比較演算は真偽値の配列を返しません。(要素ごとの比較結果が欲しい場合には) 代わりに`A.== B`を使用してください。[`<`](@ref)や[`>`](@ref)。のような他のブール演算子についても同様です。\n"
+"  * Juliaでは、演算子[`&`](@ref)、[`|`](@ref)、および[`⊻`](@ref xor)([`xor`](@ref))で、それぞれMATLABにおける `and`、` or`、および `xor`と等価なビット演算が行われます。演算の優先度は、Pythonのビット演算子に似ています(Cとは異なります)。それらはスカラーまたは要素ごとに操作でき、論理配列と組み合わせることもできますが、操作の順序の違いに注意してください: 括弧が必要な場合があります(例えば、1または2に等しい `A`の要素を選択するには、`(A。== 1)|(A。== 2) `を使用します)。\n"
+"  * Juliaでは、接合演算子` ...` を使って`xs = [1,2]; f(xs...)`のようにして、コレクションの要素を引数として関数に渡すことができます。\n"
+"  * Juliaの[`svd`](@ref)は特異値を密な対角行列ではなくベクトルとして返します。\n"
+"  * Juliaでは、 `...`はコード行を継続するためには使用されません。代わりに、不完全な式は自動的に、次の行へと解釈が継続します。\n"
+"  * JuliaとMATLABの両方で、対話式セッションでは、変数 `ans`は最後に発行された式の値に設定されますが、 Juliaでは、MATLABと異なり、Juliaコードが非インタラクティブモードで実行されるときには、 `ans`は設定されません。\n"
+"  * Juliaの `struct`は、MATLABの` class`とは異なり、実行時に動的なフィールドを追加をサポートしません。代わりに、[`Dict`](@ref)を使ってください。\n"
+"  * Juliaでは各モジュールは独自のグローバルスコープ/名前空間を持ちますが、MATLABでは1つのグローバルスコープしかありません。\n"
+"  * MATLABでは、不要な値を削除するための慣用的な方法は、次のように論理インデックスを使用すること　で、`x(x> 3)`としたり `x(x> 3)= []`と`x`を上書きしたりします。対してJuliaでは、より高次の関数[`filter`](@ref)と[`filter!`](@ref)が利用できます。MATLABのコードをそのままJuliaに書き換えた`x [x.> 3]`や `x = x [x.> 3]` の代わりに、`filter(z-> z> 3,x)`や、`filter!(z-> z> 3,x)`と書くことができます。 [`filter!`](@ref)を使うと一時配列の使用を減らすことができます。\n"
+"  * セル配列のすべての要素を抽出する(つまり「間接参照する」)には、MATLABでは`vertcat(A {:})`が使われますが、Julia で同様のことを行うには、接合演算子を使って`vcat(A ...)`と書きます。\n"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/noteworthy-differences.md:84
 #, no-wrap
 msgid "Noteworthy differences from R"
-msgstr ""
+msgstr "R との注目すべき違い"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/noteworthy-differences.md:88
@@ -6363,7 +6392,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/noteworthy-differences.md:197
 #, no-wrap
 msgid "Noteworthy differences from Python"
-msgstr ""
+msgstr "Python との注目すべき違い"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/noteworthy-differences.md:223
@@ -32622,7 +32651,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/modules.md:217
 #, no-wrap
 msgid "Module initialization and precompilation"
-msgstr "モジュールの初期化とプリコンパイル"
+msgstr "[モジュールの初期化とプリコンパイル](@id Module-initialization-and-precompilation)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:222
