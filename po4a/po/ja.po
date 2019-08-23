@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-07-24 01:15+0000\n"
-"PO-Revision-Date: 2019-08-14 13:57+0900\n"
+"PO-Revision-Date: 2019-08-24 06:04+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 2.2.3\n"
-"X-Poedit-Bookmarks: 697,0,681,-1,-1,-1,-1,-1,-1,-1\n"
+"X-Poedit-Bookmarks: 3311,5560,681,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. type: Title =
 #: ext/julia/doc/src/./NEWS.md:2
@@ -6181,33 +6181,33 @@ msgid ""
 "  * The analogue of extracting (or \"dereferencing\") all elements of a cell array, e.g. in `vertcat(A{:})`\n"
 "    in MATLAB, is written using the splat operator in Julia, e.g. as `vcat(A...)`.\n"
 msgstr ""
-"  * Juliaでは、配列は他の変数に代入してもコピーされません。 `A = B`の後、`B`の要素を変更すると `A`も同様に変更されます\n"
-"  * Juliaでは、値は関数に渡されてもコピーされません。関数が配列を変更すると、その変更は呼び出し元にも影響を与えます。\n"
-"  * Juliaでは、代入文の中で配列のサイズが自動的に拡張されません。 MATLABでは `a(4)= 3.2`で`a = [0 0 0 3.2]`が生成され、その後`a(5)= 7`とすると` a = [0 0 0 3.2 7] `と配列のサイズが大きくなります。対して、Juliaで `a [5] = 7`とすると、`a`の長さが5より場合、もしくは、この代入式が識別子`a`を初めて使用する式である場合には、エラーが発生します。Juliaには、[`push!`](@ref)関数や[`append!`](@ref)関数があり、ベクトルのサイズを拡張する手段として、MATLABの `a(end + 1)= val`よりもはるかに効率的です。\n"
-"  *虚数単位 `sqrt(-1)`は、MATLABでは`i`や` j`が用いられますが、Juliaでは[`im`](@ref)と表記します。\n"
-"  * Juliaでは、小数点のない数値リテラル( `42`など)は浮動小数点ではなく整数を作成します。任意の大きな整数リテラルがサポートされています。その結果、`2 ^ -1`のようないくつかの演算は、「演算結果が整数ではない」というドメインエラーが発生します(詳細については、[ドメインエラーに関するFAQ](@ref faq-domain-errors)を参照)。\n"
-"  * Juliaでは、複数の値が返され、タプルとして割り当てられます。例えば `(a,b) = (1,2)` や `a, b = 1, 2` という具合です。MATLABの `nargout`は、呼び出し側から期待される戻り値の数に基づいて選択的な処理をを行うもので、MATLABではよく使用されますが、Julia では使用できません。代わりに、ユーザーはオプション引数、キーワード引数の機能を使って、似たようなことをできます。\n"
-"  * Juliaは真の1次元配列を持っています。列ベクトルは、サイズが`N`で、`Nx1`ではありません。例えば、[`rand(N)`](@ref)は1次元配列を作成します。\n"
-"  * Juliaでは、 `[x、y、z]`は常に `x`、` y`、 `z`を含む3要素の配列を構築します。\n"
-"     - 最初の( \"垂直方向の\")次元で連結するには、[`vcat(x, y, z)`](@ref)を使うか、配列の要素をセミコロンで分割します( `[x; y; z]`)。\n"
-"     - 2番目の( \"水平方向の\")次元で連結するには、[`hcat(x, y, z)`](@ref)を使うか、配列の要素をスペースで分割します( `[x y z]`)。\n"
-"     - ブロック行列を構築する(最初の2つの次元で連結する)には、[`hvcat`](@ref)を使うか、スペースとセミコロンを組み合わせます( `[a b; c d]`)。\n"
-"  * Juliaでは、 `a：b`と` a：b：c`は `AbstractRange`オブジェクトを構成します。 MATLABのように完全なベクトルを作成するには、[`collect(a:b)`](@ref)を使用してください。しかし、一般的には `collect`を呼び出す必要はありません。 AbstractRangeオブジェクトはほとんどのケースで通常の配列のように振る舞いますが、その値を遅延計算するためより効率的です。完全な配列ではなく特殊化されたオブジェクトを作成するというこのパターンはよく使用されていて、[`range`](@ref)のような関数や、` enumerate`や、`zip` のようなイテレータでも見られます。特殊オブジェクトは、通常の配列のように使用することができます。\n"
-"  * Juliaの関数は、最後の式または `return`キーワードから戻り値を返します。MATLABのように、関数定義で戻り値の名前を列挙するのではありません。(詳細は[returnキーワード](@ref the-return-keyword)を参照)。\n"
-"  * Juliaスクリプトには関数をいくつでも含めることができ、ファイルがロードされれば、すべての関数定義は外部から見えます。現在の作業ディレクトリの外にあるファイルからも関数定義はロードすることができます。\n"
-"  * Juliaでは、[`sum`](@ref)、[` prod`](@ref)、[`max`](@ref)のような簡約処理は、`sum(A)`のように単一の引数で呼び出された場合、全ての要素に対して行われます。たとえ `A`が2次元以上だったとしても、です。\n"
-"  * Juliaでは、[`rand()`](@ref)のように、ゼロ引数で関数を呼び出すには括弧を使用する必要があります。\n"
-"  * Juliaは、文を終了するのにセミコロンを使用することを推奨していません。（対話式プロンプトでの実行を除き）式の結果が自動出力されませんので（出力を抑制したいのだとしても)コードの行末にセミコロンを使う必要はありません。[`println`](@ref)または[`@printf`](@ref)を使ってプリント出力することができます。\n"
-"  * Juliaでは、 `A`と` B`が配列の場合、 `A == B`のような論理比較演算は真偽値の配列を返しません。(要素ごとの比較結果が欲しい場合には) 代わりに`A.== B`を使用してください。[`<`](@ref)や[`>`](@ref)。のような他のブール演算子についても同様です。\n"
-"  * Juliaでは、演算子[`&`](@ref)、[`|`](@ref)、および[`⊻`](@ref xor)([`xor`](@ref))で、それぞれMATLABにおける `and`、` or`、および `xor`と等価なビット演算が行われます。演算の優先度は、Pythonのビット演算子に似ています(Cとは異なります)。それらはスカラーまたは要素ごとに操作でき、論理配列と組み合わせることもできますが、操作の順序の違いに注意してください: 括弧が必要な場合があります(例えば、1または2に等しい `A`の要素を選択するには、`(A。== 1)|(A。== 2) `を使用します)。\n"
-"  * Juliaでは、接合演算子` ...` を使って`xs = [1,2]; f(xs...)`のようにして、コレクションの要素を引数として関数に渡すことができます。\n"
+"  * Juliaでは、配列は他の変数に代入してもコピーされません。 `A = B`の後、`B`の要素を変更すると `A`も同様に変更されます。\n"
+"  * Juliaでは、値は関数に渡されてもコピーされません。関数が配列を変更すると、その変更は呼び出し元にも影響を与えます。\n"
+"  * Juliaでは、代入文の中で配列のサイズが自動的に拡張されません。 MATLABでは `a(4)= 3.2`で`a = [0 0 0 3.2]`が生成され、その後`a(5)= 7`とすると` a = [0 0 0 3.2 7] `と配列のサイズが大きくなります。対して、Juliaで `a [5] = 7`とすると、`a`の長さが5より場合、もしくは、この代入式が識別子`a`を初めて使用する式である場合には、エラーが発生します。Juliaには、[`push!`](@ref)関数や[`append!`](@ref)関数があり、ベクトルのサイズを拡張する手段として、MATLABの `a(end + 1)= val`よりもはるかに効率的です。\n"
+"  * 虚数単位 `sqrt(-1)`は、MATLABでは`i`や` j`が用いられますが、Juliaでは[`im`](@ref)と表記します。\n"
+"  * Juliaでは、小数点のない数値リテラル( `42`など)は浮動小数点ではなく整数を作成します。任意の大きな整数リテラルがサポートされています。その結果、`2 ^ -1`のようないくつかの演算は、「演算結果が整数ではない」というドメインエラーが発生します(詳細については、[ドメインエラーに関するFAQ](@ref faq-domain-errors)を参照)。\n"
+"  * Juliaでは、複数の値が返され、タプルとして割り当てられます。例えば `(a,b) = (1,2)` や `a, b = 1, 2` という具合です。MATLABの `nargout`は、呼び出し側から期待される戻り値の数に基づいて選択的な処理をを行うもので、MATLABではよく使用されますが、Julia では使用できません。代わりに、ユーザーはオプション引数、キーワード引数の機能を使って、似たようなことをできます。\n"
+"  * Juliaは真の1次元配列を持っています。列ベクトルは、サイズが`N`で、`Nx1`ではありません。例えば、[`rand(N)`](@ref)は1次元配列を作成します。\n"
+"  * Juliaでは、 `[x、y、z]`は常に `x`、` y`、 `z`を含む3要素の配列を構築します。\n"
+"    - 最初の( \"垂直方向の\")次元で連結するには、[`vcat(x, y, z)`](@ref)を使うか、配列の要素をセミコロンで分割します( `[x; y; z]`)。\n"
+"    - 2番目の( \"水平方向の\")次元で連結するには、[`hcat(x, y, z)`](@ref)を使うか、配列の要素をスペースで分割します( `[x y z]`)。\n"
+"    - ブロック行列を構築する(最初の2つの次元で連結する)には、[`hvcat`](@ref)を使うか、スペースとセミコロンを組み合わせます( `[a b; c d]`)。\n"
+"  * Juliaでは、 `a：b`と` a：b：c`は `AbstractRange`オブジェクトを構成します。 MATLABのように完全なベクトルを作成するには、[`collect(a:b)`](@ref)を使用してください。しかし、一般的には `collect`を呼び出す必要はありません。 AbstractRangeオブジェクトはほとんどのケースで通常の配列のように振る舞いますが、その値を遅延計算するためより効率的です。完全な配列ではなく特殊化されたオブジェクトを作成するというこのパターンはよく使用されていて、[`range`](@ref)のような関数や、` enumerate`や、`zip` のようなイテレータでも見られます。特殊オブジェクトは、通常の配列のように使用することができます。\n"
+"  * Juliaの関数は、最後の式または `return`キーワードから戻り値を返します。MATLABのように、関数定義で戻り値の名前を列挙するのではありません。(詳細は[returnキーワード](@ref the-return-keyword)を参照)。\n"
+"  * Juliaスクリプトには関数をいくつでも含めることができ、ファイルがロードされれば、すべての関数定義は外部から見えます。現在の作業ディレクトリの外にあるファイルからも関数定義はロードすることができます。\n"
+"  * Juliaでは、[`sum`](@ref)、[` prod`](@ref)、[`max`](@ref)のような簡約処理は、`sum(A)`のように単一の引数で呼び出された場合、全ての要素に対して行われます。たとえ `A`が2次元以上だったとしても、です。\n"
+"  * Juliaでは、[`rand()`](@ref)のように、ゼロ引数で関数を呼び出すには括弧を使用する必要があります。\n"
+"  * Juliaは、文を終了するのにセミコロンを使用することを推奨していません。（対話式プロンプトでの実行を除き）式の結果が自動出力されませんので（出力を抑制したいのだとしても)コードの行末にセミコロンを使う必要はありません。[`println`](@ref)または[`@printf`](@ref)を使ってプリント出力することができます。\n"
+"  * Juliaでは、 `A`と` B`が配列の場合、 `A == B`のような論理比較演算は真偽値の配列を返しません。(要素ごとの比較結果が欲しい場合には) 代わりに`A.== B`を使用してください。[`<`](@ref)や[`>`](@ref)。のような他のブール演算子についても同様です。\n"
+"  * Juliaでは、演算子[`&`](@ref)、[`|`](@ref)、および[`⊻`](@ref xor)([`xor`](@ref))で、それぞれMATLABにおける `and`、` or`、および `xor`と等価なビット演算が行われます。演算の優先度は、Pythonのビット演算子に似ています(Cとは異なります)。それらはスカラーまたは要素ごとに操作でき、論理配列と組み合わせることもできますが、操作の順序の違いに注意してください: 括弧が必要な場合があります(例えば、1または2に等しい `A`の要素を選択するには、`(A。== 1)|(A。== 2) `を使用します)。\n"
+"  * Juliaでは、接合演算子` ...` を使って`xs = [1,2]; f(xs...)`のようにして、コレクションの要素を引数として関数に渡すことができます。\n"
 "  * Juliaの[`svd`](@ref)は特異値を密な対角行列ではなくベクトルとして返します。\n"
 "  * Juliaでは、 `...`はコード行を継続するためには使用されません。代わりに、不完全な式は自動的に、次の行へと解釈が継続します。\n"
-"  * JuliaとMATLABの両方で、対話式セッションでは、変数 `ans`は最後に発行された式の値に設定されますが、 Juliaでは、MATLABと異なり、Juliaコードが非インタラクティブモードで実行されるときには、 `ans`は設定されません。\n"
-"  * Juliaの `struct`は、MATLABの` class`とは異なり、実行時に動的なフィールドを追加をサポートしません。代わりに、[`Dict`](@ref)を使ってください。\n"
-"  * Juliaでは各モジュールは独自のグローバルスコープ/名前空間を持ちますが、MATLABでは1つのグローバルスコープしかありません。\n"
-"  * MATLABでは、不要な値を削除するための慣用的な方法は、次のように論理インデックスを使用すること　で、`x(x> 3)`としたり `x(x> 3)= []`と`x`を上書きしたりします。対してJuliaでは、より高次の関数[`filter`](@ref)と[`filter!`](@ref)が利用できます。MATLABのコードをそのままJuliaに書き換えた`x [x.> 3]`や `x = x [x.> 3]` の代わりに、`filter(z-> z> 3,x)`や、`filter!(z-> z> 3,x)`と書くことができます。 [`filter!`](@ref)を使うと一時配列の使用を減らすことができます。\n"
-"  * セル配列のすべての要素を抽出する(つまり「間接参照する」)には、MATLABでは`vertcat(A {:})`が使われますが、Julia で同様のことを行うには、接合演算子を使って`vcat(A ...)`と書きます。\n"
+"  * JuliaとMATLABの両方で、対話式セッションでは、変数 `ans`は最後に発行された式の値に設定されますが、 Juliaでは、MATLABと異なり、Juliaコードが非インタラクティブモードで実行されるときには、 `ans`は設定されません。\n"
+"  * Juliaの `struct`は、MATLABの` class`とは異なり、実行時に動的なフィールドを追加をサポートしません。代わりに、[`Dict`](@ref)を使ってください。\n"
+"  * Juliaでは各モジュールは独自のグローバルスコープ/名前空間を持ちますが、MATLABでは1つのグローバルスコープしかありません。\n"
+"  * MATLABでは、不要な値を削除するための慣用的な方法は、次のように論理インデックスを使用すること　で、`x(x> 3)`としたり `x(x> 3)= []`と`x`を上書きしたりします。対してJuliaでは、より高次の関数[`filter`](@ref)と[`filter!`](@ref)が利用できます。MATLABのコードをそのままJuliaに書き換えた`x [x.> 3]`や `x = x [x.> 3]` の代わりに、`filter(z-> z> 3,x)`や、`filter!(z-> z> 3,x)`と書くことができます。 [`filter!`](@ref)を使うと一時配列の使用を減らすことができます。\n"
+"  * セル配列のすべての要素を抽出する(つまり「間接参照する」)には、MATLABでは`vertcat(A {:})`が使われますが、Julia で同様のことを行うには、接合演算子を使って`vcat(A ...)`と書きます。\n"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/noteworthy-differences.md:84
@@ -6397,17 +6397,17 @@ msgstr "Python との注目すべき違い"
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/noteworthy-differences.md:223
 msgid "Julia requires `end` to end a block. Unlike Python, Julia has no `pass` keyword."
-msgstr ""
+msgstr "Julia は、コードブロックの終わりに`end` が必要です。Pythonとは違って Julia には `pass` キーワードがありません。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/noteworthy-differences.md:223 ext/julia/doc/src/manual/noteworthy-differences.md:307
 msgid "In Julia, indexing of arrays, strings, etc. is 1-based not 0-based."
-msgstr ""
+msgstr "Julia では、配列、文字列などのインデックスは 0 からではなく 1 から始まります。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/noteworthy-differences.md:223
 msgid "Julia's slice indexing includes the last element, unlike in Python. `a[2:3]` in Julia is `a[1:3]` in Python."
-msgstr ""
+msgstr "Julia のスライス インデックス作成には、Python とは異なり、最後の要素が含まれています。ジュリアの`a[2:3]` は Python の `a[1:3]` です。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/noteworthy-differences.md:223
@@ -6415,11 +6415,13 @@ msgid ""
 "Julia does not support negative indices. In particular, the last element of a list or array is indexed with `end` in Julia, not `-1` as in "
 "Python."
 msgstr ""
+"Julia は負のインデックスをサポートしていません。特に、リストまたは配列の最後の要素は、Python では `-1` ですが、Julia では `end` でインデック"
+"ス付けされます。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/noteworthy-differences.md:223
 msgid "Julia's `for`, `if`, `while`, etc. blocks are terminated by the `end` keyword. Indentation level is not significant as it is in Python."
-msgstr ""
+msgstr "Julia の `for`、`if`、`while`などのブロックは `end` キーワードで終了します。インデントレベルはPythonほど重要ではありません。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/noteworthy-differences.md:223
@@ -6427,6 +6429,8 @@ msgid ""
 "Julia has no line continuation syntax: if, at the end of a line, the input so far is a complete expression, it is considered done; otherwise "
 "the input continues. One way to force an expression to continue is to wrap it in parentheses."
 msgstr ""
+"Julia には行継続構文がありません: 行末で、これまでの入力が完全な式である場合は、完了したと見なされますが、それ以外の場合は、入力が続行されま"
+"す。式を括弧でくくると(そして行内で括弧を閉じなければ) 強制的に次の行に続行することができます。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/noteworthy-differences.md:223
@@ -6435,6 +6439,9 @@ msgid ""
 "looping over arrays, the order of the loops should be reversed in Julia relative to NumPy (see relevant section of [Performance Tips](@ref "
 "man-performance-tips))."
 msgstr ""
+"Julia 配列は列メジャー (Fortran オーダー) ですが、NumPy 配列はデフォルトで行メジャー (C オーダー) です。配列をループする際に最適なパフォーマ"
+"ンスを得るには、NumPy に対して Julia でループの順序を逆にする必要があります ([パフォーマンス・ティップス](@ref man-performance-tips)の関連す"
+"る節を参照)。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/noteworthy-differences.md:223
@@ -6443,6 +6450,9 @@ msgid ""
 "doesn't change values in `A`, it rather rebinds the name `B` to the result of the right-hand side `B = B + 3`, which is a new array. For in-"
 "place operation, use `B .+= 3` (see also [dot operators](@ref man-dot-operators)), explicit loops, or `InplaceOps.jl`."
 msgstr ""
+"Julia の更新演算子(例:`+=`、`-=`、...)は*インプレースではありません*(NumPy の更新演算子は インプレースですが) 。どういうことかというと、 `A "
+"= [1, 1]; B = A; B += [3, 3]` は `A` の値を変更せず、新しい配列である右側の `B = B + 3` の結果に `B` という名前を再バインドします。インプレー"
+"ス操作の場合は、`B.+= 3`を使用してください。 ( [ドット演算子](@ref man-dot-operators)、示的なループ、または `InplaceOps.jl`を参照)"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/noteworthy-differences.md:223
@@ -6451,17 +6461,20 @@ msgid ""
 "evaluated only once when the function is defined. For example, the function `f(x=rand()) = x` returns a new random number every time it is "
 "invoked without argument.  On the other hand, the function `g(x=[1,2]) = push!(x,3)` returns `[1,2,3]` every time it is called as `g()`."
 msgstr ""
+"Julia は、関数の定義時に既定値が 1 回だけ評価される Python とは異なり、メソッドが呼び出されるたびに関数引数の既定値を評価します。たとえば、関"
+"数 `f(x=rand()= x` は、引数なしで呼び出されるたびに新しい乱数を返します。 一方、関数 `g(x=[1,2]) = push!(x,3)` は `g()` と呼ばれるたびに "
+"`[1,2,3]` を返します。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/noteworthy-differences.md:223
 msgid "In Julia `%` is the remainder operator, whereas in Python it is the modulus."
-msgstr ""
+msgstr "Julia では、`%` は reminder 演算子ですが、Python ではモジュラスです。(訳者注: reminder は商に負の数を許した上での剰余)"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/noteworthy-differences.md:224
 #, no-wrap
 msgid "Noteworthy differences from C/C++"
-msgstr ""
+msgstr "C/C++ との注目すべき違い"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/noteworthy-differences.md:307
@@ -6470,6 +6483,9 @@ msgid ""
 "reference to a pointer or address as in C/C++. See the Julia documentation for the syntax for array construction (it has changed between "
 "versions)."
 msgstr ""
+"Julia 配列は角かっこでインデックス付けされ、複数次元の配列を扱えます `A[i,j]`のように。この構文は、C/C++ のようにポインタまたはアドレスへの参"
+"照のための単なる糖衣構文ではありません。配列構築の構文については、Julia のドキュメントを参照してください (バージョン間で構文が変更されていま"
+"す)。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/noteworthy-differences.md:307
@@ -6478,6 +6494,8 @@ msgid ""
 "operators like `+=` do not operate in-place, they are equivalent to `A = A + B` which rebinds the left-hand side to the result of the right-"
 "hand side expression."
 msgstr ""
+"Julia 配列は、別の変数に割り当てられた場合はコピーされません。`A = B` の後、`B` の要素を変更すると `A` も変更されます。`+=` のような更新演算"
+"子は、インプレースでの動作はしませんが、左辺を右辺の式の結果に最バインドする、 `A = A + B` に相当します。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/noteworthy-differences.md:307
@@ -6486,6 +6504,9 @@ msgid ""
 "looping over arrays, the order of the loops should be reversed in Julia relative to C/C++ (see relevant section of [Performance Tips](@ref "
 "man-performance-tips))."
 msgstr ""
+"Julia 配列は列メジャー (Fortran オーダー) ですが、C/C++ 配列はデフォルトで行メジャーです。配列をループする際に最適なパフォーマンスを得るに"
+"は、C/C++ に対して Julia でループの順序を逆にする必要があります ([パフォーマンス・ティップス](@ref man-performance-tips)の関連セクションを参"
+"照)。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/noteworthy-differences.md:307
@@ -6493,11 +6514,12 @@ msgid ""
 "Julia values are not copied when assigned or passed to a function. If a function modifies an array, the changes will be visible in the "
 "caller."
 msgstr ""
+"Julia では、値は、関数に割り当てられたり渡されたりしてもコピーされません。関数が配列を変更すると、その変更は呼び出し元にも影響を及ぼします。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/noteworthy-differences.md:307
 msgid "In Julia, whitespace is significant, unlike C/C++, so care must be taken when adding/removing whitespace from a Julia program."
-msgstr ""
+msgstr "Julia では、空白は C/C++ とは異なり重要です。Julia プログラムから空白を追加/削除する場合は注意が必要です。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/noteworthy-differences.md:307
@@ -6572,6 +6594,24 @@ msgid ""
 "    it's more general than that since methods are dispatched on every argument type, not only `this`,\n"
 "    using the most-specific-declaration rule).\n"
 msgstr ""
+"  * Juliaでは、小数点のないリテラル数( `42`など)は、`Int`型の符号付き整数を作成します。しかし機械語のサイズに収まらないほど大きいリテラルは自動的に`Int64`(` Int`が `Int32`の場合)や` Int128`、または任意の大きさのより大きなサイズの型のBigInt型に昇格されます。`L`、`LL`、`U`、`UL`、`ULL` などの、符号なしおよび/または　符号付き と 符号なしの積などを示す、数値リテラルの接尾辞はありません。10進数リテラルは常に符号付き、16進数リテラル(C / C ++のように `0x`で始まる)は符号なしです。また、16進リテラルは、 C / C ++ / Javaの16進数リテラルや、Juliaの10進数リテラルとは違い、*リテラルの長さ*に基づいた型があります。先頭に0が複数が付くものも含みます。例えば、 `0x0`と` 0x00`は型 [`UInt8`](@ref)を持ち、` 0x000`と `0x0000`は型 [`UInt16`](@ref)になります。5から8桁の16進数のリテラルは型`UInt32`に、9から16桁の16進数リテラルは型`UInt64`に、そして17から32桁の16進数リテラルは型` UInt128`です。16進数マスクを定義するときには、このことを考慮する必要があります。例えば`~0xf == 0xf0` は `~0x000f == 0xfff0`と全く異なります。 64ビットの `Float64`や、32ビットの [`Float32`](@ref)のビットリテラルはそれぞれ`1.0`と `1.0f0`とひょうきします。浮動小数点リテラルが正確に表現できない場合は、丸められます(`BigFloat`型には昇格されません)。浮動小数点リテラルの動作はC / C ++に近いです。 8進数(接頭辞 `0o`)とバイナリ(接頭辞 `0b`)リテラルも符号なしとして扱われます。\n"
+"  *文字列リテラルは `\" `または`\"\"\"` で囲って表記することができます。 `\"\"\"` を使った文字列リテラルは、`\"\\\"\"` のようにクオートすることなく、文字 `\"` を内に含むことができます。文字列リテラルは他の変数や式の値を 展開して用いることができます。そこでは、`$variablename` や `$(expression)` と言った具合に書かれ、変数名や式をその文字列を用いたコンテキストの中で評価されます。\n"
+"  * `//`は[`有理数`](@ref Rational)を表し、単一行のコメントではありません (Juliaのコメントは`#`です)\n"
+"  * `#=`は複数行コメントの始まりを示し、 `=#`は終了を示します。\n"
+"  * Juliaの関数は最後の式または `return`キーワードから値を返します。複数の値を関数から返すことができ、タプルとして割り当てられます。例えば、 `(a, b)= myfunction()`や、`a, b = myfunction()`といった具合です。C / C ++のように(すなわち `a=myfunction(&b)`というふうに)値へのポインタを渡す必要はありません。\n"
+"  * Juliaでは、文を終了するためにセミコロンを使用する必要はありません。(対話型プロンプト、すなわちREPLを除き)、式の結果は自動的に出力されませんので、コードの行末にセミコロンをつける必要はありません。特段プリント出力が必要なときには、[`println`](@ref)や[`@printf`](@ref)を使います。REPLでは、 `;`を使って出力を抑制することができます。`[]`内では `;`は注目に値する、別の意味を持ちます。同じ行の中で、複数の式を区切るのに使うことができるのです。しかし、この機能は、多くの場合で必ず必要ということではなく、可読性向上のために役立つという意味合いが強いです。\n"
+"  * Juliaでは、演算子[`⊻`](@ref xor)([`xor`](@ref))はXORビット演算を実行します。C / C ++でいうところの[`^`](@ref)にあたります。また、ビット演算子はC / ++とは優先順位が異なるので、括弧が必要な場合があります。\n"
+"  * Juliaの[`^`](@ref)はべき乗(pow)であり、C / C ++の場合のようなビット演算のXORではありません(Julia では[`⊻`](@ref xor)または[`xor`](@ref)を使ってください)\n"
+"  * Juliaには2つの右シフト演算子、 `>>`と `>>>`があります。 `>>>`は算術シフトを実行します、 `>>` は C / C ++とは異なり、常に論理シフトを実行します。ここで、 `>>`の意味は、シフトされる値の型によって異なります。\n"
+"  * Juliaの `->`は無名関数を作成し、ポインタ経由のメンバへのアクセスではありません。\n"
+"  * Juliaは `if`ステートメントや` for` / `while`ループを書くときに括弧を必要としません: `for(int i = 1; i <= 3; i ++)`ではなく`for i in [1, 2, 3]`です。`if(i == 1)`ではなく `if i == 1`です。\n"
+"  * Juliaは数字の0と1をブール値として扱いません。 Juliaでは `if(1)`と書くことはできません。なぜなら、if文はブール値だけを受け入れるからです。代わりに、 `if true `、` if Bool(1) 、`if 1 == 1`と書くことはできます。\n"
+"  * Juliaは、`if`などの条件付きブロックの終わりを示すのに `end`を使います。同様に、`while`や`for`などのループブロックのの終わりにも`end`を使います。ワンラインで書く`if ( cond ) statement`の代わりに、Juliaでは、`if cond; statement; end`　や、 `cond && statement` や、 `!cond || statement` のように書くことができます。終わり2つの構文で、代入式を書く場合には、括弧で明示的に囲う必要があります。例えば、`cond &&(x = value)`といった具合で、これは演算子の優先順位のためです。\n"
+"  * Juliaには行継続構文はありません。行末で、これまでの入力が完全な式である場合、完了したとみなされますが、そうでなければ、入力が続行されます。式を括弧でくくることで、強制的に次の行に続行することができます。\n"
+"  * Juliaのマクロは、プログラムのテキストではなく、解析された式を操作します。これにより、Juliaコードの洗練された変換を実行することができます。マクロ名は `@`文字で始まり、`mymacro(arg1, arg2,arg3)` という形の関数のような構文であったり、`@mymacro arg1 arg2 arg3`という形の文のような構文を持ちます。書式は書き換え可能です。関数のような形式は特にマクロが別の式の中にある場合に便利で、多くの場合明確です。文のような形式は、ブロックに注釈を付けるためによく使われます。例えば、分散実行型の `for`構文のようでは、`@distributed for i in 1:n; #= body =#;end`のように書きます。マクロの終わりがはっきりしないコードでは、関数のような形式を使用してください。\n"
+"  * Juliaは列挙型を持ち、 `@enum(name, value1, value2, ...)`マクロを使って表現されます。例えば、@enum(Fruit, banana = 1, apple, pear)のように書きます。\n"
+"  *慣例により、引数を変更する関数は名前の最後に `!`を持ちます。例えば、`push!` などです。\n"
+"  * C ++では、デフォルトでは静的ディスパッチを利用可能です。つまり、動的なディスパッチを行うには、関数を仮想関数であるようにアノテーションする必要があります。一方、Juliaでは、すべてのメソッドは「仮想」です(ただし、より一般的です。メソッドは、最も具体的な宣言規則を使用するような、ディスパッチを、thisだけではなくすべての引数の型に対して行います)。\n"
 
 #. type: Title #
 #: ext/julia/doc/src/manual/complex-and-rational-numbers.md:1
@@ -13590,7 +13630,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:62
 msgid "You can easily convert a `Char` to its integer value, i.e. code point:"
-msgstr "'Char' を整数値(コード ポイント)に簡単に変換できます:"
+msgstr "`Char` を整数値(コード ポイント)に簡単に変換できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:63
@@ -13630,7 +13670,7 @@ msgid ""
 "Not all integer values are valid Unicode code points, but for performance, the `Char` conversion does not check that every character value "
 "is valid. If you want to check that each converted value is a valid code point, use the [`isvalid`](@ref) function:"
 msgstr ""
-"すべての整数値が有効な Unicode コード ポイントであるとは言えませんが、パフォーマンス向上のため、'Char' 変換では、すべての引数が有効なコードポ"
+"すべての整数値が有効な Unicode コード ポイントであるとは言えませんが、パフォーマンス向上のため、`Char` 変換では、すべての引数が有効なコードポ"
 "イントであるかの確認は行いません。変換された各値が有効なコード ポイントであるか確認する場合は、[`isvalid`](@ref) 関数を使用します:"
 
 #. type: Plain text
@@ -13750,7 +13790,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:139
 msgid "You can do comparisons and a limited amount of arithmetic with `Char` values:"
-msgstr "'Char'値では、いくつかの限定された算術演算と比較演算を行うことができます:"
+msgstr "`Char`値では、いくつかの限定された算術演算と比較演算を行うことができます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:140
@@ -13857,9 +13897,9 @@ msgid ""
 "the length of the string.)"
 msgstr ""
 "文字列を含む多くの Julia オブジェクトは、整数でインデックスづけができます。最初の要素のインデックスは [`firstindex(str)`](@ref)で、最後の要素"
-"のインデックスは [`lastindex(str)`](@ref)で取得できます。キーワード 'end' は、インデックス操作時に、指定された次元の最後のインデックスを示す"
+"のインデックスは [`lastindex(str)`](@ref)で取得できます。キーワード `end` は、インデックス操作時に、指定された次元の最後のインデックスを示す"
 "短縮形として使用できます。 Julia のほとんどのインデックスづけは 1 から始まります: 多くの整数インデックス付きオブジェクトの最初の要素はイン"
-"デックス 1 です。(後で示しますが、これは必ずしも最後の要素がインデックス 'n' にあり、'n' が文字列の長さであることを意味するわけではありませ"
+"デックス 1 です。(後で示しますが、これは必ずしも最後の要素がインデックス `n` にあり、`n` が文字列の長さであることを意味するわけではありませ"
 "ん。）"
 
 #. type: Plain text
@@ -14210,9 +14250,9 @@ msgid ""
 "situations a rule is that when parsing a sequence of code units from left to right characters are formed by the longest sequence of 8-bit "
 "code units that matches the start of one of the following bit patterns (each `x` can be `0` or `1`):"
 msgstr ""
-"Julia の文字列には、無効なUTF-8コード単位シーケンスを含めることができます。この仕組みによって、任意のバイト シーケンスを 'String' として扱う"
+"Julia の文字列には、無効なUTF-8コード単位シーケンスを含めることができます。この仕組みによって、任意のバイト シーケンスを `String` として扱う"
 "ことができます。このような状況では、左から右の文字までのコード単位のシーケンスを解析する場合、文字列は、次のいずれかのビット パターンの先頭に"
-"一致し、最も長い8 ビット コード単位のシーケンスよって形成されます (各 'x' は '0' または '1' になります)。:"
+"一致し、最も長い8 ビット コード単位のシーケンスよって形成されます (各 `x` は `0` または `1` になります)。:"
 
 #. type: Bullet: '* '
 #: ext/julia/doc/src/manual/strings.md:363
@@ -14562,7 +14602,7 @@ msgid ""
 "[`string`](@ref) is the identity for `AbstractString` and `AbstractChar` values, so these are interpolated into strings as themselves, "
 "unquoted and unescaped:"
 msgstr ""
-"[`string`](@ref) は 'AbstractString' および 'AbstractChar' に対しては、恒等写像的に働くので、引用符を取り去り、エスケープが処理された文字列に"
+"[`string`](@ref) は `AbstractString` および `AbstractChar` に対しては、恒等写像的に働くので、引用符を取り去り、エスケープが処理された文字列に"
 "展開されます:"
 
 #. type: Plain text
@@ -15146,7 +15186,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/strings.md:778
 msgid "You can extract the following info from a `RegexMatch` object:"
-msgstr "'RegexMatch' オブジェクトからは以下の情報を抽出できます:"
+msgstr "`RegexMatch` オブジェクトからは以下の情報を抽出できます:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/strings.md:783
@@ -15486,7 +15526,7 @@ msgid ""
 "to `Regex()`. Here are some examples:"
 msgstr ""
 "`Regex()` コンストラクターを使用して、プログラムで有効な正規表現文字列を作成できます。 これにより、正規表現文字列を構築するときに、文字列変数"
-"やその他の文字列操作の結果を使用できます。これまでに見てきた正規表現はいずれも、単一の文字列引数で 'Regex()' に使用できます。いくつかの例を次"
+"やその他の文字列操作の結果を使用できます。これまでに見てきた正規表現はいずれも、単一の文字列引数で `Regex()` に使用できます。いくつかの例を次"
 "に示します:"
 
 #. type: Plain text
@@ -15553,7 +15593,7 @@ msgid ""
 "for byte array literals are the following:"
 msgstr ""
 "もう 1 つの便利な非標準文字列リテラルは、バイト配列文字列リテラルです。`b\"...\"` のように書きます。この形式では、読み取り専用のリテラルバイ"
-"ト配列、つまり[`UInt8`](@ref) 値の配列を表すのに、文字列表記を使用することができます。これらのオブジェクトの型は'CodeUnits{UInt8, String}'で"
+"ト配列、つまり[`UInt8`](@ref) 値の配列を表すのに、文字列表記を使用することができます。これらのオブジェクトの型は`CodeUnits{UInt8, String}`で"
 "す。 バイト配列リテラルの規則は次のとおりです:"
 
 #. type: Bullet: '  * '
@@ -23456,7 +23496,7 @@ msgstr "組み込みの例外"
 msgid ""
 "`Exception`s are thrown when an unexpected condition has occurred. The built-in `Exception`s listed below all interrupt the normal flow of "
 "control."
-msgstr "例外は、予期しない状態が発生したときにスローされます。以下に示す組み込みの'Exception'は、通常の制御フローを中断します。"
+msgstr "例外は、予期しない状態が発生したときにスローされます。以下に示す組み込みの`Exception`は、通常の制御フローを中断します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:588
@@ -24989,7 +25029,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/documentation.md:397
 #, no-wrap
 msgid "Types"
-msgstr ""
+msgstr "型"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:399
@@ -25008,6 +25048,18 @@ msgid ""
 "    ...\n"
 "end\n"
 msgstr ""
+"\"...\"\n"
+"abstract type T1 end\n"
+"\n"
+"\"...\"\n"
+"mutable struct T2\n"
+"    ...\n"
+"end\n"
+"\n"
+"\"...\"\n"
+"struct T3\n"
+"    ...\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:415
@@ -29847,6 +29899,12 @@ msgid ""
 "called polymorphism.  All code in classic dynamically typed languages is polymorphic: only by explicitly checking types, or when objects "
 "fail to support operations at run-time, are the types of any values ever restricted."
 msgstr ""
+"型システムは、従来、2 つの全く異なる陣営に分類されてきました。: 静的型システムと動的型システムです。静的型システムでは、 すべてのプログラムの"
+"式は、プログラムの実行前に算出可能な型を持つ必要があります。一方動的型システムでは、プログラムによって処理されるされる実際の値が使用可能にな"
+"る実行時まで、型については何もわかりません。オブジェクト志向プログラミングをすれば、静的型付け言語でも、コンパイル時に正確な値の型が分からな"
+"くてもコードを記述でき、あるていど柔軟性は高くなります。複数の異なる型を操作できるコードを記述する機能は、ポリモーフィズムと呼ばれます。 従来"
+"の動的型付け言語のすべてのコードはポリモーフィックです: 型に制約が生じるのは、明示的な型検査を行う場合もしくは、オブジェクトが実行時に操作に"
+"対応できなくなった場合です。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:17
@@ -29856,6 +29914,9 @@ msgid ""
 "dispatch on the types of function arguments to be deeply integrated with the language. Method dispatch is explored in detail in [Methods]"
 "(@ref), but is rooted in the type system presented here."
 msgstr ""
+"Julia の型システムは動的ですが、特定の値が特定の型であることを明示することで、静的型システムの利点の一部を得ることができます。これは効率的な"
+"コードを生成する上で大いに助けになるのですが、さらに重要なことに、関数引数の型に対するメソッドディスパッチを言語と深く統合できるのです。メ"
+"ソッドディスパッチは[メソッド](@ref Methods)で詳しく説明しますが、ここで説明する型システムに根ざしています。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:24
@@ -29865,6 +29926,10 @@ msgid ""
 "annotations into previously \"untyped\" code. Adding annotations serves three primary purposes: to take advantage of Julia's powerful "
 "multiple-dispatch mechanism, to improve human readability, and to catch programmer errors."
 msgstr ""
+"型を省略した場合の Julia の既定の挙動では、値に対して任意の型が許容されます。したがって、型を明示的に使用しなくても、多くの便利な Julia 関数"
+"を記述できます。ただし、追加の表現力が必要な場合は、元の \"型指定されていない\" コードに対して明示的な型注釈を徐々に導入することは簡単です。"
+"型注釈の目的は主に3つあります。Julia の強力な多重ディスパッチ メカニズムを利用すること、人間にとって読みやすくすること、プログラマのエラーを"
+"補足できるようにすることです。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:36
@@ -29878,6 +29943,13 @@ msgid ""
 "and inheriting both causes significant difficulties in traditional object-oriented languages. Other high-level aspects of Julia's type "
 "system that should be mentioned up front are:"
 msgstr ""
+"Julia を、[型システム](https://en.wikipedia.org/wiki/Type_system)の言葉で説明するならば、動的で、公称的で、パラメトリック、といういことになり"
+"ます。ジェネリック型はパラメータ化でき、型同士が持つ階層的な関係は[互換性のある構造によって暗示される](https://en.wikipedia.org/wiki/"
+"Structural_type_system)のではなく、[明示的に宣言](https://en.wikipedia.org/wiki/Nominal_type_system)されます。Julia の型システムの特に特徴的"
+"な特徴の 1 つは、具象型が互いに互いのサブタイプにはできないということです。全ての具体型は全てファイナル(下の階層を持たない)で、具象型のサブタ"
+"イプ(上の階層)は抽象型のみです。最初は過度な制限に見えるかもしれませんが、この制約は驚くほど欠点が少なく、多くの有益な結果を導きます。動作を"
+"継承できることは、構造を継承するよりもはるかに重要であり、その両方を継承すると、従来のオブジェクト指向言語のように大きな困難が生じます。前"
+"もって言及すべきJuliaの型システムの他の高レベルの側面は次のとおりです:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/types.md:49
@@ -29885,6 +29957,8 @@ msgid ""
 "There is no division between object and non-object values: all values in Julia are true objects having a type that belongs to a single, "
 "fully connected type graph, all nodes of which are equally first-class as types."
 msgstr ""
+"オブジェクトか非オブジェクトかという区分はありません: Julia のすべての値は、単一の完全に接続された型グラフに属する型を持つ真のオブジェクトで"
+"あり、すべてのノードは型として等しくファーストクラスです。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/types.md:49
@@ -29893,11 +29967,13 @@ msgid ""
 "called a \"run-time type\" in object-oriented languages where the combination of static compilation with polymorphism makes this distinction "
 "significant."
 msgstr ""
+"「コンパイル時の型」という考え方は意味がありません: 値が持つ型は、プログラムの実行中の実際の型だけです。静的コンパイルとポリモーフィズムの組"
+"み合わせで成り立つオブジェクト指向の言語においては、コンパイル時/実行中の型の区別が重要になり、実行中の型のことは「ランタイム型」と呼びます。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/types.md:49
 msgid "Only values, not variables, have types -- variables are simply names bound to values."
-msgstr ""
+msgstr "変数ではなく値だけが型を持ちます。変数は単に値にバインドされた名前です。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/types.md:49
@@ -29906,6 +29982,9 @@ msgid ""
 "which [`isbits`](@ref) returns true (essentially, things like numbers and bools that are stored like C types or `struct`s with no pointers "
 "to other objects), and also by tuples thereof. Type parameters may be omitted when they do not need to be referenced or restricted."
 msgstr ""
+"抽象型と具象型の両方を他の型でパラメータ化できます。また、シンボル、値でその型が [`isbits`](@ref)で true が返されるもの(本質的には、数値や真"
+"偽値などで、他のオブジェクトへのポインタを持たないC型や`struct`などに格納されているもの)、およびそれらのタプルなどによってパラメータ化するこ"
+"ともできます。型パラメーターは、参照や制限をする必要がない場合には省略できます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:53
@@ -29914,6 +29993,9 @@ msgid ""
 "the need to write code that explicitly uses types. Some kinds of programming, however, become clearer, simpler, faster and more robust with "
 "declared types."
 msgstr ""
+"Julia の型システムは、強力で表現力豊かでありながら、明確で直感的で控えめであるように設計されています。 Julia プログラマの多くは、型を明示的に"
+"使用するコードを記述する必要性を感じないかもしれません。ただし、ある種のプログラミングでは、宣言された型を使用すると、より明確で、よりシンプ"
+"ルで、より速く、より堅牢になります。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/types.md:54
@@ -29925,17 +30007,17 @@ msgstr "[型宣言](@id type-declarations)"
 #: ext/julia/doc/src/manual/types.md:58
 msgid ""
 "The `::` operator can be used to attach type annotations to expressions and variables in programs.  There are two primary reasons to do this:"
-msgstr ""
+msgstr "演算子 `::` を使用すると、プログラム内の式や変数に型注釈をつけることができます。これを行う理由は主に2 つです:"
 
 #. type: Bullet: '1. '
 #: ext/julia/doc/src/manual/types.md:62
 msgid "As an assertion to help confirm that your program works the way you expect,"
-msgstr ""
+msgstr "プログラムが期待どおりに動作することを確認するためのアサーションとして、"
 
 #. type: Bullet: '2. '
 #: ext/julia/doc/src/manual/types.md:62
 msgid "To provide extra type information to the compiler, which can then improve performance in some cases"
-msgstr ""
+msgstr "コンパイラに追加の型情報を提供し、状況によってはパフォーマンスを向上できるようにすること"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:70
@@ -29946,6 +30028,11 @@ msgid ""
 "When the type is abstract, it suffices for the value to be implemented by a concrete type that is a subtype of the abstract type. If the "
 "type assertion is not true, an exception is thrown, otherwise, the left-hand value is returned:"
 msgstr ""
+"計算式に追加した`::`演算子は \"is an instance of\" と読み下すことができます。この演算子はどこでも使用することができ、演算子の左側の式の値が右"
+"側の型のインスタンスであることを表明します。演算子の右側の型が具象型の場合、左側の値はその型の実装でなければなりません。全ての具象型は、ファ"
+"イナルで、その実装は他のどの具象型のサブタイプにもならないことを思い出してください。一方、演算子の右側の型が抽象型の場合、演算子の左側の値"
+"は、抽象型のサブタイプである具体的な型によって実装されれていれば十分です。型アサーションが 真でない場合は、例外が投げられますが、それ以外の場"
+"合は演算子の左側の値が返されます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:71
@@ -29957,11 +30044,16 @@ msgid ""
 "julia> (1+2)::Int\n"
 "3\n"
 msgstr ""
+"julia> (1+2)::AbstractFloat\n"
+"ERROR: TypeError: in typeassert, expected AbstractFloat, got Int64\n"
+"\n"
+"julia> (1+2)::Int\n"
+"3\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:80
 msgid "This allows a type assertion to be attached to any expression in-place."
-msgstr ""
+msgstr "これにより、型アサーションを任意の式に差し込むことができます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:85
@@ -29970,6 +30062,8 @@ msgid ""
 "bit different: it declares the variable to always have the specified type, like a type declaration in a statically-typed language such as C. "
 "Every value assigned to the variable will be converted to the declared type using [`convert`](@ref):"
 msgstr ""
+"代入文の左辺や、`local` 宣言の一部に追加すると、`::` 演算子の持つ意味が少し変わります。C言語のような、静的型付き言語の型宣言のように、常に指"
+"定された型を持つ変数を宣言になります。変数に割り当てられた値はすべて、[`convert()`](@ref) を使用して宣言された型に変換されます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:86
@@ -29987,6 +30081,17 @@ msgid ""
 "julia> typeof(ans)\n"
 "Int8\n"
 msgstr ""
+"julia> function foo()\n"
+"           x::Int8 = 100\n"
+"           x\n"
+"       end\n"
+"foo (generic function with 1 method)\n"
+"\n"
+"julia> foo()\n"
+"100\n"
+"\n"
+"julia> typeof(ans)\n"
+"Int8\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:102
@@ -29994,11 +30099,13 @@ msgid ""
 "This feature is useful for avoiding performance \"gotchas\" that could occur if one of the assignments to a variable changed its type "
 "unexpectedly."
 msgstr ""
+"この機能は、変数への代入を行って、 値が想定しない型に変更されてしまった時に起こることのある、パフォーマンス上の 「落とし穴」 を回避するのに役"
+"立ちます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:104
 msgid "This \"declaration\" behavior only occurs in specific contexts:"
-msgstr ""
+msgstr "この 「宣言」の動作は、特定のコンテキストでのみ発生します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:105
@@ -30007,6 +30114,8 @@ msgid ""
 "local x::Int8  # in a local declaration\n"
 "x::Int8 = 10   # as the left-hand side of an assignment\n"
 msgstr ""
+"local x::Int8  # in a local declaration\n"
+"x::Int8 = 10   # as the left-hand side of an assignment\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:113
@@ -30014,11 +30123,13 @@ msgid ""
 "and applies to the whole current scope, even before the declaration. Currently, type declarations cannot be used in global scope, e.g. in "
 "the REPL, since Julia does not yet have constant-type globals."
 msgstr ""
+"そして、宣言の前であっても、現在のスコープ全体に適用されます。現在、Julia には定数型グローバルがないため、型宣言は REPL などのグローバル ス"
+"コープでは使用できません。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:115
 msgid "Declarations can also be attached to function definitions:"
-msgstr ""
+msgstr "また、宣言を、関数定義に差し込むこともできます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:116
@@ -30031,18 +30142,24 @@ msgid ""
 "    return sin(pi*x)/(pi*x)\n"
 "end\n"
 msgstr ""
+"function sinc(x)::Float64\n"
+"    if x == 0\n"
+"        return 1\n"
+"    end\n"
+"    return sin(pi*x)/(pi*x)\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:127
 msgid ""
 "Returning from this function behaves just like an assignment to a variable with a declared type: the value is always converted to `Float64`."
-msgstr ""
+msgstr "この関数の戻り値は、宣言された型の変数への代入と同じ様に処理されます。値は常に`Float64` に変換されます。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/types.md:128
 #, no-wrap
 msgid "Abstract Types"
-msgstr ""
+msgstr "抽象型"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:135
@@ -30052,6 +30169,9 @@ msgid ""
 "backbone of the type system: they form the conceptual hierarchy which makes Julia's type system more than just a collection of object "
 "implementations."
 msgstr ""
+"抽象型はインスタンス化できず、型グラフ内のノードとしてのみ機能するだけですが、だからこそ関連する具象型の集合(抽象型の子孫である具象型)を説明"
+"できます。型の説明は抽象型から始めます。インスタンス化はできないですが、抽象型は型システムのバックボーンだからです。抽象型は概念的な(型の)階"
+"層を形成します。この階層が、Julia No型システムを単なるオブジェクト実装の寄せ集め以上のものにしているのです。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:150
@@ -30088,6 +30208,8 @@ msgid ""
 "abstract type «name» end\n"
 "abstract type «name» <: «supertype» end\n"
 msgstr ""
+"abstract type «name» end\n"
+"abstract type «name» <: «supertype» end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:162
@@ -30096,7 +30218,7 @@ msgid ""
 "The `abstract type` keyword introduces a new abstract type, whose name is given by `«name»`. This\n"
 "name can be optionally followed by [`<:`](@ref) and an already-existing type, indicating that the newly\n"
 "declared abstract type is a subtype of this \"parent\" type.\n"
-msgstr ""
+msgstr "`abstract type` キーワードは、名前が `«name»` で指定される新しい抽象型を導入します。この型名の後には、[`<:`](@ref) と 既存の型が続くことがあり、これは新しく宣言された抽象型が、\"親\"とするサブタイプであることを示します。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:168
@@ -30106,11 +30228,15 @@ msgid ""
 "abstract \"bottom\" type, at the nadir of the type graph, which is written as `Union{}`. It is the exact opposite of `Any`: no object is an "
 "instance of `Union{}` and all types are supertypes of `Union{}`."
 msgstr ""
+"スーパータイプが指定されていない場合、デフォルトのスーパータイプは `Any` です。これは、定義済みの抽象型で、全てのオブジェクトは`Any`のインス"
+"タンスであり、すべての型が`Any`のサブタイプになります。型理論で`Any`は、型グラフの頂点にあるため、一般的に 「トップ」 と呼ばれます。Julia に"
+"は定義済の抽象型の 「ボトム」もあります。これは、型のグラフの最下層にあって、`Union{}` と書きます。これは `Any` の正反対です: 全てのオブジェ"
+"クトは `Union{}` のインスタンスではなく、、すべての型は `Union{}` のスーパータイプです。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:170
 msgid "Let's consider some of the abstract types that make up Julia's numerical hierarchy:"
-msgstr ""
+msgstr "Julia の数値型の階層を構成する抽象型のいくつかを考えてみましょう:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:171
@@ -30123,6 +30249,12 @@ msgid ""
 "abstract type Signed   <: Integer end\n"
 "abstract type Unsigned <: Integer end\n"
 msgstr ""
+"abstract type Number end\n"
+"abstract type Real     <: Number end\n"
+"abstract type AbstractFloat <: Real end\n"
+"abstract type Integer  <: Real end\n"
+"abstract type Signed   <: Integer end\n"
+"abstract type Unsigned <: Integer end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:188
@@ -30133,6 +30265,10 @@ msgid ""
 "but also include other types, such as rationals. Hence, `AbstractFloat` is a proper subtype of `Real`, including only floating-point "
 "representations of real numbers. Integers are further subdivided into [`Signed`](@ref) and [`Unsigned`](@ref) varieties."
 msgstr ""
+"[`Number`](@ref)は「Any」の直接の子です。[`Real`](@ref)はそのさらに子に当たります。そして、`Real` には2人の子供がいます(本当はもっとあります"
+"が、ここでは2つだけ示します。他のものは後述します): 一つは [`Integer`](@ref)、もう一つは[`AbstractFloat`](@ref) です。数の世界を整数と実数の"
+"表現に分けます。実数の表現には、もちろん浮動小数点型が含まれるのですが、有理数など他の型もあります。したがって、`AbstractFloat`は `Real` の真"
+"のサブタイプで、実数の浮動小数点表現のみを含みます。整数はさらに[`signed`](@ref)と[`unsinged`](@ref) に細分されます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:193
@@ -30142,7 +30278,7 @@ msgid ""
 "the right-hand type to be an immediate supertype of the newly declared type. It can also be used\n"
 "in expressions as a subtype operator which returns `true` when its left operand is a subtype of\n"
 "its right operand:\n"
-msgstr ""
+msgstr "`<:` 演算子は一般に\"is a subtype of\" を意味しており、次のように宣言で使用します。演算子の右側の型が、新しく宣言した型のスーパータイプである、という宣言をします。また、式の中では　サブタイプ演算子として利用することもでき、左のオペランドが、右のオペランドのサブタイプである場合に `true`を返します:\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:194
@@ -30154,11 +30290,16 @@ msgid ""
 "julia> Integer <: AbstractFloat\n"
 "false\n"
 msgstr ""
+"julia> Integer <: Number\n"
+"true\n"
+"\n"
+"julia> Integer <: AbstractFloat\n"
+"false\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:204
 msgid "An important use of abstract types is to provide default implementations for concrete types. To give a simple example, consider:"
-msgstr ""
+msgstr "抽象型の重要な使用方法に、具象型の既定の実装の提供があります。簡単な例として、以下を考えてみましょう:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:205
@@ -30168,6 +30309,9 @@ msgid ""
 "    x+y\n"
 "end\n"
 msgstr ""
+"function myplus(x,y)\n"
+"    x+y\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:215
@@ -30176,6 +30320,9 @@ msgid ""
 "as `myplus(2,5)`, the dispatcher chooses the most specific method named `myplus` that matches the given arguments. (See [Methods](@ref) for "
 "more information on multiple dispatch.)"
 msgstr ""
+"最初に注意すべき点は、上記の引数宣言は、 `x::Any` および `y::Any` としたのに相当する、ということです。この関数が`myplus(2,5)`のように呼び出さ"
+"れると、ディスパッチャーは指定された引数に一致する `myplus`という名前の最も具体的なメソッドを選択します。(多重ディスパッチの詳細については、"
+"[メソッド](@ref Methods)を参照してください。）"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:219
@@ -30183,6 +30330,9 @@ msgid ""
 "Assuming no method more specific than the above is found, Julia next internally defines and compiles a method called `myplus` specifically "
 "for two `Int` arguments based on the generic function given above, i.e., it implicitly defines and compiles:"
 msgstr ""
+"上記のメソッドより具体的なメソッドが見つからない場合、Julia は次に内部で `myplus`という名前のメソッドを定義しコンパイルします。この例では、定"
+"義・コンパイルされるメソッドは、上記のジェネリック関数から、引数2個を`Int`型に特化させたものです。つまり、定義とコンパイルは暗黙裡に行われま"
+"す:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:220
@@ -30192,11 +30342,14 @@ msgid ""
 "    x+y\n"
 "end\n"
 msgstr ""
+"function myplus(x::Int,y::Int)\n"
+"    x+y\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:227
 msgid "and finally, it invokes this specific method."
-msgstr ""
+msgstr "最後に、この特化したメソッドを呼び出します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:231
@@ -30204,6 +30357,9 @@ msgid ""
 "Thus, abstract types allow programmers to write generic functions that can later be used as the default method by many combinations of "
 "concrete types. Thanks to multiple dispatch, the programmer has full control over whether the default or more specific method is used."
 msgstr ""
+"このように、抽象型を使用することでプログラマはジェネリック関数を書くことができます。これは後に、具象型を組み合わせて使う時の、既定のメソッド"
+"として使うことができるのです。多重ディスパッチのおかげで、プログラマはデフォルトの関数を使うか、より特化したメソッドを使うかを完全に制御でき"
+"ます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:236
@@ -30212,12 +30368,15 @@ msgid ""
 "types, because it is recompiled for each tuple of argument concrete types with which it is invoked. (There may be a performance issue, "
 "however, in the case of function arguments that are containers of abstract types; see [Performance Tips](@ref man-performance-tips).)"
 msgstr ""
+"注意すべき重要な点は、プログラマが　引数が抽象型の引数を持つ関数使っても、パフォーマンスが低下しない、ということです。このメソッドが呼び出さ"
+"れる毎に、具象型の引数のタプルそれぞれに対してメソッドが再コンパイルするからです。(ただし、関数の引数が抽象型のコンテナーであるは、パフォーマ"
+"ンス上の問題が発生するかもしれません [パフォーマンス・ティップス](@ref man-performance-tips)を参照のこと。)"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/types.md:237
 #, no-wrap
 msgid "Primitive Types"
-msgstr ""
+msgstr "プリミティブ型"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:243
@@ -30226,6 +30385,9 @@ msgid ""
 "point values. Unlike most languages, Julia lets you declare your own primitive types, rather than providing only a fixed set of built-in "
 "ones. In fact, the standard primitive types are all defined in the language itself:"
 msgstr ""
+"プリミティブ型は、データが普通ビットで構成される具象型です。プリミティブ型の典型的な例は、整数と浮動小数点の値です。ほとんどの言語とは異な"
+"り、Julia では、組み込みの決められたセットのみを提供するのではなく、独自のプリミティブ型を宣言できます。実際、標準のプリミティブ型はすべて(C"
+"言語ではなく)Julia 言語自体で定義されています:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:244
@@ -30249,11 +30411,28 @@ msgid ""
 "primitive type Int128  <: Signed   128 end\n"
 "primitive type UInt128 <: Unsigned 128 end\n"
 msgstr ""
+"primitive type Float16 <: AbstractFloat 16 end\n"
+"primitive type Float32 <: AbstractFloat 32 end\n"
+"primitive type Float64 <: AbstractFloat 64 end\n"
+"\n"
+"primitive type Bool <: Integer 8 end\n"
+"primitive type Char <: AbstractChar 32 end\n"
+"\n"
+"primitive type Int8    <: Signed   8 end\n"
+"primitive type UInt8   <: Unsigned 8 end\n"
+"primitive type Int16   <: Signed   16 end\n"
+"primitive type UInt16  <: Unsigned 16 end\n"
+"primitive type Int32   <: Signed   32 end\n"
+"primitive type UInt32  <: Unsigned 32 end\n"
+"primitive type Int64   <: Signed   64 end\n"
+"primitive type UInt64  <: Unsigned 64 end\n"
+"primitive type Int128  <: Signed   128 end\n"
+"primitive type UInt128 <: Unsigned 128 end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:265
 msgid "The general syntaxes for declaring a primitive type are:"
-msgstr ""
+msgstr "プリミティブ型を宣言するための一般的な構文は次のとおりです:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:266
@@ -30262,6 +30441,8 @@ msgid ""
 "primitive type «name» «bits» end\n"
 "primitive type «name» <: «supertype» «bits» end\n"
 msgstr ""
+"primitive type «name» «bits» end\n"
+"primitive type «name» <: «supertype» «bits» end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:278
@@ -30272,6 +30453,11 @@ msgid ""
 "immediate supertype. Currently, only sizes that are multiples of 8 bits are supported. Therefore, boolean values, although they really need "
 "just a single bit, cannot be declared to be any smaller than eight bits."
 msgstr ""
+"ビット数 «bits»は、その型に必要なストレージの量です。名前 «name» は新しい型につける名前です。プリミティブ型は、必要に応じて、いくつかのスー"
+"パータイプのサブタイプとして宣言できます。スーパータイプを省略した場合、その型はデフォルトで `Any` を直接のスーパータイプとして設定します。し"
+"たがって、上記の [`Bool`](@ref) の宣言は、ブール値を格納するのに 8 ビットかかり、[`Integer`](@ref) を直接のスーパータイプとして持っていること"
+"を意味します。現在、8 ビットの倍数のサイズのみがサポートされています。したがって、ブール値は実際には 1 ビットしか必要としませんが、8 ビットよ"
+"り小さい値を宣言することはできません。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:289
@@ -30284,12 +30470,18 @@ msgid ""
 "system is necessary: if structure determined type, which in turn dictates behavior, then it would be impossible to make [`Bool`](@ref) "
 "behave any differently than [`Int8`](@ref) or [`UInt8`](@ref)."
 msgstr ""
+"[`Bool`](@ref)、[`Int8`](@ref)および[`UInt8`](@ref)の型はすべて同じ表現を持っています: どれも8ビットのメモリチャンクです。しかし、Juliaの型シ"
+"ステムは公称的であるため、同一の構造であっても互換性はありません。これらの基本的な違いは、異なるスーパータイプを持っているということです:"
+"[`Bool`](@ref)`の直接スーパータイプは[`Integer`](@ref)、[`Int8`](@ref)は[`Signed`](@ref)、`UInt8`(@ref)は[`Unsigned`](@ref)です。[`Bool`]"
+"(@ref)、[`Int8`](@ref)、および[`UInt8`](@ref)のその他違いはすべて挙動に関するものです。これらの型のオブジェクトを引数として指定した場合に関数"
+"の挙動がどう定義されているかの違いです。もし、型の構造によって挙動が決まってしまうのであれば、[`Int8`](@ref)または[`UInt8`](@ref)とは異なる動"
+"作をする[`Bool`](@ref)を作ることは不可能なるでしょう。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/types.md:290
 #, no-wrap
 msgid "Composite Types"
-msgstr ""
+msgstr "複合型"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:297
@@ -30298,6 +30490,9 @@ msgid ""
 "composite type is a collection of named fields, an instance of which can be treated as a single value. In many languages, composite types "
 "are the only kind of user-definable type, and they are by far the most commonly used user-defined type in Julia as well."
 msgstr ""
+"[複合型](https://en.wikipedia.org/wiki/Composite_data_type) は様々な言語で、レコード、構造体、またはオブジェクトと呼ばれます。複合型は名前付"
+"きフィールドのコレクションで、そのインスタンスは単一の値として扱うことができます。多くの言語では、複合型はユーザー定義可能な型の唯一の種類で"
+"あり、Julia でも最も一般的に使用されるユーザー定義型です。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:311
@@ -30312,6 +30507,14 @@ msgid ""
 "\" to only their first argument. Organizing methods into function objects rather than having named bags of methods \"inside\" each object "
 "ends up being a highly beneficial aspect of the language design."
 msgstr ""
+"C++、Java、Python、Rubyなどの主流のオブジェクト指向言語では、複合型は、名前付けされた関数が関連付けられており、その組み合わせは \"オブジェク"
+"ト\" と呼ばれます。Ruby や Smalltalk などの純粋なオブジェクト指向言語では、それが複合型であろうとなかろうと、すべての値がオブジェクトです。C+"
+"+ や Java を含む純粋でないオブジェクト指向言語では、整数や浮動小数点値などの一部の値はオブジェクトではなく、ユーザー定義の複合型のインスタン"
+"スは真のオブジェクトで、関連付けられたメソッドを持ちます。Julia では、すべての値はオブジェクトですが、関数は操作対象のオブジェクトにバンドル"
+"されていません。これは、Juliaが多重ディスパッチで使用する関数のメソッドを選択するためです。これは、関数の最初の引数だけでなく、*全ての*引数が"
+"メソッド選択の際に考慮されるということを意味しています(メソッドとディスパッチについての詳細は [メソッド](@ref Methods) 参照)。したがって、関"
+"数がその最初の引数だけに 「属している」という考え方は不適切です。各オブジェクトの「内部に」名前付きのメソッドのバッグ(メソッドの集合）を持つ"
+"のではなく、メソッドを関数オブジェクトに編成する、ということをします。これは、Julia の言語設計の非常に有益な側面です。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:314
@@ -30319,6 +30522,7 @@ msgid ""
 "Composite types are introduced with the [`struct`](@ref) keyword followed by a block of field names, optionally annotated with types using "
 "the `::` operator:"
 msgstr ""
+"複合型は [`struct`](@ref) キーワードの後にフィールド名のブロックが付加され、必要に応じて `::` 演算子を使用して型にアノテーションがされます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:315
@@ -30330,16 +30534,21 @@ msgid ""
 "           qux::Float64\n"
 "       end\n"
 msgstr ""
+"julia> struct Foo\n"
+"           bar\n"
+"           baz::Int\n"
+"           qux::Float64\n"
+"       end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:324
 msgid "Fields with no type annotation default to `Any`, and can accordingly hold any type of value."
-msgstr ""
+msgstr "型アノテーションのないフィールドはデフォルトで `Any`になります。それに応じて任意の型の値を保持できます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:327
 msgid "New objects of type `Foo` are created by applying the `Foo` type object like a function to values for its fields:"
-msgstr ""
+msgstr "型`Foo`の新しいオブジェクトは、関数のような `Foo` 型のオブジェクトを関数のようにしてフィールドの値に適用することで作成できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:328
@@ -30351,6 +30560,11 @@ msgid ""
 "julia> typeof(foo)\n"
 "Foo\n"
 msgstr ""
+"julia> foo = Foo(\"Hello, world.\", 23, 1.5)\n"
+"Foo(\"Hello, world.\", 23, 1.5)\n"
+"\n"
+"julia> typeof(foo)\n"
+"Foo\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:341
@@ -30360,11 +30574,15 @@ msgid ""
 "arguments that match the field types exactly. The reason both of these are generated is that this makes it easier to add new definitions "
 "without inadvertently replacing a default constructor."
 msgstr ""
+"型が関数のように適用される時、これは *コンストラクター*と呼ばれています。2 つのコンストラクターが自動的に生成されます (これらは *デフォルト "
+"コンストラクター*と呼ばれています)。1 つは引数を受け入れ、フィールドの型に変換するために [`convert`](@ref) を呼び出し、もう 1 つはフィールド"
+"の型と完全に一致する引数だけを受け入れます。これらの両方が生成される理由は、誤って既定のコンストラクタを置き換えることなく、新しい定義を簡単"
+"に追加できるからです。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:344
 msgid "Since the `bar` field is unconstrained in type, any value will do. However, the value for `baz` must be convertible to `Int`:"
-msgstr ""
+msgstr "`bar`フィールドには型の制約はないので、値は何でも構いません。ただし、`baz`の値は`Int`に変換できる必要があります:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:345
@@ -30375,11 +30593,15 @@ msgid ""
 "Stacktrace:\n"
 "[...]\n"
 msgstr ""
+"julia> Foo((), 23.5, 1)\n"
+"ERROR: InexactError: Int64(23.5)\n"
+"Stacktrace:\n"
+"[...]\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:353
 msgid "You may find a list of field names using the [`fieldnames`](@ref) function."
-msgstr ""
+msgstr "[`fieldnames`](@ref)関数をつかって、フィールド名の一覧を取得できます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:354
@@ -30388,11 +30610,13 @@ msgid ""
 "julia> fieldnames(Foo)\n"
 "(:bar, :baz, :qux)\n"
 msgstr ""
+"julia> fieldnames(Foo)\n"
+"(:bar, :baz, :qux)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:360
 msgid "You can access the field values of a composite object using the traditional `foo.bar` notation:"
-msgstr ""
+msgstr "従来の表記法 `foo.bar`を使用して、複合オブジェクトのフィールド値にアクセスできます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:361
@@ -30407,6 +30631,14 @@ msgid ""
 "julia> foo.qux\n"
 "1.5\n"
 msgstr ""
+"julia> foo.bar\n"
+"\"Hello, world.\"\n"
+"\n"
+"julia> foo.baz\n"
+"23\n"
+"\n"
+"julia> foo.qux\n"
+"1.5\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:374
@@ -30414,6 +30646,8 @@ msgid ""
 "Composite objects declared with `struct` are *immutable*; they cannot be modified after construction. This may seem odd at first, but it has "
 "several advantages:"
 msgstr ""
+"`struct` で宣言された複合型オブジェクトは *不変*です。作成後に変更できません。これは最初は奇妙に見えるかもしれませんが、いくつかの利点があり"
+"ます:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/types.md:379
@@ -30421,16 +30655,18 @@ msgid ""
 "It can be more efficient. Some structs can be packed efficiently into arrays, and in some cases the compiler is able to avoid allocating "
 "immutable objects entirely."
 msgstr ""
+"より効率的になることがあります。一部の構造体は配列に効率的にパックでき、場合によってはコンパイラは不変オブジェクト全体を別のメモリに割り当て"
+"ることを回避できることがあります。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/types.md:379
 msgid "It is not possible to violate the invariants provided by the type's constructors."
-msgstr ""
+msgstr "型コンストラクタで規定される不変性を破ることはできません。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/types.md:379
 msgid "Code using immutable objects can be easier to reason about."
-msgstr ""
+msgstr "不変オブジェクトを使用するコードは、推論しやすくなります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:383
@@ -30438,17 +30674,19 @@ msgid ""
 "An immutable object might contain mutable objects, such as arrays, as fields. Those contained objects will remain mutable; only the fields "
 "of the immutable object itself cannot be changed to point to different objects."
 msgstr ""
+"不変オブジェクトには、配列などの変更可能なオブジェクトがフィールドに含まれている場合があります。含まれるオブジェクトは変更可能なままです。そ"
+"の不変オブジェクト自体フィールドが、異なるオブジェクトを指すよう変更することができなくなるだけです。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:386
 msgid ""
 "Where required, mutable composite objects can be declared with the keyword [`mutable struct`](@ref), to be discussed in the next section."
-msgstr ""
+msgstr "必要に応じて、次のセクションで説明するキーワード [`mutable struct`](@ref ) で、変更可能な複合オブジェクトを宣言できます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:388
 msgid "Immutable composite types with no fields are singletons; there can be only one instance of such types:"
-msgstr ""
+msgstr "フィールドのない不変複合型はシングルトンです。このような型のインスタンスは 1 つだけです:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:389
@@ -30460,6 +30698,11 @@ msgid ""
 "julia> NoFields() === NoFields()\n"
 "true\n"
 msgstr ""
+"julia> struct NoFields\n"
+"       end\n"
+"\n"
+"julia> NoFields() === NoFields()\n"
+"true\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:399
@@ -30467,6 +30710,8 @@ msgid ""
 "The [`===`](@ref) function confirms that the \"two\" constructed instances of `NoFields` are actually one and the same. Singleton types are "
 "described in further detail [below](@ref man-singleton-types)."
 msgstr ""
+"[`===`](@ref) によって、`NoFields`の「２つの」インスタンスが、実際には一つで同じものであることを確認できます。 シングルトンタイプについては、"
+"[以下](@ref man-singleton-types) でさらに詳しく説明します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:403
@@ -30474,23 +30719,26 @@ msgid ""
 "There is much more to say about how instances of composite types are created, but that discussion depends on both [Parametric Types](@ref) "
 "and on [Methods](@ref), and is sufficiently important to be addressed in its own section: [Constructors](@ref man-constructors)."
 msgstr ""
+"複合型のインスタンスがどのように生成されるかについては、まだまだ説明すべきことがありますが、その議論は [パラメトリック型(@ref parametric-"
+"types)と[メソッド](@ref Methods)の両方にも関わりがあり、とても重要な事項なので、[コンストラクタ](@ref マman-constructors) という独立のセク"
+"ションを設けてそこで扱うことにします。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/types.md:404
 #, no-wrap
 msgid "Mutable Composite Types"
-msgstr ""
+msgstr "可変複合型"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:408
 msgid "If a composite type is declared with `mutable struct` instead of `struct`, then instances of it can be modified:"
-msgstr ""
+msgstr "複合型が、`struct` ではなく `mutable struct` キーワードで宣言されていれば、その型のインスタンスは変更可能です:"
 
 #. type: Code fence info string
 #: ext/julia/doc/src/manual/types.md:409
 #, no-wrap
 msgid "jldoctest bartype"
-msgstr ""
+msgstr "jldoctest bartype"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:409
@@ -30509,6 +30757,18 @@ msgid ""
 "julia> bar.baz = 1//2\n"
 "1//2\n"
 msgstr ""
+"julia> mutable struct Bar\n"
+"           baz\n"
+"           qux::Float64\n"
+"       end\n"
+"\n"
+"julia> bar = Bar(\"Hello\", 1.5);\n"
+"\n"
+"julia> bar.qux = 2.0\n"
+"2.0\n"
+"\n"
+"julia> bar.baz = 1//2\n"
+"1//2\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:433
@@ -30519,11 +30779,16 @@ msgid ""
 "deciding whether to make a type mutable, ask whether two instances with the same field values would be considered identical, or if they "
 "might need to change independently over time. If they would be considered identical, the type should probably be immutable."
 msgstr ""
+"変更に対応できるように、このようなオブジェクトは、一般にヒープ上に割り当てられ、メモリアドレスが一定になっています。可変オブジェクトは、時間"
+"によって値の変わりうる小さなコンテナのようなもので、アドレスだけで確実に識別できます。対称的に、変更不可能な型のインスタンスは、特定のフィー"
+"ルド値に関連付けられています。フィールド値だけで、オブジェクトに関する全てがわかります。型を可変にするかどうかを決めるには、同じフィールド値"
+"を持つ2つのインスタンスは同一だとみなせるか、あるいは時間とともに別々に変更する必要があるかを考えます。同一であるとみなせるならば、おそらくそ"
+"の型は不変にすべきでしょう。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:435
 msgid "To recap, two essential properties define immutability in Julia:"
-msgstr ""
+msgstr "まとめると、Julia では2 つの重要な特性で不変性を定義できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:452
@@ -30546,12 +30811,18 @@ msgid ""
 "      functions as pointers to heap-allocated values except in cases where the compiler\n"
 "      is sure that there's no way to tell that this is not what is happening.\n"
 msgstr ""
+"  * 不変型の値を変更することはできません。\n"
+"    * ビット型(プリミティブ型)の場合、一度設定された値のビット パターンは決して変わらず、その値はその型で恒等的であることを意味します。\n"
+"    * 複合型の場合、フィールドの値の恒等性は決して変わらないことを意味します。フィールドがビット型の場合、そのビットは決して変わらず、フィールドが配列のような変更可能な型である場合、その変更可能な型の中身は変わっても、そのフィールドは常に同じ可変の値を参照することを意味します。\n"
+"  * 不変型のオブジェクトは、コンパイラが自由にコピーすることができます。というのも、不変性によって、元のオブジェクトとコピーしたものを見分けることができないからです。\n"
+"    * 特に、十分(メモリを専有する領域が)小さな 整数や浮動小数点数などの不変型は、通常はレジスタ (または割り当てられたスタック) にある関数にそのまま渡されます。\n"
+"    * 変更可能な値は、(配列など、一般にメモリの使用量が大きくなり得るので)一方でヒープに割り当てられ、その配置された値へのポインタとして関数に渡されます。ただし、このような事象が起こっているかどうかを判別することがどうやっても不可能な状況だとコンパイラが判断した場合には、その限りではありません。\n"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/types.md:453
 #, no-wrap
 msgid "Declared Types"
-msgstr ""
+msgstr "宣言型"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:457
@@ -30559,26 +30830,27 @@ msgid ""
 "The three kinds of types (abstract, primitive, composite) discussed in the previous sections are actually all closely related. They share "
 "the same key properties:"
 msgstr ""
+"上記セクションで説明した 3 種類の型 (抽象、プリミティブ型、複合型) は、実際には密接に関連しています。これらは、共通する重要な特徴を持ちます。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/types.md:462
 msgid "They are explicitly declared."
-msgstr ""
+msgstr "明示的に宣言されます。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/types.md:462
 msgid "They have names."
-msgstr ""
+msgstr "名前を持っています。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/types.md:462
 msgid "They have explicitly declared supertypes."
-msgstr ""
+msgstr "スーパータイプを明示的に宣言します。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/types.md:462
 msgid "They may have parameters."
-msgstr ""
+msgstr "パラメータを付けることができます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:465
@@ -30586,6 +30858,8 @@ msgid ""
 "Because of these shared properties, these types are internally represented as instances of the same concept, `DataType`, which is the type "
 "of any of these types:"
 msgstr ""
+"こうした共通の特徴を持つため、これらの型は、内部的に同じ概念の `DataType` のインスタンスとして表現されます。`DataType` これら3つの型のいずれ"
+"かをさします:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:466
@@ -30597,6 +30871,11 @@ msgid ""
 "julia> typeof(Int)\n"
 "DataType\n"
 msgstr ""
+"julia> typeof(Real)\n"
+"DataType\n"
+"\n"
+"julia> typeof(Int)\n"
+"DataType\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:477
@@ -30605,24 +30884,27 @@ msgid ""
 "primitive type is a `DataType` with nonzero size, but no field names. A composite type is a `DataType` that has field names or is empty "
 "(zero size)."
 msgstr ""
+"`DataType`は抽象型、具象型どちらでもかまいません。具象型ならば、特定のサイズ、格納領域上のレイアウト、(場合によっては）フィールド名などがあり"
+"ます。プリミティブ型はゼロ以外のサイズの `DataType` ですが、フィールド名はありません。複合型は、フィールド名を持つか、、または空 (ゼロ サイ"
+"ズ)の`DataType`です。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:479
 msgid "Every concrete value in the system is an instance of some `DataType`."
-msgstr ""
+msgstr "システム内のすべての具象型の値は、なんらかの `DataType` のインスタンスです。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/types.md:480
 #, no-wrap
 msgid "Type Unions"
-msgstr ""
+msgstr "合併型"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:484
 msgid ""
 "A type union is a special abstract type which includes as objects all instances of any of its argument types, constructed using the special "
 "[`Union`](@ref) keyword:"
-msgstr ""
+msgstr "合併型は特殊な抽象型で、引数のいずれかの型のインスタンスが全てオブジェクトとして含みます。特殊なキーワード`Union`を使って構築します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:485
@@ -30640,6 +30922,17 @@ msgid ""
 "julia> 1.0 :: IntOrString\n"
 "ERROR: TypeError: in typeassert, expected Union{Int64, AbstractString}, got Float64\n"
 msgstr ""
+"julia> IntOrString = Union{Int,AbstractString}\n"
+"Union{Int64, AbstractString}\n"
+"\n"
+"julia> 1 :: IntOrString\n"
+"1\n"
+"\n"
+"julia> \"Hello!\" :: IntOrString\n"
+"\"Hello!\"\n"
+"\n"
+"julia> 1.0 :: IntOrString\n"
+"ERROR: TypeError: in typeassert, expected Union{Int64, AbstractString}, got Float64\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:503
@@ -30648,6 +30941,9 @@ msgid ""
 "Julia compiler is able to generate efficient code in the presence of `Union` types with a small number of types [^1], by generating "
 "specialized code in separate branches for each possible type."
 msgstr ""
+"多くの言語のコンパイラには、型推論のために内部で使う合併構文があります。Juliaは単にそれをプログラマにも公開しているというわけです。Julia のコ"
+"ンパイラは、少数の型 の `Union` 型 を使うと効率的なコードを生成することがあります[^1]。なりうる型すべてに個別に特化したコードを生成するためで"
+"す。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:510
@@ -30658,12 +30954,16 @@ msgid ""
 "it either to a value of type `T`, or to `nothing` to indicate that there is no value.  See [this FAQ entry](@ref faq-nothing) for more "
 "information."
 msgstr ""
+"合併型のユースケースで特に便利なのは、`Uniton{T, Nothing}`です。ここで`T`は、任意の型を指定でき、[`Nothing`](@ref)は、唯一のインスタンスが "
+"`nothing`オブジェクトである、シングルトン型です。Julia のこのパターンは、他の言語の[`Nullable`, `Option`, `Maybe`](https://en.wikipedia.org/"
+"wiki/Nullable_type) 型などと同等です。関数の引数やフィールドを`Uniton{T, Nothing}`として宣言すると型`T`の値か、値がないことを示す`nothing`の"
+"どちらかに設定することができます。詳細については、[FATのこの項目](@ref faq-nothing)を見てください。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/types.md:511
 #, no-wrap
 msgid "Parametric Types"
-msgstr ""
+msgstr "パラメトリック型"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:527
@@ -30679,6 +30979,15 @@ msgid ""
 "dynamically typed language and doesn't need to make all type decisions at compile time, many traditional difficulties encountered in static "
 "parametric type systems can be relatively easily handled."
 msgstr ""
+"Juliaの型システムの重要かつ強力な特徴は、型がパラメトリックであるということです: 型にパラメータをとることができます。そうすると型宣言は、実質"
+"的にとりうるそれぞれのパラメータの組み合わせに対応して、新しい型の一族を導入します。多くの言語が、何らかの形で[汎化プログラミング](https://"
+"en.wikipedia.org/wiki/Generic_programming)をサポートしていますが、この汎化プログラミングでは、必要な型を正確にしなくても、処理すべきデータ構"
+"造とアルゴリズムを指定することができます。 たとえば、ML、Haskell、Ada、Eiffel、C++、Java、C#、F#、Scala には、何らかの形の汎化プログラミング"
+"を取り入れています。これらの言語の中には、真のパラメトリック多相性をサポートするものもあれば(ML、Haskell、Scalaなど)、アドホックなテンプレー"
+"トベースの汎用プログラミングスタイルをサポートするもの(例えばC++、Java)もあります。さまざまな言語で多種多様な汎化プログラミングとパラメトリッ"
+"ク型が使われているので、ここでは、それらと、Julia のパラメトリック型を比較するのではなく、Julia のシステムを単体について説明することに焦点を"
+"当てます。ただし、Julia は動的に型付け言語であり、コンパイル時にすべての型決定を行う必要がないため、静的パラメトリック型システムで発生する多"
+"くの従来の困難は比較的簡単に処理できることに注意してください。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:531
@@ -30686,17 +30995,19 @@ msgid ""
 "All declared types (the `DataType` variety) can be parameterized, with the same syntax in each case. We will discuss them in the following "
 "order: first, parametric composite types, then parametric abstract types, and finally parametric primitive types."
 msgstr ""
+"すべての宣言型 (`DataType` の仲間) は、それぞれ同じ構文でパラメータ化できます。最初に、パラメトリック複合型、次にパラメトリック抽象型、最後に"
+"パラメトリック プリミティブ型の順で説明します。"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/types.md:532
 #, no-wrap
 msgid "Parametric Composite Types"
-msgstr ""
+msgstr "パラメトリック複合型"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:535
 msgid "Type parameters are introduced immediately after the type name, surrounded by curly braces:"
-msgstr ""
+msgstr "型パラメータは、型名の直後に導入され、中かっこで囲みます:"
 
 #. type: Code fence info string
 #: ext/julia/doc/src/manual/types.md:536 ext/julia/doc/src/manual/types.md:551 ext/julia/doc/src/manual/types.md:565
@@ -30704,7 +31015,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/types.md:658 ext/julia/doc/src/manual/types.md:676 ext/julia/doc/src/manual/types.md:693
 #, no-wrap
 msgid "jldoctest pointtype"
-msgstr ""
+msgstr "jldoctest pointtype"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:536
@@ -30715,6 +31026,10 @@ msgid ""
 "           y::T\n"
 "       end\n"
 msgstr ""
+"julia> struct Point{T}\n"
+"           x::T\n"
+"           y::T\n"
+"       end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:550
@@ -30725,6 +31040,11 @@ msgid ""
 "[`Float64`](@ref). Thus, this single declaration actually declares an unlimited number of types: `Point{Float64}`, `Point{AbstractString}`, "
 "`Point{Int64}`, etc. Each of these is now a usable concrete type:"
 msgstr ""
+"この宣言では、タイプ `T` の 2 つの 「座標」を保持する新しいパラメトリック型 `Point{T}` を定義しています。「T」って何だ?と思うかもしれません"
+"が、まあ、これがまさにパラメトリック型のポイントです: どんな型(またはプリミティブ型でも構いませんが、ここでは実際には明らかな型が使われていま"
+"す)でも構いません。`Point{Float64}` は、`Point` の定義で `T` を [`Float64`](@ref) に置き換えたものと同等の具象型です。したがって、この一つの"
+"宣言文が実質的には、`Point{Float64}`、`Point{AbstractString}`、`Point{Int64}`など、無数の型に対する宣言に相当します。そして、それぞれが具象型"
+"として利用することができます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:551
@@ -30736,6 +31056,11 @@ msgid ""
 "julia> Point{AbstractString}\n"
 "Point{AbstractString}\n"
 msgstr ""
+"julia> Point{Float64}\n"
+"Point{Float64}\n"
+"\n"
+"julia> Point{AbstractString}\n"
+"Point{AbstractString}\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:561
@@ -30743,11 +31068,15 @@ msgid ""
 "The type `Point{Float64}` is a point whose coordinates are 64-bit floating-point values, while the type `Point{AbstractString}` is a \"point"
 "\" whose \"coordinates\" are string objects (see [Strings](@ref))."
 msgstr ""
+"`Point{Float64}`という型は座標が64ビット浮動小数点の値を持つ点であり、`Point{AbstractString}`という型は「座標」が文字列オブジェクトである「ポ"
+"イント」です([`文字列`](@ref Strings) を参照)。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:564
 msgid "`Point` itself is also a valid type object, containing all instances `Point{Float64}`, `Point{AbstractString}`, etc. as subtypes:"
 msgstr ""
+"`Point` (型パラメータ無しの単体) も有効な型オブジェクトで、`Point{Float64}`、`Point{AbstractString}`などすべてのインスタンスをサブタイプとし"
+"て含んでいます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:565
@@ -30759,11 +31088,16 @@ msgid ""
 "julia> Point{AbstractString} <: Point\n"
 "true\n"
 msgstr ""
+"julia> Point{Float64} <: Point\n"
+"true\n"
+"\n"
+"julia> Point{AbstractString} <: Point\n"
+"true\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:574
 msgid "Other types, of course, are not subtypes of it:"
-msgstr ""
+msgstr "他の型は当然`Point`のサブタイプではありません:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:575
@@ -30775,11 +31109,16 @@ msgid ""
 "julia> AbstractString <: Point\n"
 "false\n"
 msgstr ""
+"julia> Float64 <: Point\n"
+"false\n"
+"\n"
+"julia> AbstractString <: Point\n"
+"false\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:584
 msgid "Concrete `Point` types with different values of `T` are never subtypes of each other:"
-msgstr ""
+msgstr "異なる `T` の値がついた具象型`Point`は決して互いにサブタイプになることはありません:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:585
@@ -30791,6 +31130,11 @@ msgid ""
 "julia> Point{Float64} <: Point{Real}\n"
 "false\n"
 msgstr ""
+"julia> Point{Float64} <: Point{Int64}\n"
+"false\n"
+"\n"
+"julia> Point{Float64} <: Point{Real}\n"
+"false\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:595
@@ -30799,6 +31143,8 @@ msgid ""
 "!!! warning\n"
 "    This last point is *very* important: even though `Float64 <: Real` we **DO NOT** have `Point{Float64} <: Point{Real}`.\n"
 msgstr ""
+"!!! 警告\n"
+"    この最後のポイントは *非常に* 重要です: `Float64 <: Real`は成り立ちますが、`Point{Float64} <: Point{Real}` は*成り立ちません*\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:600
@@ -30808,11 +31154,14 @@ msgid ""
 "any instance of `Point{Float64}` may conceptually be like an instance of `Point{Real}` as well, the two types have different representations "
 "in memory:"
 msgstr ""
+"型理論の述語で言い換えると、Julia の型パラメータは、[共変 (もしくは反変)](https://en.wikipedia.org/wiki/Covariance_and_contravariance_"
+"%28computer_science%29) ではなく、*不変* です。これには現実的な理由があります: `Point{Float64}`のインスタンスは`Point{Real}`のインスタンスと"
+"概念的には似ていますが、2つの型のメモリ上での表現は異なります:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/types.md:607
 msgid "An instance of `Point{Float64}` can be represented compactly and efficiently as an immediate pair of 64-bit values;"
-msgstr ""
+msgstr "`Point{Float64}` のインスタンスは、64 ビット値の即時ペアとしてコンパクトかつ効率的に表現できます;"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/types.md:607
@@ -30821,6 +31170,9 @@ msgid ""
 "be of arbitrary size and structure, in practice an instance of `Point{Real}` must be represented as a pair of pointers to individually "
 "allocated `Real` objects."
 msgstr ""
+"`Point{Real}` のインスタンスは、[`Real`](@ref) のインスタンスの任意のペアを保持できる必要があります。 `Real` のインスタンスであるオブジェクト"
+"は任意のサイズと構造を持つことができるため、実際には`Point{Real}` のインスタンスは、個別に割り当てられた `Real` オブジェクトへのポインタのペ"
+"アとして表す必要があります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:615
@@ -30831,11 +31183,15 @@ msgid ""
 "oriented_programming%29#Boxing)  64-bit floating-point values, but also might be arbitrarily large, complex objects, which are declared to "
 "be implementations of the `Real` abstract type."
 msgstr ""
+"`Point{Float64}` に値を直接格納できることで得られる効率は、配列の場合は非常に大きくなります: `Array{Float64}` は 64 ビット浮動小数点値の連続"
+"したメモリ ブロックとして格納されますが、`Array{Real}`は、個別に割り当てられた[`Real`](@ref)オブジェクトへのポインタの配列でなければなりませ"
+"ん。抽象型`Real`に宣言されたオブジェクトの実装は、64ビット浮動小数点数が[ボックス化](https://en.wikipedia.org/wiki/Object_type_%28object-"
+"oriented_programming%29#Boxing)されている場合も、任意の大きさの複雑なオブジェクトである場合も許容しなくてはいけません。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:618
 msgid "Since `Point{Float64}` is not a subtype of `Point{Real}`, the following method can't be applied to arguments of type `Point{Float64}`:"
-msgstr ""
+msgstr "`Point{Float64}` は `Point{Real}` のサブタイプではないため、次のメソッドは `Point{Float64}` 型の引数には適用できません:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:619
@@ -30845,11 +31201,14 @@ msgid ""
 "    sqrt(p.x^2 + p.y^2)\n"
 "end\n"
 msgstr ""
+"function norm(p::Point{Real})\n"
+"    sqrt(p.x^2 + p.y^2)\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:627
 msgid "A correct way to define a method that accepts all arguments of type `Point{T}` where `T` is a subtype of [`Real`](@ref) is:"
-msgstr ""
+msgstr "`T` が [`Real`](@ref) のサブタイプである `Point{T}`のすべての引数を許容するメソッドの正しい定義方法は下記の通りです:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:628
@@ -30859,6 +31218,9 @@ msgid ""
 "    sqrt(p.x^2 + p.y^2)\n"
 "end\n"
 msgstr ""
+"function norm(p::Point{<:Real})\n"
+"    sqrt(p.x^2 + p.y^2)\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:636
@@ -30866,12 +31228,12 @@ msgstr ""
 msgid ""
 "(Equivalently, one could define `function norm(p::Point{T} where T<:Real)` or\n"
 "`function norm(p::Point{T}) where T<:Real`; see [UnionAll Types](@ref).)\n"
-msgstr ""
+msgstr "(同等の定義として、`function norm(p::Point{T} where T<:Real)` や、`function norm(p::Point{T}) where T<:Real` も可能です; [全合併型](@ref UnionAll-Types)を参照。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:638
 msgid "More examples will be discussed later in [Methods](@ref)."
-msgstr ""
+msgstr "後の [メソッド](@ref Methods) で、より多くの例を説明します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:644
@@ -30881,6 +31243,9 @@ msgid ""
 "new composite objects, one in which the type parameters are explicitly given and the other in which they are implied by the arguments to the "
 "object constructor."
 msgstr ""
+"`Point` オブジェクトはどのように構築されるでしょうか? [コンストラクター](@ref man-constructor)で詳しく説明しますが、複合型に対して独自のコン"
+"ストラクタを定義することは可能ですが、特別にコンストラクタの宣言をしない場合にも、デフォルトで新しい複合型オブジェクトを作成する方法が2つあり"
+"ます。1つは型パラメータを明示的に与えるもの、もう1つはオブジェクトコンストラクタへの引数から暗黙裡に推定されるものです。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:647
@@ -30888,6 +31253,8 @@ msgid ""
 "Since the type `Point{Float64}` is a concrete type equivalent to `Point` declared with [`Float64`](@ref)  in place of `T`, it can be applied "
 "as a constructor accordingly:"
 msgstr ""
+"型 `Point{Float64}` は `T` の代わりに [`Float64`](@ref) を使って宣言した`Point` と同等の具象型であるため、それに応じてコンストラクタとしてそ"
+"のまま適用できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:648
@@ -30899,11 +31266,16 @@ msgid ""
 "julia> typeof(ans)\n"
 "Point{Float64}\n"
 msgstr ""
+"julia> Point{Float64}(1.0, 2.0)\n"
+"Point{Float64}(1.0, 2.0)\n"
+"\n"
+"julia> typeof(ans)\n"
+"Point{Float64}\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:657
 msgid "For the default constructor, exactly one argument must be supplied for each field:"
-msgstr ""
+msgstr "デフォルトのコンストラクタでは、フィールドごとに 引数を指定する必要があります:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:658
@@ -30917,6 +31289,13 @@ msgid ""
 "ERROR: MethodError: no method matching Point{Float64}(::Float64, ::Float64, ::Float64)\n"
 "[...]\n"
 msgstr ""
+"julia> Point{Float64}(1.0)\n"
+"ERROR: MethodError: no method matching Point{Float64}(::Float64)\n"
+"[...]\n"
+"\n"
+"julia> Point{Float64}(1.0,2.0,3.0)\n"
+"ERROR: MethodError: no method matching Point{Float64}(::Float64, ::Float64, ::Float64)\n"
+"[...]\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:670
@@ -30924,6 +31303,8 @@ msgid ""
 "Only one default constructor is generated for parametric types, since overriding it is not possible.  This constructor accepts any arguments "
 "and converts them to the field types."
 msgstr ""
+"パラメトリック型では、デフォルトのコンストラクターは 1 つだけしか生成されません。オーバーライドできないため、このコンストラクターは任意の引数"
+"を受け取り、フィールドの型に変換します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:675
@@ -30932,6 +31313,8 @@ msgid ""
 "call already implicitly provide type information. For that reason, you can also apply `Point` itself as a constructor, provided that the "
 "implied value of the parameter type `T` is unambiguous:"
 msgstr ""
+"多くの場合、生成しようとする `Point` オブジェクトの型を指定することは冗長です。コンストラクター呼び出しの引数の型には既に型情報が隠れているか"
+"らです。そのため、パラメーター型 `T` を推論可能で曖昧さがない場合は、`Point` 自体をコンストラクタとして適用することもできます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:676
@@ -30949,6 +31332,17 @@ msgid ""
 "julia> typeof(ans)\n"
 "Point{Int64}\n"
 msgstr ""
+"julia> Point(1.0,2.0)\n"
+"Point{Float64}(1.0, 2.0)\n"
+"\n"
+"julia> typeof(ans)\n"
+"Point{Float64}\n"
+"\n"
+"julia> Point(1,2)\n"
+"Point{Int64}(1, 2)\n"
+"\n"
+"julia> typeof(ans)\n"
+"Point{Int64}\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:692
@@ -30956,6 +31350,8 @@ msgid ""
 "In the case of `Point`, the type of `T` is unambiguously implied if and only if the two arguments to `Point` have the same type. When this "
 "isn't the case, the constructor will fail with a [`MethodError`](@ref):"
 msgstr ""
+"`Point` の場合、2 つの引数が同じ型である場合にのみ、`T` の型は明確に推論されます。そうでない場合、コンストラクタは失敗して [`MethodError`]"
+"(@ref)が発生します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:693
@@ -30966,6 +31362,10 @@ msgid ""
 "Closest candidates are:\n"
 "  Point(::T, !Matched::T) where T at none:2\n"
 msgstr ""
+"julia> Point(1,2.5)\n"
+"ERROR: MethodError: no method matching Point(::Int64, ::Float64)\n"
+"Closest candidates are:\n"
+"  Point(::T, !Matched::T) where T at none:2\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:702
@@ -30973,12 +31373,14 @@ msgid ""
 "Constructor methods to appropriately handle such mixed cases can be defined, but that will not be discussed until later on in [Constructors]"
 "(@ref man-constructors)."
 msgstr ""
+"このように型が混在するケースを適切に処理するコンストラクター メソッドは定義できますが、後で [コンストラクタ](@ref man-constructors)に議論は譲"
+"ります。"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/types.md:703
 #, no-wrap
 msgid "Parametric Abstract Types"
-msgstr ""
+msgstr "パラメトリック抽象型"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:707
@@ -31969,6 +32371,12 @@ msgid ""
 "julia> print(:($a^2))\n"
 "3.0 * exp(4.0im) ^ 2\n"
 msgstr ""
+"julia> a = Polar(3, 4.0)\n"
+"Polar{Float64} complex number:\n"
+"   3.0 * exp(4.0im)\n"
+"\n"
+"julia> print(:($a^2))\n"
+"3.0 * exp(4.0im) ^ 2\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:1305
@@ -32017,6 +32425,11 @@ msgid ""
 "julia> :($a == 2)\n"
 ":(3.0 * exp(4.0im) == 2)\n"
 msgstr ""
+"julia> :($a + 2)\n"
+":(3.0 * exp(4.0im) + 2)\n"
+"\n"
+"julia> :($a == 2)\n"
+":(3.0 * exp(4.0im) == 2)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:1340
@@ -32039,6 +32452,13 @@ msgid ""
 "           end\n"
 "       end\n"
 msgstr ""
+"julia> function Base.show(io::IO, z::Polar)\n"
+"           if get(io, :compact, false)\n"
+"               print(io, z.r, \"ℯ\", z.Θ, \"im\")\n"
+"           else\n"
+"               print(io, z.r, \" * exp(\", z.Θ, \"im)\")\n"
+"           end\n"
+"       end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:1353
@@ -32058,6 +32478,12 @@ msgid ""
 "1×2 Array{Polar{Float64},2}:\n"
 " 3.0ℯ4.0im  4.0ℯ5.3im\n"
 msgstr ""
+"julia> show(IOContext(stdout, :compact=>true), Polar(3, 4.0))\n"
+"3.0ℯ4.0im\n"
+"\n"
+"julia> [Polar(3, 4.0) Polar(4.0,5.3)]\n"
+"1×2 Array{Polar{Float64},2}:\n"
+" 3.0ℯ4.0im  4.0ℯ5.3im\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:1364
@@ -32068,7 +32494,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/types.md:1365
 #, no-wrap
 msgid "\"Value types\""
-msgstr ""
+msgstr "\"値型\""
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:1371
@@ -32095,7 +32521,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/types.md:1379 ext/julia/doc/src/manual/types.md:1391
 #, no-wrap
 msgid "jldoctest valtype"
-msgstr ""
+msgstr "jldoctest valtype"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:1379
@@ -32107,6 +32533,11 @@ msgid ""
 "julia> Val(x) = Val{x}()\n"
 "Val\n"
 msgstr ""
+"julia> struct Val{x}\n"
+"       end\n"
+"\n"
+"julia> Val(x) = Val{x}()\n"
+"Val\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:1390
@@ -32133,6 +32564,17 @@ msgid ""
 "julia> firstlast(Val(false))\n"
 "\"Last\"\n"
 msgstr ""
+"julia> firstlast(::Val{true}) = \"First\"\n"
+"firstlast (generic function with 1 method)\n"
+"\n"
+"julia> firstlast(::Val{false}) = \"Last\"\n"
+"firstlast (generic function with 2 methods)\n"
+"\n"
+"julia> firstlast(Val(true))\n"
+"\"First\"\n"
+"\n"
+"julia> firstlast(Val(false))\n"
+"\"Last\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:1407
@@ -32154,7 +32596,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:1413
 msgid "[^1]: \"Small\" is defined by the `MAX_UNION_SPLITTING` constant, which is currently set to 4."
-msgstr ""
+msgstr "[^1]: ここでいう、\"少数\" は`MAX_UNION_SPLITTING`定数で定義され、現在 4 に設定されています。"
 
 #. type: Title #
 #: ext/julia/doc/src/manual/modules.md:1
@@ -32450,7 +32892,7 @@ msgid ""
 "Base is a module that contains basic functionality (the contents of base/). All modules implicitly contain `using Base`, since this is "
 "needed in the vast majority of cases."
 msgstr ""
-"Baseは、基本機能(Base/の内容)を含むモジュールです。ほとんどの場合必要とされるので、すべてのモジュールに暗黙的に 'using Base' が含まれていま"
+"Baseは、基本機能(Base/の内容)を含むモジュールです。ほとんどの場合必要とされるので、すべてのモジュールに暗黙的に `using Base` が含まれていま"
 "す。"
 
 #. type: Title ###
@@ -32465,7 +32907,7 @@ msgid ""
 "In addition to `using Base`, modules also automatically contain definitions of the `eval` and `include` functions, which evaluate "
 "expressions/files within the global scope of that module."
 msgstr ""
-"`using Base`に加えて、モジュールには 'eval'関数と 'include' 関数の定義も自動的に含まれ、そのモジュールのグローバルスコープ内の式やファイルを"
+"`using Base`に加えて、モジュールには `eval`関数と `include` 関数の定義も自動的に含まれ、そのモジュールのグローバルスコープ内の式やファイルを"
 "評価します。"
 
 #. type: Plain text
@@ -32810,12 +33252,12 @@ msgid ""
 "within your `__init__` function. Alternatively, you can use the `IdDict` dictionary type, which is specially handled by precompilation so "
 "that it is safe to initialize at compile-time."
 msgstr ""
-"辞書型、集合型、または一般に`hash(key)`メソッドの出力に何らか依存するものは取り扱いが厄介なケースです。key が数値、文字列、シンボル、範"
-"囲、'Expr'、またはこれらの型の複合型 (配列、タプル、集合、Pairなどを介して) である一般的なケースでは、プリコンパイルしても安全です。 ただし、"
-"いくつかのキー型、例えば `Function`、`DataType`  そして `hash`メソッドを定義していない汎用ユーザー定義の型などについは、フォールバック `hash`"
-"メソッドは、(`objectid` を介する) オブジェクトのメモリ アドレスに依存しており、実行するたびに変更されるかもしれません。これらのキータイプのい"
-"ずれかを持っている場合、または安全であると確信が持てない場合は、`__init__` 関数内からこの辞書を初期化できます。あるいは、`IdDict`辞書型を使う"
-"こともできます。これはコンパイル時に安全に初期化できるように、プリコンパイルによって特殊な処理がされます。"
+"辞書型、集合型、または一般に`hash(key)`メソッドの出力に何らか依存するものは取り扱いが厄介なケースです。key が数値、文字列、シンボル、範囲、"
+"`Expr`、またはこれらの型の複合型 (配列、タプル、集合、Pairなどを介して) である一般的なケースでは、プリコンパイルしても安全です。 ただし、いく"
+"つかのキー型、例えば `Function`、`DataType`  そして `hash`メソッドを定義していない汎用ユーザー定義の型などについは、フォールバック `hash`メ"
+"ソッドは、(`objectid` を介する) オブジェクトのメモリ アドレスに依存しており、実行するたびに変更されるかもしれません。これらのキータイプのいず"
+"れかを持っている場合、または安全であると確信が持てない場合は、`__init__` 関数内からこの辞書を初期化できます。あるいは、`IdDict`辞書型を使うこ"
+"ともできます。これはコンパイル時に安全に初期化できるように、プリコンパイルによって特殊な処理がされます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/modules.md:313
@@ -32947,7 +33389,7 @@ msgid ""
 "No code reload / cache invalidation is performed after changes are made to the source files themselves, (including by [`Pkg.update`], and no "
 "cleanup is done after [`Pkg.rm`]"
 msgstr ""
-"ソース ファイル自体に変更が加えられた([`Pkg.update`] 含む)後に 、コードの再読み込み/キャッシュの無効化は実行されません 、['Pkg.rm'] の後にク"
+"ソース ファイル自体に変更が加えられた([`Pkg.update`] 含む)後に 、コードの再読み込み/キャッシュの無効化は実行されません 、[`Pkg.rm`] の後にク"
 "リーンアップは行われません"
 
 #. type: Bullet: '2. '
@@ -35155,7 +35597,7 @@ msgstr ""
 msgid ""
 "Julia also defines the types `Int` and `UInt`, which are aliases for the system's signed and unsigned native integer types respectively:"
 msgstr ""
-"Julia には、システムの符号付きネイティブ整数型と符号なしネイティブ整数型のエイリアスである 'Int' 型と 'UInt' がそれぞれ定義されています:"
+"Julia には、システムの符号付きネイティブ整数型と符号なしネイティブ整数型のエイリアスである `Int` 型と `UInt` がそれぞれ定義されています:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:88
@@ -35212,7 +35654,7 @@ msgid ""
 "Unsigned integers are input and output using the `0x` prefix and hexadecimal (base 16) digits `0-9a-f` (the capitalized digits `A-F` also "
 "work for input). The size of the unsigned value is determined by the number of hex digits used:"
 msgstr ""
-"符号なしの整数の入出力には、`0x` プレフィックスを持つ16進数の数字 '0-9a-f' (大文字の数字 'A-F' も利用可能)を使います。符号なしの値のサイズ"
+"符号なしの整数の入出力には、`0x` プレフィックスを持つ16進数の数字 `0-9a-f` (大文字の数字 `A-F` も利用可能)を使います。符号なしの値のサイズ"
 "は、使用する16進数の桁数で決まります:"
 
 #. type: Plain text
@@ -35360,7 +35802,7 @@ msgid ""
 "Binary, octal, and hexadecimal literals may be signed by a `-` immediately preceding the unsigned literal. They produce an unsigned integer "
 "of the same size as the unsigned literal would do, with the two's complement of the value:"
 msgstr ""
-"2進・8進・16進リテラルは、リテラルの直前に '-' の符号をつけることができます。この場合生成されるのは、符号を付ける前の数とサイズの等しい符号な"
+"2進・8進・16進リテラルは、リテラルの直前に `-` の符号をつけることができます。この場合生成されるのは、符号を付ける前の数とサイズの等しい符号な"
 "しの整数で、元の数の2の補数表現になります:"
 
 #. type: Plain text
@@ -35562,7 +36004,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:280
 msgid "The above results are all [`Float64`](@ref) values. Literal [`Float32`](@ref) values can be entered by writing an `f` in place of `e`:"
-msgstr "上記の結果はすべて [`Float64`](@ref) 値です。リテラル [`Float32`](@ref) 値は、'e' の代わりに 'f' を書くことによって入力できます:"
+msgstr "上記の結果はすべて [`Float64`](@ref) 値です。リテラル [`Float32`](@ref) 値は、`e` の代わりに `f` を書くことによって入力できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:281
@@ -35610,7 +36052,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:304
 msgid "Hexadecimal floating-point literals are also valid, but only as [`Float64`](@ref) values, with `p` preceding the base-2 exponent:"
-msgstr "16進表記の浮動小数点リテラルも有効ですが、基数2の指数の前に 'p' をつけて利用し、値は [`Float64`](@ref)になります:"
+msgstr "16進表記の浮動小数点リテラルも有効ですが、基数2の指数の前に `p` をつけて利用し、値は [`Float64`](@ref)になります:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/integers-and-floating-point-numbers.md:305
@@ -45290,23 +45732,23 @@ msgstr ""
 #: ext/julia/doc/src/devdocs/init.md:1
 #, no-wrap
 msgid "Initialization of the Julia runtime"
-msgstr ""
+msgstr "Julia ランタイムの初期化"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/init.md:4
 msgid "How does the Julia runtime execute `julia -e 'println(\"Hello World!\")'` ?"
-msgstr ""
+msgstr "Julia のランタイムは、コマンド `julia -e 'println(\"Hello World!\")'`  をどの様に実行するでしょうか?"
 
 #. type: Title ##
 #: ext/julia/doc/src/devdocs/init.md:5
 #, no-wrap
 msgid "`main()`"
-msgstr ""
+msgstr "`main()`"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/init.md:8
 msgid "Execution starts at [`main()` in `ui/repl.c`](https://github.com/JuliaLang/julia/blob/master/ui/repl.c)."
-msgstr ""
+msgstr "プログラムの実行は、 [`ui/repl.c`の`main()`関数](https://github.com/JuliaLang/julia/blob/master/ui/repl.c) から開始します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/init.md:12
@@ -45315,6 +45757,9 @@ msgid ""
 "locale and to initialize the \"ios\" library (see [`ios_init_stdstreams()`](https://github.com/JuliaLang/julia/blob/master/src/support/ios."
 "c)  and [Legacy `ios.c` library](@ref))."
 msgstr ""
+"`main()` は、 [`libsupport_init()`](https://github.com/JuliaLang/julia/blob/master/src/support/libsupportinit.c) を呼んで、Cライブラリの ロ"
+"ケールを設定し、 to set the C library locale and to initialize the \"ios\" ライブラリを初期化します( [`ios_init_stdstreams()`](https://"
+"github.com/JuliaLang/julia/blob/master/src/support/ios.c) と [Legacy `ios.c` library](@ref) を参照)。"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/init.md:16
@@ -50099,7 +50544,7 @@ msgstr ""
 #: ext/julia/doc/src/devdocs/backtraces.md:1
 #, no-wrap
 msgid "Reporting and analyzing crashes (segfaults)"
-msgstr ""
+msgstr "クラッシュ(セグメンテーションフォルト)の報告と分析"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/backtraces.md:7
@@ -50108,6 +50553,9 @@ msgid ""
 "when something goes awry.  Including the information from these debugging steps can greatly help the maintainers when tracking down a "
 "segfault or trying to figure out why your script is running slower than expected."
 msgstr ""
+"Julia を壊した?おめでとうございます!  何かおかしいことが起きた時によく遭遇する症状に対する一般的な手順をここに集めました。セグメンテーション"
+"フォールトを追跡したり、あなたのスクリプトが予想よりも遅い理由を突き止める際には、ここで述べるデバッグ手順から得られる情報を含めて報告する"
+"と、メンテナは大いに助かるでしょう。"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/backtraces.md:10
@@ -50115,27 +50563,29 @@ msgid ""
 "If you've been directed to this page, find the symptom that best matches what you're experiencing and follow the instructions to generate "
 "the debugging information requested.  Table of symptoms:"
 msgstr ""
+"もしあなたが、このページを見るように、と言われたのであれば、今直面している問題に最も一致する現象を見つけて、このページに書かれた指示に従っ"
+"て、要求されたデバッグ情報を生成してください。現象の一覧は下記の通りです:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/devdocs/backtraces.md:14
 msgid "[Segfaults during bootstrap (`sysimg.jl`)](@ref)"
-msgstr ""
+msgstr "[ブートストラップ(`sysimg.jl`)中のセグメンテーションフォルト](@ref segfaults-during-bootstrap)"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/devdocs/backtraces.md:14
 msgid "[Segfaults when running a script](@ref)"
-msgstr ""
+msgstr "[スクリプトの実行時のセグフォールト](@ref segfaults-when-running-a-script)"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/devdocs/backtraces.md:14
 msgid "[Errors during Julia startup](@ref)"
-msgstr ""
+msgstr "[Julia起動中のエラー](@ref errors-during-julia-startup)"
 
 #. type: Title ##
 #: ext/julia/doc/src/devdocs/backtraces.md:15
 #, no-wrap
 msgid "[Version/Environment info](@id dev-version-info)"
-msgstr ""
+msgstr "[バージョン情報/環境情報](@id dev-version-info)"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/backtraces.md:19
@@ -50144,12 +50594,15 @@ msgid ""
 "with a version number and date. Please also include the output of `versioninfo()` (exported from the [`InteractiveUtils`](@ref "
 "InteractiveUtils.versioninfo) standard library) in any report you create:"
 msgstr ""
+"エラーの内容に関係なく、常に、実行しているJulia のバージョンを知る必要があります。Julia が最初に起動すると、ヘッダーにバージョン番号と日付が"
+"出力されます。また、作成するレポートには、`versioninfo()`([`InteractiveUtils`](@ref InteractiveUtils.versioninfo) 標準ライブラリからエクス"
+"ポートされています) の出力を含めてください:"
 
 #. type: Code fence info string
 #: ext/julia/doc/src/devdocs/backtraces.md:20
 #, no-wrap
 msgid "@repl"
-msgstr ""
+msgstr "@repl"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/backtraces.md:20
@@ -50158,12 +50611,14 @@ msgid ""
 "using InteractiveUtils\n"
 "versioninfo()\n"
 msgstr ""
+"using InteractiveUtils\n"
+"versioninfo()\n"
 
 #. type: Title ##
 #: ext/julia/doc/src/devdocs/backtraces.md:25
 #, no-wrap
 msgid "Segfaults during bootstrap (`sysimg.jl`)"
-msgstr ""
+msgstr "[ブートストラップ(`sysimg.jl`)中のセグメンテーションフォルト](@id segfaults-during-bootstrap)"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/backtraces.md:32
@@ -50172,11 +50627,15 @@ msgid ""
 "corpus of code in the `base/` folder.  Many factors can contribute toward this process dying unexpectedly, however it is as often as not due "
 "to an error in the C-code portion of Julia, and as such must typically be debugged with a debug build inside of `gdb`.  Explicitly:"
 msgstr ""
+"Julia をビルドする `make` プロセスの終盤でのセグメンテーションフォールトは、一般的な症状です。Julia が`base/`フォルダ内のコードのコーパスを事"
+"前解析している間に何かがおかしいことが起きたりします。 プロセスが突然落ちてしまう原因には、多くの要因が考えられますが、どちらかというと、"
+"Julia の C コード部分のエラーが原因であることが多く、通常は `gdb` のデバッグビルドでデバッグしなければならないことが多いです。デバッグビルド"
+"を作るには明示的に："
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/backtraces.md:34
 msgid "Create a debug build of Julia:"
-msgstr ""
+msgstr "Julia のデバッグビルドを作成します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/backtraces.md:35
@@ -50185,6 +50644,8 @@ msgid ""
 "$ cd <julia_root>\n"
 "$ make debug\n"
 msgstr ""
+"$ cd <julia_root>\n"
+"$ make debug\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/backtraces.md:43
@@ -50192,6 +50653,8 @@ msgid ""
 "Note that this process will likely fail with the same error as a normal `make` incantation, however this will create a debug executable that "
 "will offer `gdb` the debugging symbols needed to get accurate backtraces.  Next, manually run the bootstrap process inside of `gdb`:"
 msgstr ""
+"このデバッグビルドのプロセスは、通常の`make` と同じエラーで失敗する可能性がありますが、(そうならなければ) 正確なバックトレースをするために必"
+"要なデバッグシンボルを `gdb`に提供する、デバッグ用実行可能ファイルが作成されます。 次に、`gdb`内でブートストラッププロセスを手動で実行します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/backtraces.md:44
@@ -50200,6 +50663,8 @@ msgid ""
 "$ cd base/\n"
 "$ gdb -x ../contrib/debug_bootstrap.gdb\n"
 msgstr ""
+"$ cd base/\n"
+"$ gdb -x ../contrib/debug_bootstrap.gdb\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/backtraces.md:54
@@ -50210,13 +50675,13 @@ msgid ""
 "the full backtrace.  Create a [gist](https://gist.github.com) with the backtrace, the [version info](@ref dev-version-info),\n"
 "and any other pertinent information you can think of and open a new [issue](https://github.com/JuliaLang/julia/issues?q=is%3Aopen)\n"
 "on Github with a link to the gist.\n"
-msgstr ""
+msgstr "このコマンドで、`gdb`を開始し、Julia のデバッグビルドを使用したブートストラッププロセスを実行しようとし、もしセグメンテーションフォルトが起きれば、バックトーレスの結果を出力します。全ての出力を得るには、なんどか `<enter>`キーを押す必要があるかもしれません。こうして得られたバックトレースと、バージョン情報、その他関連情報をまとめた gist を作成して、Github の issue をオープンし、作成したgistへのリンクを貼ってください。\n"
 
 #. type: Title ##
 #: ext/julia/doc/src/devdocs/backtraces.md:55
 #, no-wrap
 msgid "Segfaults when running a script"
-msgstr ""
+msgstr "[スクリプトの実行時のセグフォールト](@id segfaults-when-running-a-script)"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/backtraces.md:59
@@ -50261,7 +50726,7 @@ msgstr ""
 #: ext/julia/doc/src/devdocs/backtraces.md:80
 #, no-wrap
 msgid "Errors during Julia startup"
-msgstr ""
+msgstr "[Julia起動中のエラー](@id errors-during-julia-startup)"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/backtraces.md:84
