@@ -32494,7 +32494,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/types.md:1365
 #, no-wrap
 msgid "\"Value types\""
-msgstr "[\"値型\"](@id Value-types)"
+msgstr "[\"値型\"](@id \"Value-types\")"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:1371
