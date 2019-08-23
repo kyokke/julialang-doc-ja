@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-07-24 01:15+0000\n"
-"PO-Revision-Date: 2019-08-24 06:04+0900\n"
+"PO-Revision-Date: 2019-08-24 06:20+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -30268,7 +30268,7 @@ msgstr ""
 "[`Number`](@ref)は「Any」の直接の子です。[`Real`](@ref)はそのさらに子に当たります。そして、`Real` には2人の子供がいます(本当はもっとあります"
 "が、ここでは2つだけ示します。他のものは後述します): 一つは [`Integer`](@ref)、もう一つは[`AbstractFloat`](@ref) です。数の世界を整数と実数の"
 "表現に分けます。実数の表現には、もちろん浮動小数点型が含まれるのですが、有理数など他の型もあります。したがって、`AbstractFloat`は `Real` の真"
-"のサブタイプで、実数の浮動小数点表現のみを含みます。整数はさらに[`signed`](@ref)と[`unsinged`](@ref) に細分されます。"
+"のサブタイプで、実数の浮動小数点表現のみを含みます。整数はさらに[`signed`](@ref)と[`unsigned`](@ref) に細分されます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:193
@@ -30481,7 +30481,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/types.md:290
 #, no-wrap
 msgid "Composite Types"
-msgstr "複合型"
+msgstr "[複合型](@id Composite-Types)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:297
@@ -30719,15 +30719,15 @@ msgid ""
 "There is much more to say about how instances of composite types are created, but that discussion depends on both [Parametric Types](@ref) "
 "and on [Methods](@ref), and is sufficiently important to be addressed in its own section: [Constructors](@ref man-constructors)."
 msgstr ""
-"複合型のインスタンスがどのように生成されるかについては、まだまだ説明すべきことがありますが、その議論は [パラメトリック型(@ref parametric-"
-"types)と[メソッド](@ref Methods)の両方にも関わりがあり、とても重要な事項なので、[コンストラクタ](@ref マman-constructors) という独立のセク"
-"ションを設けてそこで扱うことにします。"
+"複合型のインスタンスがどのように生成されるかについては、まだまだ説明すべきことがありますが、その議論は [パラメトリック型(@ref Parametric-"
+"types)と[メソッド](@ref Methods)の両方にも関わりがあり、とても重要な事項なので、[コンストラクタ](@ref man-constructors) という独立のセクショ"
+"ンを設けてそこで扱うことにします。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/types.md:404
 #, no-wrap
 msgid "Mutable Composite Types"
-msgstr "可変複合型"
+msgstr "[可変複合型](@id Mutable-Composite-Types)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:408
@@ -30830,7 +30830,7 @@ msgid ""
 "The three kinds of types (abstract, primitive, composite) discussed in the previous sections are actually all closely related. They share "
 "the same key properties:"
 msgstr ""
-"上記セクションで説明した 3 種類の型 (抽象、プリミティブ型、複合型) は、実際には密接に関連しています。これらは、共通する重要な特徴を持ちます。"
+"上記セクションで説明した 3 種類の型 (抽象、プリミティブ型、複合型) は、実際には密接に関連しています。これらは、共通する重要な特徴を持ちます:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/types.md:462
@@ -30963,7 +30963,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/types.md:511
 #, no-wrap
 msgid "Parametric Types"
-msgstr "パラメトリック型"
+msgstr "[パラメトリック型](@id Parametric-Types)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:527
@@ -31243,7 +31243,7 @@ msgid ""
 "new composite objects, one in which the type parameters are explicitly given and the other in which they are implied by the arguments to the "
 "object constructor."
 msgstr ""
-"`Point` オブジェクトはどのように構築されるでしょうか? [コンストラクター](@ref man-constructor)で詳しく説明しますが、複合型に対して独自のコン"
+"`Point` オブジェクトはどのように構築されるでしょうか? [コンストラクター](@ref man-constructors)で詳しく説明しますが、複合型に対して独自のコン"
 "ストラクタを定義することは可能ですが、特別にコンストラクタの宣言をしない場合にも、デフォルトで新しい複合型オブジェクトを作成する方法が2つあり"
 "ます。1つは型パラメータを明示的に与えるもの、もう1つはオブジェクトコンストラクタへの引数から暗黙裡に推定されるものです。"
 
@@ -32494,7 +32494,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/types.md:1365
 #, no-wrap
 msgid "\"Value types\""
-msgstr "\"値型\""
+msgstr "[\"値型\"](@id Value-types)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:1371
@@ -50569,7 +50569,7 @@ msgstr ""
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/devdocs/backtraces.md:14
 msgid "[Segfaults during bootstrap (`sysimg.jl`)](@ref)"
-msgstr "[ブートストラップ(`sysimg.jl`)中のセグメンテーションフォルト](@ref segfaults-during-bootstrap)"
+msgstr "[ブートストラップ(`sysimg.jl`)中のセグメンテーションフォルト](@ref Segfaults-during-bootstrap-(sysimg.jl))"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/devdocs/backtraces.md:14
@@ -50618,7 +50618,7 @@ msgstr ""
 #: ext/julia/doc/src/devdocs/backtraces.md:25
 #, no-wrap
 msgid "Segfaults during bootstrap (`sysimg.jl`)"
-msgstr "[ブートストラップ(`sysimg.jl`)中のセグメンテーションフォルト](@id segfaults-during-bootstrap)"
+msgstr "[ブートストラップ(`sysimg.jl`)中のセグメンテーションフォルト](@id Segfaults-during-bootstrap-(sysimg.jl))"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/backtraces.md:32
