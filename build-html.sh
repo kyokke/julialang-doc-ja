@@ -9,7 +9,7 @@ cd ext/julia/doc
 make
 cd ../../../
 
-rm -rf docs/ja/v1.1/*
-cp -r ext/julia/doc/_build/html/en/* docs/ja/v1.1
+rm -rf docs/ja/v1.2/*
+cp -r ext/julia/doc/_build/html/en/* docs/ja/v1.2
 rm -rf ext/julia/doc
 mv ext/julia/doc.org  ext/julia/doc

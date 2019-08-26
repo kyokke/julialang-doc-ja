@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>文字列 · The Julia Language</title><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-28835595-6', 'auto');
+ga('send', 'pageview');
+</script><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../assets/documenter.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link href="../assets/documenter.css" rel="stylesheet" type="text/css"/><link href="../assets/julia-manual.css" rel="stylesheet" type="text/css"/></head><body><nav class="toc"><a href="../index.html"><img class="logo" src="../assets/logo.png" alt="The Julia Language logo"/></a><h1>The Julia Language</h1><select id="version-selector" onChange="window.location.href=this.value" style="visibility: hidden"></select><form class="search" id="search-form" action="../search.html"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../index.html">Home</a></li><li><span class="toctext">Manual</span><ul><li><a class="toctext" href="getting-started.html">はじめよう</a></li><li><a class="toctext" href="variables.html">変数</a></li><li><a class="toctext" href="integers-and-floating-point-numbers.html">整数と浮動小数点数</a></li><li><a class="toctext" href="mathematical-operations.html">算術演算と初等関数</a></li><li><a class="toctext" href="complex-and-rational-numbers.html">複素数と有理数</a></li><li class="current"><a class="toctext" href="strings.html">文字列</a><ul class="internal"><li><a class="toctext" href="#man-characters-1">文字</a></li><li><a class="toctext" href="#文字列の基礎-1">文字列の基礎</a></li><li><a class="toctext" href="#UnicodeとUTF-8-1">UnicodeとUTF-8</a></li><li><a class="toctext" href="#man-concatenation-1">連結</a></li><li><a class="toctext" href="#string-interpolation-1">文字列展開</a></li><li><a class="toctext" href="#三重引用符文字列リテラル-1">三重引用符文字列リテラル</a></li><li><a class="toctext" href="#よくある文字列操作-1">よくある文字列操作</a></li><li><a class="toctext" href="#non-standard-string-literals-1">非標準文字列リテラル</a></li><li><a class="toctext" href="#正規表現-1">正規表現</a></li><li><a class="toctext" href="#man-byte-array-literals-1">バイト配列リテラル</a></li><li><a class="toctext" href="#man-version-number-literals-1">バージョン番号リテラル</a></li><li><a class="toctext" href="#man-raw-string-literals-1">生文字列リテラル</a></li></ul></li><li><a class="toctext" href="functions.html">関数</a></li><li><a class="toctext" href="control-flow.html">制御フロー</a></li><li><a class="toctext" href="variables-and-scoping.html">Scope of Variables</a></li><li><a class="toctext" href="types.html">型</a></li><li><a class="toctext" href="methods.html">メソッド</a></li><li><a class="toctext" href="constructors.html">Constructors</a></li><li><a class="toctext" href="conversion-and-promotion.html">変換と昇格</a></li><li><a class="toctext" href="interfaces.html">Interfaces</a></li><li><a class="toctext" href="modules.html">モジュール</a></li><li><a class="toctext" href="documentation.html">Documentation</a></li><li><a class="toctext" href="metaprogramming.html">メタプログラミング</a></li><li><a class="toctext" href="arrays.html">多次元配列</a></li><li><a class="toctext" href="missing.html">Missing Values</a></li><li><a class="toctext" href="networking-and-streams.html">ネットワークとストリーム</a></li><li><a class="toctext" href="parallel-computing.html">Parallel Computing</a></li><li><a class="toctext" href="running-external-programs.html">Running External Programs</a></li><li><a class="toctext" href="calling-c-and-fortran-code.html">C, Fortran コードの呼び出し</a></li><li><a class="toctext" href="handling-operating-system-variation.html">Handling Operating System Variation</a></li><li><a class="toctext" href="environment-variables.html">Environment Variables</a></li><li><a class="toctext" href="embedding.html">Julia の埋め込み</a></li><li><a class="toctext" href="code-loading.html">Code Loading</a></li><li><a class="toctext" href="profile.html">Profiling</a></li><li><a class="toctext" href="stacktraces.html">Stack Traces</a></li><li><a class="toctext" href="performance-tips.html">パフォーマンス・ティップス</a></li><li><a class="toctext" href="workflow-tips.html">Workflow Tips</a></li><li><a class="toctext" href="style-guide.html">スタイルガイド</a></li><li><a class="toctext" href="faq.html">Frequently Asked Questions</a></li><li><a class="toctext" href="noteworthy-differences.html">他の言語との注目すべき違い</a></li><li><a class="toctext" href="unicode-input.html">Unicode Input</a></li></ul></li><li><span class="toctext">Base</span><ul><li><a class="toctext" href="../base/base.html">Essentials</a></li><li><a class="toctext" href="../base/collections.html">Collections and Data Structures</a></li><li><a class="toctext" href="../base/math.html">Mathematics</a></li><li><a class="toctext" href="../base/numbers.html">Numbers</a></li><li><a class="toctext" href="../base/strings.html">Strings</a></li><li><a class="toctext" href="../base/arrays.html">Arrays</a></li><li><a class="toctext" href="../base/parallel.html">Tasks</a></li><li><a class="toctext" href="../base/multi-threading.html">Multi-Threading</a></li><li><a class="toctext" href="../base/constants.html">Constants</a></li><li><a class="toctext" href="../base/file.html">Filesystem</a></li><li><a class="toctext" href="../base/io-network.html">I/O and Network</a></li><li><a class="toctext" href="../base/punctuation.html">Punctuation</a></li><li><a class="toctext" href="../base/sort.html">Sorting and Related Functions</a></li><li><a class="toctext" href="../base/iterators.html">Iteration utilities</a></li><li><a class="toctext" href="../base/c.html">C Interface</a></li><li><a class="toctext" href="../base/libc.html">C Standard Library</a></li><li><a class="toctext" href="../base/stacktraces.html">StackTraces</a></li><li><a class="toctext" href="../base/simd-types.html">SIMD Support</a></li></ul></li><li><span class="toctext">Standard Library</span><ul><li><a class="toctext" href="../stdlib/Base64.html">Base64</a></li><li><a class="toctext" href="../stdlib/CRC32c.html">CRC32c</a></li><li><a class="toctext" href="../stdlib/Dates.html">Dates</a></li><li><a class="toctext" href="../stdlib/DelimitedFiles.html">Delimited Files</a></li><li><a class="toctext" href="../stdlib/Distributed.html">Distributed Computing</a></li><li><a class="toctext" href="../stdlib/FileWatching.html">File Events</a></li><li><a class="toctext" href="../stdlib/InteractiveUtils.html">Interactive Utilities</a></li><li><a class="toctext" href="../stdlib/LibGit2.html">LibGit2</a></li><li><a class="toctext" href="../stdlib/Libdl.html">Dynamic Linker</a></li><li><a class="toctext" href="../stdlib/LinearAlgebra.html">Linear Algebra</a></li><li><a class="toctext" href="../stdlib/Logging.html">Logging</a></li><li><a class="toctext" href="../stdlib/Markdown.html">Markdown</a></li><li><a class="toctext" href="../stdlib/Mmap.html">Memory-mapped I/O</a></li><li><a class="toctext" href="../stdlib/Pkg.html">Pkg</a></li><li><a class="toctext" href="../stdlib/Printf.html">Printf</a></li><li><a class="toctext" href="../stdlib/Profile.html">プロファイリング</a></li><li><a class="toctext" href="../stdlib/REPL.html">The Julia REPL</a></li><li><a class="toctext" href="../stdlib/Random.html">Random Numbers</a></li><li><a class="toctext" href="../stdlib/SHA.html">SHA</a></li><li><a class="toctext" href="../stdlib/Serialization.html">Serialization</a></li><li><a class="toctext" href="../stdlib/SharedArrays.html">Shared Arrays</a></li><li><a class="toctext" href="../stdlib/Sockets.html">Sockets</a></li><li><a class="toctext" href="../stdlib/SparseArrays.html">Sparse Arrays</a></li><li><a class="toctext" href="../stdlib/Statistics.html">Statistics</a></li><li><a class="toctext" href="../stdlib/Test.html">Unit Testing</a></li><li><a class="toctext" href="../stdlib/UUIDs.html">UUIDs</a></li><li><a class="toctext" href="../stdlib/Unicode.html">Unicode</a></li></ul></li><li><span class="toctext">Developer Documentation</span><ul><li><a class="toctext" href="../devdocs/reflection.html">リフレクションとインストロスペクション</a></li><li><span class="toctext">Documentation of Julia&#39;s Internals</span><ul><li><a class="toctext" href="../devdocs/init.html">Julia ランタイムの初期化</a></li><li><a class="toctext" href="../devdocs/ast.html">Julia ASTs</a></li><li><a class="toctext" href="../devdocs/types.html">More about types</a></li><li><a class="toctext" href="../devdocs/object.html">Memory layout of Julia Objects</a></li><li><a class="toctext" href="../devdocs/eval.html">Eval of Julia code</a></li><li><a class="toctext" href="../devdocs/callconv.html">Calling Conventions</a></li><li><a class="toctext" href="../devdocs/compiler.html">High-level Overview of the Native-Code Generation Process</a></li><li><a class="toctext" href="../devdocs/functions.html">Julia Functions</a></li><li><a class="toctext" href="../devdocs/cartesian.html">Base.Cartesian</a></li><li><a class="toctext" href="../devdocs/meta.html">Talking to the compiler (the <code>:meta</code> mechanism)</a></li><li><a class="toctext" href="../devdocs/subarrays.html">SubArrays</a></li><li><a class="toctext" href="../devdocs/isbitsunionarrays.html">isbits Union Optimizations</a></li><li><a class="toctext" href="../devdocs/sysimg.html">System Image Building</a></li><li><a class="toctext" href="../devdocs/llvm.html">Working with LLVM</a></li><li><a class="toctext" href="../devdocs/stdio.html">printf() and stdio in the Julia runtime</a></li><li><a class="toctext" href="../devdocs/boundscheck.html">Bounds checking</a></li><li><a class="toctext" href="../devdocs/locks.html">Proper maintenance and care of multi-threading locks</a></li><li><a class="toctext" href="../devdocs/offset-arrays.html">Arrays with custom indices</a></li><li><a class="toctext" href="../devdocs/require.html">Module loading</a></li><li><a class="toctext" href="../devdocs/inference.html">Inference</a></li><li><a class="toctext" href="../devdocs/ssair.html">Julia SSA-form IR</a></li><li><a class="toctext" href="../devdocs/gc-sa.html">Static analyzer annotations for GC correctness in C code</a></li></ul></li><li><span class="toctext">Developing/debugging Julia&#39;s C code</span><ul><li><a class="toctext" href="../devdocs/backtraces.html">クラッシュ(セグメンテーションフォルト)の報告と分析</a></li><li><a class="toctext" href="../devdocs/debuggingtips.html">gdb debugging tips</a></li><li><a class="toctext" href="../devdocs/valgrind.html">Using Valgrind with Julia</a></li><li><a class="toctext" href="../devdocs/sanitizers.html">Sanitizer support</a></li></ul></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li>Manual</li><li><a href="strings.html">文字列</a></li></ul><a class="edit-page" href="https://github.com/JuliaLang/julia/blob/master/doc/src/manual/strings.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/><div id="topbar"><span>文字列</span><a class="fa fa-bars" href="#"></a></div></header><h1><a class="nav-anchor" id="man-strings-1" href="#man-strings-1">文字列</a></h1><p>文字列は、文字の有限列です。しかし文字とは何であるか、と問うてみると問題は複雑であることに気づきます。英語を話す人にとってよく知る文字とは、文字<code>A</code>、<code>B</code>、<code>C</code>等と数字や一般的な句読点です。これらの文字と0から127までの整数値とのマッピングは<a href="https://en.wikipedia.org/wiki/ASCII">ASCII</a>標準によって標準化されています。もちろん、文字には、英語以外で使われる数々の文字が含まれるわけです。アクセントやその他の変更を加えた変形ASCII文字、キリル文字やギリシャ語などの関連スクリプト、ASCIIや英語とは全く関係のない言語体系である、アラビア語、中国語、ヘブライ語、ヒンディー語、日本語、韓国語などです。<a href="https://en.wikipedia.org/wiki/Unicode">Unicode</a>標準は、文字が正確に何であるかの複雑さに取り組み、この問題に対処する決定的な標準として広く受け入れられています。ニーズに応じて、これらの複雑さを完全に無視して、ASCII 文字のみが存在するふりをするか、ASCII 以外のテキストを処理するときに発生する可能性のある文字またはエンコーディングを扱うコードを記述できます。Julia はプレーンな ASCII テキストをシンプルかつ効率的に処理し、Unicode の処理も可能な限りシンプルで効率的に処理します。特に、ASCII 文字列を処理するときには、C スタイルの文字列コードを記述でき、パフォーマンスとセマンティクスの両方で期待どおりに動作します。このようなコードで ASCII 以外のテキストが検出された場合は、間違った結果をただ返すのではなく明確なエラー メッセージで正常に失敗します。この場合、ASCII 以外のデータを処理するようにコードを変更するのは簡単です。</p><p>Juliaには、文字列に関係するいくつかの注目すべき高度な機能があります:</p><ul><li>ジュリアの文字列 (および文字列リテラル) に使用される組み込みの具体的な型は <a href="../base/strings.html#Core.String-Tuple{AbstractString}"><code>String</code></a>です。 これは<a href="https://en.wikipedia.org/wiki/UTF-8">UTF-8</a>エンコーディングによる<a href="https://en.wikipedia.org/wiki/UTF-8">Unicode</a>の全範囲をサポートしています。(他の Unicode エンコーディングとの間で変換するために<a href="../base/strings.html#Base.transcode"><code>transcode</code></a> 関数が提供されます。</li><li>すべての文字列型は抽象型 <code>AbstractString</code>のサブタイプであり、外部パッケージは追加の <code>AbstractString</code> サブタイプを定義します (例えば他のエンコーディング用などに)。 文字列引数を必要とする関数を定義する場合は、任意の文字列型を受け入れるために、型を <code>AbstractString</code> として宣言する必要があります。</li><li>C や Java と同様に、そしてほとんどの動的言語とは異なり、Julia には<a href="../base/strings.html#Core.AbstractChar"><code>AbstractChar</code></a>と呼ばれる単一の文字を表すファーストクラスの型があります。<code>AbstractChar</code> の組み込みの <a href="../base/strings.html#Core.Char"><code>Char</code></a> サブタイプは、任意の Unicode 文字を表すことができる 32 ビット プリミティブ型です (UTF-8 エンコーディングに基づいています)。</li><li>Java と同様に、文字列は不変(イミュータブル)であり、<code>AbstractString</code> オブジェクトの値は変更できません。 別の文字列値を作成するには、他の文字列の一部から新しい文字列を作成します。</li><li>概念的には、文字列はインデックスから文字への <em>部分関数</em> です。これにより、文字インデックスではなく、エンコードされた表現のバイト インデックスによって文字列に効率的にインデックスを作成できます。</li></ul><h2><a class="nav-anchor" id="man-characters-1" href="#man-characters-1">文字</a></h2><p><code>Char</code>型の値は単一の文字を表します: これは、特別なリテラル表現と適切な算術動作を持つ 32 ビットプリミティブ型であり、<a href="https://en.wikipedia.org/wiki/Code_point">Unicode コードポイント</a>を表す数値に変換できます。 (Juliaパッケージは<code>AbstractChar</code>の他のサブタイプを定義することができます。例えば 他の<a href="https://en.wikipedia.org/wiki/Character_encoding">テキストエンコーディング</a>の操作の最適化などのために) <code>Char</code> 値の入力方法を次に示します:</p><pre><code class="language-julia-repl">julia&gt; &#39;x&#39;
+&#39;x&#39;: ASCII/Unicode U+0078 (category Ll: Letter, lowercase)
+
+julia&gt; typeof(ans)
+Char</code></pre><p><code>Char</code> を整数値(コード ポイント)に簡単に変換できます:</p><pre><code class="language-julia-repl">julia&gt; Int(&#39;x&#39;)
+120
+
+julia&gt; typeof(ans)
+Int64</code></pre><p>32 ビット アーキテクチャでは、<a href="../base/base.html#Core.typeof"><code>typeof(ans)</code></a> は <a href="../base/numbers.html#Core.Int32"><code>Int32</code></a>になります。整数値を <code>Char</code> に簡単に変換できます:</p><pre><code class="language-julia-repl">julia&gt; Char(120)
+&#39;x&#39;: ASCII/Unicode U+0078 (category Ll: Letter, lowercase)</code></pre><p>すべての整数値が有効な Unicode コード ポイントであるとは言えませんが、パフォーマンス向上のため、<code>Char</code> 変換では、すべての引数が有効なコードポイントであるかの確認は行いません。変換された各値が有効なコード ポイントであるか確認する場合は、<a href="../base/strings.html#Base.isvalid-Tuple{Any}"><code>isvalid</code></a> 関数を使用します:</p><pre><code class="language-julia-repl">julia&gt; Char(0x110000)
+&#39;\U110000&#39;: Unicode U+110000 (category In: Invalid, too high)
+
+julia&gt; isvalid(Char, 0x110000)
+false</code></pre><p>現時点では、有効な Unicode コード ポイントは <code>U+00</code> から <code>U+d7ff</code> と <code>U+e000</code> から <code>U+10ffff</code> です。これらはすべてまだわかりやすい意味を割り当てられていないし、アプリケーションによって必ずしも解釈できるわけではありませんが、これらの値はすべて有効な Unicode 文字と見なされます。</p><p>単一引用符の中で、<code>\u</code> を使用してその後に16進数で最大 4桁、または <code>\U</code> の後に16進数で最大 8 桁(最長有効値は 6 桁)で、任意のUnicode 文字を入力できます:</p><pre><code class="language-julia-repl">julia&gt; &#39;\u0&#39;
+&#39;\0&#39;: ASCII/Unicode U+0000 (category Cc: Other, control)
+
+julia&gt; &#39;\u78&#39;
+&#39;x&#39;: ASCII/Unicode U+0078 (category Ll: Letter, lowercase)
+
+julia&gt; &#39;\u2200&#39;
+&#39;∀&#39;: Unicode U+2200 (category Sm: Symbol, math)
+
+julia&gt; &#39;\U10ffff&#39;
+&#39;\U10ffff&#39;: Unicode U+10ffff (category Cn: Other, not assigned)</code></pre><p>Julia は、システムのロケールと言語の設定を使用して、どの文字をそのまま支障なく出力できるか、どの文字が、<code>\u</code> や <code>\U</code> を使った一般系で出力する必要があるかを判断します。これらの Unicode エスケープ形式に加えて、<a href="https://en.wikipedia.org/wiki/C_syntax#Backslash_escapes">C言語のエスケープ形式</a> もすべて使用できます:</p><pre><code class="language-julia-repl">julia&gt; Int(&#39;\0&#39;)
+0
+
+julia&gt; Int(&#39;\t&#39;)
+9
+
+julia&gt; Int(&#39;\n&#39;)
+10
+
+julia&gt; Int(&#39;\e&#39;)
+27
+
+julia&gt; Int(&#39;\x7f&#39;)
+127
+
+julia&gt; Int(&#39;\177&#39;)
+127</code></pre><p><code>Char</code>値では、いくつかの限定された算術演算と比較演算を行うことができます:</p><pre><code class="language-julia-repl">julia&gt; &#39;A&#39; &lt; &#39;a&#39;
+true
+
+julia&gt; &#39;A&#39; &lt;= &#39;a&#39; &lt;= &#39;Z&#39;
+false
+
+julia&gt; &#39;A&#39; &lt;= &#39;X&#39; &lt;= &#39;Z&#39;
+true
+
+julia&gt; &#39;x&#39; - &#39;a&#39;
+23
+
+julia&gt; &#39;A&#39; + 1
+&#39;B&#39;: ASCII/Unicode U+0042 (category Lu: Letter, uppercase)</code></pre><h2><a class="nav-anchor" id="文字列の基礎-1" href="#文字列の基礎-1">文字列の基礎</a></h2><p>文字列リテラルは、二重引用符または三重引用符で区切られます:</p><pre><code class="language-julia-repl">julia&gt; str = &quot;Hello, world.\n&quot;
+&quot;Hello, world.\n&quot;
+
+julia&gt; &quot;&quot;&quot;Contains &quot;quote&quot; characters&quot;&quot;&quot;
+&quot;Contains \&quot;quote\&quot; characters&quot;</code></pre><p>文字列から文字を抽出する場合は、その文字列にインデックスを使います:</p><pre><code class="language-julia-repl">julia&gt; str[1]
+&#39;H&#39;: ASCII/Unicode U+0048 (category Lu: Letter, uppercase)
+
+julia&gt; str[6]
+&#39;,&#39;: ASCII/Unicode U+002c (category Po: Punctuation, other)
+
+julia&gt; str[end]
+&#39;\n&#39;: ASCII/Unicode U+000a (category Cc: Other, control)</code></pre><p>文字列を含む多くの Julia オブジェクトは、整数でインデックスづけができます。最初の要素(文字列の最初の文字)のインデックスは <a href="../base/collections.html#Base.firstindex"><code>firstindex(str)</code></a>で、最後の要素(文字)のインデックスは <a href="../base/collections.html#Base.lastindex"><code>lastindex(str)</code></a>で取得できます。キーワード <code>end</code> は、インデックス操作時に、指定された次元の最後のインデックスを示す短縮形として使用できます。 文字列のインデクス付は、Julia のほとんどのインデックスづけと同様に、 1 から始まります: どんな<code>AbsdtractString</code>型に対しても、<code>firstindex</code> はいつも <code>1</code> を返します。 (後で示しますが、しかしながら、<code>lastindex(str)</code>は <code>length(str)</code>とは一般的に同じでは <em>ありません</em>。一部のユニコード文字は、複数の符号単位を専有することがあるからです)</p><p>通常の値と同様に、<a href="../base/base.html#end"><code>end</code></a>に対して算術演算やその他の演算を実行できます:</p><pre><code class="language-julia-repl">julia&gt; str[end-1]
+&#39;.&#39;: ASCII/Unicode U+002e (category Po: Punctuation, other)
+
+julia&gt; str[end÷2]
+&#39; &#39;: ASCII/Unicode U+0020 (category Zs: Separator, space)</code></pre><p>1より小さいインデックスや、<code>end</code> より大きいインデックスを使うとエラーが発生します:</p><pre><code class="language-julia-repl">julia&gt; str[0]
+ERROR: BoundsError: attempt to access &quot;Hello, world.\n&quot;
+  at index [0]
+[...]
+
+julia&gt; str[end+1]
+ERROR: BoundsError: attempt to access &quot;Hello, world.\n&quot;
+  at index [15]
+Stacktrace:
+[...]</code></pre><p>範囲インデックスを使用して部分文字列を抽出することもできます:</p><pre><code class="language-julia-repl">julia&gt; str[4:9]
+&quot;lo, wo&quot;</code></pre><p><code>str[k]</code> と <code>str[k:k]</code> は同じ結果を与えないことに注意してください:</p><pre><code class="language-julia-repl">julia&gt; str[6]
+&#39;,&#39;: ASCII/Unicode U+002c (category Po: Punctuation, other)
+
+julia&gt; str[6:6]
+&quot;,&quot;</code></pre><p>前者は<code>Char</code>型の単一の文字値で、後者は 1 文字だけを含む文字列値です。Julia ではこれらは全く異なるものです。</p><p>範囲インデックスによる配列の参照は元の文字列の選択部分のコピーを作成します。 または、型 <a href="../base/strings.html#Base.SubString"><code>SubString</code></a> を使用して、文字列に対するビューを作成することもできます。例えば:</p><pre><code class="language-julia-repl">julia&gt; str = &quot;long string&quot;
+&quot;long string&quot;
+
+julia&gt; substr = SubString(str, 1, 4)
+&quot;long&quot;
+
+julia&gt; typeof(substr)
+SubString{String}</code></pre><p><a href="../base/strings.html#Base.chop"><code>chop</code></a>, <a href="../base/strings.html#Base.chomp"><code>chomp</code></a> や <a href="../base/strings.html#Base.strip"><code>strip</code></a> のような いくつかの標準的な関数は戻り値として <a href="../base/strings.html#Base.SubString"><code>SubString</code></a>を返します。</p><h2><a class="nav-anchor" id="UnicodeとUTF-8-1" href="#UnicodeとUTF-8-1">UnicodeとUTF-8</a></h2><p>Julia はUnicode 文字と Unicode 文字列を完全にサポートしています。<a href="strings.html#man-characters-1">前述</a>のように、文字リテラルでは、すべての標準 C エスケープ シーケンスと同様に、Unicode <code>\u</code> ,<code>\U</code> エスケープ シーケンスを使ってUnicode の符号位置を表現することができます。すべての標準 C エスケープ シーケンスを使用して表すことができます。これらは文字列リテラルの書き込みでも同様です:</p><pre><code class="language-julia-repl">julia&gt; s = &quot;\u2200 x \u2203 y&quot;
+&quot;∀ x ∃ y&quot;</code></pre><p>これら Unicode 文字がエスケープされて表示されるか、特殊文字として表示されるかは、ターミナルのロケール設定と Unicode への対応状況によって異なります。文字列リテラルは、UTF-8 でエンコードされます。UTF-8 は可変長エンコーディングであり、すべての文字が同じバイト数でエンコードされるわけではありません。UTF-8 では、ASCII 文字 (コード ポイントが 0x80 (128) 未満の文字は、ASCIIの場合と同様に1 バイトでエンコードされます。コード ポイント 0x80 以上は複数のバイト(1 字あたり最大 4文字まで)を使用してエンコードされます。</p><p>Juliaにおける文字列のインデックス付は、符号単位(=UTF-8のバイト)を参照します。これは、固定長の構成要素で、任意の文字(コードポイント)をエンコードするのに使われます。つまり、UTF-8 文字列に入るすべてのバイトインデックスが必ずしも文字の有効なインデックスであるとは限りません。このような無効なバイト インデックスで文字列にインデックスを作成すると、エラーがスローされます:</p><pre><code class="language-julia-repl">julia&gt; s[1]
+&#39;∀&#39;: Unicode U+2200 (category Sm: Symbol, math)
+
+julia&gt; s[2]
+ERROR: StringIndexError(&quot;∀ x ∃ y&quot;, 2)
+[...]
+
+julia&gt; s[3]
+ERROR: StringIndexError(&quot;∀ x ∃ y&quot;, 3)
+Stacktrace:
+[...]
+
+julia&gt; s[4]
+&#39; &#39;: ASCII/Unicode U+0020 (category Zs: Separator, space)</code></pre><p>この場合、文字 <code>∀</code>は 3 バイト文字なので、インデックス 2 と 3 は無効で、次の文字のインデックスは 4 です。これは<a href="../base/strings.html#Base.nextind"><code>nextind(s,1)</code></a>で計算でき、さらにその次の文字のインデックスは<code>nextind(s,4)</code>と続きます。</p><p>Since <code>end</code> is always the last valid index into a collection, <code>end-1</code> references an invalid byte index if the second-to-last character is multibyte.</p><pre><code class="language-julia-repl">julia&gt; s[end-1]
+&#39; &#39;: ASCII/Unicode U+0020 (category Zs: Separator, space)
+
+julia&gt; s[end-2]
+ERROR: StringIndexError(&quot;∀ x ∃ y&quot;, 9)
+Stacktrace:
+[...]
+
+julia&gt; s[prevind(s, end, 2)]
+&#39;∃&#39;: Unicode U+2203 (category Sm: Symbol, math)</code></pre><p>The first case works, because the last character <code>y</code> and the space are one-byte characters, whereas <code>end-2</code> indexes into the middle of the <code>∃</code> multibyte representation. The correct way for this case is using <code>prevind(s, lastindex(s), 2)</code> or, if you&#39;re using that value to index into <code>s</code> you can write <code>s[prevind(s, end, 2)]</code> and <code>end</code> expands to <code>lastindex(s)</code>.</p><p>部分文字列を取り出す範囲インデックスでも、有効なバイト インデックスが与えられることが想定されており、それが満たされない場合はエラーがスローされます:</p><pre><code class="language-julia-repl">julia&gt; s[1:1]
+&quot;∀&quot;
+
+julia&gt; s[1:2]
+ERROR: StringIndexError(&quot;∀ x ∃ y&quot;, 2)
+Stacktrace:
+[...]
+
+julia&gt; s[1:4]
+&quot;∀ &quot;</code></pre><p>可変長エンコーディングのため、文字列内の文字数 (<a href="../base/strings.html#Base.length-Tuple{AbstractString}"><code>length(s)</code></a>)は、最後のインデックスと常に同じであるとは限りません。インデックス 1 から <a href="../base/collections.html#Base.lastindex"><code>lastindex(s)</code></a> に至るまで、文字列<code>s</code>へのインデックス呼び出しを繰り返すと 適正なインデックスでは、<code>s</code> を構成うる一連の文字が返され、それ以外ではエラーが投げられます。したがって、文字列内のそれぞれの文字は固有のインデックスを持っているため、バイトインデックスと文字列の各文字を同一視する対応関係 <code>length(s)&lt;= lastindex(s)</code>が得られるわけです。以下は非効率かつ冗長ではありますが、文字列 <code>s</code> に対する反復を行う方法です:</p><pre><code class="language-julia-repl">julia&gt; for i = firstindex(s):lastindex(s)
+           try
+               println(s[i])
+           catch
+               # ignore the index error
+           end
+       end
+∀
+
+x
+
+∃
+
+y</code></pre><p>空白行には実際には空白文字があります。幸いなことに、文字列内の文字を反復処理する場合は、文字列を反復可能オブジェクトとして使用できるので、例外処理は必要なく、上記の厄介なイディオムは不要です:</p><pre><code class="language-julia-repl">julia&gt; for c in s
+           println(c)
+       end
+∀
+
+x
+
+∃
+
+y</code></pre><p>If you need to obtain valid indices for a string, you can use the <a href="../base/strings.html#Base.nextind"><code>nextind</code></a> and <a href="../base/strings.html#Base.prevind"><code>prevind</code></a> functions to increment/decrement to the next/previous valid index, as mentioned above.  You can also use the <a href="../base/arrays.html#Base.eachindex"><code>eachindex</code></a> function to iterate over the valid character indices:</p><pre><code class="language-julia-repl">julia&gt; collect(eachindex(s))
+7-element Array{Int64,1}:
+  1
+  4
+  5
+  6
+  7
+ 10
+ 11</code></pre><p>To access the raw code units (bytes for UTF-8) of the encoding, you can use the <a href="../base/strings.html#Base.codeunit"><code>codeunit(s,i)</code></a>  function, where the index <code>i</code> runs consecutively from <code>1</code> to <a href="../base/strings.html#Base.ncodeunits-Tuple{AbstractString}"><code>ncodeunits(s)</code></a>.  The <a href="../base/strings.html#Base.codeunits"><code>codeunits(s)</code></a>  function returns an <code>AbstractVector{UInt8}</code> wrapper that lets you access these raw codeunits (bytes) as an array.</p><p>Julia の文字列には、無効なUTF-8コード単位シーケンスを含めることができます。この仕組みによって、任意のバイト シーケンスを <code>String</code> として扱うことができます。このような状況では、左から右の文字までのコード単位のシーケンスを解析する場合、文字列は、次のいずれかのビット パターンの先頭に一致し、最も長い8 ビット コード単位のシーケンスよって形成されます (各 <code>x</code> は <code>0</code> または <code>1</code> になります)。:</p><ul><li><code>0xxxxxxx</code>;</li><li><code>110xxxxx</code> <code>10xxxxxx</code>;</li><li><code>1110xxxx</code> <code>10xxxxxx</code> <code>10xxxxxx</code>;</li><li><code>11110xxx</code> <code>10xxxxxx</code> <code>10xxxxxx</code> <code>10xxxxxx</code>;</li><li><code>10xxxxxx</code>;</li><li><code>11111xxx</code>.</li></ul><p>特に、これは、冗長だったり、値が大きすぎるコードや、その接頭辞が、複数の不正文字ではなく、単一の不正文字として扱われることを意味します。 実例で説明するほうがよく理解できるでしょう:</p><pre><code class="language-julia-repl">julia&gt; s = &quot;\xc0\xa0\xe2\x88\xe2|&quot;
+&quot;\xc0\xa0\xe2\x88\xe2|&quot;
+
+julia&gt; foreach(display, s)
+&#39;\xc0\xa0&#39;: [overlong] ASCII/Unicode U+0020 (category Zs: Separator, space)
+&#39;\xe2\x88&#39;: Malformed UTF-8 (category Ma: Malformed, bad data)
+&#39;\xe2&#39;: Malformed UTF-8 (category Ma: Malformed, bad data)
+&#39;|&#39;: ASCII/Unicode U+007c (category Sm: Symbol, math)
+
+julia&gt; isvalid.(collect(s))
+4-element BitArray{1}:
+ 0
+ 0
+ 0
+ 1
+
+julia&gt; s2 = &quot;\xf7\xbf\xbf\xbf&quot;
+&quot;\U1fffff&quot;
+
+julia&gt; foreach(display, s2)
+&#39;\U1fffff&#39;: Unicode U+1fffff (category In: Invalid, too high)</code></pre><p>文字列<code>s</code>のはじめの２つの符号単位は、空白文字の冗長なエンコーディングです。これは無効なものですが、文字列の中では1バイト文字として受け入れられます。その次（３，４番め)の符号単位は、3バイトのUTFF-8文字の始まりとして有効ですが、5つめの符号単位<code>\xe2</code>はその続きとして無効です。したがって３，４番めの符号単位も文字列の一部として不正な形式ということになります。5つめの符号単位の続きに<code>|</code>がくることはなく有効でないので、5番目の符号単位も不正な形式です。最後に、文字列<code>s2</code>は、符号位置が大きすぎます。</p><p>Julia はデフォルトで UTF-8 エンコーディングを使用しますが、パッケージを加えて、その他に新しいエンコーディングのサポートを追加することができます。 たとえば、<a href="https://github.com/JuliaStrings/LegacyStrings.jl"><code>LegacyStrings.jl</code></a>パッケージは<code>UTF16String</code> と <code>UTF32String</code> 型を実装します。他のエンコーディングとそのサポートの実装方法については、当面はこのドキュメントでは説明しません。UTF-8 エンコーディングの問題の詳細については、以下の<a href="strings.html#man-byte-array-literals-1">バイト配列リテラル</a>のセクションを参照してください。 <a href="../base/strings.html#Base.transcode"><code>transcode</code></a>関数は、主に外部データやライブラリを操作するために、さまざまなUTF-xxエンコーディング間でデータを変換するために提供されます。</p><h2><a class="nav-anchor" id="man-concatenation-1" href="#man-concatenation-1">連結</a></h2><p>最も一般的で有用な文字列操作の 1 つは、連結です:</p><pre><code class="language-julia-repl">julia&gt; greet = &quot;Hello&quot;
+&quot;Hello&quot;
+
+julia&gt; whom = &quot;world&quot;
+&quot;world&quot;
+
+julia&gt; string(greet, &quot;, &quot;, whom, &quot;.\n&quot;)
+&quot;Hello, world.\n&quot;</code></pre><p>無効な UTF-8 文字列を連結する場合など起こりうる潜在的な危険に注意をはらうことは重要です。 連結後の文字列には、入力文字列とは異なる文字が含まれている場合があり、その文字数は連結文字列の文字数の合計よりも小さくなる場合があります。例えば:</p><pre><code class="language-julia-repl">julia&gt; a, b = &quot;\xe2\x88&quot;, &quot;\x80&quot;
+(&quot;\xe2\x88&quot;, &quot;\x80&quot;)
+
+julia&gt; c = a*b
+&quot;∀&quot;
+
+julia&gt; collect.([a, b, c])
+3-element Array{Array{Char,1},1}:
+ [&#39;\xe2\x88&#39;]
+ [&#39;\x80&#39;]
+ [&#39;∀&#39;]
+
+julia&gt; length.([a, b, c])
+3-element Array{Int64,1}:
+ 1
+ 1
+ 1</code></pre><p>このようなことが起こるのは、無効な UTF-8 文字列のときだけです。有効な UTF-8 文字列の連結では、文字列内のすべての文字も、文字列の文字数の合計も保持されます。</p><p>ジュリアは、文字列連結に <a href="../base/strings.html#Base.:*-Tuple{Union{AbstractChar, AbstractString},Vararg{Union{AbstractChar, AbstractString},N} where N}"><code>*</code></a> も使うことができます:</p><pre><code class="language-julia-repl">julia&gt; greet * &quot;, &quot; * whom * &quot;.\n&quot;
+&quot;Hello, world.\n&quot;</code></pre><p>文字列連結に <code>+</code> を使う言語のユーザーにとって、これは驚くべき選択肢のように思えるかもしれませんが、この <code>*</code> の使用は、特に抽象代数での先例があります。</p><p>数学では、<code>+</code> は通常、<em>可換</em>演算を示し、そこでは、オペランド順序は関係ありません。これに対応する例は、行列の足し算で、同じ形状を持つ行列 <code>A</code> と <code>B</code>に対して <code>A + B = B + A</code> が成り立ちます。対照的に、<code>*</code> は通常、<em>非可換</em>演算を示し、そこでは、オペランドの順序が重要です。これに対応する例は行列の乗算で、一般的には <code>A * B != B * A</code> です。行列乗算と同様に、文字列連結は非可換です: <code>挨拶 * 誰が *誰が * 挨拶する</code>そのため、<code>*</code> は、一般的な数学での使用例とも一致し、文字列連結の二項演算子として、より自然な選択です。</p><p>より正確には、すべての有限長文字列 <em>S</em> と文字列連結演算子 <code>*</code> は <a href="https://en.wikipedia.org/wiki/Free_monoid">自由モノイド</a>(<em>S</em>、<code>*</code>)を形成します。このセットの 単位元は空文字列 <code>&quot;&quot;</code> です。自由モノイドが非可換のときはいつでも、演算子の表記には<code>\cdot</code>、<code>*</code>、またはそれらと同様に非可換の演算に対応する記号を用います。通常は可換である<code>+</code>は使われません。</p><h2><a class="nav-anchor" id="string-interpolation-1" href="#string-interpolation-1">文字列展開</a></h2><p>連結を使用して文字列を構築することは少し面倒な場合があります。<a href="../base/strings.html#Base.string"><code>string</code></a>関数の冗長な呼び出しや、乗算を何度も行うことが必要になる機会を減らすため、Julia は Perl のように &#39;$(Expr(:incomplete, &quot;incomplete: invalid character literal&quot;))</p><pre><code class="language-julia-repl">julia&gt; &quot;$greet, $whom.\n&quot;
+&quot;Hello, world.\n&quot;</code></pre><p>これは、読みやすく便利で、上記の文字列連結と等価です。システムはこの見かけ上単一な文字列リテラルを <code>string(greet, &quot;,&quot;,whom, &quot;\n&quot;)</code> の呼び出しに書き換えます。</p><p><code>$</code> に続く最短の完全な式が、値を文字列に展開する対象になります。かっこを使用すれば任意の式を文字列展開の対象にできます:</p><pre><code class="language-julia-repl">julia&gt; &quot;1 + 2 = $(1 + 2)&quot;
+&quot;1 + 2 = 3&quot;</code></pre><p>連結と文字列展開は、オブジェクトを文字列形式に変換するために<a href="../base/strings.html#Base.string"><code>string</code></a>を呼び出します。<code>string</code> は単に <a href="manual/@ref "><code>print</code></a> の出力を返すだけですが、新しい型を定義するときには、<code>string</code> ではなく、<a href="manual/@ref "><code>print</code></a> や <a href="manual/@ref "><code>show</code></a>にメソッドを追加しなければなりません。</p><p><code>AbstractString</code> ではないオブジェクトは、大体の場合 そのオブジェクトがリテラル式として入力されるときの書き方に近い文字列に変換されます:</p><pre><code class="language-julia-repl">julia&gt; v = [1,2,3]
+3-element Array{Int64,1}:
+ 1
+ 2
+ 3
+
+julia&gt; &quot;v: $v&quot;
+&quot;v: [1, 2, 3]&quot;</code></pre><p><a href="../base/strings.html#Base.string"><code>string</code></a> は <code>AbstractString</code> および <code>AbstractChar</code> に対しては、恒等写像的に働くので、引用符を取り去り、エスケープが処理された文字列に展開されます:</p><pre><code class="language-julia-repl">julia&gt; c = &#39;x&#39;
+&#39;x&#39;: ASCII/Unicode U+0078 (category Ll: Letter, lowercase)
+
+julia&gt; &quot;hi, $c&quot;
+&quot;hi, x&quot;</code></pre><p>文字列リテラルに <code>$</code> を含めるには、バックスラッシュでエスケープします:</p><pre><code class="language-julia-repl">julia&gt; print(&quot;I have \$100 in my account.\n&quot;)
+I have $100 in my account.</code></pre><h2><a class="nav-anchor" id="三重引用符文字列リテラル-1" href="#三重引用符文字列リテラル-1">三重引用符文字列リテラル</a></h2><p>文字列を三重引用符 (<code>&quot;&quot;&quot;...&quot;&quot;&quot;</code>) を使用して作成すると、長いテキスト ブロックを作成するのに役立つ特殊な挙動をします。</p><p>まず、三重引用符で囲まれた文字列も、最もインデントの少ない行までデデントされます。 これは、インデントされたコード内で文字列を定義する場合に便利です。例えば：</p><pre><code class="language-julia-repl">julia&gt; str = &quot;&quot;&quot;
+           Hello,
+           world.
+         &quot;&quot;&quot;
+&quot;  Hello,\n  world.\n&quot;</code></pre><p>この場合、文字列終了時の <code>&quot;&quot;&quot;</code> の手前の(空)行が基準インデントレベルとして設定されます。</p><p>デデントのレベルは、文字列リテラル中の全行が共通に持つスペースやタブの最長幅で決まります。ただし、文字列開始行が<code>&quot;&quot;&quot;</code> の後、スペースまたはタブしか持たない場合、文字列開始行を除いた全ての行(ちなみに、文字列終了の<code>&quot;&quot;&quot;</code>を含む行は常に含まれます)において判断されます。そして、文字列開始行の <code>&quot;&quot;&quot;</code>の後のテキストを除くすべての行 (スペースとタブのみを含む行も含む) から、上述の共通の開始シーケンスが削除されます:</p><pre><code class="language-julia-repl">julia&gt; &quot;&quot;&quot;    This
+         is
+           a test&quot;&quot;&quot;
+&quot;    This\nis\n  a test&quot;</code></pre><p>次に、文字列開始の <code>&quot;&quot;&quot;</code>のすぐ後の改行は、結果の文字列から削除されます。</p><pre><code class="language-julia">&quot;&quot;&quot;hello&quot;&quot;&quot;</code></pre><p>と</p><pre><code class="language-julia">&quot;&quot;&quot;
+hello&quot;&quot;&quot;</code></pre><p>は、等価ですが</p><pre><code class="language-julia">&quot;&quot;&quot;
+
+hello&quot;&quot;&quot;</code></pre><p>は、文字列のはじめに改行リテラルを含みます。</p><p>改行削除は、デデントの後に実行されます。例えば:</p><pre><code class="language-julia-repl">julia&gt; &quot;&quot;&quot;
+         Hello,
+         world.&quot;&quot;&quot;
+&quot;Hello,\nworld.&quot;</code></pre><p>末尾の空白は変更されません。</p><p>三重引用符で囲まれた文字列リテラルには、エスケープせずに <code>&quot;</code> 記号を含めることができます。</p><p>注意すべきなのは、文字列内に改行 (LF) 文字 <code>\n</code> になるということです。単一引用符と三 重引用符のどちらを使用する場合でも、エディターが改行 <code>\r</code> (CR) や、 CRLF を使用して行を終了する場合でも、この動作は変わりません。CR を文字列に含めるには、明示的なエスケープ <code>\r</code> を使用します。たとえば、リテラル文字列 <code>&quot;CRLF 行末\r\n&quot;</code>というような文字列リテラルが入力できます。</p><h2><a class="nav-anchor" id="よくある文字列操作-1" href="#よくある文字列操作-1">よくある文字列操作</a></h2><p>文字列を辞書的に比較するには、標準の比較演算子を使用します:</p><pre><code class="language-julia-repl">julia&gt; &quot;abracadabra&quot; &lt; &quot;xylophone&quot;
+true
+
+julia&gt; &quot;abracadabra&quot; == &quot;xylophone&quot;
+false
+
+julia&gt; &quot;Hello, world.&quot; != &quot;Goodbye, world.&quot;
+true
+
+julia&gt; &quot;1 + 2 = 3&quot; == &quot;1 + 2 = $(1 + 2)&quot;
+true</code></pre><p>特定の文字のインデックスを検索するときには、<a href="../base/strings.html#Base.findfirst-Tuple{AbstractString,AbstractString}"><code>findfirst</code></a>および<a href="../base/strings.html#Base.findlast-Tuple{AbstractString,AbstractString}"><code>findlast</code></a>関数を使用します:</p><pre><code class="language-julia-repl">julia&gt; findfirst(isequal(&#39;o&#39;), &quot;xylophone&quot;)
+4
+
+julia&gt; findlast(isequal(&#39;o&#39;), &quot;xylophone&quot;)
+7
+
+julia&gt; findfirst(isequal(&#39;z&#39;), &quot;xylophone&quot;)</code></pre><p>特定のオフセットで文字の検索を開始するには、関数 <a href="../base/strings.html#Base.findnext-Tuple{AbstractString,AbstractString,Integer}"><code>findnext</code></a>と<a href="../base/strings.html#Base.findprev-Tuple{AbstractString,AbstractString,Integer}"><code>findprev</code></a>を使用します:</p><pre><code class="language-julia-repl">julia&gt; findnext(isequal(&#39;o&#39;), &quot;xylophone&quot;, 1)
+4
+
+julia&gt; findnext(isequal(&#39;o&#39;), &quot;xylophone&quot;, 5)
+7
+
+julia&gt; findprev(isequal(&#39;o&#39;), &quot;xylophone&quot;, 5)
+4
+
+julia&gt; findnext(isequal(&#39;o&#39;), &quot;xylophone&quot;, 8)</code></pre><p>文字列内中に特定の部分文字列のあるかどうか確認するには、<a href="../base/strings.html#Base.occursin"><code>occursin</code></a> 関数を使用します:</p><pre><code class="language-julia-repl">julia&gt; occursin(&quot;world&quot;, &quot;Hello, world.&quot;)
+true
+
+julia&gt; occursin(&quot;o&quot;, &quot;Xylophon&quot;)
+true
+
+julia&gt; occursin(&quot;a&quot;, &quot;Xylophon&quot;)
+false
+
+julia&gt; occursin(&#39;o&#39;, &quot;Xylophon&quot;)
+true</code></pre><p>最後の例は、<a href="../base/strings.html#Base.occursin"><code>occursin</code></a>も文字リテラルを探すことができる、という例です。</p><p><a href="../base/arrays.html#Base.repeat"><code>repeat</code></a>と<a href="../base/strings.html#Base.join"><code>join</code></a>はまた別の便利な文字列関数です:</p><pre><code class="language-julia-repl">julia&gt; repeat(&quot;.:Z:.&quot;, 10)
+&quot;.:Z:..:Z:..:Z:..:Z:..:Z:..:Z:..:Z:..:Z:..:Z:..:Z:.&quot;
+
+julia&gt; join([&quot;apples&quot;, &quot;bananas&quot;, &quot;pineapples&quot;], &quot;, &quot;, &quot; and &quot;)
+&quot;apples, bananas and pineapples&quot;</code></pre><p>その他の便利な機能には、次のようなものがあります:</p><ul><li><a href="../base/collections.html#Base.firstindex"><code>firstindex(str)</code></a> は、<code>str</code> の最小 (バイト) インデックスが得られます (文字列の場合は常に 1 ですが、他のコンテナでは必ずしも当てはまりません)。</li><li><a href="../base/collections.html#Base.lastindex"><code>lastindex(str)</code></a> は<code>str</code> の最大の(バイト)インデックスが得られます。</li><li><a href="../base/strings.html#Base.length-Tuple{AbstractString}"><code>length(str)</code></a> <code>str</code> の文字数。</li><li><a href="../base/strings.html#Base.length-Tuple{AbstractString}"><code>length(str, i, j)</code></a> は <code>str</code> のインデックス <code>i</code> から <code>j</code>までの間にある、有効な文字インデックスの数が得られます。</li><li><a href="../base/strings.html#Base.ncodeunits-Tuple{AbstractString}"><code>ncodeunits(str)</code></a> 文字列中の<a href="https://en.wikipedia.org/wiki/Character_encoding#Terminology">符号単位</a>の数 。</li><li><a href="../base/strings.html#Base.codeunit"><code>codeunit(str, i)</code></a> は <code>str</code> のインデックス <code>i</code> の符号単位の値が得られます。</li><li><a href="../base/strings.html#Base.thisind"><code>thisind(str, i)</code></a> は 任意のバイトインデックス <code>i</code> に対して、そのインデックスが指すバイトデータが属する文字の最初のインデックスが得られます。</li><li><a href="../base/strings.html#Base.nextind"><code>nextind(str, i, n=1)</code></a> でインデックス<code>i</code> から後ろに数えて、<code>n</code>個めの文字の最初のインデックスが得られます。</li><li><a href="../base/strings.html#Base.prevind"><code>prevind(str, i, n=1)</code></a> でインデックス<code>i</code> から前に数えて、<code>n</code>個めの文字の最初のインデックスが得られます。</li></ul><h2><a class="nav-anchor" id="non-standard-string-literals-1" href="#non-standard-string-literals-1">非標準文字列リテラル</a></h2><p>文字列を作成さいたり使用するけれども、標準的な文字列構成の振る舞いが、その時必要とされているものとは違う、という状況があるでしょう。このような状況のために、Julia は <a href="strings.html#non-standard-string-literals-1">非標準文字列リテラル</a>を提供しています。非標準の文字列リテラルは、通常の二重引用符で囲まれた文字列リテラルのように見えますが、リテラルの前に識別子がつけられていて、通常の文字列リテラルとは異なる動作をします。正規表現、バイト配列リテラル、およびバージョン番号リテラルは、以下に説明するように、非標準文字列リテラルの例です。その他の例は<a href="metaprogramming.html#Metaprogramming-1">メタプログラミング</a>セクションで示されています。</p><h2><a class="nav-anchor" id="正規表現-1" href="#正規表現-1">正規表現</a></h2><p>Julia には Perl 互換の正規表現 (正規表現) があり、<a href="http://www.pcre.org/">PCRE</a> ライブラリによって提供されます。(構文に関する説明は、<a href="http://www.pcre.org/current/doc/html/pcre2syntax.html">ここ</a>を参照)正規表現は 2 つの点で文字列に関連しています: 明らかな関連は、正規表現が文字列内の規則的なパターンを見つけるために使用されるということです。もう 1 つは、正規表現自体が文字列として入力され、文字列内のパターンを効率的に検索するためのステート マシンとして解析されることです。Julia では、正規表現は <code>r</code> で始まるさまざまな識別子を接頭辞に持つ非標準文字列リテラルを使用して入力されます。オプションを有効にしていない最も基本的な正規表現リテラルは、<code>r&quot;...&quot;</code>とします:</p><pre><code class="language-julia-repl">julia&gt; r&quot;^\s*(?:#|$)&quot;
+r&quot;^\s*(?:#|$)&quot;
+
+julia&gt; typeof(ans)
+Regex</code></pre><p>文字列の中に正規表現がとマッチするパターンがあるかを確認するには、<a href="../base/strings.html#Base.occursin"><code>occursin</code></a> を使用します:</p><pre><code class="language-julia-repl">julia&gt; occursin(r&quot;^\s*(?:#|$)&quot;, &quot;not a comment&quot;)
+false
+
+julia&gt; occursin(r&quot;^\s*(?:#|$)&quot;, &quot;# a comment&quot;)
+true</code></pre><p>ここでわかるように、<a href="../base/strings.html#Base.occursin"><code>occursin</code></a>は単に true または false を返し、指定された正規表現にマッチするパターンが文字列内にあるかどうかを示します。しかし、一般的には、マッチしているかどうかだけでなく、<em>どのように</em> マッチしているかどうかを知りたいでしょう。そのためには、代わりに <a href="../base/strings.html#Base.match"><code>match</code></a> 関数を使用します:</p><pre><code class="language-julia-repl">julia&gt; match(r&quot;^\s*(?:#|$)&quot;, &quot;not a comment&quot;)
+
+julia&gt; match(r&quot;^\s*(?:#|$)&quot;, &quot;# a comment&quot;)
+RegexMatch(&quot;#&quot;)</code></pre><p>正規表現が指定された文字列にマッチしない場合、<a href="../base/strings.html#Base.match"><code>match</code></a> は <a href="../base/constants.html#Core.nothing"><code>nothing</code></a> を返します。これは対話型プロンプトで何も出力がされない特別な値です。出力がされない以外は、完全に正常な値であり、プログラムでテストできます:</p><pre><code class="language-julia">m = match(r&quot;^\s*(?:#|$)&quot;, line)
+if m === nothing
+    println(&quot;not a comment&quot;)
+else
+    println(&quot;blank or comment&quot;)
+end</code></pre><p>正規表現がマッチする場合、<a href="../base/strings.html#Base.match"><code>match</code></a> によって返される値は <code>RegexMatch</code>オブジェクトです。このオブジェクトは、どの様にその式がマッチしたかを記録します。例えば、パターンと一致する部分文字列全体や、パターンを構成する要素と一致した(これを今後「補足」といいます)部分文字列の情報などです。この例では、部分文字列を補足するだけですが、コメントの後の、空白以外の文字列も補足したいでしょう。その場合は、以下のようにします:</p><pre><code class="language-julia-repl">julia&gt; m = match(r&quot;^\s*(?:#\s*(.*?)\s*$|$)&quot;, &quot;# a comment &quot;)
+RegexMatch(&quot;# a comment &quot;, 1=&quot;a comment&quot;)</code></pre><p><a href="../base/strings.html#Base.match"><code>match</code></a>を呼び出すときには、検索を開始位置をインデックスで指定することができます。例えば:</p><pre><code class="language-julia-repl">julia&gt; m = match(r&quot;[0-9]&quot;,&quot;aaaa1aaaa2aaaa3&quot;,1)
+RegexMatch(&quot;1&quot;)
+
+julia&gt; m = match(r&quot;[0-9]&quot;,&quot;aaaa1aaaa2aaaa3&quot;,6)
+RegexMatch(&quot;2&quot;)
+
+julia&gt; m = match(r&quot;[0-9]&quot;,&quot;aaaa1aaaa2aaaa3&quot;,11)
+RegexMatch(&quot;3&quot;)</code></pre><p><code>RegexMatch</code> オブジェクトからは以下の情報を抽出できます:</p><ul><li>マッチした部分文字列の全体: <code>m.match</code></li><li>文字列の配列として補足された部分文字列: <code>m.captures</code></li><li>最初のマッチ開始位置であるオフセットインデックス: <code>m.offset</code></li><li>補足された部分文字列それぞれに対するオフセット値をベクトルの形式で : <code>m.offsets</code></li></ul><p>正規表現バターンの各要素のうち、部分文字列として補足されるものがない場合、その補足されなかったパターン要素に対応する位置で、<code>m.captures</code> は<code>nothing</code> を、<code>m.offsets</code> は オフセット0 を要素に持ちます。(Julia のインデックスは 1 から始まっているので、文字列へのゼロ オフセットは無効です)。やや工夫された例を次に示します:</p><pre><code class="language-julia-repl">julia&gt; m = match(r&quot;(a|b)(c)?(d)&quot;, &quot;acd&quot;)
+RegexMatch(&quot;acd&quot;, 1=&quot;a&quot;, 2=&quot;c&quot;, 3=&quot;d&quot;)
+
+julia&gt; m.match
+&quot;acd&quot;
+
+julia&gt; m.captures
+3-element Array{Union{Nothing, SubString{String}},1}:
+ &quot;a&quot;
+ &quot;c&quot;
+ &quot;d&quot;
+
+julia&gt; m.offset
+1
+
+julia&gt; m.offsets
+3-element Array{Int64,1}:
+ 1
+ 2
+ 3
+
+julia&gt; m = match(r&quot;(a|b)(c)?(d)&quot;, &quot;ad&quot;)
+RegexMatch(&quot;ad&quot;, 1=&quot;a&quot;, 2=nothing, 3=&quot;d&quot;)
+
+julia&gt; m.match
+&quot;ad&quot;
+
+julia&gt; m.captures
+3-element Array{Union{Nothing, SubString{String}},1}:
+ &quot;a&quot;
+ nothing
+ &quot;d&quot;
+
+julia&gt; m.offset
+1
+
+julia&gt; m.offsets
+3-element Array{Int64,1}:
+ 1
+ 0
+ 2</code></pre><p>補足したもの一つ一つをばらけてローカル変数に束縛できるよう、配列として返せると便利です:</p><pre><code class="language-julia-repl">julia&gt; first, second, third = m.captures; first
+&quot;a&quot;</code></pre><p>補足したものは、<code>RegexMatch</code> オブジェクトの補足したグループを数字や名前でインデックスづけして取り出すこともできます:</p><pre><code class="language-julia-repl">julia&gt; m=match(r&quot;(?&lt;hour&gt;\d+):(?&lt;minute&gt;\d+)&quot;,&quot;12:45&quot;)
+RegexMatch(&quot;12:45&quot;, hour=&quot;12&quot;, minute=&quot;45&quot;)
+
+julia&gt; m[:minute]
+&quot;45&quot;
+
+julia&gt; m[2]
+&quot;45&quot;</code></pre><p><a href="../base/strings.html#Base.replace-Tuple{AbstractString,Pair}"><code>replace</code></a> を使用して文字列置換を行う場合にも、キャプチャは参照することができます。n番目の補足グループは<code>\n</code>で参照できます。置換文字列には <code>s</code>を接頭辞として付けます。0番目の補足グループは一致したオブジェクト全体を参照するのに使います。名前付けした補足グループは、<code>g&lt;groupname&gt;</code>の形式で置換の中で参照できます。例えば:</p><pre><code class="language-julia-repl">julia&gt; replace(&quot;first second&quot;, r&quot;(\w+) (?&lt;agroup&gt;\w+)&quot; =&gt; s&quot;\g&lt;agroup&gt; \1&quot;)
+&quot;second first&quot;</code></pre><p>曖昧さを避ける為に、番号付けした補足グループも<code>g&lt;n&gt;</code>で、参照することができます:</p><pre><code class="language-julia-repl">julia&gt; replace(&quot;a&quot;, r&quot;.&quot; =&gt; s&quot;\g&lt;0&gt;1&quot;)
+&quot;a1&quot;</code></pre><p>正規表現の動作は、閉じる側の二重引用符の後にフラグ <code>i</code>、<code>m</code>、<code>s</code>、および <code>x</code> の組み合わせを付けて変更できます。これらのフラグは、Perlの意味と同じです:</p><pre><code class="language-none">i   大文字と小文字を区別しないでパターンマッチを行います。
+
+    ロケールマッチングが有効な場合、符号位置 255以下に対しては、現在のロケールから、255より大きな符号位置に対しては、ユニコードのルールからケースマップが作成されます。
+ただし ユニコードルールと、非ユニコードルールの境界をまたぐ(符号位置が 255以下と 256以上) 場合のマッチは失敗するでしょう。
+
+m   文字列を複数行とみなします。つまり、&quot;^&quot; と &quot;$&quot; の解釈を 文字列の開始と終了とマッチするのではなく、文字列内のどの行の開始・終了ともマッチするような動作になります。
+
+s   文字列を1行とみなします。つまり、 &quot;.&quot; が、どんな文字ともマッチするようになります。それがたとえ、改行のように通常マッチしない文字だったとしてもです。
+
+    as r&quot;&quot;ms, というように、mとsが一緒に使われると、&quot;.&quot; はどんな文字ともマッチしながら、&quot;^&quot; と&quot;$&quot; はそれぞれ、改行の前後とマッチするようになります。
+
+x   正規表現パーサに、バックスラッシュ付きもしく文字列クラス内の空白を除いたほとんどの空白を無視するよう指示します。これによって、正規表現を部分毎に分けて(少しだけ)見やすくすることができます。&#39;#&#39; もコメントを導入するメタ文字として扱われます。一般的なコードと同様ですね。</code></pre><p>たとえば、次の正規表現では、3 つのフラグがすべてオンになっています:</p><pre><code class="language-julia-repl">julia&gt; r&quot;a+.*b+.*?d$&quot;ism
+r&quot;a+.*b+.*?d$&quot;ims
+
+julia&gt; match(r&quot;a+.*b+.*?d$&quot;ism, &quot;Goodbye,\nOh, angry,\nBad world\n&quot;)
+RegexMatch(&quot;angry,\nBad world&quot;)</code></pre><p><code>r&quot;...&quot;</code> リテラルは、展開とエスケープ処理を行いません。 (エスケープする必要があります 引用符 <code>&quot;&#39;</code> は除きます)。以下は、標準の文字列リテラルとの違いを示す例です:</p><pre><code class="language-julia-repl">julia&gt; x = 10
+10
+
+julia&gt; r&quot;$x&quot;
+r&quot;$x&quot;
+
+julia&gt; &quot;$x&quot;
+&quot;10&quot;
+
+julia&gt; r&quot;\x&quot;
+r&quot;\x&quot;
+
+julia&gt; &quot;\x&quot;
+ERROR: syntax: invalid escape sequence</code></pre><p><code>r&quot;&quot;&quot;...&quot;&quot;&quot;</code>で書かれる三重引用符で囲まれた正規表現文字列もサポートされています (引用符や改行を含む正規表現の場合に便利な場合があります)。</p><p><code>Regex()</code> コンストラクターを使用して、プログラムで有効な正規表現文字列を作成できます。 これにより、正規表現文字列を構築するときに、文字列変数やその他の文字列操作の結果を使用できます。これまでに見てきた正規表現はいずれも、単一の文字列引数で <code>Regex()</code> に使用できます。いくつかの例を次に示します:</p><pre><code class="language-julia-repl">julia&gt; using Dates
+
+julia&gt; d = Date(1962,7,10)
+1962-07-10
+
+julia&gt; regex_d = Regex(&quot;Day &quot; * string(day(d)))
+r&quot;Day 10&quot;
+
+julia&gt; match(regex_d, &quot;It happened on Day 10&quot;)
+RegexMatch(&quot;Day 10&quot;)
+
+julia&gt; name = &quot;Jon&quot;
+&quot;Jon&quot;
+
+julia&gt; regex_name = Regex(&quot;[\&quot;( ]$name[\&quot;) ]&quot;)  # interpolate value of name
+r&quot;[\&quot;( ]Jon[\&quot;) ]&quot;
+
+julia&gt; match(regex_name,&quot; Jon &quot;)
+RegexMatch(&quot; Jon &quot;)
+
+julia&gt; match(regex_name,&quot;[Jon]&quot;) === nothing
+true</code></pre><h2><a class="nav-anchor" id="man-byte-array-literals-1" href="#man-byte-array-literals-1">バイト配列リテラル</a></h2><p>もう 1 つの便利な非標準文字列リテラルは、バイト配列文字列リテラルです。<code>b&quot;...&quot;</code> のように書きます。この形式では、読み取り専用のリテラルバイト配列、つまり<a href="../base/numbers.html#Core.UInt8"><code>UInt8</code></a> 値の配列を表すのに、文字列表記を使用することができます。これらのオブジェクトの型は<code>CodeUnits{UInt8, String}</code>です。 バイト配列リテラルの規則は次のとおりです:</p><ul><li>ASCII 文字と ASCII エスケープは、1 バイトを生成します。</li><li><code>\x</code> および8進としてエスケープした文字は、エスケープ値に対応する <em>バイト</em> を生成します。</li><li>Unicode エスケープ列はは、UTF-8 の符号位置をエンコードしたバイト列を生成します。</li></ul><p><code>\x</code> と 0x80 (128) 未満の8進エスケープの動作は最初の 2 つのルールの両方でカバーされるので、ルールの間には重なりがある、といえますが、これらの規則の間に矛盾はありません。これらの規則を組み合わせることで、ASCII 文字、任意のバイト値、および UTF-8 シーケンスを簡単に使用してバイトの配列を生成できます。3 つすべてを使用する例を次に示します:</p><pre><code class="language-julia-repl">julia&gt; b&quot;DATA\xff\u2200&quot;
+8-element Base.CodeUnits{UInt8,String}:
+ 0x44
+ 0x41
+ 0x54
+ 0x41
+ 0xff
+ 0xe2
+ 0x88
+ 0x80</code></pre><p>ASCII 文字列 &quot;DATA&quot; は、バイト 68、65、84、65 に対応します。<code>\xff</code> は単一バイト 255 を生成します。 Unicode エスケープ <code>\u2200</code> は UTF-8 で 3 バイト 226、136、128 としてエンコードされます。結果のバイト配列は、有効な UTF-8 文字列に対応しないことに注意してください:</p><pre><code class="language-julia-repl">julia&gt; isvalid(&quot;DATA\xff\u2200&quot;)
+false</code></pre><p>前述のように、<code>CodeUnits{UInt8,String}</code>型の振る舞いは読み取り専用の<code>UInt8</code>配列です。もし、標準的なベクトルの振る舞いが必要ならば、<code>Vector{UInt8}</code>を使って変換してください:</p><pre><code class="language-julia-repl">julia&gt; x = b&quot;123&quot;
+3-element Base.CodeUnits{UInt8,String}:
+ 0x31
+ 0x32
+ 0x33
+
+julia&gt; x[1]
+0x31
+
+julia&gt; x[1] = 0x32
+ERROR: setindex! not defined for Base.CodeUnits{UInt8,String}
+[...]
+
+julia&gt; Vector{UInt8}(x)
+3-element Array{UInt8,1}:
+ 0x31
+ 0x32
+ 0x33</code></pre><p>また、<code>\xff</code> と <code>\uff</code> には重大な違いがあります: 前者のエスケープ シーケンスは <em>バイト 255</em>をエンコードしますが、後者のエスケープ シーケンスは<em>符号位置 255</em> を表し、UTF-8 では 2 バイトとしてエンコードされます:</p><pre><code class="language-julia-repl">julia&gt; b&quot;\xff&quot;
+1-element Base.CodeUnits{UInt8,String}:
+ 0xff
+
+julia&gt; b&quot;\uff&quot;
+2-element Base.CodeUnits{UInt8,String}:
+ 0xc3
+ 0xbf</code></pre><p>文字リテラルも同じ動作をします。</p><p>符号位置が<code>\u80</code> より小さい場合は、各符号位置での UTF-8 エンコーディングは、対応する <code>\x</code> エスケープによって生成される単一バイトにすぎません。この違いを無視しても問題ありません。ただし、エスケープ <code>\x80</code> から <code>\xff</code> までを、<code>\u80</code>から<code>\uff</code>までと比較すると大きな違いがあります: 前者はすべて単一バイトにエンコードされますが、ごく一部のバイト列を除いて無効なUTF-8データになります。後者はすべてUnicodeの符号位置を表現し、2 バイトエンコーディングされます。</p><p>もし このことに大変混乱しているようならば、 <a href="https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/">&quot;The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets&quot;</a>を読んでみてください。UnicodeとUTF-8に関する優れた入門記事なので、混乱を軽減する助けになるでしょう。</p><h2><a class="nav-anchor" id="man-version-number-literals-1" href="#man-version-number-literals-1">バージョン番号リテラル</a></h2><p>バージョン番号は、<a href="../base/base.html#Base.@v_str"><code>v&quot;...&quot;</code></a>とう形式の非標準文字列リテラルで簡単に表現できます。 バージョン番号リテラルは<a href="../base/base.html#Base.VersionNumber"><code>VersionNumber</code></a>オブジェクトを作成します。これは、<a href="https://semver.org/">セマンティック・バージョニング</a>の仕様に従って、メジャー、マイナー、パッチの数値で構成され、その後、プレリリースとビルドの英数字による注釈が続きます。たとえば、<code>v&quot;0.2.1-rc1+win64</code>はメジャーバージョン<code>0</code>、マイナーバージョン<code>2</code>、パッチバージョン<code>1</code>、プレリリース<code>rc1</code>、ビルド<code>win64</code>に分割されます。バージョンリテラルを入力する場合、メジャーバージョン番号以外のすべてがオプションです。 「v&quot;0.2&quot;」は「v」0.2.0&quot;(空のプレリリース/ビルドア釈付き)、&quot;v&quot;2&quot;``は&quot;v&quot;2.0.0&quot;と同等です。</p><p><code>VersionNumber</code> オブジェクトは、2 つ以上のバージョンを簡単かつ正確に比較するのに役立ちます。 たとえば、定数 <a href="../base/constants.html#Base.VERSION"><code>VERSION</code></a> は Julia バージョン番号を <code>VersionNumber</code> オブジェクトとして保持するため、単純なステートメントを使用してバージョン固有の動作を次のように定義できます:</p><pre><code class="language-julia">if v&quot;0.2&quot; &lt;= VERSION &lt; v&quot;0.3-&quot;
+    # do something specific to 0.2 release series
+end</code></pre><p>上記の例では、非標準バージョン番号 <code>v&quot;0.3-&quot;が使用され、末尾に</code>-<code>が使われているのに注意してください: この表記法Juliaによる標準の拡張で、そのバージョンが全てのプレリリースを含み、</code>0.3<code>のリリースよりバージョンが低いことを示します。したがって、上記のコード例の意味は、</code>if<code>で囲まれたコードが、安定版の</code>0.2<code>のみで実行可能で、</code>v&quot;0.3.0-rc1<code>などのバージョンでは実行されないということになります。また、不安定な(すなわちプレリリースの)</code>0.2<code>バージョンも許可するには、下限チェッを次のように変更してください:</code>v&quot;0.2-&quot; &lt;= VERSION`。</p><p>別の非標準のバージョン仕様拡張機能として、末尾に <code>+</code>をつけてビルドバージョンの上限(例えば)を表すことができます。例えば、 <code>VERSION &gt; v&quot;0.2-rc1+&quot;</code>は、<code>0.2-rc1</code>以上の任意のバージョンを表すので、例えば <code>v&quot;0.2-rc1+win64&quot;</code>に対しては <code>false</code> を返し、<code>v&quot;0.2-rc2&quot;</code>に対して<code>true</code>を返します。</p><p>このような特別なバージョンを使った比較は非常に実践的です(特に、後続の <code>-</code> は、正当な理由がない限り常に上限で使用する必要があります)が、セマンティック バージョニングの方式としては無効なものなので、実際のバージョン番号として使用してはなりません。</p><p><a href="../base/constants.html#Base.VERSION"><code>VERSION</code></a> 定数に使う以外に、<code>VersionNumber</code> オブジェクトは<code>Pkg</code> でパッケージのバージョンとその依存関係を指定するのに広く使われています。</p><h2><a class="nav-anchor" id="man-raw-string-literals-1" href="#man-raw-string-literals-1">生文字列リテラル</a></h2><p>式展開やエスケープ処理のない生文字列は、<code>raw&quot;...&#39;</code>&#39; という形式の非標準文字列リテラルで表現できます。生文字列リテラルは、引用符の中身を式展開やエスケープ処理することなくそのまま含んだ通常の<code>String</code>オブジェクトを作成します。これは、<code>$</code> または <code>\</code> を特殊文字として使用する他言語のコードまたはマークアップ言語を含む文字列に便利です。</p><p>例外は、引用符をエスケープする必要がある場合です。例えば<code>raw&quot;\&quot;&quot;</code> は<code>&quot;\&quot;&quot;</code>と同等です。 すべての文字列を表現しようとすると、引用符文字の直前に表示される場合だけですが、バックスラッシュもエスケープする必要があります:</p><pre><code class="language-julia-repl">julia&gt; println(raw&quot;\\ \\\&quot;&quot;)
+\\ \&quot;</code></pre><p>最初の 2 つのバックスラッシュは、引用符文字の前にないため、そのまま出力されることに注意してください。 ただし、次のバックスラッシュは、その後に続くバックスラッシュをエスケープし、最後のバックスラッシュは引用符の前に表示されるので、引用符をエスケープします。</p><footer><hr/><a class="previous" href="complex-and-rational-numbers.html"><span class="direction">Previous</span><span class="title">複素数と有理数</span></a><a class="next" href="functions.html"><span class="direction">Next</span><span class="title">関数</span></a></footer></article></body></html>
