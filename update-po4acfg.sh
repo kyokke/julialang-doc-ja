@@ -3,7 +3,11 @@
 DIR=$(cd $(dirname $0); pwd)
 
 SOURCE_REPO=https://github.com/JuliaLang/julia.git
-SOURCE_REVISION=55e36cc308b66d3472990a06b2797f9f9154ea0a
+# v1.2
+SOURCE_REVISION=c6da87ff4bc7a855e217856757ad3413cf6d1f79
+# v1.1.1
+# SOURCE_REVISION=55e36cc308b66d3472990a06b2797f9f9154ea0a
+
 REPO_DIR=ext/julia
 
 SOURCE_DIR=doc/src
@@ -28,7 +32,8 @@ OUT_FILE=$DIR/$OUT_FILE
 # Clone
 #git clone $SOURCE_REPO $REPO_DIR
 cd $REPO_DIR
-#git checkout $SOURCE_REVISION
+git pull origin
+git checkout $SOURCE_REVISION
 git reset --hard HEAD && git clean -f
 
 # Generate base config
