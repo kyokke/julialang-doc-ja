@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-08-26 03:21+0000\n"
-"PO-Revision-Date: 2019-08-31 21:41+0900\n"
+"PO-Revision-Date: 2019-08-31 21:58+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -651,7 +651,7 @@ msgstr "Lispライクなマクロやその他のメタプログラミング機�
 #: ext/julia/doc/src/manual/running-external-programs.md:1
 #, no-wrap
 msgid "Running External Programs"
-msgstr "外部プログラムの実行"
+msgstr "[外部プログラムの実行](@id Running-External-Programs)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/running-external-programs.md:5
@@ -11606,7 +11606,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/metaprogramming.md:14
 #, no-wrap
 msgid "Program representation"
-msgstr ""
+msgstr "[プログラムの表現](@id Program-representation)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/metaprogramming.md:17
@@ -32191,7 +32191,7 @@ msgid ""
 "The notation `Pointy{<:Real}` can be used to express the Julia analogue of a\n"
 "*covariant* type, while `Pointy{>:Int}` the analogue of a *contravariant* type,\n"
 "but technically these represent *sets* of types (see [UnionAll Types](@ref)).\n"
-msgstr "`Pointy{<:Real}`の表記で*共変*型のようなものを、`Point{>:Int}` の表記で*反変*型のようなものを表現できますが、技術的には、これらは型の*集合*を表しています。([全合併型](@ref)参照)\n"
+msgstr "`Pointy{<:Real}`の表記で*共変*型のようなものを、`Point{>:Int}` の表記で*反変*型のようなものを表現できますが、技術的には、これらは型の*集合*を表しています。([全合併型](@ref UnionAll-Types)参照)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:736
@@ -32424,7 +32424,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/types.md:842
 #, no-wrap
 msgid "Tuple Types"
-msgstr "タプル型"
+msgstr "[タプル型](@id Tuple-Types)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:848
@@ -32690,7 +32690,7 @@ msgid ""
 "In other words, [`isa(A,Type{B})`](@ref) is true if and only if `A` and `B` are the same object and that object is a type. Without the "
 "parameter, `Type` is simply an abstract type which has all type objects as its instances, including, of course, singleton types:"
 msgstr ""
-"つまり、[`isa(A, Type{B}`](@ref)が真を返すのは、`A`と`B`が同じオブジェクトで、そのオブジェクトが型である場合に限る、ということです。パラメー"
+"つまり、[`isa(A,Type{B})`](@ref)が真を返すのは、`A`と`B`が同じオブジェクトで、そのオブジェクトが型である場合に限る、ということです。パラメー"
 "タ無しの `Type`は、単なる抽象型で、全てのオブジェクトは`Type`のインスタンスです(もちろんシングルトン型も含みます):"
 
 #. type: Plain text
@@ -33249,9 +33249,9 @@ msgid ""
 "(3.0,4.0)`."
 msgstr ""
 "ここでは、異なる [`Real`](@ref) 型の引数を受け取り、それらを共通の型に昇格できるようにカスタム コンストラクター関数を追加しました ([コンスト"
-"ラクター](@ref) man-constructors)と[変換と昇格](@ref conversion-and-promotion)を参照)。 (もちろん、[`Number`](@ref) 型と同じ用に動作させるた"
-"めには、他の多くのメソッドを定義する必要があるでしょう。例えば、`+`、`*`、`one`、`zero`、昇格のルールなど。既定では、この型のインスタンスは、"
-"単に、型名とフィールド値に関する情報を`Polar{Float64}(3.0,4.0))と表示します。"
+"ラクター](@ref man-constructors)と[変換と昇格](@ref conversion-and-promotion)を参照)。 (もちろん、[`Number`](@ref) 型と同じ用に動作させるため"
+"には、他の多くのメソッドを定義する必要があるでしょう。例えば、`+`、`*`、`one`、`zero`、昇格のルールなど。既定では、この型のインスタンスは、単"
+"に、型名とフィールド値に関する情報を`Polar{Float64}(3.0,4.0))と表示します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:1227
@@ -33280,7 +33280,7 @@ msgstr ""
 "`Polar`オブジェクトの表示をより細かく制御することができます。特に、REPL などの対話型環境で単一のオブジェクトを表示するのに使用される冗長な複"
 "数行印刷形式と、オブジェクトを別の(配列などの)オブジェクトの一部として[`print`](@ref) するシンプルな単一行形式 の両方が必要な場合があります。"
 "デフォルトでは `show(io,z)` 関数がどちらの場合も呼び出されますが、ユーザー定義の *別の* 複数形式で表示するためには、3引数をとる`show`関数で、"
-"2番めの引数に `text/plain` MIME タイプ ([`MultimediaI/O`](@ref)参照)をとるものをオーバーロードします。例えば:"
+"2番めの引数に `text/plain` MIME タイプ ([Multimedia I/O](@ref)参照)をとるものをオーバーロードします。例えば:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:1240
@@ -33330,7 +33330,7 @@ msgid ""
 msgstr ""
 "ここで、単一行の `show(io,z)` 形式は`Polar` 値の配列に引き続き使用されますています。\n"
 "技術的には REPL が `display(z)` を呼び出して行を実行した結果を表示します。複数行印刷形式では、`show(stdout, MIME(\"text/plain\"), z)`  単一行形式は`show(stdout,z)` がデフォルトになります。\n"
-"しかし、新しいマルチメディア表示ハンドラを定義しない限りは([`Multimedia I/O`](@ref)を参照)、新しい [`display`](@ref)メソッドを定義すべきではありません。 \n"
+"しかし、新しいマルチメディア表示ハンドラを定義しない限りは([Multimedia I/O](@ref)を参照)、新しい [`display`](@ref)メソッドを定義すべきではありません。 \n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:1266
@@ -33396,7 +33396,8 @@ msgid ""
 msgstr ""
 "経験則として、単一行の `show` メソッドは、表示されたオブジェクトを作成する、有効な Julia 式を表示すべきです。上記の `Polar` の単一行の "
 "`show` メソッドに乗算演算子 (`*`) などの二項演算子が含まれている場合、別のオブジェクトの一部として表示する際に、正しく解析されないことがあり"
-"ます。 これを確認するために、`Polar` 型の具体的なインスタンスの二乗の式オブジェクト ([`プログラムの表現`](@ref)を参照)を考えます:"
+"ます。 これを確認するために、`Polar` 型の具体的なインスタンスの二乗の式オブジェクト ([`プログラムの表現`](@ref Program-representation)を参照)"
+"を考えます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/types.md:1291
