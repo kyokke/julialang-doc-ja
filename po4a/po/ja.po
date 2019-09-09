@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-08-26 03:21+0000\n"
-"PO-Revision-Date: 2019-08-31 21:58+0900\n"
+"PO-Revision-Date: 2019-09-09 23:41+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 2.2.3\n"
-"X-Poedit-Bookmarks: 3491,6291,681,-1,-1,-1,-1,-1,-1,-1\n"
+"X-Poedit-Bookmarks: 1944,6291,681,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. type: Title =
 #: ext/julia/doc/src/./NEWS.md:2
@@ -16457,7 +16457,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/parallel-computing.md:1
 #, no-wrap
 msgid "Parallel Computing"
-msgstr ""
+msgstr "[並列コンピューティング](@id Parallel-Computing)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:5
@@ -16465,22 +16465,24 @@ msgid ""
 "For newcomers to multi-threading and parallel computing it can be useful to first appreciate the different levels of parallelism offered by "
 "Julia. We can divide them in three main categories :"
 msgstr ""
+"マルチスレッドコンピューティングと並列コンピューティングの初心者にとっては、Julia が提供する並列処理のさまざまなレベルを最初に理解すると便利"
+"です。Julia の並列処理は3つの主要なカテゴリに分類することができます:"
 
 #. type: Bullet: '1. '
 #: ext/julia/doc/src/manual/parallel-computing.md:9
 msgid "Julia Coroutines (Green Threading)"
-msgstr ""
+msgstr "Julia コルーチン(グリーンスレッド)"
 
 #. type: Bullet: '2. '
 #: ext/julia/doc/src/manual/parallel-computing.md:9
 msgid "Multi-Threading"
-msgstr ""
+msgstr "マルチスレッド"
 
 #. type: Title #
 #: ext/julia/doc/src/manual/parallel-computing.md:9 ext/julia/doc/src/manual/parallel-computing.md:507
 #, no-wrap
 msgid "Multi-Core or Distributed Processing"
-msgstr ""
+msgstr "マルチコア処理または分散処理"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:14
@@ -16491,6 +16493,10 @@ msgid ""
 "(@ref).  Communication and data synchronization is managed through [`Channel`](@ref)s, which are the conduits that provide inter-`Tasks` "
 "communication."
 msgstr ""
+"まず、Julia [タスク(別名 コルーチン)](@ref man-tasks)とJuliaランタイムライブラリに依存する他のモジュールを検討し、直接OSのスケジューラとやり"
+"とりをすることなく、タスク間の通信を完全に制御して計算を中断および再開できるようにします。 また、Julia は[`wait`](@ref)や [`fetch`](@ref) な"
+"どの操作を通じたタスク間通信をサポートしています。通信とデータの同期は、タスク間通信を提供する導管である [`Channel`](@ref)s を介して管理され"
+"ます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:23
@@ -16503,6 +16509,13 @@ msgid ""
 "%3Aissue+label%3Amultithreading).  Multi-Threading should only be used if you take into consideration global variables, locks and atomics, "
 "all of which are explained later."
 msgstr ""
+"Julia は[実験的なマルチスレッド](@ref man-multithreading)もサポートしています。実験的なマルチスレッドでは処理の実行がフォークされ、無名関数が"
+"すべてのスレッドで実行されます。 フォーク結合アプローチと呼ばれるもので、並行スレッドは独立して実行されますが、最終的には逐次実行を続行できる"
+"ようにJulia のメイン スレッドに結合する必要があります。 マルチスレッドは、[`Base.Threads`](@ref lib-multithreading)モジュールでサポートされて"
+"いますが、Julia がまだ完全にスレッドセーフではなく、実験段階のものです。特に、I/O 操作およびタスクの切り替え中にセグメンテーションフォールト"
+"が発生する可能性があります。最新情報を得るには[Issue tracker](https://github.com/JuliaLang/julia/issues?q=is%3Aopen+is%3Aissue+label"
+"%3Amultithreading) 参照してください。マルチスレッドを使うには、グローバル変数、ロック、およびアトミックを考慮しなくてはなりません。以下でこれ"
+"らについて説明します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:27
@@ -16511,12 +16524,15 @@ msgid ""
 "implements interfaces to distribute a process across multiple cores or machines.  Also we will mention useful external packages for "
 "distributed programming like `MPI.jl` and `DistributedArrays.jl`."
 msgstr ""
+"最後に、分散コンピューティングと並列コンピューティングに対する Julia のアプローチを紹介します。科学的計算での利用を念頭に、Julia はネイティブ"
+"にインターフェイスを実装しており、複数のコアまたはマシンにプロセスを分散します。 また、`MPI.jl`や`DistributedArrays.jl`などの分散プログラミン"
+"グに役立つ外部パッケージについても言及します。"
 
 #. type: Title #
 #: ext/julia/doc/src/manual/parallel-computing.md:28
 #, no-wrap
 msgid "Coroutines"
-msgstr ""
+msgstr "コルーチン"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:38
@@ -17264,7 +17280,7 @@ msgstr ""
 msgid ""
 "An implementation of distributed memory parallel computing is provided by module `Distributed` as part of the standard library shipped with "
 "Julia."
-msgstr ""
+msgstr "Julia 付属の標準ライブラリの一部である、モジュール 'Distributed' を用いて、分散メモリ並列処理を実装できます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:522
@@ -17277,6 +17293,13 @@ msgid ""
 "environment should allow control over the \"ownership\" of a chunk of memory by a particular CPU.  Julia provides a multiprocessing "
 "environment based on message passing to allow programs to run on multiple processes in separate memory domains at once."
 msgstr ""
+"現代のコンピュータの多くは複数の CPU を搭載しており、複数のコンピュータをクラスタ内で組み合わせることができます。これらの複数の CPU のパワー"
+"を利用することで、多くの計算をより迅速に完了できます。パフォーマンスに影響を与える主な要因には、CPU 自体の速度とメモリへのアクセス速度の 2 つ"
+"があります。クラスタでは、ある CPU が最速でアクセスできるのは、CPUと同じコンピュータ(ノード)内のRAMであることは明らかです。より驚くべきこと"
+"に、典型的なマルチコアラップトップでも、メインメモリと[キャッシュ](https://www.akkadia.org/drepper/cpumemory.pdf)の速度の違いによって同様の問"
+"題が起きています。したがって、優れたマルチプロセッシング環境では、特定の CPU によるメモリチャンクの「所有権」を制御できる必要があります。 "
+"Julia は、メッセージ・パッシングに基づくマルチプロセッシング環境を提供し、プログラムが別々のメモリ・ドメイン内の複数のプロセスで一度に実行で"
+"きるようにします。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:528
@@ -17285,6 +17308,9 @@ msgid ""
 "sided\", meaning that the programmer needs to explicitly manage only one process in a two-process operation. Furthermore, these operations "
 "typically do not look like \"message send\" and \"message receive\" but rather resemble higher-level operations like calls to user functions."
 msgstr ""
+"Julia のメッセージパッシングの実装は、MPI [^1] などの他の環境とは異なります。 Julia の通信は一般に\"一方向\" です。プログラマが明示的に管理す"
+"る必要があるのは、2 つのプロセスのうち、1 つのプロセスのみです。さらに通常、これらの操作は見かけ上、\"メッセージ送信\" や \"メッセージ受信\" "
+"のような形でなく、ユーザー関数の呼び出しのような高レベルの操作に似た形になります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:533
@@ -17293,11 +17319,14 @@ msgid ""
 "can be used from any process to refer to an object stored on a particular process. A remote call is a request by one process to call a "
 "certain function on certain arguments on another (possibly the same) process."
 msgstr ""
+"Julia の分散プログラミングは、*リモート参照* と *リモート呼び出し*の 2 つのプリミティブに基づいて構築されています。 リモート参照は、任意のプ"
+"ロセスから特定のプロセスに格納されているオブジェクトを参照するために使用できるオブジェクトです。リモート呼び出しとは、あるプロセスが別の (お"
+"そらく同じ) プロセスの特定の引数に対して特定の関数を呼び出すリクエストのことです。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:535
 msgid "Remote references come in two flavors: [`Future`](@ref) and [`RemoteChannel`](@ref)."
-msgstr ""
+msgstr "リモート参照には、[`Future`](@ref)と[`RemoteChannel`](@ref)の2つのフレーバーがあります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:540
@@ -17306,6 +17335,10 @@ msgid ""
 "operation while the remote call happens somewhere else.  You can wait for a remote call to finish by calling [`wait`](@ref) on the returned "
 "[`Future`](@ref), and you can obtain the full value of the result using [`fetch`](@ref)."
 msgstr ""
+"リモート呼び出しを行うと、[`Future'](@ref)が戻り値として得られ、さらに、プロセスの制御は、呼び出し側に直ちに返されます; すなわち、呼び出しを"
+"行ったプロセスは、リモート呼び出しが別の場所で行われる間、次の操作に進みます。リモート呼び出しから返された [`Future`](@ref) に対する [`wait`]"
+"(@ref) 関数を呼び出すことで、呼び出したプロセスが終了するのを待つことができます。また、[`fetch`](@ref)を使って呼び出したプロセスの結果全ての"
+"値を取得することができます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:543
@@ -17313,6 +17346,7 @@ msgid ""
 "On the other hand, [`RemoteChannel`](@ref) s are rewritable. For example, multiple processes can co-ordinate their processing by referencing "
 "the same remote `Channel`."
 msgstr ""
+"一方、[`RemoteChannel`](@ref)は書き換え可能です。たとえば、複数のプロセスが同じリモートの 'Channel' を参照して処理を調整することができます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:548
@@ -17321,6 +17355,9 @@ msgid ""
 "used by default for parallel operations are referred to as \"workers\". When there is only one process, process 1 is considered a worker. "
 "Otherwise, workers are considered to be all processes other than process 1."
 msgstr ""
+"各プロセスには、識別子が関連付けられます。インタラクティブなJulia プロンプトを提供するプロセスは、常に1に等しい`id`を持っています。並列処理に"
+"デフォルトで使用されるプロセスは、\"ワーカー\" と呼ばれます。プロセスが 1 つしかない場合、プロセス 1 はワーカーと見なされます。それ以外の場"
+"合、ワーカーはプロセス 1 以外のすべてのプロセスと見なされます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:552
@@ -17328,6 +17365,9 @@ msgid ""
 "Let's try this out. Starting with `julia -p n` provides `n` worker processes on the local machine.  Generally it makes sense for `n` to "
 "equal the number of CPU threads (logical cores) on the machine. Note that the `-p` argument implicitly loads module `Distributed`."
 msgstr ""
+"それではやってみましょう。`julia -p n` と `julia`を起動することで、ローカルマシン上の`n`個のワーカープロセスを使うことができます。一般"
+"に、'n' がマシン上の CPU スレッド (論理コア) の数と等しくするのが理にかなっているでしょう。オプション引数 `-p` は `Distributed` モジュールを"
+"暗黙的に読み込むことに注意してください。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:554
@@ -17346,6 +17386,18 @@ msgid ""
 " 1.18526  1.50912\n"
 " 1.16296  1.60607\n"
 msgstr ""
+"$ ./julia -p 2\n"
+"\n"
+"julia> r = remotecall(rand, 2, 2, 2)\n"
+"Future(2, 1, 4, nothing)\n"
+"\n"
+"julia> s = @spawnat 2 1 .+ fetch(r)\n"
+"Future(2, 1, 5, nothing)\n"
+"\n"
+"julia> fetch(s)\n"
+"2×2 Array{Float64,2}:\n"
+" 1.18526  1.50912\n"
+" 1.16296  1.60607\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:574
@@ -17355,6 +17407,9 @@ msgid ""
 "argument to [`remotecall`](@ref)  is the `id` of the process that will do the work, and the remaining arguments will be passed to the "
 "function being called."
 msgstr ""
+"[`remotecall`](@ref)の最初の引数は、リモートで呼び出す関数です。Julia のほとんどの並列プログラミングでは、特定のプロセスや使用可能なプロセス"
+"の数は参照されませんが、[`remotecall`](@ref)は、細かい制御を提供する低レベルのインターフェイスで、2番目の引数で、作業を行うプロセスの`id`を指"
+"定できます。残りの引数は呼び出される関数に渡されます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:579
@@ -17363,6 +17418,9 @@ msgid ""
 "The result of both calculations is available in the two futures, `r` and `s`. The [`@spawnat`](@ref) macro evaluates the expression in the "
 "second argument on the process specified by the first argument."
 msgstr ""
+"ご覧の通り、最初の行ではプロセス 2 に 2✕2 のランダム行列を作成するよう依頼し、2 行目では 1 を追加するように依頼しました。両方の計算の結果は、"
+"`r` と `s` の 2 つの`future`で使用できます。[`@spawnat`](@ref) マクロは、第一引数で指定されたプロセスid で、第二引数で指定された式を評価しま"
+"す。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:584
@@ -17371,6 +17429,10 @@ msgid ""
 "needed by the next local operation. The function [`remotecall_fetch`](@ref) exists for this purpose. It is equivalent to "
 "`fetch(remotecall(...))` but is more efficient."
 msgstr ""
+"場合によっては、リモートで計算された値がすぐに必要になる場合があります。典型例は、次のローカル操作でリモートの処理結果が必要になり、リモート "
+"オブジェクトから値を読み取る必要がある、という場合で、こういう時には、[`remotecall_fetch`](@ref) が使えます。これは `fetch(remotecall(...))`"
+"とするのと同等ですが、より効率的です(訳者註: 効率的というのはタイプ量が減るという意味で? それとも余計なオブジェクトができない、というリソース"
+"的な意味で? )。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:585
@@ -17379,13 +17441,15 @@ msgid ""
 "julia> remotecall_fetch(getindex, 2, r, 1, 1)\n"
 "0.18526337335308085\n"
 msgstr ""
+"julia> remotecall_fetch(getindex, 2, r, 1, 1)\n"
+"0.18526337335308085\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:592
 msgid ""
 "Remember that [`getindex(r,1,1)`](@ref) is [equivalent](@ref man-array-indexing) to `r[1,1]`, so this call fetches the first element of the "
 "future `r`."
-msgstr ""
+msgstr "[`getindex(r,1,1)`](@ref) は、`r[1,1]`と等しいことを覚えて置いてください。この呼び出しはfutureの`r`の最初の要素をフィッチします。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:596
@@ -17393,6 +17457,8 @@ msgid ""
 "The syntax of [`remotecall`](@ref) is not especially convenient. The macro [`@spawn`](@ref)  makes things easier. It operates on an "
 "expression rather than a function, and picks where to do the operation for you:"
 msgstr ""
+"[`remotecall`](@ref)の構文は特に便利ではなく、マクロ[`@spawn`](@ref) は物事を容易にします。関数でなく式を指定することができますし、操作を実行"
+"するプロセッサも選択できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:597
@@ -17409,6 +17475,16 @@ msgid ""
 " 1.38854  1.9098\n"
 " 1.20939  1.57158\n"
 msgstr ""
+"julia> r = @spawn rand(2,2)\n"
+"Future(2, 1, 4, nothing)\n"
+"\n"
+"julia> s = @spawn 1 .+ fetch(r)\n"
+"Future(3, 1, 5, nothing)\n"
+"\n"
+"julia> fetch(s)\n"
+"2×2 Array{Float64,2}:\n"
+" 1.38854  1.9098\n"
+" 1.20939  1.57158\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:614
@@ -17417,6 +17493,9 @@ msgid ""
 "(@ref) might be required to move `r` to the process doing the addition. In this case, [`@spawn`](@ref) is smart enough to perform the "
 "computation on the process that owns `r`, so the [`fetch`](@ref) will be a no-op (no work is done)."
 msgstr ""
+"`1 .+ r`ではなく、`1 .+ fetch(r)`を使ったところに注意してください。これは、コードがどこで実行されるかわからないため、一般的に、加算を行うプロ"
+"セスに `r` を移動するために [`fetch`](@ref) が必要になる場合があります。この場合、[`@spawn`](@ref)は`r`を所有するプロセスで計算を実行するのに"
+"十分にスマートな方法になっていて、[`fetch`](@ref)はno-op(作業は行われない)ことになります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:617
@@ -17424,6 +17503,8 @@ msgid ""
 "(It is worth noting that [`@spawn`](@ref) is not built-in but defined in Julia as a [macro](@ref man-macros).  It is possible to define your "
 "own such constructs.)"
 msgstr ""
+"( [`@spawn`](@ref) は組み込み関数ではなく、Julia でマクロとして定義されていること注目する価値があります。このような仕組みを自分で独自に定義す"
+"ることは可能です。)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:621
@@ -17431,9 +17512,13 @@ msgid ""
 "An important thing to remember is that, once fetched, a [`Future`](@ref) will cache its value locally. Further [`fetch`](@ref) calls do not "
 "entail a network hop. Once all referencing [`Future`](@ref)s have fetched, the remote stored value is deleted."
 msgstr ""
+"覚えておくべき重要なことは、一度結果がフェッチされると、[`Future`](@ref) はその値をローカルにキャッシュするということです。さらに[`fetch`]"
+"(@ref) 呼び出しは、ネットワークホップを伴いません。一度、[`Future`](@ref)s のすべての参照が取得されると、リモートに保存された値は削除されま"
+"す。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:638
+#, fuzzy
 msgid ""
 "[`@async`](@ref) is similar to [`@spawn`](@ref), but only runs tasks on the local process. We use it to create a \"feeder\" task for each "
 "process. Each task picks the next index that needs to be computed, then waits for its process to finish, then repeats until we run out of "
@@ -17446,17 +17531,29 @@ msgid ""
 "org/wiki/Thread_(computing)#Models). Then a lock acquiring\\releasing model for `nextidx` will be needed, as it is not safe to let multiple "
 "processes read-write a resource at the same time."
 msgstr ""
+"[`@spawn`](@ref)に似たものに、[`@async`](@ref)がありますが、タスクが実行できるのはローカルプロセスのみです。[`@async`](@ref) を使うと、タスク"
+"毎に\"feeder\"タスクが生成されます。それぞれのタスクは、計算する必要があるインデックスを選択し、そのプロセスが終了するのを待つ、というのを、"
+"インデックスがなくなるまで繰り返します。フィーダー タスクは、メインタスクが [`@sync`](@ref) ブロックの最後に達するまで実行を開始せず、その時"
+"点で制御が放棄され、関数から戻る前にすべてのローカル タスクが完了するのを待つことに注意してください。 Julia の v0.7 以降では、フィーダー タス"
+"クはすべて同じプロセスで実行されるため、`nextidx`を介して各タスクの状態を共有できます。 タスクが協調的にスケジュールされている場合でも、[非同"
+"期 I/O](@ref faq-async-io)のように、ロックが必要な場合があります。 つまり、コンテキストスイッチは、['remotecall_fetch''(@ref)が呼び出されたと"
+"きに、明確に定義されたポイントでのみ発生します: これは現在の実装の状態であり、将来的には変更されるかもしれませんが、現在は、`M`個のプロセスに"
+"対して`N`個のタスクを実行することが可能な用に実装がされています。これを別名[M:Nスレッド](https://en.wikipedia.org/wiki/"
+"Thread_(computing)#Models)と言います。`nextidx` はロックの取得・リリースモデルが用いてください。複数のプロセスが、同時にリソースを読み書きで"
+"きるのは危険なためです。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/parallel-computing.md:641
 #, no-wrap
 msgid "[Code Availability and Loading Packages](@id code-availability)"
-msgstr ""
+msgstr "[コードの可用性とパッケージの読み込み](@id code-availability)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:645
 msgid "Your code must be available on any process that runs it. For example, type the following into the Julia prompt:"
 msgstr ""
+"何かコードを実行するならば、実行プロセスからそのコードが利用可能でなければなりません。例えば、Julia のプロンプトに次のように入力してみましょ"
+"う:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:646
@@ -17476,11 +17573,24 @@ msgid ""
 "Stacktrace:\n"
 "[...]\n"
 msgstr ""
+"julia> function rand2(dims...)\n"
+"           return 2*rand(dims...)\n"
+"       end\n"
+"\n"
+"julia> rand2(2,2)\n"
+"2×2 Array{Float64,2}:\n"
+" 0.153756  0.368514\n"
+" 1.15119   0.918912\n"
+"\n"
+"julia> fetch(@spawn rand2(2,2))\n"
+"ERROR: RemoteException(2, CapturedException(UndefVarError(Symbol(\"#rand2\"))\n"
+"Stacktrace:\n"
+"[...]\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:663
 msgid "Process 1 knew about the function `rand2`, but process 2 did not."
-msgstr ""
+msgstr "プロセス1は `rand2`関数を知っていましたが、プロセス2は知りませんでした。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:667
@@ -17488,6 +17598,8 @@ msgid ""
 "Most commonly you'll be loading code from files or packages, and you have a considerable amount of flexibility in controlling which "
 "processes load code. Consider a file, `DummyModule.jl`, containing the following code:"
 msgstr ""
+"大抵の場合は、コードをファイルやパッケージからロードすることで、あなたはかなり柔軟にプロセスがロードするコードを制御することができます。下記"
+"のコードを含む、`DummyModule.jl` というファイルを考えてみましょう:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:668
@@ -17507,6 +17619,19 @@ msgid ""
 "\n"
 "end\n"
 msgstr ""
+"module DummyModule\n"
+"\n"
+"export MyType, f\n"
+"\n"
+"mutable struct MyType\n"
+"    a::Int\n"
+"end\n"
+"\n"
+"f(x) = x^2+1\n"
+"\n"
+"println(\"loaded\")\n"
+"\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:688
@@ -17514,6 +17639,9 @@ msgid ""
 "In order to refer to `MyType` across all processes, `DummyModule.jl` needs to be loaded on every process.  Calling `include(\"DummyModule.jl"
 "\")` loads it only on a single process.  To load it on every process, use the [`@everywhere`](@ref) macro (starting Julia with `julia -p 2`):"
 msgstr ""
+"すべてのプロセスで `MyType` を参照するには、すべてのプロセスに `DummyModule.jl` をロードする必要があります。 `include(\"DummyModule.jl\")`を"
+"呼び出すと、単一のプロセスでのみ、コードが読み込まれます。すべてのプロセスにロードするには、[`@everywhere`](@ref)マクロを使用します(Juliaを "
+"`julia -p 2` で開始して):"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:689
@@ -17524,6 +17652,10 @@ msgid ""
 "      From worker 3:    loaded\n"
 "      From worker 2:    loaded\n"
 msgstr ""
+"julia> @everywhere include(\"DummyModule.jl\")\n"
+"loaded\n"
+"      From worker 3:    loaded\n"
+"      From worker 2:    loaded\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:699
@@ -17531,6 +17663,8 @@ msgid ""
 "As usual, this does not bring `DummyModule` into scope on any of the process, which requires `using` or `import`.  Moreover, when "
 "`DummyModule` is brought into scope on one process, it is not on any other:"
 msgstr ""
+"いつも(シングルコアのケース)と同様に、上記は、`DummyModule` を全てのプロセスでスコープ内に持ち込むものでありません。`using` や `import` をす"
+"る必要があります。さらに、あるプロセスで `DummyModule`がスコープに入ったからと言って、他のプロセスのスコープに `DummyModule`はありません:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:700
@@ -17549,11 +17683,23 @@ msgid ""
 "julia> fetch(@spawnat 2 DummyModule.MyType(7))\n"
 "MyType(7)\n"
 msgstr ""
+"julia> using .DummyModule\n"
+"\n"
+"julia> MyType(7)\n"
+"MyType(7)\n"
+"\n"
+"julia> fetch(@spawnat 2 MyType(7))\n"
+"ERROR: On worker 2:\n"
+"UndefVarError: MyType not defined\n"
+"⋮\n"
+"\n"
+"julia> fetch(@spawnat 2 DummyModule.MyType(7))\n"
+"MyType(7)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:717
 msgid "However, it's still possible, for instance, to send a `MyType` to a process which has loaded `DummyModule` even if it's not in scope:"
-msgstr ""
+msgstr "ただし、`DummyModule` がスコープになくても、ロードされていれば、そのプロセスに対して、例えば、`MyType` を送信することは可能です:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:718
@@ -17562,24 +17708,28 @@ msgid ""
 "julia> put!(RemoteChannel(2), MyType(7))\n"
 "RemoteChannel{Channel{Any}}(2, 1, 13)\n"
 msgstr ""
+"julia> put!(RemoteChannel(2), MyType(7))\n"
+"RemoteChannel{Channel{Any}}(2, 1, 13)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:725
 msgid ""
 "A file can also be preloaded on multiple processes at startup with the `-L` flag, and a driver script can be used to drive the computation:"
 msgstr ""
+"また、ファイルは、Julia 起動時に、`-L`フラグオプションで複数プロセスにプリロードでき、実行対象の\"driver.jl\" スクリプトが 計算を駆動すること"
+"ができます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:726
 #, no-wrap
 msgid "julia -p <n> -L file1.jl -L file2.jl driver.jl\n"
-msgstr ""
+msgstr "julia -p <n> -L file1.jl -L file2.jl driver.jl\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:732
 msgid ""
 "The Julia process running the driver script in the example above has an `id` equal to 1, just like a process providing an interactive prompt."
-msgstr ""
+msgstr "上記の例で、ドライバスクリプトを実行している Julia プロセスは、対話型プロンプトを提供するプロンプトと同様にプロセス`id` 1です。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:736
@@ -17587,22 +17737,24 @@ msgid ""
 "Finally, if `DummyModule.jl` is not a standalone file but a package, then `using DummyModule` will _load_ `DummyModule.jl` on all processes, "
 "but only bring it into scope on the process where `using` was called."
 msgstr ""
+"最後に、もし、`DummyModule.jl`が、スタンドアロンのファイルではなくパッケージだった場合 `using DummyModule`とすると、`DummyModule.jl`のコード"
+"は全てのプロセスで _ロード_ されますが、`DummyModule`がスコープにはいるのは、`using`が実行されたプロセスだけになります。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/parallel-computing.md:737
 #, no-wrap
 msgid "Starting and managing worker processes"
-msgstr ""
+msgstr "ワーカー プロセスの開始と管理"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:740
 msgid "The base Julia installation has in-built support for two types of clusters:"
-msgstr ""
+msgstr "Julia をインストールすると、以下2種類のクラスタをサポートする機能が含まれています:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:744
 msgid "A local cluster specified with the `-p` option as shown above."
-msgstr ""
+msgstr "上述の `-p` オプションで指定するローカルクラスタ (ノード内マルチコア)。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:744
@@ -17610,6 +17762,8 @@ msgid ""
 "A cluster spanning machines using the `--machine-file` option. This uses a passwordless `ssh` login to start Julia worker processes (from "
 "the same path as the current host) on the specified machines."
 msgstr ""
+"`--machine-file` オプションをつかった複数計算機をまたぐクラスタ。これはパスワード無しの`ssh` ログインを使って、現在のホストと同じ経路で、指定"
+"された計算機のJulia のワーカープロセスを起動します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:747
@@ -17617,6 +17771,8 @@ msgid ""
 "Functions [`addprocs`](@ref), [`rmprocs`](@ref), [`workers`](@ref), and others are available as a programmatic means of adding, removing and "
 "querying the processes in a cluster."
 msgstr ""
+"[`addprocs`](@ref), [`rmprocs`](@ref), [`workers`](@ref)などの関数で、クラスタ内のプロセスを追加・削除・問い合わせするプログラミング手段が提"
+"供されます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:748
@@ -17629,6 +17785,12 @@ msgid ""
 " 2\n"
 " 3\n"
 msgstr ""
+"julia> using Distributed\n"
+"\n"
+"julia> addprocs(2)\n"
+"2-element Array{Int64,1}:\n"
+" 2\n"
+" 3\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:759
@@ -17636,6 +17798,8 @@ msgid ""
 "Module `Distributed` must be explicitly loaded on the master process before invoking [`addprocs`](@ref).  It is automatically made available "
 "on the worker processes."
 msgstr ""
+"`Distributed` モジュールは、[`addprocs`](@ref)を呼び出す前に、マスターとなるプロセスに明示的にロードする必要があります。 ワーカー プロセスで"
+"自動的に使用可能になります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:763
@@ -17643,6 +17807,8 @@ msgid ""
 "Note that workers do not run a `~/.julia/config/startup.jl` startup script, nor do they synchronize their global state (such as global "
 "variables, new method definitions, and loaded modules) with any of the other running processes."
 msgstr ""
+"ワーカーは `~/.julia/config/startup.jl`の起動スクリプトを実行せず、グローバル状態 (グローバル変数、新しいメソッド定義、読み込まれたモジュール"
+"など) も他の実行中プロセスと同期されないことに注意が必要です。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:766
@@ -17650,12 +17816,14 @@ msgid ""
 "Other types of clusters can be supported by writing your own custom `ClusterManager`, as described below in the [ClusterManagers](@ref) "
 "section."
 msgstr ""
+"他のタイプのクラスターは、[`ClusterManager`](@ref) セクションで説明するように、独自の`ClusterManager` を記述することによってサポートできま"
+"す。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/parallel-computing.md:767
 #, no-wrap
 msgid "Data Movement"
-msgstr ""
+msgstr "データの移動"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:773
@@ -17664,6 +17832,9 @@ msgid ""
 "data sent is critical to achieving performance and scalability.  To this end, it is important to understand the data movement performed by "
 "Julia's various distributed programming constructs."
 msgstr ""
+"メッセージの送信とデータの移動は、分散プログラムのオーバーヘッドの大部分を占めています。パフォーマンスとスケーラビリティを実現するには、メッ"
+"セージの数と送信されるデータ量を減らすことが重要です。 そのためには、Julia のさまざまな分散プログラミングコンストラクトによって実行されるデー"
+"タ移動を理解することが重要です。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:778
@@ -17672,11 +17843,14 @@ msgid ""
 "[`@spawn`](@ref) (and a few related constructs)  also moves data, but this is not as obvious, hence it can be called an implicit data "
 "movement operation. Consider these two approaches to constructing and squaring a random matrix:"
 msgstr ""
+"[`fetch`](@ref)は、オブジェクトをローカル マシンに移動することを直接要求するため、明示的なデータ移動操作と見なすことができます。[`@spawn`]"
+"(@ref)(およびいくつかの関連する構成要素) もデータを移動しますが、これは明示的でないため、暗黙的なデータ移動操作と呼ぶことができます。ランダム"
+"行列を構築および二乗する方法を以下の2つ考えてみましょう:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:780
 msgid "Method 1:"
-msgstr ""
+msgstr "方法 1:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:781
@@ -17690,11 +17864,18 @@ msgid ""
 "\n"
 "julia> fetch(Bref);\n"
 msgstr ""
+"julia> A = rand(1000,1000);\n"
+"\n"
+"julia> Bref = @spawn A^2;\n"
+"\n"
+"[...]\n"
+"\n"
+"julia> fetch(Bref);\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:792
 msgid "Method 2:"
-msgstr ""
+msgstr "方法 2:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:793
@@ -17706,6 +17887,11 @@ msgid ""
 "\n"
 "julia> fetch(Bref);\n"
 msgstr ""
+"julia> Bref = @spawn rand(1000,1000)^2;\n"
+"\n"
+"[...]\n"
+"\n"
+"julia> fetch(Bref);\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:805
@@ -17714,6 +17900,9 @@ msgid ""
 "matrix is constructed locally, then sent to another process where it is squared. In the second method, a random matrix is both constructed "
 "and squared on another process. Therefore the second method sends much less data than the first."
 msgstr ""
+"違いは些細に見えますが、実際には[`@spawn`](@ref)の動作を考えると非常に重要な違いです。 最初の方法では、ランダム行列がローカルで構築され、その"
+"後、別のプロセス送信されて、そこで2乗されます。2 番目の方法では、ランダム行列が別のプロセスで構築された後二乗されます。したがって、2 番目のメ"
+"ソッドのデータ送信量は、最初のメソッドでの送信量よりはるかに少ないです。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:814
@@ -17725,12 +17914,18 @@ msgid ""
 "altogether. Or imagine `rand(1000,1000)` is replaced with a more expensive operation. Then it might make sense to add another [`@spawn`]"
 "(@ref)  statement just for this step."
 msgstr ""
+"このToy example では、これら2つの方法を区別し、選択するのは簡単です。しかし、実際のプログラムでデータの移動を設計するには、より多くのことを考"
+"慮し、おそらくはなんらかの測定が必要になる場合があります。たとえば、最初のプロセスに行列 `A` が必要な場合は、最初のメソッドの方が適している可"
+"能性があります。または、`A` の計算が高価で、現在のプロセス(ローカルのプロセス)だけでそれが計算されているのならば、別のプロセスへのデータ転送"
+"は避けられないかもしれません。または、現在のプロセスで [`@spawn`](@ref)と 'fetch(Bref)' の間で行うことはほとんどない場合は、並列処理を完全に"
+"排除する方が良いかもしれません。または、`rand(1000,1000)`がより高価な操作に置き換えられると想像してみてください。次に、この手順に[`@spawn`]"
+"(@ref) ステートメントを追加するのが理にかなっている場合があります。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/parallel-computing.md:815
 #, no-wrap
 msgid "Global variables"
-msgstr ""
+msgstr "グローバル変数"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:820
@@ -17739,6 +17934,9 @@ msgid ""
 "Global bindings under module `Main` are treated a little differently compared to global bindings in other modules. Consider the following "
 "code snippet:"
 msgstr ""
+"`@spawn`を介してリモートで実行される式、または `remotecall` を使用してリモート実行用に指定されたクロージャは、グローバル変数を参照できます。"
+"モジュール `Main` のグローバル バインディングは、他のモジュールのグローバル バインディングとは少し異なる方法で扱われます。次のコード スニペッ"
+"トについて考えてみましょう:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:821
@@ -17747,6 +17945,8 @@ msgid ""
 "A = rand(10,10)\n"
 "remotecall_fetch(()->sum(A), 2)\n"
 msgstr ""
+"A = rand(10,10)\n"
+"remotecall_fetch(()->sum(A), 2)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:831
@@ -17758,16 +17958,22 @@ msgid ""
 "on 2. `Main.A` continues to exist on worker 2 even after the call `remotecall_fetch` returns. Remote calls\n"
 "with embedded global references (under `Main` module only) manage globals as follows:\n"
 msgstr ""
+"この場合、[`sum`](@ref) はリモート プロセスで定義する必要があります。\n"
+"`A` は、ローカル ワークスペースで定義されたグローバル変数であることに注意してください。ワーカープロセス 2 は、`Main`の下で呼び出された変数`A`を所有していません。クロージャー `()->sum(A)` をワーカープロセス2 に送られた結果として、`Main.A` がワーカプロセス2に定義されます。\n"
+"`remotecall_fetch` から制御がローカルに戻ったあとも、`main.A` はワーカープロセス 2 に存在し続けます。\n"
+"埋め込みグローバル参照 (`Main`モジュールのみ) を伴う、リモート呼び出しは、グローバル変数を下記のように管理します:\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:833
 msgid "- New global bindings are created on destination workers if they are referenced as part of a remote call."
 msgstr ""
+"- 新しいグローバルバインディングがリモート呼び出しの一部として参照されている場合には、そのグローバルバインディングは、ワーカー上に作成されま"
+"す。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:835
 msgid "- Global constants are declared as constants on remote nodes too."
-msgstr ""
+msgstr "- グローバル定数は、リモート ノードでも定数として宣言されます。"
 
 #. type: Bullet: '- '
 #: ext/julia/doc/src/manual/parallel-computing.md:839
@@ -17775,6 +17981,8 @@ msgid ""
 "Globals are re-sent to a destination worker only in the context of a remote call, and then only if its value has changed. Also, the cluster "
 "does not synchronize global bindings across nodes.  For example:"
 msgstr ""
+"グローバルは、ワーカープロセスに再送信されるのは、リモート呼び出しのコンテキストで、さらにその値が変更された場合にのみです。また、クラスター"
+"はノード間でグローバル バインディングを同期しません。 例えば："
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:840
@@ -17786,6 +17994,11 @@ msgid ""
 "  remotecall_fetch(()->sum(A), 3) # worker 3\n"
 "  A = nothing\n"
 msgstr ""
+"  A = rand(10,10)\n"
+"  remotecall_fetch(()->sum(A), 2) # worker 2\n"
+"  A = rand(10,10)\n"
+"  remotecall_fetch(()->sum(A), 3) # worker 3\n"
+"  A = nothing\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:850
@@ -17793,7 +18006,7 @@ msgstr ""
 msgid ""
 "  Executing the above snippet results in `Main.A` on worker 2 having a different value from\n"
 "  `Main.A` on worker 3, while the value of `Main.A` on node 1 is set to `nothing`.\n"
-msgstr ""
+msgstr "上記のスニペットを実行すると、ノード 1 の 'Main.A' の値は \"nothing\" に設定されているのですが、ワーカー 2の`Main.A`は、ワーカー3のそれと異なる値を持ちます。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:856
@@ -17803,6 +18016,10 @@ msgid ""
 "nodes to `nothing` once they are no longer required. This will release any memory associated with them as part of a regular garbage "
 "collection cycle."
 msgstr ""
+"これでお分かりのように、グローバルに関連付けられたメモリはマスターで別の値が代入されたときにに収集される可能性がありますが、ワーカーではその"
+"ようなアクションは実行されません。バインディングが引き続き有効だからです。 [`clear!`](@ref) を使用すると、リモートノード上の特定のグローバル"
+"を、不要になったときに手動で `nothing`を再代入できます。これにより、通常のガベージ コレクション サイクルの一部として、それらに関連付けられて"
+"いるすべてのメモリが解放されます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:859
@@ -17810,11 +18027,14 @@ msgid ""
 "Thus programs should be careful referencing globals in remote calls. In fact, it is preferable to avoid them altogether if possible. If you "
 "must reference globals, consider using `let` blocks to localize global variables."
 msgstr ""
+"したがって、プログラムではリモート呼び出しでのグローバル参照をする時は、注意が必要です。実際には、可能であればリモートでのグローバル参照は完"
+"全に避けるのが好ましいです。グローバルを参照する必要がある場合は、`let` ブロックを使用してグローバル変数をローカライズすることを検討してくだ"
+"さい。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:861 ext/julia/doc/src/manual/performance-tips.md:349
 msgid "For example:"
-msgstr ""
+msgstr "例えば:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:862
@@ -17838,6 +18058,23 @@ msgid ""
 "Core                Module\n"
 "Main                Module\n"
 msgstr ""
+"julia> A = rand(10,10);\n"
+"\n"
+"julia> remotecall_fetch(()->A, 2);\n"
+"\n"
+"julia> B = rand(10,10);\n"
+"\n"
+"julia> let B = B\n"
+"           remotecall_fetch(()->B, 2)\n"
+"       end;\n"
+"\n"
+"julia> @fetchfrom 2 InteractiveUtils.varinfo()\n"
+"name           size summary\n"
+"––––––––– ––––––––– ––––––––––––––––––––––\n"
+"A         800 bytes 10×10 Array{Float64,2}\n"
+"Base                Module\n"
+"Core                Module\n"
+"Main                Module\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:884
@@ -17845,12 +18082,14 @@ msgid ""
 "As can be seen, global variable `A` is defined on worker 2, but `B` is captured as a local variable and hence a binding for `B` does not "
 "exist on worker 2."
 msgstr ""
+"ここでわかるように、グローバル変数 `A` は、ワーカー2で定義されていますが、`B`はローカル変数として補足されるため、ワーカー2では `B`のバイン"
+"ディングは存在しません。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/parallel-computing.md:886
 #, no-wrap
 msgid "Parallel Map and Loops"
-msgstr ""
+msgstr "並行マップと並行ループ"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:892
@@ -17859,6 +18098,9 @@ msgid ""
 "processes can handle independent simulation trials simultaneously. We can use [`@spawn`](@ref) to flip coins on two processes. First, write "
 "the following function in `count_heads.jl`:"
 msgstr ""
+"幸いにも、便利な並列計算の多くは、データの移動を必要としません。一般的な例は、複数のプロセスが独立したシミュレーション試行を同時に処理できる"
+"モンテカルロシミュレーションです。2つのプロセスでコインを反転させるために[`@spawn`](@ref)を使用することができます。まず、`count_heads.jl` に"
+"次の関数を書きます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:893
@@ -17872,6 +18114,13 @@ msgid ""
 "    c\n"
 "end\n"
 msgstr ""
+"function count_heads(n)\n"
+"    c::Int = 0\n"
+"    for i = 1:n\n"
+"        c += rand(Bool)\n"
+"    end\n"
+"    c\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:905
@@ -17879,6 +18128,7 @@ msgid ""
 "The function `count_heads` simply adds together `n` random bits. Here is how we can perform some trials on two machines, and add together "
 "the results:"
 msgstr ""
+"関数 `count_heads` は単に `n` 個のランダムビットの和をとります。2 台のマシンで試行を実行し、それぞれの結果の和をとる方法を次に説明します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:906
@@ -17895,6 +18145,16 @@ msgid ""
 "julia> fetch(a)+fetch(b)\n"
 "100001564\n"
 msgstr ""
+"julia> @everywhere include_string(Main, $(read(\"count_heads.jl\", String)), \"count_heads.jl\")\n"
+"\n"
+"julia> a = @spawn count_heads(100000000)\n"
+"Future(2, 1, 6, nothing)\n"
+"\n"
+"julia> b = @spawn count_heads(100000000)\n"
+"Future(3, 1, 7, nothing)\n"
+"\n"
+"julia> fetch(a)+fetch(b)\n"
+"100001564\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:927
@@ -17905,6 +18165,11 @@ msgid ""
 "looks like the pattern `x = f(x,v[i])`, where `x` is the accumulator, `f` is the reduction function, and the `v[i]` are the elements being "
 "reduced. It is desirable for `f` to be associative, so that it does not matter what order the operations are performed in."
 msgstr ""
+"この例で示されているのは、、並列プログラミングにおける、強力かつ頻出のパターンです。多くのイテレーションは複数のプロセスで独立に実行され、そ"
+"の結果は何らかの関数を使用して統合されます。その統合のプロセスは*reduce*と呼ばれます。その処理は、一般的にテンソルランク低減で、数値ベクトル"
+"が単一の数値に減少するとか、行列が単一の行または列などに減らされるような処理だからです。コードでは、通常、`x`がアキュムレータ、`f`がreduce関"
+"数、`v[i]` が削減される要素であるパターンで、 `x= f(x,v[i])`のようなコードになります。`f` は、操作が実行される順序に関係ない、つまり結合律を"
+"満たすことが望ましいです。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:932
@@ -17913,6 +18178,9 @@ msgid ""
 "the parallelism to two processes. To run on any number of processes, we can use a *parallel for loop*, running in distributed memory, which "
 "can be written in Julia using [`@distributed`](@ref) like this:"
 msgstr ""
+"`count_heads` を使用したこのパターンの使用は一般化できることに注意してください。2 つの明示的な [`@spawn`](@ref) ステートメントを使用して、並"
+"列処理を 2 つのプロセスに制限しました。任意の数のプロセスで実行するには、分散メモリで実行される *parallel for loop*を、次のように "
+"[`@distributed`](@ref) を使って書くことができます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:933
@@ -17922,6 +18190,9 @@ msgid ""
 "    Int(rand(Bool))\n"
 "end\n"
 msgstr ""
+"nheads = @distributed (+) for i = 1:200000000\n"
+"    Int(rand(Bool))\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:943
@@ -17930,6 +18201,9 @@ msgid ""
 "case `(+)`). The result of each iteration is taken as the value of the last expression inside the loop. The whole parallel loop expression "
 "itself evaluates to the final answer."
 msgstr ""
+"このコンストラクトは、繰り返し処理を複数のプロセスに計算させて、その結果を、指定された reduce 処理(この場合は `(+)`)を使って統合する\n"
+"実装パターンを実現しています。各反復の結果としてループ内の最後の式の値が受け取られます。並列ループ式全体が、最終的な計算結果として評価されま"
+"す。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:948
@@ -17938,11 +18212,14 @@ msgid ""
 "not happen in a specified order, and writes to variables or arrays will not be globally visible since iterations run on different processes. "
 "Any variables used inside the parallel loop will be copied and broadcast to each process."
 msgstr ""
+"並行処理の for ループは、逐次処理の for ループと似ているようにみえますが、その動作は大きく異なることに注意が必要です。特に、反復は指定された"
+"順序で行われないこと、反復が異なるプロセスで実行されるので、変数または配列への書き込みはグローバルからは見えないこと等に注意しましょう。並列"
+"ループ内で使用される変数すべては、各プロセスにコピーされ、ブロードキャストされます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:950
 msgid "For example, the following code will not work as intended:"
-msgstr ""
+msgstr "たとえば、次のコードは意図したとおりに機能しません:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:951
@@ -17953,6 +18230,10 @@ msgid ""
 "    a[i] = i\n"
 "end\n"
 msgstr ""
+"a = zeros(100000)\n"
+"@distributed for i = 1:100000\n"
+"    a[i] = i\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:961
@@ -17960,6 +18241,8 @@ msgid ""
 "This code will not initialize all of `a`, since each process will have a separate copy of it.  Parallel for loops like these must be "
 "avoided. Fortunately, [Shared Arrays](@ref man-shared-arrays) can be used to get around this limitation:"
 msgstr ""
+"このコードは、`a` の全ての要素を初期化できません。各プロセスには個別のコピーがあるからです。このような並行 for ループは避けなければいけませ"
+"ん。さいわい、[Shared Array](@ref man-shared-arrays)を使用して、この制限を回避できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:962
@@ -17972,11 +18255,17 @@ msgid ""
 "    a[i] = i\n"
 "end\n"
 msgstr ""
+"using SharedArrays\n"
+"\n"
+"a = SharedArray{Float64}(10)\n"
+"@distributed for i = 1:10\n"
+"    a[i] = i\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:972
 msgid "Using \"outside\" variables in parallel loops is perfectly reasonable if the variables are read-only:"
-msgstr ""
+msgstr "並列ループにおける \"外部\" 変数の使用は、変数が読み取り専用の場合に全く問題有りません:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:973
@@ -17987,11 +18276,15 @@ msgid ""
 "    f(a[rand(1:end)])\n"
 "end\n"
 msgstr ""
+"a = randn(1000)\n"
+"@distributed (+) for i = 1:100000\n"
+"    f(a[rand(1:end)])\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:981
 msgid "Here each iteration applies `f` to a randomly-chosen sample from a vector `a` shared by all processes."
-msgstr ""
+msgstr "ここでは、各反復は、すべてのプロセスで共有されるベクトル `a` からランダムに選択されたサンプルに `f` を適用します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:987
@@ -18001,6 +18294,9 @@ msgid ""
 "can wait for the [`Future`](@ref) completions at a later point by calling [`fetch`](@ref) on them, or wait for completion at the end of the "
 "loop by prefixing it with [`@sync`](@ref), like `@sync @distributed for`."
 msgstr ""
+"ご覧の通り、reduce 演算子は必要ない場合は省略できます。その場合、ループは非同期的に実行され、つまり使用可能なすべてのワーカーに対して独立した"
+"タスクが生成され、完了を待たずにすぐに [`Future`](@ref) の配列を返します。呼び出し元は、[`fetch`](@ref) を呼び出して [`Future`](@ref)の完了を"
+"後で待つこともできますし、[`@sync`](@ref) をつけて、つまり、`@sync @distributed for` ループを使って、ループの最後で完了を待つことができます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:992
@@ -18009,6 +18305,9 @@ msgid ""
 "all elements in some collection). This is another useful operation called *parallel map*, implemented in Julia as the [`pmap`](@ref) "
 "function. For example, we could compute the singular values of several large random matrices in parallel as follows:"
 msgstr ""
+"場合によっては、reduce 演算子は必要なく、ある範囲のすべての整数 (または一般的には、一部のコレクション内のすべての要素) に関数を適用するだけと"
+"いうこともあるでしょう。これは、*パラレル マップ*と呼ばれる便利な処理で、Julia では[`pmap`](@ref) 関数として実装されています。たとえば、複数"
+"の大きなランダム行列の特異値を次のように並列に計算できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:993
@@ -18018,6 +18317,9 @@ msgid ""
 "\n"
 "julia> pmap(svdvals, M);\n"
 msgstr ""
+"julia> M = Matrix{Float64}[rand(1000,1000) for i = 1:10];\n"
+"\n"
+"julia> pmap(svdvals, M);\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1004
@@ -18026,6 +18328,9 @@ msgid ""
 "handle situations where each iteration is tiny, perhaps merely summing two numbers. Only worker processes are used by both [`pmap`](@ref) "
 "and `@distributed for` for the parallel computation. In case of `@distributed for`, the final reduction is done on the calling process."
 msgstr ""
+"Julia の[`pmap`](@ref)は、1回の関数呼び出しのなかで大量の処理を行う場合を想定して設計されています。対して、`@distributed for` は、各反復が小"
+"さく、おそらく単に 2 つの数値を合計するだけのような状況を処理できます。並列計算には[`pmap`](@ref)と`@distributed for` の両方でワーカー プロセ"
+"スのみが使用されます。`@distributed`の場合、最終的なreduce処理は呼び出しプロセスで行われます。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/parallel-computing.md:1005
@@ -18693,7 +18998,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/parallel-computing.md:1443
 #, no-wrap
 msgid "ClusterManagers"
-msgstr ""
+msgstr "クラスタマネージャ"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1447
@@ -18701,137 +19006,139 @@ msgid ""
 "The launching, management and networking of Julia processes into a logical cluster is done via cluster managers. A `ClusterManager` is "
 "responsible for"
 msgstr ""
+"Julia プロセスの起動、管理、および論理クラスタへのネットワーキングは、クラスタ マネージャを介して行われます。`ClusterManager` が担当するのは"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1451
 msgid "launching worker processes in a cluster environment"
-msgstr ""
+msgstr "クラスタ環境でワーカープロセスを起動する"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1451
 msgid "managing events during the lifetime of each worker"
-msgstr ""
+msgstr "各ワーカーの有効期間中のイベントの管理"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1451
 msgid "optionally, providing data transport"
-msgstr ""
+msgstr "必要に応じて、データ転送を提供する"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1453
 msgid "A Julia cluster has the following characteristics:"
-msgstr ""
+msgstr "Julia クラスターには、次の特徴があります:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1457
 msgid "The initial Julia process, also called the `master`, is special and has an `id` of 1."
-msgstr ""
+msgstr "`master`とも呼ばれる最初のJuliaプロセスは特別であり、1の`id`を持っています。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1457
 msgid "Only the `master` process can add or remove worker processes."
-msgstr ""
+msgstr "ワーカープロセスを追加または削除できるのは`master`プロセスだけです。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1457
 msgid "All processes can directly communicate with each other."
-msgstr ""
+msgstr "すべてのプロセスは、互いに直接通信できます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1460
 msgid "Connections between workers (using the in-built TCP/IP transport) is established in the following manner:"
-msgstr ""
+msgstr "(組み込みの TCP/IP トランスポートを使用して) ワーカー間の接続は、次の方法で確立されます:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1472
 msgid "[`addprocs`](@ref) is called on the master process with a `ClusterManager` object."
-msgstr ""
+msgstr "[`addprocs`](@ref) は、`ClusterManager` オブジェクトを持つマスター・プロセスで呼び出されます。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1472
 msgid ""
 "[`addprocs`](@ref) calls the appropriate [`launch`](@ref) method which spawns required number of worker processes on appropriate machines."
-msgstr ""
+msgstr "[`addprocs`](@ref) は、要求された数のワーカープロセスを適切なマシン上で起動する適切な [`launch`](@ref) メソッドを呼び出します。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1472
 msgid "Each worker starts listening on a free port and writes out its host and port information to [`stdout`](@ref)."
-msgstr ""
+msgstr "各ワーカーは空きポートでリッスンを開始し、ホストとポートの情報を [`stdout`](@ref)に書き出します。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1472
 msgid "The cluster manager captures the [`stdout`](@ref) of each worker and makes it available to the master process."
-msgstr ""
+msgstr "クラスタ マネージャは、各ワーカーの [`stdout`](@ref)をキャプチャし、マスタープロセスで使用できるようにします。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1472
 msgid "The master process parses this information and sets up TCP/IP connections to each worker."
-msgstr ""
+msgstr "マスタ プロセスは、この情報を解析し、各ワーカーへの TCP/IP 接続を設定します。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1472
 msgid "Every worker is also notified of other workers in the cluster."
-msgstr ""
+msgstr "すべてのワーカーには、クラスター内の他のワーカーの情報が知らされます。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1472
 msgid "Each worker connects to all workers whose `id` is less than the worker's own `id`."
-msgstr ""
+msgstr "各ワーカーは、`id` がそのワーカー自身の `id` より小さいすべてのワーカーに接続します。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1472
 msgid "In this way a mesh network is established, wherein every worker is directly connected with every other worker."
-msgstr ""
+msgstr "このようにしてメッシュ ネットワークが確立され、すべてのワーカーが他のすべてのワーカーと直接接続されます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1475
 msgid "While the default transport layer uses plain [`TCPSocket`](@ref), it is possible for a Julia cluster to provide its own transport."
 msgstr ""
+"既定のトランスポート層では、プレーン [`TCPSocket`](@ref)が使われますが、Julia クラスターが独自のトランスポートを提供する場合があります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1477
 msgid "Julia provides two in-built cluster managers:"
-msgstr ""
+msgstr "Julia は、次の 2 つの組み込みクラスタ マネージャを提供します:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1480
 msgid "`LocalManager`, used when [`addprocs()`](@ref) or [`addprocs(np::Integer)`](@ref) are called"
-msgstr ""
+msgstr "`LocalManager`:   [`addprocs()`](@ref) もしくは [`addprocs(np::Integer)`](@ref) が呼び出された時に使われます"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1480
 msgid "`SSHManager`, used when [`addprocs(hostnames::Array)`](@ref) is called with a list of hostnames"
-msgstr ""
+msgstr "`SSHManager`:  [`addprocs(hostnames::Array)`](@ref) が hostname のリストを伴って呼び出された時に使われます"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1483
 msgid "`LocalManager` is used to launch additional workers on the same host, thereby leveraging multi-core and multi-processor hardware."
-msgstr ""
+msgstr "`LocalManager` は、同じホスト上で追加のワーカーを起動するために使用され、マルチコアおよびマルチプロセッサ ハードウェアを活用します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1485
 msgid "Thus, a minimal cluster manager would need to:"
-msgstr ""
+msgstr "したがって、最小限のクラスタ マネージャーは次のことが必要になります:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1490
 msgid "be a subtype of the abstract `ClusterManager`"
-msgstr ""
+msgstr "抽象型 `ClusterManager` のサブタイプである"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1490
 msgid "implement [`launch`](@ref), a method responsible for launching new workers"
-msgstr ""
+msgstr "新しいワーカーを立ち上げるメソッド [`launch`](@ref) を実装する"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1490
 msgid "implement [`manage`](@ref), which is called at various events during a worker's lifetime (for example, sending an interrupt signal)"
-msgstr ""
+msgstr "ワーカーの有効期間中にさまざまなイベントで呼び出される [`manage`](@ref) を実装する (例えば、割り込み信号の送信など)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1492
 msgid "[`addprocs(manager::FooManager)`](@ref addprocs) requires `FooManager` to implement:"
-msgstr ""
+msgstr "[`addprocs(manager::FooManager)`](@ref addprocs) が正しく処理されるためには `FooManager` に次の関数が実装されている必要があります:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1493
@@ -18845,11 +19152,18 @@ msgid ""
 "    [...]\n"
 "end\n"
 msgstr ""
+"function launch(manager::FooManager, params::Dict, launched::Array, c::Condition)\n"
+"    [...]\n"
+"end\n"
+"\n"
+"function manage(manager::FooManager, id::Integer, config::WorkerConfig, op::Symbol)\n"
+"    [...]\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1505
 msgid "As an example let us see how the `LocalManager`, the manager responsible for starting workers on the same host, is implemented:"
-msgstr ""
+msgstr "例として、同じホストでワーカーを開始するマネージャ`LocalManager`がどのように実装されているかを見てみましょう:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1506
@@ -18867,31 +19181,42 @@ msgid ""
 "    [...]\n"
 "end\n"
 msgstr ""
+"struct LocalManager <: ClusterManager\n"
+"    np::Integer\n"
+"end\n"
+"\n"
+"function launch(manager::LocalManager, params::Dict, launched::Array, c::Condition)\n"
+"    [...]\n"
+"end\n"
+"\n"
+"function manage(manager::LocalManager, id::Integer, config::WorkerConfig, op::Symbol)\n"
+"    [...]\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1521
 msgid "The [`launch`](@ref) method takes the following arguments:"
-msgstr ""
+msgstr "[`launch`](@ref) メソッドは、次の引数を受け取ります:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1526
 msgid "`manager::ClusterManager`: the cluster manager that [`addprocs`](@ref) is called with"
-msgstr ""
+msgstr "`manager::ClusterManager`: このクラスターマネージャを用いて、[`addprocs`](@ref) が呼ばれます"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1526
 msgid "`params::Dict`: all the keyword arguments passed to [`addprocs`](@ref)"
-msgstr ""
+msgstr "`params::Dict`: [`addprocs`](@ref)に渡されるすべてのキーワード引数を格納します"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1526
 msgid "`launched::Array`: the array to append one or more `WorkerConfig` objects to"
-msgstr ""
+msgstr "`launched::Array`: 1 つ以上の `WorkerConfig`オブジェクトを追加する配列"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1526
 msgid "`c::Condition`: the condition variable to be notified as and when workers are launched"
-msgstr ""
+msgstr "`c::Condition`: ワーカーが起動されたときに通知される条件変数"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1530
@@ -18899,6 +19224,8 @@ msgid ""
 "The [`launch`](@ref) method is called asynchronously in a separate task. The termination of this task signals that all requested workers "
 "have been launched. Hence the [`launch`](@ref)  function MUST exit as soon as all the requested workers have been launched."
 msgstr ""
+"[`launch`](@ref) メソッドは、独立したタスクで非同期的に呼び出されます。このタスクが終了したということは、要求されたすべてのワーカーが起動され"
+"たということです。したがって、[`launch`](@ref) 関数は、要求されたすべてのワーカーが起動されるとすぐに終了する必要があります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1534
@@ -18908,6 +19235,8 @@ msgid ""
 "Specifying the command line argument `--worker[=<cookie>]` results in the launched processes\n"
 "initializing themselves as workers and connections being set up via TCP/IP sockets.\n"
 msgstr ""
+"新しく起動されたワーカーは、互いにワーカー同士で、そしてマスタープロセスと 網羅的に接続されます。\n"
+"コマンドライン引数 `--worker[=<cookie>]`を指定すると、起動されたプロセスが自分自身をワーカーとして初期化し、接続がTCP/IP ソケットを介してセットアップされます。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1539
@@ -18918,6 +19247,9 @@ msgid ""
 " `LocalManager` and `SSHManager` both pass the cookie to newly launched workers via their\n"
 " standard inputs.\n"
 msgstr ""
+"クラスター内のすべてのワーカーは、マスターと同じ [cookie] (@ref man-cluster-cookie) を共有します。\n"
+"クッキーが指定されていない、つまり`--worker`オプションを使用すると、ワーカーは標準入力からクッキーを読み取ろうとします。\n"
+" `LocalManager`と`SSHManager`の両方が、新しく立ち上げたワーカーに標準入力を介してクッキーを渡します。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1543
@@ -18925,6 +19257,8 @@ msgid ""
 "By default a worker will listen on a free port at the address returned by a call to [`getipaddr()`](@ref).  A specific address to listen on "
 "may be specified by optional argument `--bind-to bind_addr[:port]`.  This is useful for multi-homed hosts."
 msgstr ""
+"既定では、ワーカーは [`getipaddr()`](@ref)の呼び出しによって返されるアドレスで空きポートをリッスンします。 リッスンする特定のアドレスは、オプ"
+"ション引数 `--bind-to bind_addr[:port]`で指定できます。 これは、マルチホームド(複数のネットワークアドレスを持つ)ホストでの利用に役立ちます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1547
