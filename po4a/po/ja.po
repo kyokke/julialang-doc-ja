@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-08-26 03:21+0000\n"
-"PO-Revision-Date: 2019-09-09 23:47+0900\n"
+"PO-Revision-Date: 2019-09-21 15:10+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 2.2.3\n"
-"X-Poedit-Bookmarks: 1944,6291,681,-1,-1,-1,-1,-1,-1,-1\n"
+"X-Poedit-Bookmarks: 1944,4056,681,2676,2799,-1,-1,-1,-1,-1\n"
 
 #. type: Title =
 #: ext/julia/doc/src/./NEWS.md:2
@@ -19266,12 +19266,16 @@ msgid ""
 "As an example of a non-TCP/IP transport, an implementation may choose to use MPI, in which case `--worker` must NOT be specified. Instead, "
 "newly launched workers should call `init_worker(cookie)` before using any of the parallel constructs."
 msgstr ""
+"TCP/IPトランスポート以外の例としては、MPI を利用した実装が考えられます。MPI利用においては、`--worker` オプションによる指定を使っていはいけま"
+"せん。全ての並行処理の構成要素が用いられる前に、新しく起動したワーカーは、`init_worker(cookie)` を呼び Cookieの指定をしなくてはなりません。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1550
 msgid ""
 "For every worker launched, the [`launch`](@ref) method must add a `WorkerConfig` object (with appropriate fields initialized) to `launched`"
 msgstr ""
+"起動するすべてのワーカーに対して、[`launch`](@ref) メソッドは、(適切なフィールドを初期化した) `workerConfig` オブジェクト を `launched` に追"
+"加する必要があります"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1551
@@ -19304,6 +19308,32 @@ msgid ""
 "    [...]\n"
 "end\n"
 msgstr ""
+"mutable struct WorkerConfig\n"
+"    # Common fields relevant to all cluster managers\n"
+"    io::Union{IO, Nothing}\n"
+"    host::Union{AbstractString, Nothing}\n"
+"    port::Union{Integer, Nothing}\n"
+"\n"
+"    # Used when launching additional workers at a host\n"
+"    count::Union{Int, Symbol, Nothing}\n"
+"    exename::Union{AbstractString, Cmd, Nothing}\n"
+"    exeflags::Union{Cmd, Nothing}\n"
+"\n"
+"    # External cluster managers can use this to store information at a per-worker level\n"
+"    # Can be a dict if multiple fields need to be stored.\n"
+"    userdata::Any\n"
+"\n"
+"    # SSHManager / SSH tunnel connections to workers\n"
+"    tunnel::Union{Bool, Nothing}\n"
+"    bind_addr::Union{AbstractString, Nothing}\n"
+"    sshflags::Union{Cmd, Nothing}\n"
+"    max_parallel::Union{Integer, Nothing}\n"
+"\n"
+"    # Used by Local/SSH managers\n"
+"    connect_at::Any\n"
+"\n"
+"    [...]\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1582
@@ -19311,6 +19341,8 @@ msgid ""
 "Most of the fields in `WorkerConfig` are used by the inbuilt managers. Custom cluster managers would typically specify only `io` or `host` / "
 "`port`:"
 msgstr ""
+"`WorkerConfig` のフィールドのほとんどは、組み込みのマネージャによって使用されます。独自実装のクラスタ マネージャーは、通常、`io` または "
+"`host` / `port` のみを指定します:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1590
@@ -19318,11 +19350,13 @@ msgid ""
 "If `io` is specified, it is used to read host/port information. A Julia worker prints out its bind address and port at startup. This allows "
 "Julia workers to listen on any free port available instead of requiring worker ports to be configured manually."
 msgstr ""
+"`io` が指定されている場合は、ホスト/ポート情報の読み取りに使用されます。Julia のワーカーは、起動時にバインドされた IPアドレスとポートをプリン"
+"ト出力します。これにより、Julia ワーカーは、ワーカー のポートを手動で設定する代わりに、使用可能な任意の空きポートをリッスンできます。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1590
 msgid "If `io` is not specified, `host` and `port` are used to connect."
-msgstr ""
+msgstr "`io` が指定されていない場合は、`host`, `port` を使用して接続します。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1590
@@ -19330,21 +19364,23 @@ msgid ""
 "`count`, `exename` and `exeflags` are relevant for launching additional workers from a worker.  For example, a cluster manager may launch a "
 "single worker per node, and use that to launch additional workers."
 msgstr ""
+"`count`, `exename` , `exeflags` は、ワーカーから別の追加のワーカーを起動する機能に関連するもので。例えば、クラスターマネージャーがノード毎に1"
+"つのワーカーを起動し、そのワーカーに追加のワーカーを起動させることができます。"
 
 #. type: Bullet: '      * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1598
 msgid "`count` with an integer value `n` will launch a total of `n` workers."
-msgstr ""
+msgstr "`count` は  整数値 `n`を指定すると、そのマシンで合計`n` 個のワーカーを起動します。"
 
 #. type: Bullet: '      * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1598
 msgid "`count` with a value of `:auto` will launch as many workers as the number of CPU threads (logical cores) on that machine."
-msgstr ""
+msgstr "`count` に `:auto`値を指定すると、そのマシンのCPUスレッド(論理コア)数と同じだけのワーカーを起動します。"
 
 #. type: Bullet: '      * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1598
 msgid "`exename` is the name of the `julia` executable including the full path."
-msgstr ""
+msgstr "`exename` は、フルパスを含む `julia`プログラムの名前です。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1598
@@ -19355,13 +19391,18 @@ msgid ""
 "    connect to the workers from the master process.\n"
 "  * `userdata` is provided for custom cluster managers to store their own worker-specific information.\n"
 msgstr ""
+"      * `exeflags` には、新しいワーカに必要なコマンドライン引数を設定する必要があります。.\n"
+"  * `tunnel`, `bind_addr`, `sshflags` , `max_parallel` は、ssh トンネルがマスタープロセスからワーカーに接続する必要があるときに用いられます\n"
+"  * `userdata` は、独自実装のクラスターマネージャーが、ワーカー固有の情報を取得・保持する目的で提供されます\n"
+"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1601
+#, fuzzy
 msgid ""
 "`manage(manager::FooManager, id::Integer, config::WorkerConfig, op::Symbol)` is called at different times during the worker's lifetime with "
 "appropriate `op` values:"
-msgstr ""
+msgstr "`manage(manager::FooManager, id::Integer, config::WorkerConfig, op::Symbol)`は、適切な `op` 値を持つワーカーの有効期限"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1606
@@ -19509,7 +19550,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/parallel-computing.md:1665
 #, no-wrap
 msgid "Network Requirements for LocalManager and SSHManager"
-msgstr ""
+msgstr "LocalManager と SSHManager のネットワーク要件"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1670
@@ -19517,6 +19558,8 @@ msgid ""
 "Julia clusters are designed to be executed on already secured environments on infrastructure such as local laptops, departmental clusters, "
 "or even the cloud. This section covers network security requirements for the inbuilt `LocalManager` and `SSHManager`:"
 msgstr ""
+"Julia のクラスターは、ローカルラップトップ、部門のクラスタ、クラウドなどのインフラ上で既にセキュリティで保護されている環境を想定して設計され"
+"ています。　この節では、組み込みの`LocalManager` と `SSHManager`のネットワークのセキュリティ要件について説明します:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1690
@@ -25407,7 +25450,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/documentation.md:1
 #, no-wrap
 msgid "Documentation"
-msgstr ""
+msgstr "[ドキュメンテーション](@id Documentation)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:5
@@ -25415,6 +25458,8 @@ msgid ""
 "Julia enables package developers and users to document functions, types and other objects easily via a built-in documentation system since "
 "Julia 0.4."
 msgstr ""
+"パッケージ開発者やユーザーは、Julia v0.4 以降で組み込みのドキュメントシステムを使って、関数、型、およびその他のオブジェクトのドキュメンテー"
+"ションを簡単に行えます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:10
@@ -25423,6 +25468,9 @@ msgid ""
 "interpreted as documenting it (these are called *docstrings*).  Note that no blank lines or comments may intervene between a docstring and "
 "the documented object.  Here is a basic example:"
 msgstr ""
+"基本的な構文は単純です: オブジェクト (関数、マクロ、型、またはインスタンス)の直前・最上位の文字列を書くと その文字列はドキュメントと解釈され"
+"ます (これらは *docstrings*と呼ばれます)。 docstring とドキュメント化したいオブジェクトの間に、空白行やコメントがないようにしてください。基本"
+"的な例は以下の通りです:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:11
@@ -25431,6 +25479,8 @@ msgid ""
 "\"Tell whether there are too foo items in the array.\"\n"
 "foo(xs::Array) = ...\n"
 msgstr ""
+"\"Tell whether there are too foo items in the array.\"\n"
+"foo(xs::Array) = ...\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:20
@@ -25439,6 +25489,10 @@ msgid ""
 "code examples from text. Technically, any object can be associated with any other as metadata; Markdown happens to be the default, but one "
 "can construct other string macros and pass them to the `@doc` macro just as well."
 msgstr ""
+"ドキュメンテーションは[Markdown](https://en.wikipedia.org/wiki/Markdown)として解釈されます。そのため、インデントやコードフェンスを使って、テ"
+"キストとコード例を分けて書くことができます。技術的には、全てのオブジェクトをメタデータとして、別のオブジェクトに関連付けることができます。デ"
+"フォルトでは、ドキュメントはマークダウンとして解釈されますが、他の文字列のマクロを定義して、`@doc`マクロに渡してドキュメントとすることもでき"
+"ます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:25
@@ -25449,11 +25503,13 @@ msgid ""
 "    and for a full list of supported syntax see the\n"
 "    [documentation](@ref Markdown).\n"
 msgstr ""
+"!!! メモ\n"
+"    Markdown サポートは `Markdown` 標準ライブラリで実装されています。サポートされている構文一覧は [Markdownのドキュメント](@ref Markdown) を参照してください\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:27
 msgid "Here is a more complex example, still using Markdown:"
-msgstr ""
+msgstr "Markdownを使用した、より複雑な例を次に示します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:28
@@ -25473,16 +25529,29 @@ msgid ""
 "\"\"\"\n"
 "function bar(x, y) ...\n"
 msgstr ""
+"\"\"\"\n"
+"    bar(x[, y])\n"
+"\n"
+"Compute the Bar index between `x` and `y`. If `y` is missing, compute\n"
+"the Bar index between all pairs of columns of `x`.\n"
+"\n"
+"# Examples\n"
+"```julia-repl\n"
+"julia> bar([1, 2], [1, 2])\n"
+"1\n"
+"```\n"
+"\"\"\"\n"
+"function bar(x, y) ...\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:45
 msgid "As in the example above, we recommend following some simple conventions when writing documentation:"
-msgstr ""
+msgstr "上記の例と同様に、ドキュメントを作成する際には、いくつかの簡単な規則に従うことをお勧めします:"
 
 #. type: Bullet: '1. '
 #: ext/julia/doc/src/manual/documentation.md:48
 msgid "Always show the signature of a function at the top of the documentation, with a four-space indent so that it is printed as Julia code."
-msgstr ""
+msgstr "ドキュメントの上部に関数のシグネチャを常に表示し、スペース4つのインデントを使用して、Julia コードとして印刷します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:61
@@ -25501,6 +25570,15 @@ msgid ""
 "   after the simplified signature block. If needed, provide more details in a second paragraph, after\n"
 "   a blank line.\n"
 msgstr ""
+"   ここでの表記は、Juliaコードのシグネチャと全く同じにしてもよいですし (`mean(x::AbstractArray)`などのように)、簡略表記としてもよいしょう。\n"
+"   オプション引数は、可能な場合は実際のJuliaの構文に従って、デフォルト値も示すべきです(つまり`f(x, y=1)`のように)。\n"
+"   デフォルト値を持たないオプション引数は、括弧内に入れてください (つまり、`f(x[,y])`や `f(x[,y[,z]]`のように)。\n"
+"   その他の方法としては、複数行を使用することです: 1行を通常引数に、ほかの行をオプション引数に使う、ということです。\n"
+"   この方法は、ある関数に対して、いくつかの関連するメソッドのドキュメンテーションにも使用ですまう。\n"
+"   関数が多くのキーワード引数を持つ時には、`<keyword arguments>`プレースホルダのみをシグネチャに含むシグネチャに含めて\n"
+"   (すなわち`f(x;<keyword arguments>)`)、完全な引数リストを `#Arguments` セクション以下に書いてください(ポイント4参照)。\n"
+"2. 簡略化されたシグニチャの後には、関数の振る舞い、やオブジェクトが何者であるか、1行で説明しましょう\n"
+"   必要に応じて、1行空けたあとの段落でより詳細について記述してください。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:68
@@ -25513,6 +25591,9 @@ msgid ""
 "   every single case though).\n"
 "3. Do not repeat yourself.\n"
 msgstr ""
+"   関数の1 行説明は、3単現のsを付けずに、命令形で書いてください。最後にピリオドを付けます。\n"
+"   関数の意味を簡単に要約できない場合は、関数の構成要素を分割するとよいかもしれません(絶対的な要件ではなく、あくまで一例です)。\n"
+"3. 繰り返しを避けましょう(DRY)。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:73
@@ -25523,6 +25604,9 @@ msgid ""
 "   the types of the arguments, mentioning them in the description is redundant.\n"
 "4. Only provide an argument list when really necessary.\n"
 msgstr ""
+"   関数名はシグネチャによって与えられるので、「関数`bar`は..」という文言でドキュメントを開始する必要はありません:\n"
+"   はじめから要点を書いてください。同様に、シグネチャで引数の型が指定されているならば、説明で型に言及することは冗長です。\n"
+"4. 本当に必要な場合にのみ引数リストを書きます。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:80
@@ -25535,6 +25619,11 @@ msgid ""
 "   description of the function, under an `# Arguments` header, with one `-` bullet for each argument.\n"
 "   The list should mention the types and default values (if any) of the arguments:\n"
 msgstr ""
+"   単純な関数の場合、関数の目的を説明する際に直接 引数の役割に言及する方が明らかにわかりやすいことがあります。\n"
+"   (そのような場合、)引数リストは、他の場所で言及された情報を繰り返すだけです\n"
+"   ただし、多くの引数(特にキーワード引数)を使う、複雑な関数に対しては、引数リストを書くのはよいアイディアです。\n"
+"   その場合、一般的な関数説明の後、`#Arguments` ヘッダの下に引数リストを挿入します。引数1つずつに対して `-` の箇条書きを使いましょう。\n"
+"   リストには、引数の型と既定値 (ある場合) を指定する必要があります。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:81
@@ -25548,11 +25637,18 @@ msgid ""
 "   ...\n"
 "   \"\"\"\n"
 msgstr ""
+"   \"\"\"\n"
+"   ...\n"
+"   # Arguments\n"
+"   - `n::Integer`: the number of elements to compute.\n"
+"   - `dim::Integer=1`: the dimensions along which to perform the computation.\n"
+"   ...\n"
+"   \"\"\"\n"
 
 #. type: Bullet: '5. '
 #: ext/julia/doc/src/manual/documentation.md:91
 msgid "Provide hints to related functions."
-msgstr ""
+msgstr "関連する関数にヒント(see. also)を加えましょう。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:94
@@ -25560,18 +25656,18 @@ msgstr ""
 msgid ""
 "   Sometimes there are functions of related functionality. To increase discoverability please provide\n"
 "   a short list of these in a `See also:` paragraph.\n"
-msgstr ""
+msgstr "   関連する機能をもつ関数がある場合は、適切な関数を発見して貰う可能性を高めるために、`See also:` の段落でに関連する関数の短いリストを加えましょう。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:95
 #, no-wrap
 msgid "   See also: [`bar!`](@ref), [`baz`](@ref), [`baaz`](@ref)\n"
-msgstr ""
+msgstr "   See also: [`bar!`](@ref), [`baz`](@ref), [`baaz`](@ref)\n"
 
 #. type: Bullet: '6. '
 #: ext/julia/doc/src/manual/documentation.md:99
 msgid "Include any code examples in an `# Examples` section."
-msgstr ""
+msgstr "`# Examples`セクションになんからのコード例を示しましょう。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:103
@@ -25581,6 +25677,8 @@ msgid ""
 "   (see [Code blocks](@ref)) starting with ````` ```jldoctest````` and contains any number of `julia>`\n"
 "   prompts together with inputs and expected outputs that mimic the Julia REPL.\n"
 msgstr ""
+"   例は、可能な限り *doctests*として記述する必要があります。*doctest* はフェンスで囲まれたコードブロックです([コードブロック](@ref)参照) 。\n"
+"   ````` ```jldoctest`````で始まり、任意の数の `julia>` プロンプトが、その入出力とともに含まれます。ここでの出力はJuliaのREPLであれば与えられた入力に対して、この出力を出すだろうという期待値です。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:108
@@ -25591,6 +25689,9 @@ msgid ""
 "       For more detailed documentation see Documenter's\n"
 "       [manual](https://juliadocs.github.io/Documenter.jl/).\n"
 msgstr ""
+"   !!!メモ\n"
+"       doctest は[`Documenter.jl`](https://github.com/JuliaDocs/Documenter.jl)によって有効化されます。\n"
+"       詳細なドキュメントについては、Documenter の[マニュアル](https://juliadocs.github.io/Documenter.jl/)を見てください。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:111
@@ -25598,7 +25699,7 @@ msgstr ""
 msgid ""
 "   For example in the following docstring a variable `a` is defined and the expected result, as printed\n"
 "   in a Julia REPL, appears afterwards:\n"
-msgstr ""
+msgstr "   たとえば、次の docstring では変数 `a` が定義され、期待される結果が Julia のREPLにプリント出力されるのと同じように後で表示されます。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:112
@@ -25616,6 +25717,17 @@ msgid ""
 "   ```\n"
 "   \"\"\"\n"
 msgstr ""
+"   \"\"\"\n"
+"   Some nice documentation here.\n"
+"\n"
+"   # Examples\n"
+"   ```jldoctest\n"
+"   julia> a = [1 2; 3 4]\n"
+"   2×2 Array{Int64,2}:\n"
+"    1  2\n"
+"    3  4\n"
+"   ```\n"
+"   \"\"\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:132
@@ -25628,6 +25740,9 @@ msgid ""
 "       [`MersenneTwister`](@ref) (or other pseudorandom number generator) and pass it to the functions you are\n"
 "       doctesting.\n"
 msgstr ""
+"   !!!警告\n"
+"       `rand` およびその他の RNG 関連の関数の呼び出しは、doctest では避けて下さい。\n"
+"       RNG関連の関数は、異なる Julia セッションで一貫した出力を生成しないからです。何らかの乱数生成関連の機能を示したい場合の一つの選択肢は、[`MersenneTwister`](@ref)(もしくはその他の疑似乱数生成の関数)に明示的にシードを与え、その結果をdoctest を書いている関数に与えることです。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:135
@@ -25636,6 +25751,8 @@ msgid ""
 "       Operating system word size ([`Int32`](@ref) or [`Int64`](@ref)) as well as path separator differences\n"
 "       (`/` or `\\`) will also affect the reproducibility of some doctests.\n"
 msgstr ""
+"       オペレーティング システムのワードサイズ ([`Int32`](@ref) または [`Int64`](@ref))とパス区切り記号の違い\n"
+"       (`/` または `\\`) は、一部のdoctestの再現性にも影響します。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:138
@@ -25643,7 +25760,7 @@ msgstr ""
 msgid ""
 "       Note that whitespace in your doctest is significant! The doctest will fail if you misalign the\n"
 "       output of pretty-printing an array, for example.\n"
-msgstr ""
+msgstr "       doctest の空白は重要です。doctest は例えば配列のpritty-printの出力位置が(期待値と)ずれていると失敗します。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:141
@@ -25652,6 +25769,8 @@ msgid ""
 "   You can then run `make -C doc doctest=true` to run all the doctests in the Julia Manual and API\n"
 "   documentation, which will ensure that your example works.\n"
 msgstr ""
+"   JuliaのマニュアルとAPIドキュメントではコードexampleが確実に機能します。\n"
+"   すべてのdoctestを実行するには `make -C doctest=true`を実行してください\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:147
@@ -25663,6 +25782,8 @@ msgid ""
 "   of julia code) when the doctest shows that an exception is thrown,\n"
 "   for example:\n"
 msgstr ""
+"   出力結果が切り捨てられることを示すには、チェックを停止すべき行で`[...]`と書くことができます。\n"
+"   これは、doctest で何か例外がスローされたとき、スタックトレース(これは、Julia のコード行への非永続的な参照を含みます) を非表示にするのに役立ちます。例えば:\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:148
@@ -25674,6 +25795,11 @@ msgid ""
 "   [...]\n"
 "   ```\n"
 msgstr ""
+"   ```jldoctest\n"
+"   julia> div(1, 0)\n"
+"   ERROR: DivideError: integer division error\n"
+"   [...]\n"
+"   ```\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:158
@@ -25721,6 +25847,12 @@ msgid ""
 "   \"\"\"\n"
 "   f(x, y) = ...\n"
 msgstr ""
+"   \"\"\"\n"
+"   ...\n"
+"\n"
+"   ...\n"
+"   \"\"\"\n"
+"   f(x, y) = ...\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:182
@@ -25737,6 +25869,10 @@ msgid ""
 "   ...\"\"\"\n"
 "   f(x, y) = ...\n"
 msgstr ""
+"   \"\"\"...\n"
+"\n"
+"   ...\"\"\"\n"
+"   f(x, y) = ...\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:192
@@ -25763,7 +25899,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/documentation.md:201
 #, no-wrap
 msgid "Accessing Documentation"
-msgstr ""
+msgstr "ドキュメントへのアクセス"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:205
@@ -25780,6 +25916,9 @@ msgid ""
 "?@time\n"
 "?r\"\"\n"
 msgstr ""
+"?cos\n"
+"?@time\n"
+"?r\"\"\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:214
@@ -25792,7 +25931,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/documentation.md:215
 #, no-wrap
 msgid "Functions & Methods"
-msgstr ""
+msgstr "関数とメソッド"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:223
@@ -25838,6 +25977,36 @@ msgid ""
 "\n"
 "  When applied to strings, concatenates them.\n"
 msgstr ""
+"\"\"\"\n"
+"    *(x, y, z...)\n"
+"\n"
+"Multiplication operator. `x * y * z *...` calls this function with multiple\n"
+"arguments, i.e. `*(x, y, z...)`.\n"
+"\"\"\"\n"
+"function *(x, y, z...)\n"
+"    # ... [implementation sold separately] ...\n"
+"end\n"
+"\n"
+"\"\"\"\n"
+"    *(x::AbstractString, y::AbstractString, z::AbstractString...)\n"
+"\n"
+"When applied to strings, concatenates them.\n"
+"\"\"\"\n"
+"function *(x::AbstractString, y::AbstractString, z::AbstractString...)\n"
+"    # ... [insert secret sauce here] ...\n"
+"end\n"
+"\n"
+"help?> *\n"
+"search: * .*\n"
+"\n"
+"  *(x, y, z...)\n"
+"\n"
+"  Multiplication operator. x * y * z *... calls this function with multiple\n"
+"  arguments, i.e. *(x,y,z...).\n"
+"\n"
+"  *(x::AbstractString, y::AbstractString, z::AbstractString...)\n"
+"\n"
+"  When applied to strings, concatenates them.\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:259
@@ -25850,7 +26019,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/documentation.md:260
 #, no-wrap
 msgid "Advanced Usage"
-msgstr ""
+msgstr "高度な使い方"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:266
@@ -25877,6 +26046,10 @@ msgid ""
 "\"\"\"\n"
 "f(x) = x\n"
 msgstr ""
+"@doc raw\"\"\"\n"
+"...\n"
+"\"\"\"\n"
+"f(x) = x\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:280
@@ -25899,6 +26072,8 @@ msgid ""
 "@doc \"...\" foo!\n"
 "@doc (@doc foo!) foo\n"
 msgstr ""
+"@doc \"...\" foo!\n"
+"@doc (@doc foo!) foo\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:293
@@ -25917,6 +26092,13 @@ msgid ""
 "@doc \"`add(a,b)` adds `a` and `b` together\" add\n"
 "@doc \"`subtract(a,b)` subtracts `b` from `a`\" subtract\n"
 msgstr ""
+"for (f, op) in ((:add, :+), (:subtract, :-), (:multiply, :*), (:divide, :/))\n"
+"    @eval begin\n"
+"        $f(a,b) = $op(a,b)\n"
+"    end\n"
+"end\n"
+"@doc \"`add(a,b)` adds `a` and `b` together\" add\n"
+"@doc \"`subtract(a,b)` subtracts `b` from `a`\" subtract\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:306
@@ -25934,6 +26116,10 @@ msgid ""
 "    f(x) = x\n"
 "end\n"
 msgstr ""
+"if condition()\n"
+"    \"...\"\n"
+"    f(x) = x\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:316
@@ -25946,7 +26132,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/documentation.md:317
 #, no-wrap
 msgid "Dynamic documentation"
-msgstr ""
+msgstr "動的ドキュメント"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:322
@@ -25979,7 +26165,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/documentation.md:337
 #, no-wrap
 msgid "Syntax Guide"
-msgstr ""
+msgstr "構文ガイド"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:340
@@ -26002,7 +26188,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/documentation.md:346
 #, no-wrap
 msgid "Functions and Methods"
-msgstr ""
+msgstr "関数とメソッド"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:348
@@ -26014,6 +26200,11 @@ msgid ""
 "\"...\"\n"
 "f\n"
 msgstr ""
+"\"...\"\n"
+"function f end\n"
+"\n"
+"\"...\"\n"
+"f\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:358
@@ -26035,6 +26226,16 @@ msgid ""
 "\"...\"\n"
 "f(x)\n"
 msgstr ""
+"\"...\"\n"
+"f(x) = x\n"
+"\n"
+"\"...\"\n"
+"function f(x)\n"
+"    x\n"
+"end\n"
+"\n"
+"\"...\"\n"
+"f(x)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:373
@@ -26048,6 +26249,8 @@ msgid ""
 "\"...\"\n"
 "f(x, y = 1) = x + y\n"
 msgstr ""
+"\"...\"\n"
+"f(x, y = 1) = x + y\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:380
@@ -26058,7 +26261,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/documentation.md:381 ext/julia/doc/src/devdocs/ast.md:84 ext/julia/doc/src/devdocs/ast.md:228
 #, no-wrap
 msgid "Macros"
-msgstr ""
+msgstr "マクロ"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:383
@@ -26067,6 +26270,8 @@ msgid ""
 "\"...\"\n"
 "macro m(x) end\n"
 msgstr ""
+"\"...\"\n"
+"macro m(x) end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:389
@@ -26080,6 +26285,8 @@ msgid ""
 "\"...\"\n"
 ":(@m)\n"
 msgstr ""
+"\"...\"\n"
+":(@m)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:396
@@ -26139,6 +26346,13 @@ msgid ""
 "    y\n"
 "end\n"
 msgstr ""
+"\"...\"\n"
+"struct T\n"
+"    \"x\"\n"
+"    x\n"
+"    \"y\"\n"
+"    y\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:428
@@ -26149,7 +26363,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/documentation.md:429
 #, no-wrap
 msgid "Modules"
-msgstr ""
+msgstr "モジュール"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:431
@@ -26165,6 +26379,15 @@ msgid ""
 "\n"
 "end\n"
 msgstr ""
+"\"...\"\n"
+"module M end\n"
+"\n"
+"module M\n"
+"\n"
+"\"...\"\n"
+"M\n"
+"\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:445
@@ -26190,6 +26413,19 @@ msgid ""
 "\n"
 "end\n"
 msgstr ""
+"\"...\"\n"
+"baremodule M\n"
+"# ...\n"
+"end\n"
+"\n"
+"baremodule M\n"
+"\n"
+"import Base: @doc\n"
+"\n"
+"\"...\"\n"
+"f(x) = x\n"
+"\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:465
@@ -26202,7 +26438,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/documentation.md:466
 #, no-wrap
 msgid "Global Variables"
-msgstr ""
+msgstr "グローバル変数"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:468
@@ -26217,6 +26453,14 @@ msgid ""
 "\"...\"\n"
 "global c = 3\n"
 msgstr ""
+"\"...\"\n"
+"const a = 1\n"
+"\n"
+"\"...\"\n"
+"b = 2\n"
+"\n"
+"\"...\"\n"
+"global c = 3\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:480
@@ -26262,6 +26506,11 @@ msgid ""
 "    const alias = f\n"
 "    ```\n"
 msgstr ""
+"    ```julia\n"
+"    \"...\"\n"
+"    f(x) = x + 1\n"
+"    const alias = f\n"
+"    ```\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:501
@@ -26279,6 +26528,11 @@ msgid ""
 "    const alias = f\n"
 "    ```\n"
 msgstr ""
+"    ```julia\n"
+"    f(x) = x + 1\n"
+"    \"...\"\n"
+"    const alias = f\n"
+"    ```\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:508
@@ -26287,6 +26541,8 @@ msgid ""
 "\"...\"\n"
 "sym\n"
 msgstr ""
+"\"...\"\n"
+"sym\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:515
@@ -26306,6 +26562,8 @@ msgid ""
 "\"...\"\n"
 "a, b\n"
 msgstr ""
+"\"...\"\n"
+"a, b\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:525
@@ -26322,6 +26580,11 @@ msgid ""
 "\"...\"\n"
 "b\n"
 msgstr ""
+"\"...\"\n"
+"a\n"
+"\n"
+"\"...\"\n"
+"b\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:536
@@ -26408,13 +26671,13 @@ msgstr ""
 #: ext/julia/doc/src/stdlib/Dates.md:833 ext/julia/doc/src/devdocs/cartesian.md:134
 #, no-wrap
 msgid "@docs"
-msgstr ""
+msgstr "@docs"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/documentation.md:556
 #, no-wrap
 msgid "Core.@__doc__\n"
-msgstr ""
+msgstr "Core.@__doc__\n"
 
 #. type: Title #
 #: ext/julia/doc/src/manual/performance-tips.md:1
@@ -26425,13 +26688,13 @@ msgstr "[パフォーマンス・ティップス](@id man-performance-tips)"
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:5
 msgid "In the following sections, we briefly go through a few techniques that can help make your Julia code run as fast as possible."
-msgstr ""
+msgstr "次のセクションでは、Julia コードをできるだけ速く実行するのに役立ついくつかのテクニックを簡単に説明します。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/performance-tips.md:6
 #, no-wrap
 msgid "Avoid global variables"
-msgstr ""
+msgstr "グローバル変数を避ける"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:11
@@ -26439,27 +26702,29 @@ msgid ""
 "A global variable might have its value, and therefore its type, change at any point. This makes it difficult for the compiler to optimize "
 "code using global variables. Variables should be local, or passed as arguments to functions, whenever possible."
 msgstr ""
+"グローバル変数は(宣言時に) 値と型を持つかもしれませんが、その型はいつでも変わりえます。そのため、コンパイラはグローバル変数を使用したコードを"
+"最適化することが難しいのです。変数は、可能な限りローカルであるか、関数に引数として渡される必要があります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:13
 msgid "Any code that is performance critical or being benchmarked should be inside a function."
-msgstr ""
+msgstr "パフォーマンスが重要なコードやベンチマークされているコードは、関数内に存在する必要があります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:16
 msgid "We find that global names are frequently constants, and declaring them as such greatly improves performance:"
-msgstr ""
+msgstr "グローバル名は定数であることが多く、そのように宣言するとパフォーマンスが大幅に向上します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:17
 #, no-wrap
 msgid "const DEFAULT_VAL = 0\n"
-msgstr ""
+msgstr "const DEFAULT_VAL = 0\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:22
 msgid "Uses of non-constant globals can be optimized by annotating their types at the point of use:"
-msgstr ""
+msgstr "非定数グローバルの使う場合は、使用時に型のアノテーションをすることで最適化できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:23
@@ -26475,11 +26740,20 @@ msgid ""
 "    return s\n"
 "end\n"
 msgstr ""
+"global x = rand(1000)\n"
+"\n"
+"function loop_over_global()\n"
+"    s = 0.0\n"
+"    for i in x::Vector{Float64}\n"
+"        s += i\n"
+"    end\n"
+"    return s\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:36
 msgid "Passing arguments to functions is better style. It leads to more reusable code and clarifies what the inputs and outputs are."
-msgstr ""
+msgstr "より優れているのは関数に引数として渡すスタイルです。このスタイルでは、コードがより再利用しやすく、入力と出力が明確になります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:41
@@ -26490,39 +26764,42 @@ msgid ""
 "    at top level will be a **global** variable. Variables defined at top level scope inside\n"
 "    modules are also global.\n"
 msgstr ""
+"!!!メモ\n"
+"    REPL 内のすべてのコードはグローバル スコープで評価されるので、最上位レベルで定義・代入された変数は**グローバル**変数になります。\n"
+"    モジュール内の最上位スコープで定義された変数もまたグローバルになります。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:43
 msgid "In the following REPL session:"
-msgstr ""
+msgstr "次の REPL セッションで:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:44
 #, no-wrap
 msgid "julia> x = 1.0\n"
-msgstr ""
+msgstr "julia> x = 1.0\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:49
 msgid "is equivalent to:"
-msgstr ""
+msgstr "は次と同じです:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:50
 #, no-wrap
 msgid "julia> global x = 1.0\n"
-msgstr ""
+msgstr "julia> global x = 1.0\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:55
 msgid "so all the performance issues discussed previously apply."
-msgstr ""
+msgstr "そのため、前述のパフォーマンス上の問題がすべて当てはまります。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/performance-tips.md:56
 #, no-wrap
 msgid "Measure performance with [`@time`](@ref) and pay attention to memory allocation"
-msgstr ""
+msgstr "[`@time`](@ref)でパフォーマンスを測定し、メモリ割り当てに注意を払う"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:60
@@ -26530,12 +26807,14 @@ msgid ""
 "A useful tool for measuring performance is the [`@time`](@ref) macro. We here repeat the example with the global variable above, but this "
 "time with the type annotation removed:"
 msgstr ""
+"パフォーマンス測定のための便利なツールは[`@time`](@ref)マクロです。上記のグローバル変数の例を繰り返しますが、今回は型アニテーションを削除しま"
+"した:"
 
 #. type: Code fence info string
 #: ext/julia/doc/src/manual/performance-tips.md:61
 #, no-wrap
 msgid "jldoctest; setup = :(using Random; Random.seed!(1234)), filter = r\"[0-9\\.]+ seconds \\(.*?\\)\""
-msgstr ""
+msgstr "jldoctest; setup = :(using Random; Random.seed!(1234)), filter = r\"[0-9\\.]+ seconds \\(.*?\\)\""
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:61
@@ -26559,6 +26838,23 @@ msgid ""
 "  0.000140 seconds (3.49 k allocations: 70.313 KiB)\n"
 "496.84883432553846\n"
 msgstr ""
+"julia> x = rand(1000);\n"
+"\n"
+"julia> function sum_global()\n"
+"           s = 0.0\n"
+"           for i in x\n"
+"               s += i\n"
+"           end\n"
+"           return s\n"
+"       end;\n"
+"\n"
+"julia> @time sum_global()\n"
+"  0.017705 seconds (15.28 k allocations: 694.484 KiB)\n"
+"496.84883432553846\n"
+"\n"
+"julia> @time sum_global()\n"
+"  0.000140 seconds (3.49 k allocations: 70.313 KiB)\n"
+"496.84883432553846\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:86
@@ -26568,6 +26864,10 @@ msgid ""
 "reporting the time, it also indicated that a significant amount of memory was allocated. We are here just computing a sum over all elements "
 "in a vector of 64-bit floats so there should be no need to allocate memory (at least not on the heap which is what `@time` reports)."
 msgstr ""
+"最初の呼び出し (`@time sum_global()`) で関数がコンパイルされます。(このセッションで [`@time`](@ref) をまだ使用していない場合は、時間測定に必"
+"要な関数もコンパイルします)。 この実行結果を真剣に受け止めるべきではありません。2 回目の実行では、演算時間のレポートに加えて、大量のメモリが"
+"割り当てられていることも示されます。ここでは、64 ビット浮動小数点数のベクトル内のすべての要素に対して合計を計算するだけで、メモリを割り当てる"
+"必要はありません (少なくとも`@time` がレポートするヒープ領域には必要ありません)。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:92
@@ -26576,6 +26876,9 @@ msgid ""
 "small temporary arrays.  Consequently, in addition to the allocation itself, it's very likely that the code generated for your function is "
 "far from optimal. Take such indications seriously and follow the advice below."
 msgstr ""
+"予期しないメモリ割り当ては、ほとんどの場合で、あなたの書いたコードに問題があるという兆しです。通常は型の安定性の問題であったり、多数の小さな"
+"一時配列の作成の問題です。予期しないメモリ割当は、それそのものが悪いというだけでなく、関数用に生成されたコードが最適とは程遠い可能性が非常に"
+"高いのです。このような指示を真剣に受け止め、以下のアドバイスに従ってください。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:96
@@ -26583,12 +26886,14 @@ msgid ""
 "If we instead pass `x` as an argument to the function it no longer allocates memory (the allocation reported below is due to running the "
 "`@time` macro in global scope)  and is significantly faster after the first call:"
 msgstr ""
+"グローバル参照するのでなく、関数の引数として`x`を渡せば、メモリ割り当ては起きません(ここでレポートされたメモリ割り当ては、`@time` マクロがグ"
+"ローバルスコープで実行されたことによるもの)。 そして、二回目の呼び出しからは大幅に高速になります:"
 
 #. type: Code fence info string
 #: ext/julia/doc/src/manual/performance-tips.md:97
 #, no-wrap
 msgid "jldoctest sumarg; setup = :(using Random; Random.seed!(1234)), filter = r\"[0-9\\.]+ seconds \\(.*?\\)\""
-msgstr ""
+msgstr "jldoctest sumarg; setup = :(using Random; Random.seed!(1234)), filter = r\"[0-9\\.]+ seconds \\(.*?\\)\""
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:97
@@ -26612,6 +26917,23 @@ msgid ""
 "  0.000006 seconds (5 allocations: 176 bytes)\n"
 "496.84883432553846\n"
 msgstr ""
+"julia> x = rand(1000);\n"
+"\n"
+"julia> function sum_arg(x)\n"
+"           s = 0.0\n"
+"           for i in x\n"
+"               s += i\n"
+"           end\n"
+"           return s\n"
+"       end;\n"
+"\n"
+"julia> @time sum_arg(x)\n"
+"  0.007701 seconds (821 allocations: 43.059 KiB)\n"
+"496.84883432553846\n"
+"\n"
+"julia> @time sum_arg(x)\n"
+"  0.000006 seconds (5 allocations: 176 bytes)\n"
+"496.84883432553846\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:119
@@ -26619,12 +26941,14 @@ msgid ""
 "The 5 allocations seen are from running the `@time` macro itself in global scope. If we instead run the timing in a function, we can see "
 "that indeed no allocations are performed:"
 msgstr ""
+"ここで見られた5 つのメモリ割り当ては、グローバル スコープで `@time`マクロ自体の実行からきたものです。代わりに関数内で時間測定を実行すると、実"
+"際に関数内部ではメモリ割り当てが実行されていないことがわかります:"
 
 #. type: Code fence info string
 #: ext/julia/doc/src/manual/performance-tips.md:120
 #, no-wrap
 msgid "jldoctest sumarg; filter = r\"[0-9\\.]+ seconds\""
-msgstr ""
+msgstr "jldoctest sumarg; filter = r\"[0-9\\.]+ seconds\""
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:120
@@ -26636,18 +26960,22 @@ msgid ""
 "  0.000001 seconds\n"
 "496.84883432553846\n"
 msgstr ""
+"julia> time_sum(x) = @time sum_arg(x);\n"
+"\n"
+"julia> time_sum(x)\n"
+"  0.000001 seconds\n"
+"496.84883432553846\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:132
-#, fuzzy
 msgid ""
 "In some situations, your function may need to allocate memory as part of its operation, and this can complicate the simple picture above. In "
 "such cases, consider using one of the [tools](@ref tools)  below to diagnose problems, or write a version of your function that separates "
 "allocation from its algorithmic aspects (see [Pre-allocating outputs](@ref))."
 msgstr ""
-"状況によっては、関数が操作の一部としてメモリを割り当てる必要があり、上記の単純な図が複雑になる可能性があります。このような場合は、以下の "
-"[ツール] (@ref ツール) のいずれかを使用して問題を診断するか、割り当てをアルゴリズム的な側面から分離する関数のバージョンを記述することを検討し"
-"てください ([出力の事前割当](@ref Pre-allocating-outputs)参照)。"
+"状況によっては、必要な操作の一部として関数でメモリを割り当てが必要になるかもしれません。そのときには、上述の上記の単純なイメージが、複雑にな"
+"る可能性があります。このような場合は、以下の [ツール] (@ref tools) のいずれかを使用して問題を診断するか、メモリ割り当てをアルゴリズム的な側面"
+"から分離したバージョンの関数を作ることを検討してください ([出力の事前割当](@ref Pre-allocating-outputs)参照)。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:136
@@ -26657,17 +26985,20 @@ msgid ""
 "    For more serious benchmarking, consider the [BenchmarkTools.jl](https://github.com/JuliaCI/BenchmarkTools.jl)\n"
 "    package which among other things evaluates the function multiple times in order to reduce noise.\n"
 msgstr ""
+"!!!メモ\n"
+"    よりしっかりとベンチマークをとりたい場合は、[BenchmarkTools.jl](https://github.com/JuliaCI/BenchmarkTools.jl)パッケージを検討してください。\n"
+"    とりわけ、測定対象以外の処理の実行に起因するノイズを低減するため、関数を複数回評価してくれます。\n"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/performance-tips.md:137
 #, no-wrap
 msgid "[Tools](@id tools)"
-msgstr ""
+msgstr "[ツール](@id tools)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:141
 msgid "Julia and its package ecosystem includes tools that may help you diagnose problems and improve the performance of your code:"
-msgstr ""
+msgstr "Julia とそのパッケージ エコシステムには、問題の診断とコードのパフォーマンスの向上に役立つツールが含まれています:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/performance-tips.md:153
@@ -26675,11 +27006,13 @@ msgid ""
 "[Profiling](@ref) allows you to measure the performance of your running code and identify lines that serve as bottlenecks. For complex "
 "projects, the [ProfileView](https://github.com/timholy/ProfileView.jl)  package can help you visualize your profiling results."
 msgstr ""
+"[Profiling](@ref Profiling) を使用すると、実行中のコードのパフォーマンスを測定し、ボトルネックとなる行を特定できます。複雑なプロジェクトの場"
+"合、[ProfileView](https://github.com/timholy/ProfileView.jl)パッケージは、プロファイリング結果を視覚化するに役立ちます。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/performance-tips.md:153
 msgid "The [Traceur](https://github.com/MikeInnes/Traceur.jl) package can help you find common performance problems in your code."
-msgstr ""
+msgstr "[Traceur](https://github.com/MikeInnes/Traceur.jl)パッケージは、コード内の一般的なパフォーマンス上の問題を見つけるのに役立ちます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/performance-tips.md:153
@@ -26693,6 +27026,11 @@ msgid ""
 "  * `@code_warntype` generates a representation of your code that can be helpful in finding expressions\n"
 "    that result in type uncertainty. See [`@code_warntype`](@ref) below.\n"
 msgstr ""
+"  * 予想外に大きなメモリ割り当て、これは[`@time`](@ref)、[`@allocated`](@ref)、またはプロファイラー (ガベージ コレクション ルーチンの呼び出しを通じて)により報告されるものですが、あなたのコードに問題がある可能性を示唆します。\n"
+"     もしその予想外のメモリ割当に心当たりがない場合は、型の問題を疑ってください。\n"
+"     あるいは、Julia を `--track-allocation=user`オプションを付けて実行し、その結果を調べることもできます。\n"
+"    `*.mem`ファイルは、これらの割り当てが発生する場所に関する情報を表示します。[メモリ割り当ての分析](@ref Memory-allocation-analysis)を参照してください。\n"
+"  * `@code_warntype` は、どの式で型の不確実性が生じるかを見つけるのに役立つような、あなたのコードについての情報を生成します。下記の[`@code_warntype`](@ref)を参照してください。\n"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/performance-tips.md:154
@@ -39081,7 +39419,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/profile.md:1
 #, no-wrap
 msgid "Profiling"
-msgstr ""
+msgstr "[プロファイリング](@id Profiling)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:7
@@ -39090,6 +39428,9 @@ msgid ""
 "code, and produces output that helps you understand how much time is spent on individual line(s). The most common usage is to identify "
 "\"bottlenecks\" as targets for optimization."
 msgstr ""
+"`Profile`モジュールには、開発者がコードのパフォーマンスを向上させるのに役立つツールが用意されています。使用すると、実行中のコードを測定し、各"
+"行の演算にどれくらいの時間が費やされているかを理解するのに役立つ出力を生成します。最も一般的な使用法は、最適化のターゲットとして「ボトルネッ"
+"ク」を特定することです。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:12
@@ -39100,6 +39441,9 @@ msgid ""
 "captures the currently-running function and line number, plus the complete chain of function calls\n"
 "that led to this line, and hence is a \"snapshot\" of the current state of execution.\n"
 msgstr ""
+"`Profile`には、「サンプリング」すなわち、[統計的プロファイラー](https://en.wikipedia.org/wiki/Profiling_(computer_programming))として知られているものを実装されています。\n"
+" これは、任意のタスクの実行中に定期的にバックトレースを取ることによって動作します。\n"
+"各バックトレースは、現在実行中の関数と行番号、そして、この行の実行につながる関数呼び出しの完全な連鎖を補足します。そのため、(バックトレースで得られる状態は)現在の実行状態の \"スナップショット\" になります。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:17
@@ -39108,6 +39452,8 @@ msgid ""
 "other words, the \"cost\" of a given line--or really, the cost of the sequence of function calls up to and including this line--is "
 "proportional to how often it appears in the set of all backtraces."
 msgstr ""
+"実行時間の多くが特定のコード行の実行に費やされている場合、この行はすべてのバックトレースのセットに頻繁に現れます。言い換えれば、特定の行の"
+"「コスト」、つまり、この行を含む関数の一連の呼び出しのコストは、すべてのバックトレースのセットに表示される頻度に比例します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:23
@@ -39117,11 +39463,15 @@ msgid ""
 "because samples are collected at a sparse subset of all execution points, the data collected by a sampling profiler is subject to "
 "statistical noise."
 msgstr ""
+"サンプリング プロファイラは、1行1行の実行に対する完全なカバレッジを提供しません。バックトレースが一定時間間隔で発生するからです(既定では、"
+"Unix システムで 1 ミリ秒、Windows では 10 ミリ秒ですが、実際のスケジューリングはオペレーティング システムの負荷の影響を受けます)。さらに、後"
+"で説明するように、サンプルは全実行ポイントに対してサンプル数のまばらな部分集合として収集されるため、サンプリング プロファイラによって収集され"
+"たデータは統計的ノイズの影響を受けます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:25
 msgid "Despite these limitations, sampling profilers have substantial strengths:"
-msgstr ""
+msgstr "これらの制限にもかかわらず、サンプリング プロファイラには大きな強みがあります:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/profile.md:31
@@ -39129,32 +39479,36 @@ msgid ""
 "You do not have to make any modifications to your code to take timing measurements (in contrast to the alternative [instrumenting profiler]"
 "(https://github.com/timholy/IProfile.jl))."
 msgstr ""
+"演算時間測定を行うためにコードを変更する必要はありません(代替手段である [インストルメンテーションプロファイラ](https://github.com/timholy/"
+"IProfile.jl)とは対照的です)。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/profile.md:31
 msgid "It can profile into Julia's core code and even (optionally) into C and Fortran libraries."
-msgstr ""
+msgstr "Juliaのコアコードの中まで、さらには(オプションで)CおよびFortranライブラリの中もプロファイルすることができます。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/profile.md:31
 msgid "By running \"infrequently\" there is very little performance overhead; while profiling, your code can run at nearly native speed."
 msgstr ""
+"\"まれに\" 実行する分には、パフォーマンスのオーバーヘッドはほとんどありません。プロファイリング中は、コードはほぼネイティブの速度で実行できま"
+"す。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:34
 msgid "For these reasons, it's recommended that you try using the built-in sampling profiler before considering any alternatives."
-msgstr ""
+msgstr "このような理由から、代替案を検討する前に、組み込みのサンプリング プロファイラを使用することをお勧めします。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/profile.md:35
 #, no-wrap
 msgid "Basic usage"
-msgstr ""
+msgstr "基本的な使い方"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:38
 msgid "Let's work with a simple test case:"
-msgstr ""
+msgstr "簡単なテストケースを試してみましょう:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:39
@@ -39165,22 +39519,26 @@ msgid ""
 "           maximum(A)\n"
 "       end\n"
 msgstr ""
+"julia> function myfunc()\n"
+"           A = rand(200, 200, 400)\n"
+"           maximum(A)\n"
+"       end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:48
 msgid "It's a good idea to first run the code you intend to profile at least once (unless you want to profile Julia's JIT-compiler):"
-msgstr ""
+msgstr "プロファイルするコードを少なくとも 1 回実行しておくのはよいアイディアです (Julia の JIT コンパイラをプロファイリングする場合を除く):"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:49
 #, no-wrap
 msgid "julia> myfunc() # run once to force compilation\n"
-msgstr ""
+msgstr "julia> myfunc() # run once to force compilation\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:54
 msgid "Now we're ready to profile this function:"
-msgstr ""
+msgstr "これで、この関数をプロファイルする準備ができました:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:55
@@ -39190,6 +39548,9 @@ msgid ""
 "\n"
 "julia> @profile myfunc()\n"
 msgstr ""
+"julia> using Profile\n"
+"\n"
+"julia> @profile myfunc()\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:63
@@ -39197,6 +39558,8 @@ msgid ""
 "To see the profiling results, there is a [graphical browser](https://github.com/timholy/ProfileView.jl)  available, but here we'll use the "
 "text-based display that comes with the standard library:"
 msgstr ""
+"プロファイリング結果を確認するには、[グラフィカルブラウザ](https://github.com/timholy/ProfileView.jl)を使用できますが、ここでは標準ライブラリ"
+"に付属のテキストベースの表示を使用します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:64
@@ -39221,6 +39584,24 @@ msgid ""
 "        3  ./reduce.jl:426; mapreduce_impl(::Base.#identity, ::Base.#scalarmax, ::Array{F...\n"
 "        25 ./reduce.jl:428; mapreduce_impl(::Base.#identity, ::Base.#scalarmax, ::Array{F...\n"
 msgstr ""
+"julia> Profile.print()\n"
+"80 ./event.jl:73; (::Base.REPL.##1#2{Base.REPL.REPLBackend})()\n"
+" 80 ./REPL.jl:97; macro expansion\n"
+"  80 ./REPL.jl:66; eval_user_input(::Any, ::Base.REPL.REPLBackend)\n"
+"   80 ./boot.jl:235; eval(::Module, ::Any)\n"
+"    80 ./<missing>:?; anonymous\n"
+"     80 ./profile.jl:23; macro expansion\n"
+"      52 ./REPL[1]:2; myfunc()\n"
+"       38 ./random.jl:431; rand!(::MersenneTwister, ::Array{Float64,3}, ::Int64, ::Type{B...\n"
+"        38 ./dSFMT.jl:84; dsfmt_fill_array_close_open!(::Base.dSFMT.DSFMT_state, ::Ptr{F...\n"
+"       14 ./random.jl:278; rand\n"
+"        14 ./random.jl:277; rand\n"
+"         14 ./random.jl:366; rand\n"
+"          14 ./random.jl:369; rand\n"
+"      28 ./REPL[1]:3; myfunc()\n"
+"       28 ./reduce.jl:270; _mapreduce(::Base.#identity, ::Base.#scalarmax, ::IndexLinear,...\n"
+"        3  ./reduce.jl:426; mapreduce_impl(::Base.#identity, ::Base.#scalarmax, ::Array{F...\n"
+"        25 ./reduce.jl:428; mapreduce_impl(::Base.#identity, ::Base.#scalarmax, ::Array{F...\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:92
@@ -39231,6 +39612,11 @@ msgid ""
 "the third field is the function name.  Note that the specific line numbers may change as Julia's code changes; if you want to follow along, "
 "it's best to run this example yourself."
 msgstr ""
+"この表示の各行は、コード内の特定のスポット (行番号) を表します。インデントは、入れ子になった関数呼び出しのシーケンスを示すために使用され、よ"
+"りインデントされた行は呼び出しのシーケンスの中でより深くなります。各行で、最初の「フィールド」は、*この行またはこの行で実行される関数*で受け"
+"取られたバックトレース(サンプル)の数です。 2 番目のフィールドはファイル名と行番号で、3 番目のフィールドは関数名です。 ジュリアのコードが変更"
+"されるにつれて、特定の行番号が変更される可能性があることに注意してください。この後の話についていくために、この例を自分で実行するのがベストで"
+"す。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:99
@@ -39240,6 +39626,10 @@ msgid ""
 "that evaluates what you type at the REPL, and since we're working interactively these functions were invoked when we entered `@profile "
 "myfunc()`. The next line reflects actions taken in the [`@profile`](@ref)  macro."
 msgstr ""
+"この例では、呼び出される最上位関数がファイル `event.jl` にあることがわかります。これは、Julia 起動時に REPL を実行する関数です。`REPL.jl` の "
+"97 行を調べると、`eval_user_input()` 関数が呼び出される場所であることが分かります。これはREPLで入力した内容を評価する関数です。今は 対話的に"
+"作業しているので、`@profile myfunc()` をREPLから入力したときに、これら(訳注: `eval_user_input()のことだろうが、なぜ複数?) の関数が呼び出され"
+"ました。次の行は[`@profile`](@ref)マクロで実行されたアクションを反映しています。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:104
@@ -39248,17 +39638,20 @@ msgid ""
 "third line reveals that all 80 of these backtraces were actually triggered inside its call to `eval_user_input`, and so on. To find out "
 "which operations are actually taking the time, we need to look deeper in the call chain."
 msgstr ""
+"最初の行は`event.jl`の73行目で80個のバックトレースが取られたことを示していますが、この行自体の演算コストが高いわけでは有りません。: 3行目を見"
+"れば、これらのバックトレースの80個すべてが実際に`eval_user_input`への呼び出しの中でトリガされたことが明らかです。実際に時間がかかっている操作"
+"を調べるには、コール チェーンをより深く調べる必要があります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:106
 msgid "The first \"important\" line in this output is this one:"
-msgstr ""
+msgstr "この出力の最初の \"重要な\" 行はこれです:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:107
 #, no-wrap
 msgid "52 ./REPL[1]:2; myfunc()\n"
-msgstr ""
+msgstr "52 ./REPL[1]:2; myfunc()\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:116
@@ -39268,17 +39661,21 @@ msgid ""
 "the call to `rand`, and there were 52 (out of 80) backtraces that occurred at this line. Below that, you can see a call to "
 "`dsfmt_fill_array_close_open!` inside `dSFMT.jl`."
 msgstr ""
+"`REPL` は、REPL で `myfunc` を定義したという事実を指します。ファイルに`myfunc`が定義されたというわけではありません。ファイルを使用していた場"
+"合は、(`REPL`の代わりに)ファイル名が表示されます。`[1]` は、関数 `myfunc` がこの REPL セッションで評価された最初の式であることを示していま"
+"す。`myfunc()` の 2 行目には `rand` の呼び出しが含まれており、この行で発生したバックトレースは 52 (80 のうち) でした。その下には、`dSFMT.jl` "
+"内の`dSfmt_fill_array_close_open!` の呼び出しがあります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:118
 msgid "A little further down, you see:"
-msgstr ""
+msgstr "もう少し下に行くと、下記の行が見つかります:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:119
 #, no-wrap
 msgid "28 ./REPL[1]:3; myfunc()\n"
-msgstr ""
+msgstr "28 ./REPL[1]:3; myfunc()\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:126
@@ -39286,6 +39683,8 @@ msgid ""
 "Line 3 of `myfunc` contains the call to `maximum`, and there were 28 (out of 80) backtraces taken here. Below that, you can see the specific "
 "places in `base/reduce.jl` that carry out the time-consuming operations in the `maximum` function for this type of input data."
 msgstr ""
+"`myfunc` の 3 行目には`maximum`の呼び出しがあり、ここで 28 (80 件中) のバックトレースがカウントされています。その下には、このタイプの入力デー"
+"タに対する`maximum` 関数内の時間のかかる処理を実行している、`base/reduce.jl`のある場所を確認できます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:130
@@ -39293,6 +39692,8 @@ msgid ""
 "Overall, we can tentatively conclude that generating the random numbers is approximately twice as expensive as finding the maximum element. "
 "We could increase our confidence in this result by collecting more samples:"
 msgstr ""
+"全体として、乱数の生成は、最大の要素を見つける処理の約2倍のコストがかかると暫定的に結論付けることができます。より多くのサンプルを収集すること"
+"で、この結果に対する確信を深めることができました:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:131
@@ -39311,6 +39712,18 @@ msgid ""
 "  2893 ./reduce.jl:270; _mapreduce(::Base.#identity, ::Base.#scalarmax, ::IndexLinea...\n"
 "   [....]\n"
 msgstr ""
+"julia> @profile (for i = 1:100; myfunc(); end)\n"
+"\n"
+"julia> Profile.print()\n"
+"[....]\n"
+" 3821 ./REPL[1]:2; myfunc()\n"
+"  3511 ./random.jl:431; rand!(::MersenneTwister, ::Array{Float64,3}, ::Int64, ::Type...\n"
+"   3511 ./dSFMT.jl:84; dsfmt_fill_array_close_open!(::Base.dSFMT.DSFMT_state, ::Ptr...\n"
+"  310  ./random.jl:278; rand\n"
+"   [....]\n"
+" 2893 ./REPL[1]:3; myfunc()\n"
+"  2893 ./reduce.jl:270; _mapreduce(::Base.#identity, ::Base.#scalarmax, ::IndexLinea...\n"
+"   [....]\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:151
@@ -39320,11 +39733,17 @@ msgid ""
 "tends to be quite expensive. (Since Julia's garbage collector is written in C, such events can be detected using the `C=true` output mode "
 "described below, or by using [ProfileView.jl](https://github.com/timholy/ProfileView.jl).)"
 msgstr ""
+"一般に、ある行でのカウントが`N` サンプルであった場合、(コンピュータが他のタスクでビジー状態にあるかなど、他のノイズ源を除いて), その値の不確"
+"実性は、 `sqrt(N)`のオーダーであることが期待できます。このルールの主な例外は、実行頻度は低いが、非常に演算コストの高い傾向があるガベージ コレ"
+"クションです。(Julia のガベージ コレクタは C で記述されているので、このようなイベントは、以下に説明する 'C=true' 出力モードを使用するか、"
+"[ProfileView.jl](https://github.com/timholy/ProfileView.jl) を使用して検出できます。)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:154
 msgid "This illustrates the default \"tree\" dump; an alternative is the \"flat\" dump, which accumulates counts independent of their nesting:"
 msgstr ""
+"これは、デフォルト出力である 「ツリー型」ダンプを示しています; 他には、代替案は、入れ子構造に依存せずにカウントを蓄積する「フラット」ダンプで"
+"す:\v"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:155
@@ -39360,6 +39779,8 @@ msgid ""
 "If your code has recursion, one potentially-confusing point is that a line in a \"child\" function can accumulate more counts than there are "
 "total backtraces. Consider the following function definitions:"
 msgstr ""
+"コードで再帰が使われている場合、\"子\" 関数の行が合計バックトレースよりも多くのカウントを蓄積する可能性があります。次の関数定義を考えてみま"
+"しょう:\v"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:183
@@ -39368,11 +39789,13 @@ msgid ""
 "dumbsum(n::Integer) = n == 1 ? 1 : 1 + dumbsum(n-1)\n"
 "dumbsum3() = dumbsum(3)\n"
 msgstr ""
+"dumbsum(n::Integer) = n == 1 ? 1 : 1 + dumbsum(n-1)\n"
+"dumbsum3() = dumbsum(3)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:190
 msgid "If you were to profile `dumbsum3`, and a backtrace was taken while it was executing `dumbsum(1)`, the backtrace would look like this:"
-msgstr ""
+msgstr "`dumbsum3` をプロファイリングし、`dumbsum(1)` の実行中にバックトレースが取得された場合、バックトレースは次のようになります:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:191
@@ -39383,6 +39806,10 @@ msgid ""
 "        dumbsum(2)\n"
 "            dumbsum(1)\n"
 msgstr ""
+"dumbsum3\n"
+"    dumbsum(3)\n"
+"        dumbsum(2)\n"
+"            dumbsum(1)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:201
@@ -39390,12 +39817,14 @@ msgid ""
 "Consequently, this child function gets 3 counts, even though the parent only gets one. The \"tree\" representation makes this much clearer, "
 "and for this reason (among others) is probably the most useful way to view the results."
 msgstr ""
+"その結果、親では1カウントのみなのに対して、この子関数は 3 カウントを取得します。「ツリー」表現はこれをより明確にします。そのため、ツリー表現"
+"は (特に) 結果を表示する際に最も便利な方法です。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/profile.md:202
 #, no-wrap
 msgid "Accumulation and clearing"
-msgstr ""
+msgstr "蓄積とクリア"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:207
@@ -39404,33 +39833,36 @@ msgid ""
 "(@ref) will show you the combined results. This can be very useful, but sometimes you want to start fresh; you can do so with [`Profile."
 "clear()`](@ref)."
 msgstr ""
+"[`@profile`](@ref)の結果はバッファに蓄積されます。[`@profile`](@ref)で複数のコードを実行すると、[`Profile.print()`](@ref)は、それら複数のコー"
+"ドのプロファイルの結果を結合した結果を出力します。これは非常に便利ですが、プロファイルを新たに開始したい場合があります。その場合は、"
+"[`Profile.clear()`](@ref)で、クリアできます。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/profile.md:208
 #, no-wrap
 msgid "Options for controlling the display of profile results"
-msgstr ""
+msgstr "プロファイル結果の表示を制御するオプション"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:211
 msgid "[`Profile.print`](@ref) has more options than we've described so far. Let's see the full declaration:"
-msgstr ""
+msgstr "[`Profile.print`](@ref) は、これまで説明した以外にも多くのオプションを持っています。全てここで見てみましょう:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:212
 #, no-wrap
 msgid "function print(io::IO = stdout, data = fetch(); kwargs...)\n"
-msgstr ""
+msgstr "function print(io::IO = stdout, data = fetch(); kwargs...)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:217
 msgid "Let's first discuss the two positional arguments, and later the keyword arguments:"
-msgstr ""
+msgstr "まず 2 つの位置引数について説明し、後にキーワード引数を説明します:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/profile.md:223
 msgid "`io` -- Allows you to save the results to a buffer, e.g. a file, but the default is to print to `stdout` (the console)."
-msgstr ""
+msgstr "`io` -- ファイルなどのバッファに結果を保存する。デフォルトでは`stdout` (コンソール) へのプリント出力。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/profile.md:223
@@ -39438,6 +39870,8 @@ msgid ""
 "`data` -- Contains the data you want to analyze; by default that is obtained from [`Profile.fetch()`](@ref), which pulls out the backtraces "
 "from a pre-allocated buffer. For example, if you want to profile the profiler, you could say:"
 msgstr ""
+"`data` -- 分析したいデータを指定する; デフォルトでは、事前割り当てされたバッファーからバックトレース情報を取り出す [`Profile.fetch()`](@ref) "
+"から取得されま。たとえば、プロファイラーをプロファイリングする場合は、次のように指定できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:230
@@ -39450,11 +39884,17 @@ msgid ""
 "    Profile.print()                      # Prints results from Profile.print()\n"
 "    ```\n"
 msgstr ""
+"    ```julia\n"
+"    data = copy(Profile.fetch())\n"
+"    Profile.clear()\n"
+"    @profile Profile.print(stdout, data) # Prints the previous results\n"
+"    Profile.print()                      # Prints results from Profile.print()\n"
+"    ```\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:232
 msgid "The keyword arguments can be any combination of:"
-msgstr ""
+msgstr "キーワード引数には、次の任意の組み合わせを指定できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:252
@@ -39480,6 +39920,21 @@ msgid ""
 "    where `n` is the number of samples on this line, and `N` is the number of samples for the callee.\n"
 "  * `mincount` -- Limits frames with less than `mincount` occurrences.\n"
 msgstr ""
+"  * `format` -- 上で紹介したように、バックトレースの表示形式を決定します。\n"
+"     関数コールの木構造を示すインデントを用いる `:tree`(デフォルト) とインデント無しの`:flat`\n"
+"  * `C` -- `true` の場合、C コードと Fortran コードからのバックトレースが表示されます (通常は除外されます)。\n"
+"    `Profile.print(C = true)`の紹介例を示すので実行してみてください。この機能は、ボトルネックになっているのが Juliaコードなのか、Cコードの部分なのか判断するのに大変役立ちます。\n"
+"    `C = true` を設定すると、より長いプロファイルダンプになってしまいますが、ネストの解釈はしやすくなります。\n"
+"  * `combine` -- コード行の中には複数の操作が含まれていることがあります。たとえば、`s += A[i]` には配列の参照(`A[i]`)と加算の両方が含まれています。\n"
+"    これらは、生成されたマシンコードでは、別々の行に対応しています。そのため、この行のバックトレース中で2つ以上の異なるアドレスがキャプチャかもしれません。\n"
+"    `combine = true` オプションはそれらを一緒にまとめます。これはおそらくあなたが通常望む動作でしょう。\n"
+"    ただし、`combine = false` オプションを使えば、一意の命令ポインターごとにに出力を生成することもできます。\n"
+"  * `maxdepth` -- `:tree` 形式での `maxdepth` よりさらに大きい値を持つ深さで表示するフレームを制限します。\n"
+"  * `sortby` -- `:flat` 形式での表示順序を制御します。`:filefuncline` (デフォルト) はソースファイルによるソート、`:count` は収集されたサンプルの数の順番でのソートです。\n"
+"  * `noisefloor` -- サンプル数のノイズフロアをヒューリスティックに指定します。ノイズフロアより下のフレームは表示が制限されます(フォーマット`:tree`にのみ適用されます)。\n"
+"    これを試す際の推奨値は 2.0 です (デフォルトは 0)。このパラメーターは、`n <= ノイズフロア * √N` のサンプルを非表示にします。\n"
+"    ここで `n` は、この行のサンプルの数で、`N` は呼び出し先のサンプルの数です。\n"
+"  * `mincount` -- ここで指定した値よりも小さいオカレンスのフレームを制限します。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:257
@@ -39488,6 +39943,9 @@ msgid ""
 "of extra spaces that would have been inserted, had there been room. If you want a complete profile of deeply-nested code, often a good idea "
 "is to save to a file using a wide `displaysize` in an [`IOContext`](@ref):"
 msgstr ""
+"ファイル/関数名は、(`...`) を使って切り捨て表示されることがあります。 また、インデントは先頭で `+n` で切り捨てられます。ここで `n` は挿入され"
+"る追加のスペースの数です。深くネストされたコードの完全なプロファイルが必要な場合は、[`IOContext`](@ref)で広い「表示サイズ」を使用してファイル"
+"に保存することをお考えめします:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:258
@@ -39497,12 +39955,15 @@ msgid ""
 "    Profile.print(IOContext(s, :displaysize => (24, 500)))\n"
 "end\n"
 msgstr ""
+"open(\"/tmp/prof.txt\", \"w\") do s\n"
+"    Profile.print(IOContext(s, :displaysize => (24, 500)))\n"
+"end\n"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/profile.md:264
 #, no-wrap
 msgid "Configuration"
-msgstr ""
+msgstr "構成・設定"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:271
@@ -39512,11 +39973,15 @@ msgid ""
 "stop but your computation continues.  As a consequence, you may miss some important profiling data (you will get a warning when that "
 "happens)."
 msgstr ""
+"[`@profile`](@ref) はバックトレースを蓄積するだけです。実際の分析は、[`Profile.print()`](@ref)を呼び出したときに行われます。実行時間の長い計"
+"算では、バックトレースを格納するために事前に割り当てられたバッファがいっぱいになる可能性があります。その場合、バックトレースは停止しますが、"
+"プロファイル対象の計算自体は続行されます。 その結果、いくつかの重要なプロファイリング データを見逃す可能性があります (その場合は警告が表示さ"
+"れます)。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:273
 msgid "You can obtain and configure the relevant parameters this way:"
-msgstr ""
+msgstr "以下で、関連するパラメータを取得および構成できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:274
@@ -39525,6 +39990,8 @@ msgid ""
 "Profile.init() # returns the current settings\n"
 "Profile.init(n = 10^7, delay = 0.01)\n"
 msgstr ""
+"Profile.init() # returns the current settings\n"
+"Profile.init(n = 10^7, delay = 0.01)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:282
@@ -39533,6 +40000,8 @@ msgid ""
 "pointers, then you can collect 50000 backtraces, which suggests a statistical uncertainty of less than 1%. This may be good enough for most "
 "applications."
 msgstr ""
+"`n` は、格納できる命令ポインターの合計数で、デフォルト値は `10^6` です。 一般的なバックトレースが 20 の命令ポインタである場合は、50000 バック"
+"トレースを収集できるため、統計的な不確実性が 1% 未満であることを示唆しています。これは、ほとんどのアプリケーションで十分でしょう。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:289
@@ -39542,12 +40011,16 @@ msgid ""
 "0.001`.  Of course, you can decrease the delay as well as increase it; however, the overhead of profiling grows once the delay becomes "
 "similar to the amount of time needed to take a backtrace (~30 microseconds on the author's laptop)."
 msgstr ""
+"`delay`は、要求された計算を実行するための複数スナップショットの間でJuliaが取得する時間長を秒単位で表記するものですが、前文のような状況であれ"
+"ばその結果、この`delay`の修正が必要になる可能性が高くなります。非常に長い時間実行されるジョブでは、頻繁なバックトレースは必要ない場合がありま"
+"す。デフォルトの設定は'遅延 = 0.001'です。 もちろん、遅延を減らすだけでなく、遅延を増やすことができます。ただし、遅延がバックトレース (作成者"
+"のラップトップで約 30 マイクロ秒) を取るのに必要な時間に近くなると、プロファイリングのオーバーヘッドが大きくなります。"
 
 #. type: Title #
 #: ext/julia/doc/src/manual/profile.md:290
 #, no-wrap
 msgid "Memory allocation analysis"
-msgstr ""
+msgstr "メモリ割り当て分析"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:297
@@ -39557,6 +40030,9 @@ msgid ""
 "garbage collection that these lines incur. However, sometimes it is more efficient to directly measure the amount of memory allocated by "
 "each line of code."
 msgstr ""
+"パフォーマンスを向上させる最も一般的な手法の 1 つは、メモリ割り当てを減らすことです。メモリ割り当ての合計量は[`@time`](@ref)と[`@allocated`]"
+"(@ref)で測定することができ、メモリ割り当てをトリガする特定の行は、多くの場合、これらの行で発生するガベージコレクションによる演算コストを介し"
+"てプロファイリングから推測することができます。ただし、コード行ごとに割り当てられるメモリの量を直接測定する方が効率的な場合もあります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:306
@@ -39571,6 +40047,10 @@ msgid ""
 "allocated. The [`Coverage` package](https://github.com/JuliaCI/Coverage.jl) contains some elementary\n"
 "analysis tools, for example to sort the lines in order of number of bytes allocated.\n"
 msgstr ""
+"メモリ割り当てを 1 行ずつ測定するには、`--track-allocation=<setting>`コマンドラインオプションをついけてJulia を起動します。\n"
+"選択可能なオプションは、`none` (デフォルト値。メモリ割り当てを測定しない) 、`user`(Juliaのコアコードを除く、Juliaコードの各行におけるメモリ割り当てを測定する), `all`(全Juliaコードの各行でメモリ割り当てを測定)です。\n"
+"Julia終了時、各ソースファイルのファイル名の後に`.mem`が付加されたテキストファイルに書き込まれます。出力先は、ソース ファイルと同じディレクトリです。\n"
+"各行には、合計バイト数が一覧表示されます。[`Coverage` パッケージ](https://github.com/JuliaCI/Coverage.jl) には、基本的な分析ツール、例えば メモリ割り当てのバイト数での行ソートなど、が含まれています。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:315
@@ -39585,17 +40065,21 @@ msgid ""
 " Finally, execute the desired commands and quit Julia to trigger the generation of the `.mem`\n"
 "files.\n"
 msgstr ""
+"結果を解釈する際には、いくつか重要な詳細情報があるので気をつけてください。\n"
+"`--track-allocation=user` で実行した場合、REPL から直接呼び出される関数の最初の行には、REPLからの関数コール自体に含まれメモリ割り当ての情報が示されます。\n"
+"さらに重要なのは、ジュリアのコンパイラの多くはジュリアで書かれているので(そしてコンパイルは通常メモリ割当が必要なので)、JIT コンパイルによってメモリ割り当てカウントが追加されるということです。推奨される手順は、すべての分析したいすべてのコマンドをを実行して強制的にコンパイルしておき、[`Profile.clear_malloc_data()`](@ref)を呼び出して、すべての割り当てカウンタをリセットすることです。\n"
+" 最後に、目的のコマンドを実行し、ジュリアを終了して '.mem'ファイルの生成をトリガーします。\n"
 
 #. type: Title #
 #: ext/julia/doc/src/manual/profile.md:316
 #, no-wrap
 msgid "External Profiling"
-msgstr ""
+msgstr "外部のプロファイリングツール"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:319
 msgid "Currently Julia supports `Intel VTune`, `OProfile` and `perf` as external profiling tools."
-msgstr ""
+msgstr "現在、Juliaは外部プロファイリングツールとして`Intel VTune`、`OProfile`、`perf`をサポートしています。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:322
@@ -39603,16 +40087,18 @@ msgid ""
 "Depending on the tool you choose, compile with `USE_INTEL_JITEVENTS`, `USE_OPROFILE_JITEVENTS` and `USE_PERF_JITEVENTS` set to 1 in `Make."
 "user`. Multiple flags are supported."
 msgstr ""
+"選択したツールに応じて、`Make.user`ファイル内で、`USE_INTEL_JITEVENTS`、`USE_OPROFILE_JITEVENTS`、`USE_PERF_JITEVENTS` などを1に設定してコン"
+"パイルしてください。複数のフラグがサポートされています。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:324
 msgid "Before running Julia set the environment variable `ENABLE_JITPROFILING` to 1."
-msgstr ""
+msgstr "Julia を実行する前に、環境変数 `ENABLE_JITPROFILING` を 1 に設定します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:327
 msgid "Now you have a multitude of ways to employ those tools! For example with `OProfile` you can try a simple recording :"
-msgstr ""
+msgstr "これで、あなたはこれらのツールを使用する多数の方法を手に入れました。たとえば、`OProfile` を使用すると、簡単な記録をすることができます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:328
@@ -39621,11 +40107,13 @@ msgid ""
 ">ENABLE_JITPROFILING=1 sudo operf -Vdebug ./julia test/fastmath.jl\n"
 ">opreport -l `which ./julia`\n"
 msgstr ""
+">ENABLE_JITPROFILING=1 sudo operf -Vdebug ./julia test/fastmath.jl\n"
+">opreport -l `which ./julia`\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:334
 msgid "Or similary with with `perf` :"
-msgstr ""
+msgstr "または `perf`とにたやり方で:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:335
@@ -39634,6 +40122,8 @@ msgid ""
 "$ ENABLE_JITPROFILING=1 perf record -o /tmp/perf.data --call-graph dwarf ./julia /test/fastmath.jl\n"
 "$ perf report --call-graph -G\n"
 msgstr ""
+"$ ENABLE_JITPROFILING=1 perf record -o /tmp/perf.data --call-graph dwarf ./julia /test/fastmath.jl\n"
+"$ perf report --call-graph -G\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:342
@@ -39641,6 +40131,8 @@ msgid ""
 "There are many more interesting things that you can measure about your program, to get a comprehensive list please read the [Linux perf "
 "examples page](http://www.brendangregg.com/perf.html)."
 msgstr ""
+"あなたのプログラムついて測定を行う方法は他にもたくさんあり、興味深いです。包括的なリストを見たければ,[Linux perfの例のページ](http://www."
+"brendangregg.com/perf.html)を読んでください。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:345
@@ -39648,6 +40140,9 @@ msgid ""
 "Remember that perf saves for each execution a `perf.data` file that, even for small programs, can get quite large. Also the perf LLVM module "
 "saves temporarily debug objects in `~/.debug/jit`, remember to clean that folder frequently."
 msgstr ""
+"実行ごとにperfは、 `perf.data` ファイルを保存し、小規模なプログラムの場合でも非常に大きなファイルを保存できることを覚えておいてください。ま"
+"た、perf LLVMモジュールは、一時的にデバッグオブジェクトを`~/.debug/jit`に保存しますから、そのフォルダを頻繁にクリーンアップすることを忘れない"
+"でください。"
 
 #. type: Title #
 #: ext/julia/doc/src/manual/unicode-input.md:1
@@ -44446,7 +44941,7 @@ msgstr ""
 #: ext/julia/doc/src/stdlib/Profile.md:1
 #, no-wrap
 msgid "[プロファイリング](@id lib-profiling)"
-msgstr ""
+msgstr "[Profiling](@id lib-profiling)"
 
 #. type: Plain text
 #: ext/julia/doc/src/stdlib/Profile.md:3
@@ -47147,12 +47642,12 @@ msgstr ""
 #: ext/julia/doc/src/stdlib/Pkg.md:1
 #, no-wrap
 msgid "Pkg"
-msgstr ""
+msgstr "Pkg"
 
 #. type: Plain text
 #: ext/julia/doc/src/stdlib/Pkg.md:5
 msgid "Pkg is Julia's builtin package manager, and handles operations such as installing, updating and removing packages."
-msgstr ""
+msgstr "Pkg は Julia の組み込みパッケージ マネージャであり、パッケージのインストール、更新、削除などの操作を処理します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/stdlib/Pkg.md:10
@@ -47163,6 +47658,8 @@ msgid ""
 "    recommended to read the full manual, which is available here:\n"
 "    [https://julialang.github.io/Pkg.jl/v1/](https://julialang.github.io/Pkg.jl/v1/).\n"
 msgstr ""
+"!!!メモ\n"
+"    以下は、Pkg の非常に簡単な紹介です。以下で入手可能な完全なマニュアルを読むことを強くお勧めします: [https://julialang.github.io/Pkg.jl/v1/](https://julialang.github.io/Pkg.jl/v1/)。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/stdlib/Pkg.md:11
@@ -47176,6 +47673,13 @@ msgid ""
 "          \"[API Reference](https://julialang.github.io/Pkg.jl/v1/api/)\")\n"
 "Markdown.parse(str)\n"
 msgstr ""
+"import Markdown\n"
+"file = joinpath(Sys.STDLIB, \"Pkg\", \"docs\", \"src\", \"getting-started.md\")\n"
+"str = read(file, String)\n"
+"str = replace(str, r\"^#.*$\"m => \"\")\n"
+"str = replace(str, \"[API Reference](@ref)\" =>\n"
+"          \"[API Reference](https://julialang.github.io/Pkg.jl/v1/api/)\")\n"
+"Markdown.parse(str)\n"
 
 #. type: Title #
 #: ext/julia/doc/src/stdlib/SharedArrays.md:1
