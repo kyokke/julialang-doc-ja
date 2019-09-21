@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-08-26 03:21+0000\n"
-"PO-Revision-Date: 2019-09-21 17:59+0900\n"
+"PO-Revision-Date: 2019-09-21 18:03+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -40020,7 +40020,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/profile.md:290
 #, no-wrap
 msgid "Memory allocation analysis"
-msgstr "[メモリ割り当て分析](@id Memory-allocation-analysis]"
+msgstr "[メモリ割り当て分析](@id Memory-allocation-analysis)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:297
@@ -44520,7 +44520,7 @@ msgstr ""
 #: ext/julia/doc/src/stdlib/Markdown.md:163
 #, no-wrap
 msgid "Code blocks"
-msgstr "[コードブロック](@id Code-blocks]"
+msgstr "[コードブロック](@id Code-blocks)"
 
 #. type: Plain text
 #: ext/julia/doc/src/stdlib/Markdown.md:167
