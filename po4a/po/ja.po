@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-08-26 03:21+0000\n"
-"PO-Revision-Date: 2019-09-21 15:10+0900\n"
+"PO-Revision-Date: 2019-09-21 17:59+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -25677,7 +25677,7 @@ msgid ""
 "   (see [Code blocks](@ref)) starting with ````` ```jldoctest````` and contains any number of `julia>`\n"
 "   prompts together with inputs and expected outputs that mimic the Julia REPL.\n"
 msgstr ""
-"   例は、可能な限り *doctests*として記述する必要があります。*doctest* はフェンスで囲まれたコードブロックです([コードブロック](@ref)参照) 。\n"
+"   例は、可能な限り *doctests*として記述する必要があります。*doctest* はフェンスで囲まれたコードブロックです([コードブロック](@ref Code-blocks)参照) 。\n"
 "   ````` ```jldoctest`````で始まり、任意の数の `julia>` プロンプトが、その入出力とともに含まれます。ここでの出力はJuliaのREPLであれば与えられた入力に対して、この出力を出すだろうという期待値です。\n"
 
 #. type: Plain text
@@ -40020,7 +40020,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/profile.md:290
 #, no-wrap
 msgid "Memory allocation analysis"
-msgstr "メモリ割り当て分析"
+msgstr "[メモリ割り当て分析](@id Memory-allocation-analysis]"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/profile.md:297
@@ -44520,7 +44520,7 @@ msgstr ""
 #: ext/julia/doc/src/stdlib/Markdown.md:163
 #, no-wrap
 msgid "Code blocks"
-msgstr ""
+msgstr "[コードブロック](@id Code-blocks]"
 
 #. type: Plain text
 #: ext/julia/doc/src/stdlib/Markdown.md:167
