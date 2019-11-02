@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-08-26 03:21+0000\n"
-"PO-Revision-Date: 2019-09-21 18:03+0900\n"
+"PO-Revision-Date: 2019-11-03 07:42+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 2.2.3\n"
-"X-Poedit-Bookmarks: 1944,4056,681,2676,2799,-1,-1,-1,-1,-1\n"
+"X-Poedit-Bookmarks: 1718,4056,681,2676,2799,5446,-1,-1,-1,-1\n"
 
 #. type: Title =
 #: ext/julia/doc/src/./NEWS.md:2
@@ -16544,6 +16544,12 @@ msgid ""
 "`sz`.  Whenever code performs a communication operation like [`fetch`](@ref) or [`wait`](@ref), the current task is suspended and a "
 "scheduler picks another task to run.  A task is restarted when the event it is waiting for completes."
 msgstr ""
+"Julia の並列プログラミング プラットフォームでは、[タスク (別名 Coroutines)](@ref man-tasks)を使用して複数の計算を切り替えます。 軽量スレッド"
+"間で実行順序を指定するには、通信プリミティブが必要です。 Julia には`Channel(func::Function, ctype=Any, csize=0, taskref=nothing)`という関数が"
+"あります。`func`から新しいタスクを作成し、型`ctype`とサイズ`csize`の新しいチャネルにタスクをバインド・スケジュールします。 `Channels` はタス"
+"ク間の通信方法として機能するもので、`Channel{T}(sz:Int)` が型 `T` とサイズ `sz` のバッファリングチャネルを作成するようにします。コードが "
+"[`fetch`](@ref) や [`wait`](@ref) などの通信操作を実行するたびに、現在のタスクは中断され、スケジューラは実行する別のタスクを選択します。 タス"
+"クは、待機中のイベントが完了するとまた続きの処理を開始します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:44
@@ -16553,22 +16559,25 @@ msgid ""
 "other jobs finish. This is needed for unpredictable or unbalanced workloads, where we want to assign more work to processes only when they "
 "finish their current tasks."
 msgstr ""
+"多くの問題では、タスクのことを直接考える必要はありません。ただし、タスクは、同時に処理される複数のイベントを待機するのに使用できるため、*動的"
+"スケジューリング*を行うことができます。動的スケジューリングでは、プログラムは、他のジョブがいつ終了するかに基づいて、何を計算するか、またはど"
+"こで計算するかを決定します。これは、予測不能なワークロードや不均衡なワークロードに必要です。こうした状況では、プロセスが現在のタスクを完了し"
+"た時だけ、暇になったプロセスにより多くのタスクを割り当てる、というようなことをやりたくなります。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/parallel-computing.md:45
 #, no-wrap
 msgid "Channels"
-msgstr ""
+msgstr "[チャンネル](@id Channels)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:50
-#, fuzzy
 msgid ""
 "The section on [`Task`](@ref)s in [Control Flow](@ref) discussed the execution of multiple functions in a co-operative manner. [`Channel`]"
 "(@ref)s can be quite useful to pass data between running tasks, particularly those involving I/O operations."
 msgstr ""
-"[タスク](@ref)の[制御フロー](@id Control-Flow)のセクションでは、複数の関数の実行について協調的に議論しました。['チャンネル'](@ref)は、実行中"
-"のタスク、特に I/O 操作を含むタスク間でデータを渡すのに非常に役立ちます。"
+"[制御フロー](@id Control-Flow)のページの[タスク](@ref Task)セクションでは、協調的に動作する複数の関数の実行について議論しました。[`Channel`]"
+"(@ref)は、実行中のタスク、特に I/O 操作を含むタスク間でデータを渡すのに非常に役立ちます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:55
@@ -16577,26 +16586,28 @@ msgid ""
 "these cases, overall execution time can be improved if other tasks can be run while a file is being read, or while waiting for an external "
 "service/program to complete."
 msgstr ""
+"I/O に関連する操作の例としては、ファイルの読み取り/書き込み、Web サービスへのアクセス、外部プログラムの実行などがあります。いずれの場合も、"
+"ファイルの読み取り中、または外部サービス/プログラムの完了を待機している間に他のタスクを実行できる場合は、全体的な実行時間を改善できます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:57
 msgid "A channel can be visualized as a pipe, i.e., it has a write end and a read end :"
-msgstr ""
+msgstr "チャネルはパイプとみなすことができます。つまり、チャンネルは \"write end\" と \"read end\"を持ちます:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:62
 msgid "Multiple writers in different tasks can write to the same channel concurrently via [`put!`](@ref)  calls."
-msgstr ""
+msgstr "異なるタスクの複数のWriter が、[`put!`](@ref) 関数の呼び出し経由で同じチャネルに同時に書き込みできます。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:62
 msgid "Multiple readers in different tasks can read data concurrently via [`take!`](@ref) calls."
-msgstr ""
+msgstr "異なるタスクの複数のReader は、[`take!`](@ref)呼び出しを介して同時にデータを読み取ることができます。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:62
 msgid "As an example:"
-msgstr ""
+msgstr "例:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:67
@@ -16607,6 +16618,10 @@ msgid ""
 "    c1 = Channel(32)\n"
 "    c2 = Channel(32)\n"
 msgstr ""
+"    ```julia\n"
+"    # Given Channels c1 and c2,\n"
+"    c1 = Channel(32)\n"
+"    c2 = Channel(32)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:77
@@ -16622,6 +16637,15 @@ msgid ""
 "        end\n"
 "    end\n"
 msgstr ""
+"    # and a function `foo` which reads items from c1, processes the item read\n"
+"    # and writes a result to c2,\n"
+"    function foo()\n"
+"        while true\n"
+"            data = take!(c1)\n"
+"            [...]               # process data\n"
+"            put!(c2, result)    # write out result\n"
+"        end\n"
+"    end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:95
@@ -16645,6 +16669,20 @@ msgid ""
 "    freely via [`take!`](@ref) and [`put!`](@ref) calls. [`close`](@ref) closes a [`Channel`](@ref).\n"
 "    On a closed [`Channel`](@ref), [`put!`](@ref) will fail. For example:\n"
 msgstr ""
+"    # we can schedule `n` instances of `foo` to be active concurrently.\n"
+"    for _ in 1:n\n"
+"        @async foo()\n"
+"    end\n"
+"    ```\n"
+"  * チャンネルは、`Channel{T}(sz)` コンストラクタで生成されます。チャンネルは、型Tのオブジェクトのみを保持します。\n"
+"    型が指定されなかった場合は、チャンネルは、どんな型も保持することができます。\n"
+"    `sz` は、チャンネルでいつでも保持できる最大要素数です。例えば、`Channel(32)` で生成されるのは、任意の型のオブジェクトを最大32個保持できるチャンネルを生成します。 \n"
+"     `Channel{MyType}(64)` は、`MyType`のオブジェクトを 64個まで、いつでも保持できます。\n"
+"  * [`Channel`](@ref) が空であれば、readerは( [`take!`](@ref) 関数をよんでも)データが利用可能になるまでブロックされます。\n"
+"  * [`Channel`](@ref) がいっぱいの場合 writerは、([`put!`](@ref) を読んでも) データを書くスペースができるまでブロックされます。\n"
+"  * [`isready`](@ref) は、チャンネル内の任意のオブジェクトの有無についてチェックする関数で、 [`wait`](@ref) 関数はオブジェクトが利用可能になるまで待機するための関数です。\n"
+"  * [`Channel`](@ref) は、最初はオープンの状態です。つまり、[`take!`](@ref) 関数や、 [`put!`](@ref) 関数経由で、自由に読み書きできる状態で、[`close`](@ref) で、チャンネルをクローズできます。\n"
+"  クローズされたチャンネルでは、[`put!`](@ref) は失敗します。例えば:\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:98
@@ -16653,6 +16691,8 @@ msgid ""
 "    ```julia-repl\n"
 "    julia> c = Channel(2);\n"
 msgstr ""
+"    ```julia-repl\n"
+"    julia> c = Channel(2);\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:101
@@ -16692,6 +16732,8 @@ msgid ""
 "[`take!`](@ref) and [`fetch`](@ref) (which retrieves but does not remove the value) on a closed channel successfully return any existing "
 "values until it is emptied. Continuing the above example:"
 msgstr ""
+"クローズされたチャンネルへの、[`take!`](@ref) と [`fetch`](@ref) (値を取得はしても、削除しません)は、チャンネルが空になるまで、チャンネルに存"
+"在する値を正常に返します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:116
@@ -16701,6 +16743,9 @@ msgid ""
 "    julia> fetch(c) # Any number of `fetch` calls succeed.\n"
 "    1\n"
 msgstr ""
+"    ```julia-repl\n"
+"    julia> fetch(c) # Any number of `fetch` calls succeed.\n"
+"    1\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:119
@@ -16719,6 +16764,8 @@ msgid ""
 "    julia> take!(c) # The first `take!` removes the value.\n"
 "    1\n"
 msgstr ""
+"    julia> take!(c) # The first `take!` removes the value.\n"
+"    1\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:128
@@ -16730,6 +16777,11 @@ msgid ""
 "    [...]\n"
 "    ```\n"
 msgstr ""
+"    julia> take!(c) # No more data available on a closed channel.\n"
+"    ERROR: InvalidStateException(\"Channel is closed.\",:closed)\n"
+"    Stacktrace:\n"
+"    [...]\n"
+"    ```\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:132
@@ -16737,11 +16789,14 @@ msgid ""
 "A `Channel` can be used as an iterable object in a `for` loop, in which case the loop runs as long as the `Channel` has data or is open. The "
 "loop variable takes on all values added to the `Channel`. The `for` loop is terminated once the `Channel` is closed and emptied."
 msgstr ""
+"チャンネルは、`for`ループないのイテラブルオブジェクトとして使うことができ、チャンネルがデータを持つか、オープンされている状態である限り、ルー"
+"プが回ります。ループ変数はチャンネルに追加された全ての値を引き受けます。`for`ループが終了されるのは、チャンネルが閉じられ、データが空になった"
+"ときです。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:134
 msgid "For example, the following would cause the `for` loop to wait for more data:"
-msgstr ""
+msgstr "たとえば、次の場合、`for` ループは(訳注: チャンネルが閉じられていないため) さらなるデータを待機します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:135
@@ -16753,11 +16808,16 @@ msgid ""
 "\n"
 "julia> data = [i for i in c]\n"
 msgstr ""
+"julia> c = Channel{Int}(10);\n"
+"\n"
+"julia> foreach(i->put!(c, i), 1:3) # add a few entries\n"
+"\n"
+"julia> data = [i for i in c]\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:144
 msgid "while this will return after reading all data:"
-msgstr ""
+msgstr "対して、こちらは、チャンネル内の全てのデータを読んだらリターンします:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:145
@@ -16775,6 +16835,17 @@ msgid ""
 " 2\n"
 " 3\n"
 msgstr ""
+"julia> c = Channel{Int}(10);\n"
+"\n"
+"julia> foreach(i->put!(c, i), 1:3); # add a few entries\n"
+"\n"
+"julia> close(c);                    # `for` loops can exit\n"
+"\n"
+"julia> data = [i for i in c]\n"
+"3-element Array{Int64,1}:\n"
+" 1\n"
+" 2\n"
+" 3\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:164
@@ -16783,6 +16854,9 @@ msgid ""
 "identified by an id (`job_id`), are written to the channel.  Each task in this simulation reads a `job_id`, waits for a random amount of "
 "time and writes back a tuple of `job_id` and the simulated time to the results channel. Finally all the `results` are printed out."
 msgstr ""
+"タスク間通信にチャネルを使用する簡単な例を考えてみましょう。私たちは、単一の`jobs`チャネルからデータを処理する4つのタスクを開始します。ID "
+"(`job_id`) によって識別されるジョブは、チャネルに書き込まれます。 このシミュレーションの各タスクは`job_id`を読み取り、ランダムな時間をウェイ"
+"トしてから、`job_id` のタプルとシミュレートされた時間の長さを 結果チャネルに書き戻します。最後に、すべての`results` が印刷されます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:165
@@ -16834,6 +16908,51 @@ msgid ""
 "11 finished in 0.97 seconds\n"
 "0.029772311\n"
 msgstr ""
+"julia> const jobs = Channel{Int}(32);\n"
+"\n"
+"julia> const results = Channel{Tuple}(32);\n"
+"\n"
+"julia> function do_work()\n"
+"           for job_id in jobs\n"
+"               exec_time = rand()\n"
+"               sleep(exec_time)                # simulates elapsed time doing actual work\n"
+"                                               # typically performed externally.\n"
+"               put!(results, (job_id, exec_time))\n"
+"           end\n"
+"       end;\n"
+"\n"
+"julia> function make_jobs(n)\n"
+"           for i in 1:n\n"
+"               put!(jobs, i)\n"
+"           end\n"
+"       end;\n"
+"\n"
+"julia> n = 12;\n"
+"\n"
+"julia> @async make_jobs(n); # feed the jobs channel with \"n\" jobs\n"
+"\n"
+"julia> for i in 1:4 # start 4 tasks to process requests in parallel\n"
+"           @async do_work()\n"
+"       end\n"
+"\n"
+"julia> @elapsed while n > 0 # print out results\n"
+"           job_id, exec_time = take!(results)\n"
+"           println(\"$job_id finished in $(round(exec_time; digits=2)) seconds\")\n"
+"           global n = n - 1\n"
+"       end\n"
+"4 finished in 0.22 seconds\n"
+"3 finished in 0.45 seconds\n"
+"1 finished in 0.5 seconds\n"
+"7 finished in 0.14 seconds\n"
+"2 finished in 0.78 seconds\n"
+"5 finished in 0.9 seconds\n"
+"9 finished in 0.36 seconds\n"
+"6 finished in 0.87 seconds\n"
+"8 finished in 0.79 seconds\n"
+"10 finished in 0.64 seconds\n"
+"12 finished in 0.5 seconds\n"
+"11 finished in 0.97 seconds\n"
+"0.029772311\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:218
@@ -16842,12 +16961,15 @@ msgid ""
 "execution, compute bound tasks are effectively executed sequentially on a single OS thread. Future versions of Julia may support scheduling "
 "of tasks on multiple threads, in which case compute bound tasks will see benefits of parallel execution too."
 msgstr ""
+"現在のバージョンの Julia は、すべてのタスクを単一の OS スレッドに多重化します。したがって、I/O 操作を含むタスクは並列実行の恩恵を受けますが、"
+"バインドされたタスクは単一の OS スレッドで効果的に順番に実行されます。Julia の将来のバージョンでは、複数のスレッドでのタスクのスケジューリン"
+"グがサポートされるかもしれません。"
 
 #. type: Title #
 #: ext/julia/doc/src/manual/parallel-computing.md:219
 #, no-wrap
 msgid "[Multi-Threading (Experimental)](@id man-multithreading)"
-msgstr ""
+msgstr "[マルチスレッド(実験的実装)](@id man-multithreading)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:223
@@ -16855,17 +16977,19 @@ msgid ""
 "In addition to tasks Julia forwards natively supports multi-threading.  Note that this section is experimental and the interfaces may change "
 "in the future."
 msgstr ""
+"タスクに加えて、Julia はマルチスレッドをネイティブにサポートします。 このセクションは実験的なものであり、インターフェイスは将来変更される可能"
+"性があることに注意してください。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/parallel-computing.md:224
 #, no-wrap
 msgid "Setup"
-msgstr ""
+msgstr "セットアップ"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:228
 msgid "By default, Julia starts up with a single thread of execution. This can be verified by using the command [`Threads.nthreads()`](@ref):"
-msgstr ""
+msgstr "デフォルトでは、Julia は単一の実行スレッドで起動します。これは、コマンド [`Threads.nthreads()`](@ref) を使用して確認できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:229
@@ -16874,6 +16998,8 @@ msgid ""
 "julia> Threads.nthreads()\n"
 "1\n"
 msgstr ""
+"julia> Threads.nthreads()\n"
+"1\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:236
@@ -16881,18 +17007,19 @@ msgid ""
 "The number of threads Julia starts up with is controlled by an environment variable called `JULIA_NUM_THREADS`.  Now, let's start up Julia "
 "with 4 threads:"
 msgstr ""
+"Julia が開始するスレッドの数は、`JULIA_NUM_THREADS` という環境変数によって制御されます。 さて、4つのスレッドでジュリアを起動してみましょう:"
 
 #. type: Code fence info string
 #: ext/julia/doc/src/manual/parallel-computing.md:237
 #, no-wrap
 msgid "bash"
-msgstr ""
+msgstr "bash"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:237
 #, no-wrap
 msgid "export JULIA_NUM_THREADS=4\n"
-msgstr ""
+msgstr "export JULIA_NUM_THREADS=4\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:244
@@ -16901,11 +17028,14 @@ msgid ""
 "keyword `set` instead of `export`. If you're on Windows, start up the command line in the location of `julia.exe` and use `set` instead of "
 "`export`.)"
 msgstr ""
+"(上記のコマンドは、Linux および OSX 上のボーンシェルで動作します。これらのプラットフォームで C シェルを使用している場合は、`export`の代わり"
+"に `set` というキーワードを使用する必要があります。Windows を使用している場合は、`julia.exe` の場所でコマンド ラインを起動し、`export` の代わ"
+"りに `set` を使用します。)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:246
 msgid "Let's verify there are 4 threads at our disposal."
-msgstr ""
+msgstr "4つのスレッドがあることを確認してみましょう。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:247
@@ -16914,11 +17044,13 @@ msgid ""
 "julia> Threads.nthreads()\n"
 "4\n"
 msgstr ""
+"julia> Threads.nthreads()\n"
+"4\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:253
 msgid "But we are currently on the master thread. To check, we use the function [`Threads.threadid`](@ref)"
-msgstr ""
+msgstr "しかし、現在はマスタースレッドに入っています。確認するには、関数 [`Threads.threadid`](@ref)を使用します"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:254
@@ -16927,17 +17059,19 @@ msgid ""
 "julia> Threads.threadid()\n"
 "1\n"
 msgstr ""
+"julia> Threads.threadid()\n"
+"1\n"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/parallel-computing.md:259
 #, no-wrap
 msgid "The `@threads` Macro"
-msgstr ""
+msgstr "The `@threads` マクロ"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:262
 msgid "Let's work a simple example using our native threads. Let us create an array of zeros:"
-msgstr ""
+msgstr "ネイティブスレッドを使用して簡単な例を見てみましょう。ゼロの配列を作成してみましょう:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:263
@@ -16956,11 +17090,23 @@ msgid ""
 " 0.0\n"
 " 0.0\n"
 msgstr ""
+"julia> a = zeros(10)\n"
+"10-element Array{Float64,1}:\n"
+" 0.0\n"
+" 0.0\n"
+" 0.0\n"
+" 0.0\n"
+" 0.0\n"
+" 0.0\n"
+" 0.0\n"
+" 0.0\n"
+" 0.0\n"
+" 0.0\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:280
 msgid "Let us operate on this array simultaneously using 4 threads. We'll have each thread write its thread ID into each location."
-msgstr ""
+msgstr "4つのスレッドを使用して、この配列を同時に操作してみましょう。各スレッドで各要素にスレッド ID を書き込みます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:283
@@ -16968,6 +17114,8 @@ msgid ""
 "Julia supports parallel loops using the [`Threads.@threads`](@ref) macro. This macro is affixed in front of a `for` loop to indicate to "
 "Julia that the loop is a multi-threaded region:"
 msgstr ""
+"Julia は[`Threads.@threads`](@ref)マクロを使用した並列ループをサポートしています。このマクロを`for` ループの前に追加すると、ループがマルチス"
+"レッドで実行すべき領域であることを Julia に指示できます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:284
@@ -16977,11 +17125,14 @@ msgid ""
 "           a[i] = Threads.threadid()\n"
 "       end\n"
 msgstr ""
+"julia> Threads.@threads for i = 1:10\n"
+"           a[i] = Threads.threadid()\n"
+"       end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:292
 msgid "The iteration space is split amongst the threads, after which each thread writes its thread ID to its assigned locations:"
-msgstr ""
+msgstr "イテレーションスペースはスレッド間で分割され、その後、各スレッドは割り当てられた場所にスレッド ID を書き込みます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:293
@@ -17000,17 +17151,29 @@ msgid ""
 " 4.0\n"
 " 4.0\n"
 msgstr ""
+"julia> a\n"
+"10-element Array{Float64,1}:\n"
+" 1.0\n"
+" 1.0\n"
+" 1.0\n"
+" 2.0\n"
+" 2.0\n"
+" 2.0\n"
+" 3.0\n"
+" 3.0\n"
+" 4.0\n"
+" 4.0\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:309
 msgid "Note that [`Threads.@threads`](@ref) does not have an optional reduction parameter like [`@distributed`](@ref)."
-msgstr ""
+msgstr "[`Threads.@threads`](@ref)には、[`@distributed`](@ref)のようなオプションの縮小パラメーターがないことに注意してください。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/parallel-computing.md:310
 #, no-wrap
 msgid "Atomic Operations"
-msgstr ""
+msgstr "アトミック操作"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:316
@@ -17019,6 +17182,9 @@ msgid ""
 "org/wiki/Race_condition). A value (which must be of a primitive type) can be wrapped as [`Threads.Atomic`](@ref) to indicate it must be "
 "accessed in this way.  Here we can see an example:"
 msgstr ""
+"Julia は、*アトミックな*、つまり、[競合状態](https://en.wikipedia.org/wiki/Race_condition)を避けるためのスレッドセーフな方法で、値のアクセス"
+"と変更をサポートしています 。アトミックにアクセスする必要があることを示す値 (プリミティブ型である必要があります) を [`Threads.Atomic`](@ref) "
+"としてラップできます。 例を見てみましょう:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:317
@@ -17049,6 +17215,30 @@ msgid ""
 " 3.0\n"
 " 4.0\n"
 msgstr ""
+"julia> i = Threads.Atomic{Int}(0);\n"
+"\n"
+"julia> ids = zeros(4);\n"
+"\n"
+"julia> old_is = zeros(4);\n"
+"\n"
+"julia> Threads.@threads for id in 1:4\n"
+"           old_is[id] = Threads.atomic_add!(i, id)\n"
+"           ids[id] = id\n"
+"       end\n"
+"\n"
+"julia> old_is\n"
+"4-element Array{Float64,1}:\n"
+" 0.0\n"
+" 1.0\n"
+" 7.0\n"
+" 3.0\n"
+"\n"
+"julia> ids\n"
+"4-element Array{Float64,1}:\n"
+" 1.0\n"
+" 2.0\n"
+" 3.0\n"
+" 4.0\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:347
@@ -17056,6 +17246,7 @@ msgid ""
 "Had we tried to do the addition without the atomic tag, we might have gotten the wrong answer due to a race condition. An example of what "
 "would happen if we didn't avoid the race:"
 msgstr ""
+"アトミックタグなしで加算を試すと、競合によって間違った答えが得られたかもしれません。競合を避けなかった場合にどうなるかの例は下記の通りです:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:348
@@ -17086,6 +17277,30 @@ msgid ""
 "julia> acc[]\n"
 "1000\n"
 msgstr ""
+"julia> using Base.Threads\n"
+"\n"
+"julia> nthreads()\n"
+"4\n"
+"\n"
+"julia> acc = Ref(0)\n"
+"Base.RefValue{Int64}(0)\n"
+"\n"
+"julia> @threads for i in 1:1000\n"
+"          acc[] += 1\n"
+"       end\n"
+"\n"
+"julia> acc[]\n"
+"926\n"
+"\n"
+"julia> acc = Atomic{Int64}(0)\n"
+"Atomic{Int64}(0)\n"
+"\n"
+"julia> @threads for i in 1:1000\n"
+"          atomic_add!(acc, 1)\n"
+"       end\n"
+"\n"
+"julia> acc[]\n"
+"1000\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:380
@@ -17097,12 +17312,16 @@ msgid ""
 "    `UInt64`, `UInt128`, `Float16`, `Float32`, and `Float64`. Additionally,\n"
 "    `Int128` and `UInt128` are not supported on AAarch32 and ppc64le.\n"
 msgstr ""
+"!!!メモ\n"
+"    *すべての*プリミティブ型を `Atomic` タグでラップできるわけではありません。\n"
+"    サポートされている型は`Int8`、`Int16`、`Int32`、`Int64`、`Int128`、`UInt8`、`UInt16`、`UInt32`、`UInt64`、`UInt128`、`Float16`、`Float32`、および`Float64`です。\n"
+"    さらに `Int128` および `UInt128` は AAarch32 および ppc64le ではサポートされていません。\n"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/parallel-computing.md:381
 #, no-wrap
 msgid "Side effects and mutable function arguments"
-msgstr ""
+msgstr "副作用と変更可能な関数引数"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:391
@@ -17113,6 +17332,11 @@ msgid ""
 "there are functions that have side effects and their name does not end with `!`. For instance [`findfirst(regex, str)`](@ref) mutates its "
 "`regex` argument or [`rand()`](@ref) changes `Base.GLOBAL_RNG` :"
 msgstr ""
+"マルチスレッドを使用時、[純粋](https://en.wikipedia.org/wiki/Pure_function) でない関数を使う場合には、間違った答えが得られる可能性があるの"
+"で、注意が必要です。例えば、 [名前が`!`で終わる](https://docs.julialang.org/en/latest/manual/style-guide/#Append-!-to-names-of-functions-"
+"that-modify-their-arguments-1)関数は、慣習的に引数に指定された値を書き換えるため、純粋な関数ではありません。しかし、副作用を持つにも関わら"
+"ず、その名前が`!`で終わらない関数があります。例えば、 [`findfirst(regex, str)`](@ref) は、引数 `regex`を変更しますし、[`rand()`](@ref) は、"
+"`Base.GLOBAL_RNG`を変更します :"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:392
@@ -17149,6 +17373,36 @@ msgid ""
 "julia> Random.seed!(1); g() # the result for a single thread is 1000\n"
 "781\n"
 msgstr ""
+"julia> using Base.Threads\n"
+"\n"
+"julia> nthreads()\n"
+"4\n"
+"\n"
+"julia> function f()\n"
+"           s = repeat([\"123\", \"213\", \"231\"], outer=1000)\n"
+"           x = similar(s, Int)\n"
+"           rx = r\"1\"\n"
+"           @threads for i in 1:3000\n"
+"               x[i] = findfirst(rx, s[i]).start\n"
+"           end\n"
+"           count(v -> v == 1, x)\n"
+"       end\n"
+"f (generic function with 1 method)\n"
+"\n"
+"julia> f() # the correct result is 1000\n"
+"1017\n"
+"\n"
+"julia> function g()\n"
+"           a = zeros(1000)\n"
+"           @threads for i in 1:1000\n"
+"               a[i] = rand()\n"
+"           end\n"
+"           length(unique(a))\n"
+"       end\n"
+"g (generic function with 1 method)\n"
+"\n"
+"julia> Random.seed!(1); g() # the result for a single thread is 1000\n"
+"781\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:427
@@ -17156,11 +17410,13 @@ msgid ""
 "In such cases one should redesign the code to avoid the possibility of a race condition or use [synchronization primitives](https://docs."
 "julialang.org/en/latest/base/multi-threading/#Synchronization-Primitives-1)."
 msgstr ""
+"このような場合は、競合状態に陥るの可能性を避けるためにコードを再設計するか、[同期プリミティブ](https://docs.julialang.org/en/latest/base/"
+"multi-threading/#Synchronization-Primitives-1)を使ってください。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:430
 msgid "For example in order to fix `findfirst` example above one needs to have a separate copy of `rx` variable for each thread:"
-msgstr ""
+msgstr "たとえば、上記の `findfirst` の例を解決するには、スレッドごとに変数`rx`を別々にコピーして使う必要があります:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:431
@@ -17180,6 +17436,19 @@ msgid ""
 "julia> f_fix()\n"
 "1000\n"
 msgstr ""
+"julia> function f_fix()\n"
+"             s = repeat([\"123\", \"213\", \"231\"], outer=1000)\n"
+"             x = similar(s, Int)\n"
+"             rx = [Regex(\"1\") for i in 1:nthreads()]\n"
+"             @threads for i in 1:3000\n"
+"                 x[i] = findfirst(rx[threadid()], s[i]).start\n"
+"             end\n"
+"             count(v -> v == 1, x)\n"
+"         end\n"
+"f_fix (generic function with 1 method)\n"
+"\n"
+"julia> f_fix()\n"
+"1000\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:449
@@ -17187,6 +17456,8 @@ msgid ""
 "We now use `Regex(\"1\")` instead of `r\"1\"` to make sure that Julia creates separate instances of `Regex` object for each entry of `rx` "
 "vector."
 msgstr ""
+"`r\"1\"`の代わりに`Regex(\"1\")`を使って Julia が `rx`ベクトルのそれぞれのエントリに対して、別々の`Regex`オブジェクトを生成するようにしていま"
+"す。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:453
@@ -17194,6 +17465,8 @@ msgid ""
 "The case of `rand` is a bit more complex as we have to ensure that each thread uses non-overlapping pseudorandom number sequences. This can "
 "be simply ensured by using `Future.randjump` function:"
 msgstr ""
+"`rand`の例については、もう少し複雑です。各スレッドが重複しない擬似乱数シーケンスを使用するようにする必要があるためです。これは、単に `Future."
+"randjump` 関数を使用して保証することができます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:455
@@ -17217,6 +17490,23 @@ msgid ""
 "julia> g_fix(r)\n"
 "1000\n"
 msgstr ""
+"julia> using Random; import Future\n"
+"\n"
+"julia> function g_fix(r)\n"
+"           a = zeros(1000)\n"
+"           @threads for i in 1:1000\n"
+"               a[i] = rand(r[threadid()])\n"
+"           end\n"
+"           length(unique(a))\n"
+"       end\n"
+"g_fix (generic function with 1 method)\n"
+"\n"
+"julia>  r = let m = MersenneTwister(1)\n"
+"                [m; accumulate(Future.randjump, fill(big(10)^20, nthreads()-1), init=m)]\n"
+"            end;\n"
+"\n"
+"julia> g_fix(r)\n"
+"1000\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:477
@@ -17224,12 +17514,14 @@ msgid ""
 "We pass the `r` vector to `g_fix` as generating several RGNs is an expensive operation so we do not want to repeat it every time we run the "
 "function."
 msgstr ""
+"`r`ベクトルを`g_fix`に渡しているのは、複数の RGN を生成するのがコストのかかる処理であるためで、関数を実行するたびにRGNの生成を繰り返す必要は"
+"ありません。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/parallel-computing.md:478
 #, no-wrap
 msgid "@threadcall (Experimental)"
-msgstr ""
+msgstr "@threadcall(実験的な実装)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:485
@@ -17239,6 +17531,10 @@ msgid ""
 "multiple tasks onto the same OS thread. I/O tasks and timers yield implicitly while waiting for the event to occur. Calling [`yield`](@ref) "
 "explicitly allows for other tasks to be scheduled."
 msgstr ""
+"Julia では、すべての I/O タスク、タイマー、REPL コマンドなどは、イベント ループを介して 1 つの OS スレッドに多重化されています。これは、"
+"libuv ([http://docs.libuv.org/en/v1.x/])のパッチバージョンで提供している機能です。\"yield\" は、複数のタスクを同じ OS スレッドに同時にスケ"
+"ジューリングするための機能を提供します。I/O タスクとタイマーはイベントが発生するのを待機している間に暗黙的に生成されます。[`yield`](@ref)を呼"
+"び出すと、(訳者註: 現在処理しているタスクが中止されるので) 他のタスクがスケジュールされるように明示的に許可を与えることができます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:490
@@ -17247,6 +17543,9 @@ msgid ""
 "is true for all calls into external libraries. Exceptions are calls into custom C code that call back into Julia (which may then yield) or C "
 "code that calls `jl_yield()` (C equivalent of [`yield`](@ref))."
 msgstr ""
+"したがって、[`ccall`](@ref)を実行するタスクは、呼び出しから制御が戻るまで Julia スケジューラが他のタスクを実行するのを効果的に防ぎます。これ"
+"は、外部ライブラリへのすべての呼び出しに当てはまります。例外は、逆にJulia を呼び出すカスタム C コードを呼び出す場合 (その後、あとから yield "
+"する可能性があります) または `jl_yield()`(これは[`yield`](@ref) のCバージョンです) を呼び出すCコードを、呼び出す場合です。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:494
@@ -17254,6 +17553,8 @@ msgid ""
 "Note that while Julia code runs on a single thread (by default), libraries used by Julia may launch their own internal threads. For example, "
 "the BLAS library may start as many threads as there are cores on a machine."
 msgstr ""
+"Julia コードは(既定では) 単一のスレッド で実行されますが、Julia が使用するライブラリは独自の内部スレッドを起動する場合があることに注意してく"
+"ださい。たとえば、BLAS ライブラリは、マシン上のコアと同じ数のスレッドを開始できます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:502
@@ -17264,16 +17565,21 @@ msgid ""
 "available, the requesting task (on the main Julia event loop) yields to other tasks. Note that `@threadcall` does not return till the "
 "execution is complete. From a user point of view, it is therefore a blocking call like other Julia APIs."
 msgstr ""
+"[`@threadcall`](@ref) マクロは、 [`ccall`](@ref)が、Juliaのメインイベントループをブロックして欲しくない時に使うことができます。別のスレッドで"
+"実行する C 関数をスケジュールします。これには、デフォルト・サイズが 4 のスレッド・プールが使用されます。スレッドプールのサイズは、環境変数 "
+"`UV_THREADPOOL_SIZE`  で設定できます。スレッドが空くのを待機している間、およびスレッドが使用可能になって関数が実行されている間に、(メイン "
+"Julia イベント ループ上で)C関数のコールを要求するタスクは他のタスクにyield します。`@threadcall`を使うと、その実行完了まで制御が戻らないこと"
+"に注意してくださいしたがって、ユーザーの観点から見ると、他の Julia API と同様にブロッキング呼び出しが行われますように見えます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:504
 msgid "It is very important that the called function does not call back into Julia, as it will segfault."
-msgstr ""
+msgstr "非常に重要なことですが、呼び出された関数がセグメンテーションフォルトになっても、Julia にコールバックしません。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:506
 msgid "`@threadcall` may be removed/changed in future versions of Julia."
-msgstr ""
+msgstr "`@threadcall`は、Julia 将来のバージョンで削除/変更される可能性があります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:511
@@ -17518,7 +17824,6 @@ msgstr ""
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:638
-#, fuzzy
 msgid ""
 "[`@async`](@ref) is similar to [`@spawn`](@ref), but only runs tasks on the local process. We use it to create a \"feeder\" task for each "
 "process. Each task picks the next index that needs to be computed, then waits for its process to finish, then repeats until we run out of "
@@ -17531,16 +17836,16 @@ msgid ""
 "org/wiki/Thread_(computing)#Models). Then a lock acquiring\\releasing model for `nextidx` will be needed, as it is not safe to let multiple "
 "processes read-write a resource at the same time."
 msgstr ""
-"[`@spawn`](@ref)に似たものに、[`@async`](@ref)がありますが、タスクが実行できるのはローカルプロセスのみです。[`@async`](@ref) を使うと、タスク"
-"毎に\"feeder\"タスクが生成されます。それぞれのタスクは、計算する必要があるインデックスを選択し、そのプロセスが終了するのを待つ、というのを、"
-"インデックスがなくなるまで繰り返します。フィーダー タスクは、メインタスクが [`@sync`](@ref) ブロックの最後に達するまで実行を開始せず、その時"
-"点で制御が放棄され、関数から戻る前にすべてのローカル タスクが完了するのを待つことに注意してください。 Julia の v0.7 以降では、フィーダー タス"
-"クはすべて同じプロセスで実行されるため、`nextidx`を介して各タスクの状態を共有できます。 タスクが協調的にスケジュールされている場合でも、[非同"
-"期 I/O](@ref faq-async-io)のように、ロックが必要な場合があります。 つまり、コンテキストスイッチは、['remotecall_fetch''(@ref)が呼び出されたと"
-"きに、明確に定義されたポイントでのみ発生します: これは現在の実装の状態であり、将来的には変更されるかもしれませんが、現在は、`M`個のプロセスに"
-"対して`N`個のタスクを実行することが可能な用に実装がされています。これを別名[M:Nスレッド](https://en.wikipedia.org/wiki/"
-"Thread_(computing)#Models)と言います。`nextidx` はロックの取得・リリースモデルが用いてください。複数のプロセスが、同時にリソースを読み書きで"
-"きるのは危険なためです。"
+"[`@spawn`](@ref)に似たものに、[`@async`](@ref)がありますが、[`@async`](@ref) でタスクが実行できるのはローカルプロセスのみです。[`@async`]"
+"(@ref) を使うと、タスク毎にフィーダータスクが生成されます。それぞれのタスクは、計算する必要があるインデックスを選択し、そのプロセスが終了する"
+"のを待つ、ということを、インデックスがなくなるまで繰り返します。フィーダー タスクは、メインタスクが [`@sync`](@ref) ブロックの最後に達するま"
+"で実行を開始せず、その時点で制御が放棄され、関数から戻る前にすべてのローカル タスクが完了するのを待つことに注意してください。 Julia の v0.7 "
+"以降では、フィーダー タスクはすべて同じプロセスで実行されるため、`nextidx`を介して各タスクの状態を共有できます。 タスクが協調的にスケジュール"
+"されている場合でも、[非同期 I/O](@ref faq-async-io)のように、ロックが必要な場合があります。 つまり、コンテキストスイッチは、"
+"[`remotecall_fetch`](@ref)が呼び出されたときに、明確に定義されたポイントでのみ発生します: これは現在の実装の状態であり、将来的には変更される"
+"かもしれませんが、現在は、`M`個のプロセスに対して`N`個のタスクを実行することが可能なように実装されています。これを別名[M:Nスレッド](https://"
+"en.wikipedia.org/wiki/Thread_(computing)#Models)と言います。ロックの取得/リリースモデルを`nextidx` に対して用いる必要があります。複数のプロセ"
+"スが、同時にリソースを読み書きできるのは危険なためです。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/parallel-computing.md:641
@@ -18006,7 +18311,7 @@ msgstr ""
 msgid ""
 "  Executing the above snippet results in `Main.A` on worker 2 having a different value from\n"
 "  `Main.A` on worker 3, while the value of `Main.A` on node 1 is set to `nothing`.\n"
-msgstr "上記のスニペットを実行すると、ノード 1 の 'Main.A' の値は \"nothing\" に設定されているのですが、ワーカー 2の`Main.A`は、ワーカー3のそれと異なる値を持ちます。\n"
+msgstr "  上記のスニペットを実行すると、ノード 1 の 'Main.A' の値は \"nothing\" に設定されているのですが、ワーカー 2の`Main.A`は、ワーカー3のそれと異なる値を持ちます。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:856
@@ -18336,12 +18641,12 @@ msgstr ""
 #: ext/julia/doc/src/manual/parallel-computing.md:1005
 #, no-wrap
 msgid "Remote References and AbstractChannels"
-msgstr ""
+msgstr "リモート参照と抽象チャネル"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1008
 msgid "Remote references always refer to an implementation of an `AbstractChannel`."
-msgstr ""
+msgstr "リモート参照は常に`AbstractChannel`の実装を指します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1013
@@ -18350,6 +18655,9 @@ msgid ""
 "(@ref), [`isready`](@ref) and [`wait`](@ref).  The remote object referred to by a [`Future`](@ref) is stored in a `Channel{Any}(1)`, i.e., a "
 "`Channel` of size 1 capable of holding objects of `Any` type."
 msgstr ""
+"`抽象チャンネル`(「チャネル」など)の具体的な実装は、[`put!`](@ref)、[`take!`](@ref)、[`fetch`](@ref)、[`isready`](@ref) 、[`wait`](@ref) をイ"
+"ンストールするのに必要です。 [`Future`] (@ref)が参照するリモートオブジェクトは、`Channel{Any}(1)` すなわち サイズ1で`Any`型を保持するチャンネ"
+"ルです。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1016
@@ -18357,6 +18665,7 @@ msgid ""
 "[`RemoteChannel`](@ref), which is rewritable, can point to any type and size of channels, or any other implementation of an "
 "`AbstractChannel`."
 msgstr ""
+"[`RemoteChannel`](@ref)は、再書き込み可能であり、チャネルの任意のタイプとサイズ、または`AbstractChannel`の他の実装を指すことができます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1020
@@ -18364,6 +18673,8 @@ msgid ""
 "The constructor `RemoteChannel(f::Function, pid)()` allows us to construct references to channels holding more than one value of a specific "
 "type. `f` is a function executed on `pid` and it must return an `AbstractChannel`."
 msgstr ""
+"コンストラクタ `RemoteChannel(f::Function,pid)()` を使用すると、特定の型の複数の値を保持するチャネルへの参照を構築できます。`f` は `pid` で実"
+"行される関数であり、`AbstractChannel` を返す必要があります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1023
@@ -18372,6 +18683,8 @@ msgid ""
 "For example, `RemoteChannel(()->Channel{Int}(10), pid)`, will return a reference to a channel\n"
 "of type `Int` and size 10. The channel exists on worker `pid`.\n"
 msgstr ""
+"たとえば、`RemoteChannel(()->Channel{Int}(10), pid)` は、`Int`型でサイズ　10のチャネルへの参照を返します。\n"
+"チャネルはワーカー `pid` に存在します。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1026
@@ -18379,6 +18692,8 @@ msgid ""
 "Methods [`put!`](@ref), [`take!`](@ref), [`fetch`](@ref), [`isready`](@ref) and [`wait`](@ref)  on a [`RemoteChannel`](@ref) are proxied "
 "onto the backing store on the remote process."
 msgstr ""
+"[`RemoteChannel`](@ref)上のメソッド [`put!`](@ref), [`take!`](@ref), [`fetch`](@ref), [`isready`](@ref) and [`wait`](@ref) はリモートプロセス"
+"のバッキングストアにプロキシされます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1031
@@ -18386,12 +18701,15 @@ msgid ""
 "[`RemoteChannel`](@ref) can thus be used to refer to user implemented `AbstractChannel` objects.  A simple example of this is provided in "
 "`dictchannel.jl` in the [Examples repository](https://github.com/JuliaAttic/Examples), which uses a dictionary as its remote store."
 msgstr ""
+"よって、[`RemoteChannel`](@ref) はユーザーが実装した `AbstractChannel` オブジェクトを参照するのに使うことができます。これのシンプルな例は"
+"[Examples repository](https://github.com/JuliaAttic/Examples)の`dictchannel.jl`に見ることができます。これは辞書をリモートストアとして辞書を使"
+"うような例です。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/parallel-computing.md:1033
 #, no-wrap
 msgid "Channels and RemoteChannels"
-msgstr ""
+msgstr "チャネルとリモートチャネル"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1049
@@ -18399,11 +18717,13 @@ msgid ""
 "A [`Channel`](@ref) is local to a process. Worker 2 cannot directly refer to a [`Channel`](@ref) on worker 3 and vice-versa. A "
 "[`RemoteChannel`](@ref), however, can put and take values across workers."
 msgstr ""
+"[`Channel`](@ref)は、プロセスに対してローカルなものです。ワーカー2は、ワーカー3の [`Channel`](@ref)を直接参照することはできません。ただし、"
+"[`RemoteChannel`](@ref)は、ワーカーをまたいで値の`put/take`を行うことができます。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1049
 msgid "A [`RemoteChannel`](@ref) can be thought of as a *handle* to a [`Channel`](@ref)."
-msgstr ""
+msgstr "[`RemoteChannel`](@ref) は、[`Channel`](@ref)に対する *ハンドル* と考えることができます。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1049
@@ -18411,6 +18731,8 @@ msgid ""
 "The process id, `pid`, associated with a [`RemoteChannel`](@ref) identifies the process where the backing store, i.e., the backing "
 "[`Channel`](@ref) exists."
 msgstr ""
+"[`RemoteChannel`](@ref)に関連付けられたプロセスID `pid` は、バッキングストア、すなわち \"backing [`Channel`](@ref)\" が存在するプロセスを識別"
+"します。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1049
@@ -18418,6 +18740,8 @@ msgid ""
 "Any process with a reference to a [`RemoteChannel`](@ref) can put and take items from the channel.  Data is automatically sent to (or "
 "retrieved from) the process a [`RemoteChannel`](@ref) is associated with."
 msgstr ""
+"[`RemoteChannel`](@ref)を参照するプロセスは、[`RemoteChannel`](@ref)から、値の `put/take` を行うことができます。 データは[`RemoteChannel`]"
+"(@ref)が関連付けられているプロセスに自動的に送信(または取得)されます。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1049
@@ -18425,6 +18749,8 @@ msgid ""
 "Serializing a [`Channel`](@ref) also serializes any data present in the channel. Deserializing it therefore effectively makes a copy of the "
 "original object."
 msgstr ""
+"[`Channel`](@ref)をシリアル化すると、チャネルに存在するデータもシリアル化されます。したがって、逆シリアル化すると、元のオブジェクトのコピーを"
+"効果的に作成できます。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/parallel-computing.md:1049
@@ -18433,11 +18759,14 @@ msgid ""
 "instance of [`Channel`](@ref) referred to by the handle. A deserialized [`RemoteChannel`](@ref) object (on any worker), therefore also "
 "points to the same backing store as the original."
 msgstr ""
+"一方、[`RemoteChannel`](@ref)のシリアル化には、ハンドルによって参照される[`Channel`](@ref)の場所とインスタンスを識別する識別子のシリアル化の"
+"みが含まれます。任意のワーカー上の 逆シリアル化された [`RemoteChannel`](@ref) オブジェクトは、元のバッキング ストアと同じバッキング ストアを"
+"指します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1052
 msgid "The channels example from above can be modified for interprocess communication, as shown below."
-msgstr ""
+msgstr "上記のチャネル例は、以下に示すように、プロセス間通信用に変更できます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1057
@@ -18446,6 +18775,9 @@ msgid ""
 "remotely executing task in this simulation reads a `job_id`, waits for a random amount of time and writes back a tuple of `job_id`, time "
 "taken and its own `pid` to the results channel. Finally all the `results` are printed out on the master process."
 msgstr ""
+"ここでは、ジョブを格納する 単一のリモートチャネルを処理するために4つのワーカーを立ち上げます。ID (`job_id`) によって識別されるジョブは、チャ"
+"ネルに書き込まれます。このシミュレーションでリモートで実行している各タスクは `job_id`を読み取り、ランダムな時間だけ待機し、`job_id`のタプル、"
+"時間、および独自の`pid`を \"results\" チャネルに書き戻します。最後に、すべての結果がマスタープロセスにプリント出力されます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1058
@@ -18499,17 +18831,64 @@ msgid ""
 "10 finished in 0.58 seconds on worker 2\n"
 "0.055971741\n"
 msgstr ""
+"julia> addprocs(4); # add worker processes\n"
+"\n"
+"julia> const jobs = RemoteChannel(()->Channel{Int}(32));\n"
+"\n"
+"julia> const results = RemoteChannel(()->Channel{Tuple}(32));\n"
+"\n"
+"julia> @everywhere function do_work(jobs, results) # define work function everywhere\n"
+"           while true\n"
+"               job_id = take!(jobs)\n"
+"               exec_time = rand()\n"
+"               sleep(exec_time) # simulates elapsed time doing actual work\n"
+"               put!(results, (job_id, exec_time, myid()))\n"
+"           end\n"
+"       end\n"
+"\n"
+"julia> function make_jobs(n)\n"
+"           for i in 1:n\n"
+"               put!(jobs, i)\n"
+"           end\n"
+"       end;\n"
+"\n"
+"julia> n = 12;\n"
+"\n"
+"julia> @async make_jobs(n); # feed the jobs channel with \"n\" jobs\n"
+"\n"
+"julia> for p in workers() # start tasks on the workers to process requests in parallel\n"
+"           remote_do(do_work, p, jobs, results)\n"
+"       end\n"
+"\n"
+"julia> @elapsed while n > 0 # print out results\n"
+"           job_id, exec_time, where = take!(results)\n"
+"           println(\"$job_id finished in $(round(exec_time; digits=2)) seconds on worker $where\")\n"
+"           global n = n - 1\n"
+"       end\n"
+"1 finished in 0.18 seconds on worker 4\n"
+"2 finished in 0.26 seconds on worker 5\n"
+"6 finished in 0.12 seconds on worker 4\n"
+"7 finished in 0.18 seconds on worker 4\n"
+"5 finished in 0.35 seconds on worker 5\n"
+"4 finished in 0.68 seconds on worker 2\n"
+"3 finished in 0.73 seconds on worker 3\n"
+"11 finished in 0.01 seconds on worker 3\n"
+"12 finished in 0.02 seconds on worker 3\n"
+"9 finished in 0.26 seconds on worker 5\n"
+"8 finished in 0.57 seconds on worker 4\n"
+"10 finished in 0.58 seconds on worker 2\n"
+"0.055971741\n"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/parallel-computing.md:1108
 #, no-wrap
 msgid "Remote References and Distributed Garbage Collection"
-msgstr ""
+msgstr "リモート参照と分散ガベージ コレクション"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1112
 msgid "Objects referred to by remote references can be freed only when *all* held references in the cluster are deleted."
-msgstr ""
+msgstr "リモート参照で参照されるオブジェクトは、クラスター内に保持されている*全ての* 参照が削除された場合にのみ解放できます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1120
@@ -18520,6 +18899,11 @@ msgid ""
 "an internal cluster aware serializer. Remote references are only valid in the context of a running cluster. Serializing and deserializing "
 "references to and from regular `IO` objects is not supported."
 msgstr ""
+"値が格納されているノードは、どのワーカーがその値を参照しているかを追跡します。 [`RemoteChannel`](@ref)または(フェッチされていない)[`Future`]"
+"(@ref)がワーカーにシリアル化されるたびに、参照によって指し示されたノードが通知されます。また、[`RemoteChannel`](@ref)または(フェッチされてい"
+"ない)['Future'](@ref)がローカルに収集されるたびに、値を所有するノードが再度通知されます。これは、内部クラスター対応シリアライザーで実装されま"
+"す。リモート参照は、実行中のクラスターのコンテキストでのみ有効です。通常の `IO`オブジェクトからの参照、通常の `IO`オブジェクトへの参照のシリ"
+"アル化と逆シリアル化はサポートされていません。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1124
@@ -18527,6 +18911,8 @@ msgid ""
 "The notifications are done via sending of \"tracking\" messages--an \"add reference\" message when a reference is serialized to a different "
 "process and a \"delete reference\" message when a reference is locally garbage collected."
 msgstr ""
+"通知は、「トラッキング」メッセージの送信を介して行われます。このメッセージとは、参照が別のプロセスにシリアル化されるときには、「参照の追加」"
+"メッセージであり、参照がローカルのガベージ コレクションで処理されたときには「参照を削除」メッセージに相当します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1127
@@ -18534,11 +18920,13 @@ msgid ""
 "Since [`Future`](@ref)s are write-once and cached locally, the act of [`fetch`](@ref)ing a [`Future`](@ref) also updates reference tracking "
 "information on the node owning the value."
 msgstr ""
+"[`Future`](@ref)は、書き込みが一度で、ローカルにキャッシュされるので、 [`fetch`](@ref)の振る舞いは、その値を所有しているノードの参照追跡情報"
+"の更新も行います。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1129
 msgid "The node which owns the value frees it once all references to it are cleared."
-msgstr ""
+msgstr "値を所有するノードは、値へのすべての参照がクリアされると、値(のメモリを)解放します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1132
@@ -18546,6 +18934,8 @@ msgid ""
 "With [`Future`](@ref)s, serializing an already fetched [`Future`](@ref) to a different node also sends the value since the original remote "
 "store may have collected the value by this time."
 msgstr ""
+"[`Future`](@ref)を使用すると、既にフェッチされた [`Future`](@ref) を別のノードにシリアル化すると、(参照だけでなく)値そのものも送信されます。"
+"元のリモート ストアが現時点までの間に値を収集した可能性があるためです。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1135
@@ -18553,6 +18943,7 @@ msgid ""
 "It is important to note that *when* an object is locally garbage collected depends on the size of the object and the current memory pressure "
 "in the system."
 msgstr ""
+"*いつ*オブジェクトがローカルに収集されるかは、オブジェクトのサイズとシステム内の現在のメモリ負荷によって異なる、ということは注意すべきです。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1143
@@ -18563,17 +18954,22 @@ msgid ""
 "its reference from the remote store, this is not required on fetched [`Future`](@ref)s. Explicitly calling [`finalize`](@ref) results in an "
 "immediate message sent to the remote node to go ahead and remove its reference to the value."
 msgstr ""
+"リモート参照の場合、リモートノードにある値が非常に大きくなる可能性があるのですが、ローカル参照オブジェクトのサイズは非常に小さくなります。"
+"ローカルオブジェクトはすぐに収集されないことがあるため、[`RemoteChannel`](@ref)のローカルインスタンスや、フェッチされていない[`Future`](@ref)"
+"に対して、[`finalize`](@ref) を明示的に呼ぶのはよいアイディアです。[`Future`](@ref)に対して[`fetch`](@ref)を呼ぶと、その参照もリモートストア"
+"から削除されてしまうので、フェッチされた[`Future`](@ref)については、finalizeする必要はありません。明示的に[`finalize`](@ref)を呼ぶとリモート"
+"ノードに対してすぐにメッセージが送信されて、処理が先に進み、値への参照が削除されます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1145
 msgid "Once finalized, a reference becomes invalid and cannot be used in any further calls."
-msgstr ""
+msgstr "いったんファイナライズされると、参照は無効になり、それ以降の呼び出しでは使用できません。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/parallel-computing.md:1147
 #, no-wrap
 msgid "Local invocations(@id man-distributed-local-invocations)"
-msgstr ""
+msgstr "[ローカル呼び出し](@id man-distributed-local-invocations)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1157
@@ -18584,6 +18980,11 @@ msgid ""
 "as a local call. It is usually(not always) executed in a different task - but there is no serialization/deserialization of data. "
 "Consequently, the call refers to the same object instances as passed - no copies are created. This behavior is highlighted below:"
 msgstr ""
+"データは、処理が実行されるリモートノードに必ずコピーされます。これは、remotecallされた場合、データが[`RemoteChannel`](@ref) に格納されたり別"
+"のノードで [`Future`](@ref)が呼ばれた場合でも同様です。予想できるように、これはリモートノードでのシリアル化されたオブジェクトのコピーとなりま"
+"す。すなわち、呼び出しを行うプロセスのIDと、リモートのノードのIDは同じで、ローカル呼び出しとして実行されます。大抵の場合(常に、ではありませ"
+"ん)は、別のタスクで実行され、しかしそこではデータのシリアライズ/逆シリアライズの処理は発生しません。呼び出しでは、受け渡されたオブジェクトイ"
+"ンスタンスと全く同じものを参照して、コピーはつくられません。ここで述べた振る舞いは、以下の例でよく分かります:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1158
@@ -18627,6 +19028,43 @@ msgid ""
 "julia> println(\"Num Unique objects : \", length(unique(map(objectid, result))));\n"
 "Num Unique objects : 3\n"
 msgstr ""
+"julia> using Distributed;\n"
+"\n"
+"julia> rc = RemoteChannel(()->Channel(3));   # RemoteChannel created on local node\n"
+"\n"
+"julia> v = [0];\n"
+"\n"
+"julia> for i in 1:3\n"
+"           v[1] = i                          # Reusing `v`\n"
+"           put!(rc, v)\n"
+"       end;\n"
+"\n"
+"julia> result = [take!(rc) for _ in 1:3];\n"
+"\n"
+"julia> println(result);\n"
+"Array{Int64,1}[[3], [3], [3]]\n"
+"\n"
+"julia> println(\"Num Unique objects : \", length(unique(map(objectid, result))));\n"
+"Num Unique objects : 1\n"
+"\n"
+"julia> addprocs(1);\n"
+"\n"
+"julia> rc = RemoteChannel(()->Channel(3), workers()[1]);   # RemoteChannel created on remote node\n"
+"\n"
+"julia> v = [0];\n"
+"\n"
+"julia> for i in 1:3\n"
+"           v[1] = i\n"
+"           put!(rc, v)\n"
+"       end;\n"
+"\n"
+"julia> result = [take!(rc) for _ in 1:3];\n"
+"\n"
+"julia> println(result);\n"
+"Array{Int64,1}[[1], [2], [3]]\n"
+"\n"
+"julia> println(\"Num Unique objects : \", length(unique(map(objectid, result))));\n"
+"Num Unique objects : 3\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1201
@@ -18634,6 +19072,9 @@ msgid ""
 "As can be seen, [`put!`](@ref) on a locally owned [`RemoteChannel`](@ref) with the same object `v` modifed between calls results in the same "
 "single object instance stored. As opposed to copies of `v` being created when the node owning `rc` is a different node."
 msgstr ""
+"ご覧の通り、ローカルで所有された[`RemoteChannel`](@ref)と`v` に対して[`put!`](@ref) を(複数回)呼ぶ場合、その複数回の呼び出しの間に `v` を修正"
+"すると、単一のオブジェクトインスタンスが格納されます。対象的に、`rc` を所有するノードが別のノードである時、(その時々の)`v`のコピーが生成され"
+"るのと対象的です。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1205
@@ -18641,11 +19082,14 @@ msgid ""
 "It is to be noted that this is generally not an issue. It is something to be factored in only if the object is both being stored locally and "
 "modifed post the call. In such cases it may be appropriate to store a `deepcopy` of the object."
 msgstr ""
+"この振る舞いは、一般的には大した問題にはならないと思ってください。この振る舞いを考慮する必要があるとすれば、それは、オブジェクトがローカルに"
+"格納され、その後 (`put!`などの)呼び出しの後で、そのオブジェクトが変更された状況だけです。このような場合は、オブジェクトの「ディープコピー」を"
+"保存するのが適切でしょう。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1207
 msgid "This is also true for remotecalls on the local node as seen in the following example:"
-msgstr ""
+msgstr "これは、次の例に示すように、ローカル ノードの`remotecall`にも当てはまります:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1208
@@ -18667,6 +19111,21 @@ msgid ""
 "julia> println(\"v=$v, v2=$v2, \", v === v2);\n"
 "v=[0], v2=[1], false\n"
 msgstr ""
+"julia> using Distributed; addprocs(1);\n"
+"\n"
+"julia> v = [0];\n"
+"\n"
+"julia> v2 = remotecall_fetch(x->(x[1] = 1; x), myid(), v);     # Executed on local node\n"
+"\n"
+"julia> println(\"v=$v, v2=$v2, \", v === v2);\n"
+"v=[1], v2=[1], true\n"
+"\n"
+"julia> v = [0];\n"
+"\n"
+"julia> v2 = remotecall_fetch(x->(x[1] = 1; x), workers()[1], v); # Executed on remote node\n"
+"\n"
+"julia> println(\"v=$v, v2=$v2, \", v === v2);\n"
+"v=[0], v2=[1], false\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1229
@@ -18674,6 +19133,8 @@ msgid ""
 "As can be seen once again, a remote call onto the local node behaves just like a direct invocation.  The call modifies local objects passed "
 "as arguments. In the remote invocation, it operates on a copy of the arguments."
 msgstr ""
+"ここでもまたご覧の通り、ローカル ノードへの `remotecall` は、直接呼び出しと同様に機能します。 ローカルノードへの `remotecall` は、引数として"
+"渡されたローカル オブジェクトを変更します。リモート呼び出しでは、引数のコピーに対する処理になります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1234
@@ -18682,12 +19143,15 @@ msgid ""
 "this behavior needs to be factored in and if required deep copies of arguments must be passed to the call invoked on the local node. Calls "
 "on remote nodes will always operate on copies of arguments."
 msgstr ""
+"繰り返しますが、一般的にこのふるまいが問題になることはありません。もし、ローカル ノードがコンピューティング ノードとしても使用され、引数が "
+"ローカル呼び出しの後にも使用されるとすれば、ここで触れた振る舞いを考慮する必要があります。具体的には、必要に応じて引数のディープコピーを用意"
+"してローカルノードで呼び出された呼び出しに渡す必要があります。しかし、リモート ノードの呼び出しは、常に引数のコピーで動作します。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/parallel-computing.md:1236
 #, no-wrap
 msgid "[Shared Arrays](@id man-shared-arrays)"
-msgstr ""
+msgstr "[共有配列](@id man-shared-arrays)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1245
@@ -18723,7 +19187,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/parallel-computing.md:1258
 #, no-wrap
 msgid "SharedArray{T,N}(dims::NTuple; init=false, pids=Int[])\n"
-msgstr ""
+msgstr "SharedArray{T,N}(dims::NTuple; init=false, pids=Int[])\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1266
@@ -18774,6 +19238,30 @@ msgid ""
 " 2  3  3  4\n"
 " 2  7  4  4\n"
 msgstr ""
+"julia> using Distributed\n"
+"\n"
+"julia> addprocs(3)\n"
+"3-element Array{Int64,1}:\n"
+" 2\n"
+" 3\n"
+" 4\n"
+"\n"
+"julia> @everywhere using SharedArrays\n"
+"\n"
+"julia> S = SharedArray{Int,2}((3,4), init = S -> S[localindices(S)] = myid())\n"
+"3×4 SharedArray{Int64,2}:\n"
+" 2  2  3  4\n"
+" 2  3  3  4\n"
+" 2  3  4  4\n"
+"\n"
+"julia> S[3,2] = 7\n"
+"7\n"
+"\n"
+"julia> S\n"
+"3×4 SharedArray{Int64,2}:\n"
+" 2  2  3  4\n"
+" 2  3  3  4\n"
+" 2  7  4  4\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1303
@@ -18792,6 +19280,11 @@ msgid ""
 " 3  3  3  3\n"
 " 4  4  4  4\n"
 msgstr ""
+"julia> S = SharedArray{Int,2}((3,4), init = S -> S[indexpids(S):length(procs(S)):length(S)] = myid())\n"
+"3×4 SharedArray{Int64,2}:\n"
+" 2  2  2  2\n"
+" 3  3  3  3\n"
+" 4  4  4  4\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1314
@@ -18810,6 +19303,13 @@ msgid ""
 "    end\n"
 "end\n"
 msgstr ""
+"@sync begin\n"
+"    for p in procs(S)\n"
+"        @async begin\n"
+"            remotecall_wait(fill!, p, S, p)\n"
+"        end\n"
+"    end\n"
+"end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1328
@@ -18827,7 +19327,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/parallel-computing.md:1331
 #, no-wrap
 msgid "q[i,j,t+1] = q[i,j,t] + u[i,j,t]\n"
-msgstr ""
+msgstr "q[i,j,t+1] = q[i,j,t] + u[i,j,t]\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1341
@@ -18852,6 +19352,15 @@ msgid ""
 "           1:size(q,1), splits[idx]+1:splits[idx+1]\n"
 "       end\n"
 msgstr ""
+"julia> @everywhere function myrange(q::SharedArray)\n"
+"           idx = indexpids(q)\n"
+"           if idx == 0 # This worker is not assigned a piece\n"
+"               return 1:0, 1:0\n"
+"           end\n"
+"           nchunks = length(procs(q))\n"
+"           splits = [round(Int, s) for s in range(0, stop=size(q,2), length=nchunks+1)]\n"
+"           1:size(q,1), splits[idx]+1:splits[idx+1]\n"
+"       end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1355
@@ -18870,6 +19379,13 @@ msgid ""
 "           q\n"
 "       end\n"
 msgstr ""
+"julia> @everywhere function advection_chunk!(q, u, irange, jrange, trange)\n"
+"           @show (irange, jrange, trange)  # display so we can see what's happening\n"
+"           for t in trange, j in jrange, i in irange\n"
+"               q[i,j,t+1] = q[i,j,t] + u[i,j,t]\n"
+"           end\n"
+"           q\n"
+"       end\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1367
@@ -18883,6 +19399,8 @@ msgid ""
 "julia> @everywhere advection_shared_chunk!(q, u) =\n"
 "           advection_chunk!(q, u, myrange(q)..., 1:size(q,3)-1)\n"
 msgstr ""
+"julia> @everywhere advection_shared_chunk!(q, u) =\n"
+"           advection_chunk!(q, u, myrange(q)..., 1:size(q,3)-1)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1374
@@ -18893,7 +19411,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/parallel-computing.md:1375
 #, no-wrap
 msgid "julia> advection_serial!(q, u) = advection_chunk!(q, u, 1:size(q,1), 1:size(q,2), 1:size(q,3)-1);\n"
-msgstr ""
+msgstr "julia> advection_serial!(q, u) = advection_chunk!(q, u, 1:size(q,1), 1:size(q,2), 1:size(q,3)-1);\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1380
@@ -18915,6 +19433,16 @@ msgid ""
 "           q\n"
 "       end;\n"
 msgstr ""
+"julia> function advection_parallel!(q, u)\n"
+"           for t = 1:size(q,3)-1\n"
+"               @sync @distributed for j = 1:size(q,2)\n"
+"                   for i = 1:size(q,1)\n"
+"                       q[i,j,t+1]= q[i,j,t] + u[i,j,t]\n"
+"                   end\n"
+"               end\n"
+"           end\n"
+"           q\n"
+"       end;\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1395
@@ -18934,6 +19462,14 @@ msgid ""
 "           q\n"
 "       end;\n"
 msgstr ""
+"julia> function advection_shared!(q, u)\n"
+"           @sync begin\n"
+"               for p in procs(q)\n"
+"                   @async remotecall_wait(advection_shared_chunk!, p, q, u)\n"
+"               end\n"
+"           end\n"
+"           q\n"
+"       end;\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1408
@@ -18948,6 +19484,9 @@ msgid ""
 "\n"
 "julia> u = SharedArray{Float64,3}((500,500,500));\n"
 msgstr ""
+"julia> q = SharedArray{Float64,3}((500,500,500));\n"
+"\n"
+"julia> u = SharedArray{Float64,3}((500,500,500));\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1416
@@ -18972,6 +19511,19 @@ msgid ""
 "        From worker 5:       (irange,jrange,trange) = (1:500,376:500,1:499)\n"
 " 238.119 milliseconds (2264 allocations: 169 KB)\n"
 msgstr ""
+"julia> @time advection_serial!(q, u);\n"
+"(irange,jrange,trange) = (1:500,1:500,1:499)\n"
+" 830.220 milliseconds (216 allocations: 13820 bytes)\n"
+"\n"
+"julia> @time advection_parallel!(q, u);\n"
+"   2.495 seconds      (3999 k allocations: 289 MB, 2.09% gc time)\n"
+"\n"
+"julia> @time advection_shared!(q,u);\n"
+"        From worker 2:       (irange,jrange,trange) = (1:500,1:125,1:499)\n"
+"        From worker 4:       (irange,jrange,trange) = (1:500,251:375,1:499)\n"
+"        From worker 3:       (irange,jrange,trange) = (1:500,126:250,1:499)\n"
+"        From worker 5:       (irange,jrange,trange) = (1:500,376:500,1:499)\n"
+" 238.119 milliseconds (2264 allocations: 169 KB)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1435
@@ -19424,7 +19976,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/parallel-computing.md:1607
 #, no-wrap
 msgid "Cluster Managers with Custom Transports"
-msgstr ""
+msgstr "カスタム トランスポートを使用したクラスタ マネージャ"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1612
@@ -19619,7 +20171,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/parallel-computing.md:1698
 #, no-wrap
 msgid "[Cluster Cookie](@id man-cluster-cookie)"
-msgstr ""
+msgstr "[クラスタークッキー](@id man-cluster-cookie)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1702
@@ -19662,7 +20214,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/parallel-computing.md:1717
 #, no-wrap
 msgid "Specifying Network Topology (Experimental)"
-msgstr ""
+msgstr "ネットワーク トポロジの指定 (実験的実装)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1721
@@ -19706,7 +20258,7 @@ msgstr ""
 #: ext/julia/doc/src/manual/parallel-computing.md:1738
 #, no-wrap
 msgid "Noteworthy external packages"
-msgstr ""
+msgstr "注目に値する外部パッケージ"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1744
@@ -25677,7 +26229,7 @@ msgid ""
 "   (see [Code blocks](@ref)) starting with ````` ```jldoctest````` and contains any number of `julia>`\n"
 "   prompts together with inputs and expected outputs that mimic the Julia REPL.\n"
 msgstr ""
-"   例は、可能な限り *doctests*として記述する必要があります。*doctest* はフェンスで囲まれたコードブロックです([コードブロック](@ref Code-blocks)参照) 。\n"
+"   例は、可能な限り *doctests*として記述する必要があります。*doctest* はフェンスで囲まれたコードブロックです([コードブロック](@ref Code-blocks) 参照) 。\n"
 "   ````` ```jldoctest`````で始まり、任意の数の `julia>` プロンプトが、その入出力とともに含まれます。ここでの出力はJuliaのREPLであれば与えられた入力に対して、この出力を出すだろうという期待値です。\n"
 
 #. type: Plain text
@@ -52421,13 +52973,13 @@ msgstr ""
 #: ext/julia/doc/src/devdocs/sysimg.md:1
 #, no-wrap
 msgid "System Image Building"
-msgstr ""
+msgstr "システムイメージのビルド"
 
 #. type: Title ##
 #: ext/julia/doc/src/devdocs/sysimg.md:3
 #, no-wrap
 msgid "Building the Julia system image"
-msgstr ""
+msgstr "Julia のシステムイメージをビルドする"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/sysimg.md:10
@@ -52437,21 +52989,27 @@ msgid ""
 "do not ship with a precompiled system image file, one can be generated from the source files shipped in Julia's `DATAROOTDIR/julia/base` "
 "folder."
 msgstr ""
+"Julia には、`sys.ji` という名前の、 `Base` モジュールの内容を含む事前解析済みのシステム イメージが付属しています。 このファイルは、起動時間を"
+"大幅に改善できるように、できるだけ多くのプラットフォーム上で、`sys.{so,dll,dylib}`という共有ライブラリにもプリコンパイルされます。 プリコンパ"
+"イル済みシステムイメージファイル が Julia に付属されないようなシステムでであれば、Julia の `DATAROOTDIR/julia/base` フォルダーに同梱されてい"
+"るソース・ファイルからシステムイメージファイルを生成できます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/sysimg.md:12
 msgid "This operation is useful for multiple reasons.  A user may:"
-msgstr ""
+msgstr "システムイメージの自前ビルドは、複数の理由で役立ちます。 ユーザーは以下を実行できます:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/devdocs/sysimg.md:18
 msgid "Build a precompiled shared library system image on a platform that did not ship with one, thereby improving startup times."
 msgstr ""
+"Julia にシステムイメージが付属していないようなプラットフォーム上で プリコンパイル済みの共有ライブラリ システム イメージをビルドし、起動時間を"
+"短縮します。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/devdocs/sysimg.md:18
 msgid "Modify `Base`, rebuild the system image and use the new `Base` next time Julia is started."
-msgstr ""
+msgstr "`Base`を変更し、システムイメージを再ビルドし、次回 Julia を起動する時に新しい`Base`を使用します。"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/devdocs/sysimg.md:18
@@ -52459,6 +53017,8 @@ msgid ""
 "Include a `userimg.jl` file that includes packages into the system image, thereby creating a system image that has packages embedded into "
 "the startup environment."
 msgstr ""
+"パッケージのinclude 処理を行う `userimg.jl` をシステムイメージに含めることで、スタートアップ環境にパッケージが埋め込まれたシステム イメージを"
+"作成します。"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/sysimg.md:21
@@ -52466,12 +53026,14 @@ msgid ""
 "The [`PackageCompiler.jl` package](https://github.com/JuliaLang/PackageCompiler.jl) contains convenient wrapper functions to automate this "
 "process."
 msgstr ""
+"[`PackageCompiler.jl` package](https://github.com/JuliaLang/PackageCompiler.jl) には、このプロセスを自動化するための便利なラッパー関数が含ま"
+"れています。"
 
 #. type: Title ##
 #: ext/julia/doc/src/devdocs/sysimg.md:22
 #, no-wrap
 msgid "System image optimized for multiple microarchitectures"
-msgstr ""
+msgstr "複数のマイクロアーキテクチャ向けに最適化されたシステムイメージ"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/sysimg.md:30
@@ -52481,12 +53043,15 @@ msgid ""
 "of different ISA extensions or other microarchitecture features.  The version that offers the best performance will be selected "
 "automatically at runtime based on available CPU features."
 msgstr ""
+"システム イメージは、同じ命令セット アーキテクチャ (ISA) の下で複数の CPU マイクロアーキテクチャーに対して同時にコンパイルできます。異なる "
+"ISA 拡張機能やその他のマイクロアーキテクチャ機能を利用するために、共有関数には最小限のディスパッチポイントを挿入することで、複数バージョンの"
+"関数を作成できます。最高のパフォーマンスを提供するバージョンは、利用可能な CPU 機能に基づいて実行時に自動的に選択されます。"
 
 #. type: Title ###
 #: ext/julia/doc/src/devdocs/sysimg.md:31
 #, no-wrap
 msgid "Specifying multiple system image targets"
-msgstr ""
+msgstr "複数のシステム・イメージ・ターゲットを指定する"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/sysimg.md:41
@@ -52497,11 +53062,17 @@ msgid ""
 "`.  All features supported by LLVM are supported and a feature can be disabled with a `-` prefix.  (`+` prefix is also allowed and ignored "
 "to be consistent with LLVM syntax).  Additionally, a few special features are supported to control the function cloning behavior."
 msgstr ""
+"マルチマイクロアーキテクチャーのシステム・イメージは、システム・イメージのコンパイル中に複数のターゲットを渡すことによって使用することができ"
+"ます。複数ターゲットの指定は、`JULIA_CPU_TARGET` make オプションをつかってもできますし、コンパイルコマンドを手動で実行する場合は`-C` コマンド"
+"ラインオプションを使用することもできます。 オプション文字列内で複数のターゲットは `;` で区切ります。 各ターゲットの構文は、CPU 名の後に `,` "
+"で区切られた複数の機能を記します。 LLVM でサポートされているすべての機能がサポートされており、`-` プレフィックスを使用して機能を無効にするこ"
+"とができます。 (`+` 接頭部も許可され、LLVM 構文と一致するように無視されます)。 さらに、関数の複製動作を制御するいくつかの特別な機能がサポート"
+"されています。"
 
 #. type: Bullet: '1. '
 #: ext/julia/doc/src/devdocs/sysimg.md:43
 msgid "`clone_all`"
-msgstr ""
+msgstr "`clone_all`"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/sysimg.md:50
@@ -52514,11 +53085,14 @@ msgid ""
 "    The negative form `-clone_all` can be used to prevent the built-in\n"
 "    heuristic from cloning all functions.\n"
 msgstr ""
+"    デフォルトでは、マイクロアーキテクチャ機能から最も恩恵を受ける可能性が最も高い関数のみクローンされます。\n"
+"    ターゲットに `clone_all` が指定されている場合は、**全ての** 関数がターゲットに対して複製されます。\n"
+"    負形式 `-clone_all` を使用すると、全関数のクローンから、組み込みのヒューリスティック操作を抑制することができます。\n"
 
 #. type: Bullet: '2. '
 #: ext/julia/doc/src/devdocs/sysimg.md:52
 msgid "`base(<n>)`"
-msgstr ""
+msgstr "`base(<n>)`"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/sysimg.md:60
@@ -52532,11 +53106,15 @@ msgid ""
 "    The base target has to be either `0` or another `clone_all` target.\n"
 "    Specifying a non-`clone_all` target as the base target will cause an error.\n"
 msgstr ""
+"    ここで、`<n>` は負でない数値のプレースホルダを示します (たとえば、`base(0)`、`base(1))など。\n"
+"    部分的に複製された(つまり`clone_all`ではない)ターゲットで、ある関数が複数されていなければ、基本ターゲットの関数が使用されます。デフォルトで基本ターゲットは、`0`番 (最初に指定されたターゲット)です。\n"
+"    `base(<n>)` オプションで`n`番目のターゲット (0 から始まる) を基本ターゲットとして指定することができます。\n"
+"    基本ターゲットに指定できるのは、`0`または別のターゲットの中でも`clone_all`指定がされているものでなければいけません.。そうでないと、エラーが発生します。\n"
 
 #. type: Bullet: '3. '
 #: ext/julia/doc/src/devdocs/sysimg.md:62
 msgid "`opt_size`"
-msgstr ""
+msgstr "`opt_size`"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/sysimg.md:65
@@ -52545,11 +53123,13 @@ msgid ""
 "    This causes the function for the target to be optimized for size when there isn't a significant\n"
 "    runtime performance impact. This corresponds to `-Os` GCC and Clang option.\n"
 msgstr ""
+"    実行時間性能への影響が重大でない限りは、関数のサイズ最適化が行われます。\n"
+"    これはGCCやClang でいうところの `-Os` オプションに相当します。\n"
 
 #. type: Bullet: '4. '
 #: ext/julia/doc/src/devdocs/sysimg.md:67
 msgid "`min_size`"
-msgstr ""
+msgstr "`min_size`"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/sysimg.md:70
@@ -52558,6 +53138,8 @@ msgid ""
 "    This causes the function for the target to be optimized for size that might have\n"
 "    a significant runtime performance impact. This corresponds to `-Oz` Clang option.\n"
 msgstr ""
+"    実行時間性能に重大な影響があったとしても、強制的にサイズ最適化をします。\n"
+"    Clang オプションでいうところの `-Oz` に相当します。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/sysimg.md:73
@@ -52565,12 +53147,14 @@ msgid ""
 "As an example, at the time of this writing, the following string is used in the creation of the official `x86_64` Julia binaries "
 "downloadable from julialang.org:"
 msgstr ""
+"例として示しますが、本ページ執筆時点で julialang.orgからダウンロード可能な公式の`x86_64` Julia バイナリの作成には、次のオプション文字列が使用"
+"されています:"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/sysimg.md:74
 #, no-wrap
 msgid "generic;sandybridge,-xsaveopt,clone_all;haswell,-rdrnd,base(1)\n"
-msgstr ""
+msgstr "generic;sandybridge,-xsaveopt,clone_all;haswell,-rdrnd,base(1)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/sysimg.md:88
@@ -52583,24 +53167,30 @@ msgid ""
 "generated with the target `generic,-cx16` for greater compatibility, however note that this may cause performance and stability problems in "
 "some code."
 msgstr ""
+"これにより、3 つの別個のターゲットを持つシステム イメージが作成されます。一つは、一般的な `x86_64` プロセッサ、もう一つは `sandybridge` ISA "
+"(明示的に `xsaveopt` を除いています) を持つプロセッサで、すべての関数を明示的にクローン化するオプションを指定しました。最後は `haswell` ISA "
+"をターゲットにプロセッサで、 `sandybridge` sysimg バージョンに基づいており、`rdrnd` を除外しました。Julia 実装が生成された sysimg を読み込む"
+"と、ホスト プロセッサが CPU 機能フラグとの一致をチェックし、可能な限り最高の ISA レベルを有効にします。 基本レベル (`generic`) には`cx16` 命"
+"令が必要です。 あるいは、互換性を高めるためにターゲット `generic,-cx16` で sysimg を生成することもできますが、一部のコードではパフォーマンス"
+"と安定性の問題が発生する可能性があることに注意してください。"
 
 #. type: Title ###
 #: ext/julia/doc/src/devdocs/sysimg.md:89
 #, no-wrap
 msgid "Implementation overview"
-msgstr ""
+msgstr "実装概要"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/sysimg.md:93
 msgid ""
 "This is a brief overview of different part involved in the implementation.  See code comments for each components for more implementation "
 "details."
-msgstr ""
+msgstr "これは、実装に関連するさまざまな部分の簡単な概要です。 実装の詳細については、各コンポーネントのコード コメントを参照してください。"
 
 #. type: Bullet: '1. '
 #: ext/julia/doc/src/devdocs/sysimg.md:95
 msgid "System image compilation"
-msgstr ""
+msgstr "システムイメージのコンパイル"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/sysimg.md:105
@@ -52616,11 +53206,16 @@ msgid ""
 "    system image correctly.\n"
 "    A detail description of the metadata is available in `src/processor.h`.\n"
 msgstr ""
+"    解析とクローン作成の決定は `src/processor*` で行われます。\n"
+"    現在、サポートしているのは、ループ、simd命令、または他の数学演算(例えば、fastmath, fma、muladd)などの存在に基づく関数のclone 機能です。\n"
+"    この情報は、実際のクローン作成を行う `src/llvm-multiversioning.cpp` に渡されます。\n"
+"    この情報の受け渡しで、クローニングとディスパッチスロットの挿入に加えて (この方法については、`MultiVersioning::runOnModule`のコメントを参照してください)、 メタデータの生成も行われるため、ランタイムは、システム イメージがロード・初期化することができます。\n"
+"    メタデータの詳細な説明は `src/processor.h` をみると分かります。\n"
 
 #. type: Bullet: '2. '
 #: ext/julia/doc/src/devdocs/sysimg.md:107
 msgid "System image loading"
-msgstr ""
+msgstr "システムイメージの読み込み"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/sysimg.md:113
@@ -52633,6 +53228,10 @@ msgid ""
 "    larger vector register size, and larget number of features.\n"
 "    An overview of this process is in `src/processor.cpp`.\n"
 msgstr ""
+"    システム イメージの読み込みと初期化は`src/processor*` で、システム イメージの生成中に保存されたメタデータで解析することで行われます。\n"
+"    ホスト機能の検出と選択の決定は`src/processor_*.cpp` で行われます。ファイルは、ISA によって異なります。\n"
+"    ターゲットの選択では、まずは、完全に一致する CPU 名、より大きいベクター レジスタサイズ、そしてより多いフィーチャーの数のものが優先されます。\n"
+"    このプロセスの概要は`src/processor.cpp`にあります。\n"
 
 #. type: Title #
 #: ext/julia/doc/src/devdocs/offset-arrays.md:1
