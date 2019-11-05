@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-08-26 03:21+0000\n"
-"PO-Revision-Date: 2019-11-05 09:52+0900\n"
+"PO-Revision-Date: 2019-11-05 10:09+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -16576,8 +16576,8 @@ msgid ""
 "The section on [`Task`](@ref)s in [Control Flow](@ref) discussed the execution of multiple functions in a co-operative manner. [`Channel`]"
 "(@ref)s can be quite useful to pass data between running tasks, particularly those involving I/O operations."
 msgstr ""
-"[制御フロー](@id Control-Flow)のページの[タスク](@ref Task)セクションでは、協調的に動作する複数の関数の実行について議論しました。[`Channel`]"
-"(@ref)は、実行中のタスク、特に I/O 操作を含むタスク間でデータを渡すのに非常に役立ちます。"
+"[制御フロー](@id Control-Flow)のページの[タスク](@ref man-tasks)セクションでは、協調的に動作する複数の関数の実行について議論しました。"
+"[`Channel`](@ref)は、実行中のタスク、特に I/O 操作を含むタスク間でデータを渡すのに非常に役立ちます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:55
@@ -24332,7 +24332,7 @@ msgstr "[制御フロー](@id Control-Flow)"
 #. type: Plain text
 #: ext/julia/doc/src/manual/control-flow.md:4
 msgid "Julia provides a variety of control flow constructs:"
-msgstr "Julia は、さまざまな制御フロー構造を提供します。"
+msgstr "Julia は、さまざまな制御フロー構造を提供します:"
 
 #. type: Bullet: '  * '
 #: ext/julia/doc/src/manual/control-flow.md:11
