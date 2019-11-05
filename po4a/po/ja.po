@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-08-26 03:21+0000\n"
-"PO-Revision-Date: 2019-11-05 11:25+0900\n"
+"PO-Revision-Date: 2019-11-05 11:32+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -18559,7 +18559,9 @@ msgid ""
 "avoided. Fortunately, [Shared Arrays](@ref man-shared-arrays) can be used to get around this limitation:"
 msgstr ""
 "このコードは、`a` の全ての要素を初期化できません。各プロセスには個別のコピーがあるからです。このような並行 for ループは避けなければいけませ"
-"ん。さいわい、[Shared Array](@ref man-shared-arrays)を使用して、この制限を回避できます:"
+"ん。さいわい、\n"
+"[Shared Array](@ref man-shared-arrays) \n"
+"を使用して、この制限を回避できます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:962
@@ -18668,8 +18670,9 @@ msgid ""
 "`Channel` of size 1 capable of holding objects of `Any` type."
 msgstr ""
 "`抽象チャンネル`(「チャネル」など)の具体的な実装は、[`put!`](@ref)、[`take!`](@ref)、[`fetch`](@ref)、[`isready`](@ref) 、[`wait`](@ref) をイ"
-"ンストールするのに必要です。 [`Future`] (@ref)が参照するリモートオブジェクトは、`Channel{Any}(1)` すなわち サイズ1で`Any`型を保持するチャンネ"
-"ルです。"
+"ンストールするのに必要です。\n"
+" [`Future`] (@ref)\n"
+"が参照するリモートオブジェクトは、`Channel{Any}(1)` すなわち サイズ1で`Any`型を保持するチャンネルです。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1016
