@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-08-26 03:21+0000\n"
-"PO-Revision-Date: 2019-11-05 11:46+0900\n"
+"PO-Revision-Date: 2019-11-05 11:59+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -42458,6 +42458,9 @@ msgid ""
 "The following two-word sequences are reserved: `abstract type`, `mutable struct`, `primitive type`.  However, you can create variables with "
 "names: `abstract`, `mutable`, `primitive` and `type`."
 msgstr ""
+"The following two-word sequences are reserved: `abstract type`, \n"
+"`mutable struct`, \n"
+"`primitive type`.  However, you can create variables with names: `abstract`, `mutable`, `primitive` and `type`."
 
 #. type: Plain text
 #: ext/julia/doc/src/base/base.md:55
