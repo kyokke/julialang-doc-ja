@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-08-26 03:21+0000\n"
-"PO-Revision-Date: 2019-11-03 07:42+0900\n"
+"PO-Revision-Date: 2019-11-05 09:52+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -52979,7 +52979,7 @@ msgstr "システムイメージのビルド"
 #: ext/julia/doc/src/devdocs/sysimg.md:3
 #, no-wrap
 msgid "Building the Julia system image"
-msgstr "Julia のシステムイメージをビルドする"
+msgstr "[Julia のシステムイメージをビルドする](@id Building-the-Julia-system-image)"
 
 #. type: Plain text
 #: ext/julia/doc/src/devdocs/sysimg.md:10
