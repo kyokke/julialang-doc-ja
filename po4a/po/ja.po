@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-08-26 03:21+0000\n"
-"PO-Revision-Date: 2019-11-05 13:08+0900\n"
+"PO-Revision-Date: 2019-12-05 17:05+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -18323,7 +18323,7 @@ msgstr ""
 msgid ""
 "  Executing the above snippet results in `Main.A` on worker 2 having a different value from\n"
 "  `Main.A` on worker 3, while the value of `Main.A` on node 1 is set to `nothing`.\n"
-msgstr "  上記のスニペットを実行すると、ノード 1 の 'Main.A' の値は \"nothing\" に設定されているのですが、ワーカー 2の`Main.A`は、ワーカー3のそれと異なる値を持ちます。\n"
+msgstr "  上記のスニペットを実行すると、ノード 1 の `Main.A` の値は \"nothing\" に設定されているのですが、ワーカー 2の`Main.A`は、ワーカー3のそれと異なる値を持ちます。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:856
@@ -19181,11 +19181,17 @@ msgid ""
 "same chunk; in contrast, in a [`SharedArray`](@ref) each \"participating\" process has access to the entire array.  A [`SharedArray`](@ref) "
 "is a good choice when you want to have a large amount of data jointly accessible to two or more processes on the same machine."
 msgstr ""
+"共有アレイは、システムの共有メモリを使用して、複数のプロセスで同じ配列をマップします。\n"
+"[`SharedArray`](@ref) は、 [`DArray`](https://github.com/JuliaParallel/DistributedArrays.jl) とはいくつかの類似点があるものの、\n"
+"その動作は全く異なります。 [`DArray`](https://github.com/JuliaParallel/DistributedArrays.jl) では、\n"
+"各プロセスはデータチャンクに対するローカルアクセス権を持ち、 2つのプロセスが同じチャンクを共有しません。\n"
+"対照的に、 [`SharedArray`](@ref) では、配列の共有に「参加している」プロセスはアレイ全体にアクセスできます。\n"
+" [`SharedArray`](@ref) は、同じマシン上の複数のプロセスが共同で、大量のデータアクセスさせたい場合に適しています。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1248
 msgid "Shared Array support is available via module `SharedArrays` which must be explicitly loaded on all participating workers."
-msgstr ""
+msgstr "共有配列にサポートするには、参加するすべてのワーカーで `SharedArray` モジュールを明示的にロードする必要があります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1255
@@ -19196,11 +19202,16 @@ msgid ""
 "calling [`sdata`](@ref). For other `AbstractArray` types, [`sdata`](@ref)  just returns the object itself, so it's safe to use [`sdata`]"
 "(@ref) on any `Array`-type object."
 msgstr ""
+"[`SharedArray`](@ref) の添字アクセス (値の代入と参照) は通常の配列と同様に機能します。また、実際に値が格納されているメモリにローカル プロセス"
+"からアクセスできるため効率的です。したがって、(マルチプロセス想定で実装された) ほとんどのアルゴリズムは、単一プロセスモードだとしても　"
+"[`SharedArray`](@ref) 上で自然に動作します。アルゴリズムに [`Array`](@ref) 入力が必要な場合、実際に値を格納している配列は[`sdata`](@ref) を呼"
+"び出すことによって [`SharedArray`](@ref) から取得できます。他の `AbstractArray` 型の場合は、 [`sdata`](@ref) はオブジェクトそのものを返しま"
+"す。なので、( `SharedArray` かどうか気にせず) `Array` 型オブジェクトで [`sdata`](@ref) を使用しても安全です。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1257
 msgid "The constructor for a shared array is of the form:"
-msgstr ""
+msgstr "共有配列のコンストラクタは、次の形式で書きます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1258
@@ -19215,6 +19226,9 @@ msgid ""
 "distributed arrays, a shared array is accessible only from those participating workers specified by the `pids` named argument (and the "
 "creating process too, if it is on the same host)."
 msgstr ""
+"このコンストラクタは、ビット型 `T` を要素にもち、`dims` で指定されるサイズの `N`次元共有配列を `pids` で指定されたプロセス全体で作成します。"
+"分散配列とは異なり、共有配列は`pids` 名前付き引数で指定されている 共有に参加しているワーカーからのみアクセスできます (同じホスト上にある場合"
+"はワーカーを作成したメインプロセスからもアクセス可能です)。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1270
@@ -19222,11 +19236,13 @@ msgid ""
 "If an `init` function, of signature `initfn(S::SharedArray)`, is specified, it is called on all the participating workers. You can specify "
 "that each worker runs the `init` function on a distinct portion of the array, thereby parallelizing initialization."
 msgstr ""
+"シグネチャ `initfn(S:SharedArray)` の `init` 関数が指定されている場合は、その初期化関数は、参加しているすべてのワーカーで呼び出されます。各"
+"ワーカーが配列の別個の部分で `init` 関数を実行し、初期化を並列化することを指定できます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1272
 msgid "Here's a brief example:"
-msgstr ""
+msgstr "簡単な例を次に示します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1273
@@ -19288,6 +19304,8 @@ msgid ""
 "[`SharedArrays.localindices`](@ref) provides disjoint one-dimensional ranges of indices, and is sometimes convenient for splitting up tasks "
 "among processes. You can, of course, divide the work any way you wish:"
 msgstr ""
+"[`SharedArray.localindice`](@ref) は、インデックスの 1 次元のなかのあるインデックス範囲をコア間で重なりなく提供します。プロセス間でタスクを分"
+"割するのに便利なことがあります。もちろん、作業を任意の方法で分割することもできます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1304
@@ -19308,7 +19326,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1314
 msgid "Since all processes have access to the underlying data, you do have to be careful not to set up conflicts. For example:"
-msgstr ""
+msgstr "すべてのプロセスは実データにアクセスできるため、競合が発生しないよう注意する必要があります。例えば："
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1315
@@ -19336,11 +19354,13 @@ msgid ""
 "would result in undefined behavior. Because each process fills the *entire* array with its own `pid`, whichever process is the last to "
 "execute (for any particular element of `S`) will have its `pid` retained."
 msgstr ""
+"上記のコードの動作は未定義です。各プロセスは配列*全要素*に自分自身の`pid`の数字を代入しようとするため、(それぞれの`S`の要素に対して)代入計算"
+"を最後に実行したプロセスの`pid`を保持することになります。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1330
 msgid "As a more extended and complex example, consider running the following \"kernel\" in parallel:"
-msgstr ""
+msgstr "より発展的・複雑な例として、次の \"カーネル\" を並行して実行する場合を考えてみましょう:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1331
@@ -19356,6 +19376,10 @@ msgid ""
 "t]` will not be ready at the time it's needed for computing `q[i,j,t+1]`. In such cases, one is better off chunking the array manually. "
 "Let's split along the second dimension.  Define a function that returns the `(irange, jrange)` indices assigned to this worker:"
 msgstr ""
+"この場合、1 次元インデックスを使用して作業を分割しようとすると、次のような問題が発生する可能性があります: `q[i,j,t]` があるワーカーに割り当て"
+"られたブロックの終わり付近にあり、`q[i,j,t+1]` が別のワーカーに割り当てられたブロックの先頭付近にある場合、`q[i,j,t]` が計算に必要な時点で、"
+"準備出来ていない可能性が非常に高いです。このような場合は、手動で配列をチャンクする方が良いでしょう。2 番目の次元に沿って分割してみましょう。 "
+"このワーカーに割り当てられた `(irange,jrange)` インデックスを返す関数を定義します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1342
@@ -19384,7 +19408,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1355
 msgid "Next, define the kernel:"
-msgstr ""
+msgstr "次に、カーネルを定義します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1356
@@ -19409,7 +19433,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1367
 msgid "We also define a convenience wrapper for a `SharedArray` implementation"
-msgstr ""
+msgstr "また、`SharedArray` 実装に利便なラッパーも定義します"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1368
@@ -19424,7 +19448,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1374
 msgid "Now let's compare three different versions, one that runs in a single process:"
-msgstr ""
+msgstr "さぁ、3 つの異なるバージョンを比較してみましょう。１つ目は1つのコアで実行されるもの:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1375
@@ -19435,7 +19459,7 @@ msgstr "julia> advection_serial!(q, u) = advection_chunk!(q, u, 1:size(q,1), 1:s
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1380
 msgid "one that uses [`@distributed`](@ref):"
-msgstr ""
+msgstr "もうひとつは、 [`@distributed`](@ref) を使うもの:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1381
@@ -19466,7 +19490,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1395
 msgid "and one that delegates in chunks:"
-msgstr ""
+msgstr "そして、チャンク単位で別々のコアに計算を任せるもの:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1396
@@ -19493,7 +19517,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1408
 msgid "If we create `SharedArray`s and time these functions, we get the following results (with `julia -p 4`):"
-msgstr ""
+msgstr "`SharedArray` を作成し、これらの関数の実行時間を測定すると、次の結果が得られます ( `julia -p 4` で実行したとします):"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1409
@@ -19510,7 +19534,7 @@ msgstr ""
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1416
 msgid "Run the functions once to JIT-compile and [`@time`](@ref) them on the second run:"
-msgstr ""
+msgstr "JITコンパイルのために一度関数を実行してから、二回目の実行で測定します:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1417
@@ -19550,12 +19574,13 @@ msgid ""
 "The biggest advantage of `advection_shared!` is that it minimizes traffic among the workers, allowing each to compute for an extended time "
 "on the assigned piece."
 msgstr ""
+"`advection_shared!` の最大の利点は、ワーカー間のトラフィックを最小限に抑え、割り当てられたピースに対して長時間計算できるようにすることです。"
 
 #. type: Title ###
 #: ext/julia/doc/src/manual/parallel-computing.md:1436
 #, no-wrap
 msgid "Shared Arrays and Distributed Garbage Collection"
-msgstr ""
+msgstr "共有配列と分散ガベージ コレクション"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/parallel-computing.md:1442
@@ -19564,6 +19589,10 @@ msgid ""
 "participating workers. Code which creates many short lived shared array objects would benefit from explicitly finalizing these objects as "
 "soon as possible.  This results in both memory and file handles mapping the shared segment being released sooner."
 msgstr ""
+"リモート参照と同様に、共有配列もまた、配列が生成されたノードのガベージ コレクションに依存します。ここでいうガベージコレクションは、その配列を"
+"共有しているすべてのワーカーからの参照を解放するものです。サイズが小さい共有配列をたくさん生成するようなコードは、これらのオブジェクトをでき"
+"るだけ早く明示的にファイナライズすると、得るものが多いでしょう。結果、メモリハンドル・ファイルハンドルの両方で、より早く解放される共有セグメ"
+"ントをマッピングしてくれます。"
 
 #. type: Title ##
 #: ext/julia/doc/src/manual/parallel-computing.md:1443
@@ -20630,9 +20659,8 @@ msgstr "この引数は、対象のメソッドが定義されたとき、コン
 
 #. type: Bullet: '3. '
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:60
-#, fuzzy
 msgid "A tuple of input types. The input types must be written as a literal tuple, not a tuple-valued variable or expression."
-msgstr "入力型のタプル。入力型は、タプル値の変数や式ではなく、リテラルタプルとして記述する必要があります。"
+msgstr "関数への入力引数のデータ型をタプルにしたもの。タプル値の変数や式ではなく、リテラルタプルとして記述する必要があります。"
 
 #. type: Bullet: '4. '
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:64
@@ -20697,8 +20725,8 @@ msgid ""
 "Note that the argument type tuple must be written as `(Cstring,)`, rather than `(Cstring)`. This is because `(Cstring)` is just the "
 "expression `Cstring` surrounded by parentheses, rather than a 1-tuple containing `Cstring`:"
 msgstr ""
-"Note that the argument type tuple must be written as `(Cstring,)`, rather than `(Cstring)`. This is because `(Cstring)` is just the "
-"expression `Cstring` surrounded by parentheses, rather than a 1-tuple containing `Cstring`:"
+"注意してほしいのは、引数型のタプルは、`(Cstring)` ではなく `(Cstring,)` と書かなければいけない点です。これは、`(Cstring)` は、`Cstring` が括"
+"弧でくくられているだけの式に過ぎないためです。 `Cstring` 1要素だけを含むタプルを表すにはカンマが必要です:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:95
@@ -20830,17 +20858,18 @@ msgstr "C言語コンパチな Julia関数のポインタをつくる"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:161
-#, fuzzy
 msgid ""
 "It is possible to pass Julia functions to native C functions that accept function pointer arguments.  For example, to match C prototypes of "
 "the form:"
-msgstr "関数ポインター入力引数に持つ C 関数に Julia 関数を渡すことができます。 たとえば、下記の様なC プロトタイプ宣言を一致させ:"
+msgstr ""
+"関数ポインター入力引数に持つ C 関数に Julia 関数を渡すことができます。 たとえば、下記の様なC プロトタイプ宣言を一致させるには下記のようにしま"
+"す:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:162
 #, no-wrap
 msgid "typedef returntype (*functiontype)(argumenttype, ...)\n"
-msgstr ""
+msgstr "typedef returntype (*functiontype)(argumenttype, ...)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:168
@@ -20848,26 +20877,28 @@ msgid ""
 "The macro [`@cfunction`](@ref) generates the C-compatible function pointer for a call to a Julia function. Arguments to [`@cfunction`](@ref) "
 "are as follows:"
 msgstr ""
+"[`@cfunction`](@ref) マクロは、Julia関数の呼び出しをするための、C言語コンパチな関数ポインタを生成します。 [`@cfunction`](@ref) への引数は、下"
+"記の通りです:"
 
 #. type: Bullet: '1. '
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:172
 msgid "A Julia Function"
-msgstr ""
+msgstr "Julia 関数"
 
 #. type: Bullet: '2. '
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:172
 msgid "Return type"
-msgstr ""
+msgstr "戻り値"
 
 #. type: Bullet: '3. '
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:172
 msgid "A literal tuple of input types"
-msgstr ""
+msgstr "入力引数の型を要素にもつリテラルタプル"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:174
 msgid "Like ccall, all of these arguments will be evaluated at compile-time, when the containing method is defined."
-msgstr ""
+msgstr "これらすべての引数は ccall  のように、コンパイル時に評価されます。このとき、メソッドも定義されます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:179
@@ -20876,11 +20907,13 @@ msgid ""
 "calls where WINAPI expects `stdcall` function on 32-bit windows, but can be used on WIN64 (where `stdcall` is unified with the C calling "
 "convention)."
 msgstr ""
+"現在は、プラットフォームでデフォルトの C呼び出し規則のみがサポートされています。つまり、`@cfunction` で生成されたポインタは、WINAPIが 32bit "
+"Windows 上の`stdcall` 関数を期待する場合には用いることができません。WIN64 (`stdcall` が、C呼び出し規則と統合されている) 上であれば使えます。"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:181
 msgid "A classic example is the standard C library `qsort` function, declared as:"
-msgstr ""
+msgstr "古典的な例として、C の標準関数 `qsort`は以下のように宣言されます:"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:182
@@ -20889,10 +20922,12 @@ msgid ""
 "void qsort(void *base, size_t nmemb, size_t size,\n"
 "           int (*compare)(const void*, const void*));\n"
 msgstr ""
+"void qsort(void *base, size_t nmemb, size_t size,\n"
+"           int (*compare)(const void*, const void*));\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:194
-#, no-wrap
+#, fuzzy, no-wrap
 msgid ""
 "The `base` argument is a pointer to an array of length `nmemb`, with elements of `size` bytes\n"
 "each. `compare` is a callback function which takes pointers to two elements `a` and `b` and returns\n"
@@ -20902,13 +20937,20 @@ msgid ""
 "calling `qsort` and passing arguments, we need to write a comparison function that works for some\n"
 "arbitrary objects (which define `<`):\n"
 msgstr ""
+"`base` 引数は、長さ `nmemb` の配列へのポインタで、各要素は `size` バイトです。\n"
+"`compare` は、2 つの要素 `a` と `b` へのポインタを受け取り、ソートのための比較結果を整数値で返すコールバック関数です。\n"
+"この返り値は、`a` が `b` よりも先/後に現れるべき場合には、ゼロよりも小さい/大きい値になります(ソート結果として`a,b` の順番が任意という場合は0を返すことも可能です)。\n"
+"さて、ここで並べ替える値の1次元配列 `A` があるとします。\n"
+"'qsort' 関数を使用します (Julia の組み込みの 'sort' 関数ではなく)。心配する前に\n"
+"'qsort' を呼び出して引数を渡す場合は、一部の関数で動作する比較関数を記述する必要があります。\n"
+"任意のオブジェクト ('<'を定義します):\n"
 
 #. type: Code fence info string
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:195 ext/julia/doc/src/manual/calling-c-and-fortran-code.md:207
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:217
 #, no-wrap
 msgid "jldoctest mycompare"
-msgstr ""
+msgstr "jldoctest mycompare"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:195
@@ -20919,6 +20961,10 @@ msgid ""
 "       end\n"
 "mycompare (generic function with 1 method)\n"
 msgstr ""
+"julia> function mycompare(a, b)::Cint\n"
+"           return (a < b) ? -1 : ((a > b) ? +1 : 0)\n"
+"       end\n"
+"mycompare (generic function with 1 method)\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:204
@@ -34281,7 +34327,7 @@ msgid ""
 "where the size of `Int` reflects the size of a native pointer on that machine, the floating point register sizes are specified by the "
 "IEEE-754 standard.)"
 msgstr ""
-"(`Int` とは異なり、`Float` は特定のサイズの [`AbstractFloat`](@ref)の型の別名が存在しないことに注意してください。'Int' のサイズがそのマシン上"
+"(`Int` とは異なり、`Float` は特定のサイズの [`AbstractFloat`](@ref)の型の別名が存在しないことに注意してください。`Int` のサイズがそのマシン上"
 "のネイティブ ポインターのサイズを反映する整数レジスタとは異なり、浮動小数点レジスタ のサイズは IEEE-754 標準で規定されています。)"
 
 #. type: Title ##
@@ -40311,7 +40357,7 @@ msgid ""
 msgstr ""
 "一般に、ある行でのカウントが`N` サンプルであった場合、(コンピュータが他のタスクでビジー状態にあるかなど、他のノイズ源を除いて), その値の不確"
 "実性は、 `sqrt(N)`のオーダーであることが期待できます。このルールの主な例外は、実行頻度は低いが、非常に演算コストの高い傾向があるガベージ コレ"
-"クションです。(Julia のガベージ コレクタは C で記述されているので、このようなイベントは、以下に説明する 'C=true' 出力モードを使用するか、"
+"クションです。(Julia のガベージ コレクタは C で記述されているので、このようなイベントは、以下に説明する `C=true` 出力モードを使用するか、"
 "[ProfileView.jl](https://github.com/timholy/ProfileView.jl) を使用して検出できます。)"
 
 #. type: Plain text
