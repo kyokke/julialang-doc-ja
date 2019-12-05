@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-08-26 03:21+0000\n"
+"POT-Creation-Date: 2019-12-05 08:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -433,7 +433,7 @@ msgid ""
 msgstr ""
 
 #. type: Code fence info string
-#: ext/julia/doc/src/./index.md:1 ext/julia/doc/src/./index.md:23 ext/julia/doc/src/manual/getting-started.md:10 ext/julia/doc/src/manual/unicode-input.md:18 ext/julia/doc/src/stdlib/REPL.md:10 ext/julia/doc/src/stdlib/Pkg.md:11
+#: ext/julia/doc/src/./index.md:1 ext/julia/doc/src/./index.md:23 ext/julia/doc/src/manual/getting-started.md:10 ext/julia/doc/src/manual/unicode-input.md:18 ext/julia/doc/src/stdlib/REPL.md:10 ext/julia/doc/src/stdlib/Pkg.md:8
 #, no-wrap
 msgid "@eval"
 msgstr ""
@@ -45151,7 +45151,7 @@ msgstr ""
 #. type: Title ###
 #: ext/julia/doc/src/stdlib/Markdown.md:163
 #, no-wrap
-msgid "Code blocks"
+msgid "[コードブロック](@id Code-blocks)"
 msgstr ""
 
 #. type: Plain text
@@ -45606,7 +45606,7 @@ msgstr ""
 #. type: Title #
 #: ext/julia/doc/src/stdlib/Profile.md:1
 #, no-wrap
-msgid "[プロファイリング](@id lib-profiling)"
+msgid "[Profiling](@id lib-profiling)"
 msgstr ""
 
 #. type: Plain text
@@ -48632,25 +48632,21 @@ msgid "Pkg"
 msgstr ""
 
 #. type: Plain text
-#: ext/julia/doc/src/stdlib/Pkg.md:5
-msgid ""
-"Pkg is Julia's builtin package manager, and handles operations such as "
-"installing, updating and removing packages."
+#: ext/julia/doc/src/stdlib/Pkg.md:4
+msgid "Pkg は Julia の組み込みパッケージ マネージャであり、パッケージのインストール、更新、削除などの操作を処理します。"
 msgstr ""
 
 #. type: Plain text
-#: ext/julia/doc/src/stdlib/Pkg.md:10
+#: ext/julia/doc/src/stdlib/Pkg.md:7
 #, no-wrap
 msgid ""
-"!!! note\n"
-"    What follows is a very brief introduction to Pkg. It is highly\n"
-"    recommended to read the full manual, which is available here:\n"
-"    "
-"[https://julialang.github.io/Pkg.jl/v1/](https://julialang.github.io/Pkg.jl/v1/).\n"
+"!!!メモ\n"
+"    以下は、Pkg の非常に簡単な紹介です。以下で入手可能な完全なマニュアルを読むことを強くお勧めします: "
+"[https://julialang.github.io/Pkg.jl/v1/](https://julialang.github.io/Pkg.jl/v1/)。\n"
 msgstr ""
 
 #. type: Plain text
-#: ext/julia/doc/src/stdlib/Pkg.md:11
+#: ext/julia/doc/src/stdlib/Pkg.md:8
 #, no-wrap
 msgid ""
 "import Markdown\n"
@@ -51335,7 +51331,7 @@ msgstr ""
 #. type: Title ###
 #: ext/julia/doc/src/stdlib/Dates.md:802
 #, no-wrap
-msgid "[丸め関数](@id Rounding-Functions)"
+msgid "Rounding Functions"
 msgstr ""
 
 #. type: Plain text
