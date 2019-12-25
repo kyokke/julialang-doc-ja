@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>型 · The Julia Language</title><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-28835595-6', 'auto');
+ga('send', 'pageview');
+</script><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../assets/documenter.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link href="../assets/documenter.css" rel="stylesheet" type="text/css"/><link href="../assets/julia-manual.css" rel="stylesheet" type="text/css"/></head><body><nav class="toc"><a href="../index.html"><img class="logo" src="../assets/logo.png" alt="The Julia Language logo"/></a><h1>The Julia Language</h1><select id="version-selector" onChange="window.location.href=this.value" style="visibility: hidden"></select><form class="search" id="search-form" action="../search.html"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../index.html">Home</a></li><li><span class="toctext">Manual</span><ul><li><a class="toctext" href="getting-started.html">はじめよう</a></li><li><a class="toctext" href="variables.html">変数</a></li><li><a class="toctext" href="integers-and-floating-point-numbers.html">整数と浮動小数点数</a></li><li><a class="toctext" href="mathematical-operations.html">算術演算と初等関数</a></li><li><a class="toctext" href="complex-and-rational-numbers.html">複素数と有理数</a></li><li><a class="toctext" href="strings.html">文字列</a></li><li><a class="toctext" href="functions.html">関数</a></li><li><a class="toctext" href="control-flow.html">制御フロー</a></li><li><a class="toctext" href="variables-and-scoping.html">Scope of Variables</a></li><li class="current"><a class="toctext" href="types.html">型</a><ul class="internal"><li><a class="toctext" href="#type-declarations-1">型宣言</a></li><li><a class="toctext" href="#抽象型-1">抽象型</a></li><li><a class="toctext" href="#プリミティブ型-1">プリミティブ型</a></li><li><a class="toctext" href="#Composite-Types-1">複合型</a></li><li><a class="toctext" href="#Mutable-Composite-Types-1">可変複合型</a></li><li><a class="toctext" href="#宣言型-1">宣言型</a></li><li><a class="toctext" href="#合併型-1">合併型</a></li><li><a class="toctext" href="#Parametric-Types-1">パラメトリック型</a></li><li><a class="toctext" href="#UnionAll-Types-1">全合併型</a></li><li><a class="toctext" href="#型エイリアス-1">型エイリアス</a></li><li><a class="toctext" href="#型に対する演算-1">型に対する演算</a></li><li><a class="toctext" href="#man-custom-pretty-printing-1">独自の整形表示</a></li><li><a class="toctext" href="#&quot;Value-types&quot;-1">&quot;値型&quot;</a></li></ul></li><li><a class="toctext" href="methods.html">メソッド</a></li><li><a class="toctext" href="constructors.html">Constructors</a></li><li><a class="toctext" href="conversion-and-promotion.html">変換と昇格</a></li><li><a class="toctext" href="interfaces.html">Interfaces</a></li><li><a class="toctext" href="modules.html">モジュール</a></li><li><a class="toctext" href="documentation.html">ドキュメンテーション</a></li><li><a class="toctext" href="metaprogramming.html">メタプログラミング</a></li><li><a class="toctext" href="arrays.html">多次元配列</a></li><li><a class="toctext" href="missing.html">Missing Values</a></li><li><a class="toctext" href="networking-and-streams.html">ネットワークとストリーム</a></li><li><a class="toctext" href="parallel-computing.html">並列コンピューティング</a></li><li><a class="toctext" href="running-external-programs.html">外部プログラムの実行</a></li><li><a class="toctext" href="calling-c-and-fortran-code.html">C, Fortran コードの呼び出し</a></li><li><a class="toctext" href="handling-operating-system-variation.html">Handling Operating System Variation</a></li><li><a class="toctext" href="environment-variables.html">Environment Variables</a></li><li><a class="toctext" href="embedding.html">Julia の埋め込み</a></li><li><a class="toctext" href="code-loading.html">Code Loading</a></li><li><a class="toctext" href="profile.html">プロファイリング</a></li><li><a class="toctext" href="stacktraces.html">Stack Traces</a></li><li><a class="toctext" href="performance-tips.html">パフォーマンス・ティップス</a></li><li><a class="toctext" href="workflow-tips.html">Workflow Tips</a></li><li><a class="toctext" href="style-guide.html">スタイルガイド</a></li><li><a class="toctext" href="faq.html">Frequently Asked Questions</a></li><li><a class="toctext" href="noteworthy-differences.html">他の言語との注目すべき違い</a></li><li><a class="toctext" href="unicode-input.html">Unicode Input</a></li></ul></li><li><span class="toctext">Base</span><ul><li><a class="toctext" href="../base/base.html">Essentials</a></li><li><a class="toctext" href="../base/collections.html">Collections and Data Structures</a></li><li><a class="toctext" href="../base/math.html">Mathematics</a></li><li><a class="toctext" href="../base/numbers.html">Numbers</a></li><li><a class="toctext" href="../base/strings.html">Strings</a></li><li><a class="toctext" href="../base/arrays.html">Arrays</a></li><li><a class="toctext" href="../base/parallel.html">Tasks</a></li><li><a class="toctext" href="../base/multi-threading.html">Multi-Threading</a></li><li><a class="toctext" href="../base/constants.html">Constants</a></li><li><a class="toctext" href="../base/file.html">Filesystem</a></li><li><a class="toctext" href="../base/io-network.html">I/O and Network</a></li><li><a class="toctext" href="../base/punctuation.html">Punctuation</a></li><li><a class="toctext" href="../base/sort.html">Sorting and Related Functions</a></li><li><a class="toctext" href="../base/iterators.html">Iteration utilities</a></li><li><a class="toctext" href="../base/c.html">C Interface</a></li><li><a class="toctext" href="../base/libc.html">C Standard Library</a></li><li><a class="toctext" href="../base/stacktraces.html">StackTraces</a></li><li><a class="toctext" href="../base/simd-types.html">SIMD Support</a></li></ul></li><li><span class="toctext">Standard Library</span><ul><li><a class="toctext" href="../stdlib/Base64.html">Base64</a></li><li><a class="toctext" href="../stdlib/CRC32c.html">CRC32c</a></li><li><a class="toctext" href="../stdlib/Dates.html">Dates</a></li><li><a class="toctext" href="../stdlib/DelimitedFiles.html">Delimited Files</a></li><li><a class="toctext" href="../stdlib/Distributed.html">Distributed Computing</a></li><li><a class="toctext" href="../stdlib/FileWatching.html">File Events</a></li><li><a class="toctext" href="../stdlib/Future.html">Future</a></li><li><a class="toctext" href="../stdlib/InteractiveUtils.html">Interactive Utilities</a></li><li><a class="toctext" href="../stdlib/LibGit2.html">LibGit2</a></li><li><a class="toctext" href="../stdlib/Libdl.html">Dynamic Linker</a></li><li><a class="toctext" href="../stdlib/LinearAlgebra.html">Linear Algebra</a></li><li><a class="toctext" href="../stdlib/Logging.html">Logging</a></li><li><a class="toctext" href="../stdlib/Markdown.html">Markdown</a></li><li><a class="toctext" href="../stdlib/Mmap.html">Memory-mapped I/O</a></li><li><a class="toctext" href="../stdlib/Pkg.html">Pkg</a></li><li><a class="toctext" href="../stdlib/Printf.html">Printf</a></li><li><a class="toctext" href="../stdlib/Profile.html">プロファイリング</a></li><li><a class="toctext" href="../stdlib/REPL.html">The Julia REPL</a></li><li><a class="toctext" href="../stdlib/Random.html">Random Numbers</a></li><li><a class="toctext" href="../stdlib/SHA.html">SHA</a></li><li><a class="toctext" href="../stdlib/Serialization.html">Serialization</a></li><li><a class="toctext" href="../stdlib/SharedArrays.html">Shared Arrays</a></li><li><a class="toctext" href="../stdlib/Sockets.html">Sockets</a></li><li><a class="toctext" href="../stdlib/SparseArrays.html">Sparse Arrays</a></li><li><a class="toctext" href="../stdlib/Statistics.html">Statistics</a></li><li><a class="toctext" href="../stdlib/Test.html">Unit Testing</a></li><li><a class="toctext" href="../stdlib/UUIDs.html">UUIDs</a></li><li><a class="toctext" href="../stdlib/Unicode.html">Unicode</a></li></ul></li><li><span class="toctext">Developer Documentation</span><ul><li><a class="toctext" href="../devdocs/reflection.html">リフレクションとインストロスペクション</a></li><li><span class="toctext">Documentation of Julia&#39;s Internals</span><ul><li><a class="toctext" href="../devdocs/init.html">Julia ランタイムの初期化</a></li><li><a class="toctext" href="../devdocs/ast.html">Julia ASTs</a></li><li><a class="toctext" href="../devdocs/types.html">More about types</a></li><li><a class="toctext" href="../devdocs/object.html">Memory layout of Julia Objects</a></li><li><a class="toctext" href="../devdocs/eval.html">Eval of Julia code</a></li><li><a class="toctext" href="../devdocs/callconv.html">Calling Conventions</a></li><li><a class="toctext" href="../devdocs/compiler.html">High-level Overview of the Native-Code Generation Process</a></li><li><a class="toctext" href="../devdocs/functions.html">Julia Functions</a></li><li><a class="toctext" href="../devdocs/cartesian.html">Base.Cartesian</a></li><li><a class="toctext" href="../devdocs/meta.html">Talking to the compiler (the <code>:meta</code> mechanism)</a></li><li><a class="toctext" href="../devdocs/subarrays.html">SubArrays</a></li><li><a class="toctext" href="../devdocs/isbitsunionarrays.html">isbits Union Optimizations</a></li><li><a class="toctext" href="../devdocs/sysimg.html">システムイメージのビルド</a></li><li><a class="toctext" href="../devdocs/llvm.html">Working with LLVM</a></li><li><a class="toctext" href="../devdocs/stdio.html">printf() and stdio in the Julia runtime</a></li><li><a class="toctext" href="../devdocs/boundscheck.html">Bounds checking</a></li><li><a class="toctext" href="../devdocs/locks.html">Proper maintenance and care of multi-threading locks</a></li><li><a class="toctext" href="../devdocs/offset-arrays.html">Arrays with custom indices</a></li><li><a class="toctext" href="../devdocs/require.html">Module loading</a></li><li><a class="toctext" href="../devdocs/inference.html">Inference</a></li><li><a class="toctext" href="../devdocs/ssair.html">Julia SSA-form IR</a></li><li><a class="toctext" href="../devdocs/gc-sa.html">Static analyzer annotations for GC correctness in C code</a></li></ul></li><li><span class="toctext">Developing/debugging Julia&#39;s C code</span><ul><li><a class="toctext" href="../devdocs/backtraces.html">クラッシュ(セグメンテーションフォルト)の報告と分析</a></li><li><a class="toctext" href="../devdocs/debuggingtips.html">gdb debugging tips</a></li><li><a class="toctext" href="../devdocs/valgrind.html">Using Valgrind with Julia</a></li><li><a class="toctext" href="../devdocs/sanitizers.html">Sanitizer support</a></li></ul></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li>Manual</li><li><a href="types.html">型</a></li></ul><a class="edit-page" href="https://github.com/JuliaLang/julia/blob/master/doc/src/manual/types.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/><div id="topbar"><span>型</span><a class="fa fa-bars" href="#"></a></div></header><h1><a class="nav-anchor" id="man-types-1" href="#man-types-1">型</a></h1><p>型システムは、従来、2 つの全く異なる陣営に分類されてきました。: 静的型システムと動的型システムです。静的型システムでは、 すべてのプログラムの式は、プログラムの実行前に算出可能な型を持つ必要があります。一方動的型システムでは、プログラムによって処理されるされる実際の値が使用可能になる実行時まで、型については何もわかりません。オブジェクト志向プログラミングをすれば、静的型付け言語でも、コンパイル時に正確な値の型が分からなくてもコードを記述でき、あるていど柔軟性は高くなります。複数の異なる型を操作できるコードを記述する機能は、ポリモーフィズムと呼ばれます。 従来の動的型付け言語のすべてのコードはポリモーフィックです: 型に制約が生じるのは、明示的な型検査を行う場合もしくは、オブジェクトが実行時に操作に対応できなくなった場合です。</p><p>Julia の型システムは動的ですが、特定の値が特定の型であることを明示することで、静的型システムの利点の一部を得ることができます。これは効率的なコードを生成する上で大いに助けになるのですが、さらに重要なことに、関数引数の型に対するメソッドディスパッチを言語と深く統合できるのです。メソッドディスパッチは<a href="methods.html#Methods-1">メソッド</a>で詳しく説明しますが、ここで説明する型システムに根ざしています。</p><p>型を省略した場合の Julia の既定の挙動では、値に対して任意の型が許容されます。したがって、型を明示的に使用しなくても、多くの便利な Julia 関数を記述できます。ただし、追加の表現力が必要な場合は、元の &quot;型指定されていない&quot; コードに対して明示的な型注釈を徐々に導入することは簡単です。型注釈の目的は主に3つあります。Julia の強力な多重ディスパッチ メカニズムを利用すること、人間にとって読みやすくすること、プログラマのエラーを補足できるようにすることです。</p><p>Julia を、<a href="https://en.wikipedia.org/wiki/Type_system">型システム</a>の言葉で説明するならば、動的で、公称的で、パラメトリック、といういことになります。ジェネリック型はパラメータ化でき、型同士が持つ階層的な関係は<a href="https://en.wikipedia.org/wiki/Structural_type_system">互換性のある構造によって暗示される</a>のではなく、<a href="https://en.wikipedia.org/wiki/Nominal_type_system">明示的に宣言</a>されます。Julia の型システムの特に特徴的な特徴の 1 つは、具象型が互いに互いのサブタイプにはできないということです。全ての具体型は全てファイナル(下の階層を持たない)で、具象型のサブタイプ(上の階層)は抽象型のみです。最初は過度な制限に見えるかもしれませんが、この制約は驚くほど欠点が少なく、多くの有益な結果を導きます。動作を継承できることは、構造を継承するよりもはるかに重要であり、その両方を継承すると、従来のオブジェクト指向言語のように大きな困難が生じます。前もって言及すべきJuliaの型システムの他の高レベルの側面は次のとおりです:</p><ul><li>オブジェクトか非オブジェクトかという区分はありません: Julia のすべての値は、単一の完全に接続された型グラフに属する型を持つ真のオブジェクトであり、すべてのノードは型として等しくファーストクラスです。</li><li>「コンパイル時の型」という考え方は意味がありません: 値が持つ型は、プログラムの実行中の実際の型だけです。静的コンパイルとポリモーフィズムの組み合わせで成り立つオブジェクト指向の言語においては、コンパイル時/実行中の型の区別が重要になり、実行中の型のことは「ランタイム型」と呼びます。</li><li>変数ではなく値だけが型を持ちます。変数は単に値にバインドされた名前です。</li><li>抽象型と具象型の両方を他の型でパラメータ化できます。また、シンボル、値でその型が <a href="../base/base.html#Base.isbits"><code>isbits</code></a>で true が返されるもの(本質的には、数値や真偽値などで、他のオブジェクトへのポインタを持たないC型や<code>struct</code>などに格納されているもの)、およびそれらのタプルなどによってパラメータ化することもできます。型パラメーターは、参照や制限をする必要がない場合には省略できます。</li></ul><p>Julia の型システムは、強力で表現力豊かでありながら、明確で直感的で控えめであるように設計されています。 Julia プログラマの多くは、型を明示的に使用するコードを記述する必要性を感じないかもしれません。ただし、ある種のプログラミングでは、宣言された型を使用すると、より明確で、よりシンプルで、より速く、より堅牢になります。</p><h2><a class="nav-anchor" id="type-declarations-1" href="#type-declarations-1">型宣言</a></h2><p>演算子 <code>::</code> を使用すると、プログラム内の式や変数に型注釈をつけることができます。これを行う理由は主に2 つです:</p><ol><li>プログラムが期待どおりに動作することを確認するためのアサーションとして、</li><li>コンパイラに追加の型情報を提供し、状況によってはパフォーマンスを向上できるようにすること</li></ol><p>計算式に追加した<code>::</code>演算子は &quot;is an instance of&quot; と読み下すことができます。この演算子はどこでも使用することができ、演算子の左側の式の値が右側の型のインスタンスであることを表明します。演算子の右側の型が具象型の場合、左側の値はその型の実装でなければなりません。全ての具象型は、ファイナルで、その実装は他のどの具象型のサブタイプにもならないことを思い出してください。一方、演算子の右側の型が抽象型の場合、演算子の左側の値は、抽象型のサブタイプである具体的な型によって実装されれていれば十分です。型アサーションが 真でない場合は、例外が投げられますが、それ以外の場合は演算子の左側の値が返されます:</p><pre><code class="language-julia-repl">julia&gt; (1+2)::AbstractFloat
+ERROR: TypeError: in typeassert, expected AbstractFloat, got Int64
+
+julia&gt; (1+2)::Int
+3</code></pre><p>これにより、型アサーションを任意の式に差し込むことができます。</p><p>代入文の左辺や、<code>local</code> 宣言の一部に追加すると、<code>::</code> 演算子の持つ意味が少し変わります。C言語のような、静的型付き言語の型宣言のように、常に指定された型を持つ変数を宣言になります。変数に割り当てられた値はすべて、<a href="../base/base.html#Base.convert"><code>convert()</code></a> を使用して宣言された型に変換されます:</p><pre><code class="language-julia-repl">julia&gt; function foo()
+           x::Int8 = 100
+           x
+       end
+foo (generic function with 1 method)
+
+julia&gt; foo()
+100
+
+julia&gt; typeof(ans)
+Int8</code></pre><p>この機能は、変数への代入を行って、 値が想定しない型に変更されてしまった時に起こることのある、パフォーマンス上の 「落とし穴」 を回避するのに役立ちます。</p><p>この 「宣言」の動作は、特定のコンテキストでのみ発生します:</p><pre><code class="language-julia">local x::Int8  # in a local declaration
+x::Int8 = 10   # as the left-hand side of an assignment</code></pre><p>そして、宣言の前であっても、現在のスコープ全体に適用されます。現在、Julia には定数型グローバルがないため、型宣言は REPL などのグローバル スコープでは使用できません。</p><p>また、宣言を、関数定義に差し込むこともできます:</p><pre><code class="language-julia">function sinc(x)::Float64
+    if x == 0
+        return 1
+    end
+    return sin(pi*x)/(pi*x)
+end</code></pre><p>この関数の戻り値は、宣言された型の変数への代入と同じ様に処理されます。値は常に<code>Float64</code> に変換されます。</p><h2><a class="nav-anchor" id="抽象型-1" href="#抽象型-1">抽象型</a></h2><p>抽象型はインスタンス化できず、型グラフ内のノードとしてのみ機能するだけですが、だからこそ関連する具象型の集合(抽象型の子孫である具象型)を説明できます。型の説明は抽象型から始めます。インスタンス化はできないですが、抽象型は型システムのバックボーンだからです。抽象型は概念的な(型の)階層を形成します。この階層が、Julia No型システムを単なるオブジェクト実装の寄せ集め以上のものにしているのです。</p><p><a href="integers-and-floating-point-numbers.html#integers-and-floating-point-numbers-1">整数と浮動小数点数</a>では、さまざまな具体的な数値を導入しました: <a href="../base/numbers.html#Core.Int8"><code>Int8</code></a>、<a href="../base/numbers.html#Core.UInt8"><code>UInt8</code></a>、<a href="../base/numbers.html#Core.Int16"><code>Int16</code></a>、<a href="../base/numbers.html#Core.UInt16"><code>UInt16</code></a>、<a href="../base/numbers.html#Core.Int32"><code>Int32</code></a>、<a href="../base/numbers.html#Core.UInt32"><code>UInt32</code></a>、<a href="../base/numbers.html#Core.Int64"><code>Int64</code></a>、[<code>UInt64]</code>(@ref)、<a href="../base/numbers.html#Core.Int128"><code>Int128</code></a>、<a href="../base/numbers.html#Core.UInt128"><code>UInt128</code></a>、<a href="../base/numbers.html#Core.Float16"><code>Float16</code></a>、<a href="../base/numbers.html#Core.Float32"><code>Float32</code></a>、および<a href="../base/numbers.html#Core.Float64"><code>Float64</code></a>です。表現のサイズは異なりますが、<code>Int8</code>、<code>Int16</code>、<code>Int32</code>、<code>Int64</code>、<code>Int128</code> には、すべて整数型が符号付き型であるという共通点があります。同様に、<code>UInt8</code>、<code>UInt16</code>、<code>UInt32</code>、<code>UInt64</code>および<code>UInt128</code>は符号なし整数型であり、<code>Float16</code>、<code>Float32</code>、<code>Float64</code>は整数ではなく浮動小数点型とは異なります。たとえば、引数が何らかの整数である場合にのみ、コードの一部が意味をなすのが一般的ですが、実際には整数の特定の <em>種類</em> に依存しません。たとえば、最大公約数を求めるアルゴリズムは、あらゆる種類の整数に対して機能しますが、浮動小数点数では機能しません。抽象型を使用すると、型の階層を構築でき、具体的な型が適合するコンテキストを提供できます。これにより、たとえば、アルゴリズムを特定の整数に制限することなく、整数である任意の型に対してプログラミングすることが簡単にできます。</p><p>抽象型は<a href="../base/base.html#abstract type"><code>abstract type</code></a>キーワードを使用して宣言されます。抽象型を宣言するための一般的な構文は次のとおりです:</p><pre><code class="language-none">abstract type «name» end
+abstract type «name» &lt;: «supertype» end</code></pre><p><code>abstract type</code> キーワードは、名前が <code>«name»</code> で指定される新しい抽象型を導入します。この型名の後には、<a href="../base/base.html#Core.:&lt;:"><code>&lt;:</code></a> と 既存の型が続くことがあり、これは新しく宣言された抽象型が、&quot;親&quot;とするサブタイプであることを示します。</p><p>スーパータイプが指定されていない場合、デフォルトのスーパータイプは <code>Any</code> です。これは、定義済みの抽象型で、全てのオブジェクトは<code>Any</code>のインスタンスであり、すべての型が<code>Any</code>のサブタイプになります。型理論で<code>Any</code>は、型グラフの頂点にあるため、一般的に 「トップ」 と呼ばれます。Julia には定義済の抽象型の 「ボトム」もあります。これは、型のグラフの最下層にあって、<code>Union{}</code> と書きます。これは <code>Any</code> の正反対です: 全てのオブジェクトは <code>Union{}</code> のインスタンスではなく、、すべての型は <code>Union{}</code> のスーパータイプです。</p><p>Julia の数値型の階層を構成する抽象型のいくつかを考えてみましょう:</p><pre><code class="language-julia">abstract type Number end
+abstract type Real     &lt;: Number end
+abstract type AbstractFloat &lt;: Real end
+abstract type Integer  &lt;: Real end
+abstract type Signed   &lt;: Integer end
+abstract type Unsigned &lt;: Integer end</code></pre><p><a href="../base/numbers.html#Core.Number"><code>Number</code></a>は「Any」の直接の子です。<a href="../base/numbers.html#Core.Real"><code>Real</code></a>はそのさらに子に当たります。そして、<code>Real</code> には2人の子供がいます(本当はもっとありますが、ここでは2つだけ示します。他のものは後述します): 一つは <a href="../base/numbers.html#Core.Integer"><code>Integer</code></a>、もう一つは<a href="../base/numbers.html#Core.AbstractFloat"><code>AbstractFloat</code></a> です。数の世界を整数と実数の表現に分けます。実数の表現には、もちろん浮動小数点型が含まれるのですが、有理数など他の型もあります。したがって、<code>AbstractFloat</code>は <code>Real</code> の真のサブタイプで、実数の浮動小数点表現のみを含みます。整数はさらに<a href="../base/numbers.html#Base.signed"><code>signed</code></a>と<a href="../base/numbers.html#Base.unsigned"><code>unsigned</code></a> に細分されます。</p><p><code>&lt;:</code> 演算子は一般に&quot;is a subtype of&quot; を意味しており、次のように宣言で使用します。演算子の右側の型が、新しく宣言した型のスーパータイプである、という宣言をします。また、式の中では　サブタイプ演算子として利用することもでき、左のオペランドが、右のオペランドのサブタイプである場合に <code>true</code>を返します:</p><pre><code class="language-julia-repl">julia&gt; Integer &lt;: Number
+true
+
+julia&gt; Integer &lt;: AbstractFloat
+false</code></pre><p>抽象型の重要な使用方法に、具象型の既定の実装の提供があります。簡単な例として、以下を考えてみましょう:</p><pre><code class="language-julia">function myplus(x,y)
+    x+y
+end</code></pre><p>最初に注意すべき点は、上記の引数宣言は、 <code>x::Any</code> および <code>y::Any</code> としたのに相当する、ということです。この関数が<code>myplus(2,5)</code>のように呼び出されると、ディスパッチャーは指定された引数に一致する <code>myplus</code>という名前の最も具体的なメソッドを選択します。(多重ディスパッチの詳細については、<a href="methods.html#Methods-1">メソッド</a>を参照してください。）</p><p>上記のメソッドより具体的なメソッドが見つからない場合、Julia は次に内部で <code>myplus</code>という名前のメソッドを定義しコンパイルします。この例では、定義・コンパイルされるメソッドは、上記のジェネリック関数から、引数2個を<code>Int</code>型に特化させたものです。つまり、定義とコンパイルは暗黙裡に行われます:</p><pre><code class="language-julia">function myplus(x::Int,y::Int)
+    x+y
+end</code></pre><p>最後に、この特化したメソッドを呼び出します。</p><p>このように、抽象型を使用することでプログラマはジェネリック関数を書くことができます。これは後に、具象型を組み合わせて使う時の、既定のメソッドとして使うことができるのです。多重ディスパッチのおかげで、プログラマはデフォルトの関数を使うか、より特化したメソッドを使うかを完全に制御できます。</p><p>注意すべき重要な点は、プログラマが　引数が抽象型の引数を持つ関数使っても、パフォーマンスが低下しない、ということです。このメソッドが呼び出される毎に、具象型の引数のタプルそれぞれに対してメソッドが再コンパイルするからです。(ただし、関数の引数が抽象型のコンテナーであるは、パフォーマンス上の問題が発生するかもしれません <a href="performance-tips.html#man-performance-tips-1">パフォーマンス・ティップス</a>を参照のこと。)</p><h2><a class="nav-anchor" id="プリミティブ型-1" href="#プリミティブ型-1">プリミティブ型</a></h2><p>プリミティブ型は、データが普通ビットで構成される具象型です。プリミティブ型の典型的な例は、整数と浮動小数点の値です。ほとんどの言語とは異なり、Julia では、組み込みの決められたセットのみを提供するのではなく、独自のプリミティブ型を宣言できます。実際、標準のプリミティブ型はすべて(C言語ではなく)Julia 言語自体で定義されています:</p><pre><code class="language-julia">primitive type Float16 &lt;: AbstractFloat 16 end
+primitive type Float32 &lt;: AbstractFloat 32 end
+primitive type Float64 &lt;: AbstractFloat 64 end
+
+primitive type Bool &lt;: Integer 8 end
+primitive type Char &lt;: AbstractChar 32 end
+
+primitive type Int8    &lt;: Signed   8 end
+primitive type UInt8   &lt;: Unsigned 8 end
+primitive type Int16   &lt;: Signed   16 end
+primitive type UInt16  &lt;: Unsigned 16 end
+primitive type Int32   &lt;: Signed   32 end
+primitive type UInt32  &lt;: Unsigned 32 end
+primitive type Int64   &lt;: Signed   64 end
+primitive type UInt64  &lt;: Unsigned 64 end
+primitive type Int128  &lt;: Signed   128 end
+primitive type UInt128 &lt;: Unsigned 128 end</code></pre><p>プリミティブ型を宣言するための一般的な構文は次のとおりです:</p><pre><code class="language-none">primitive type «name» «bits» end
+primitive type «name» &lt;: «supertype» «bits» end</code></pre><p>ビット数 «bits»は、その型に必要なストレージの量です。名前 «name» は新しい型につける名前です。プリミティブ型は、必要に応じて、いくつかのスーパータイプのサブタイプとして宣言できます。スーパータイプを省略した場合、その型はデフォルトで <code>Any</code> を直接のスーパータイプとして設定します。したがって、上記の <a href="../base/numbers.html#Core.Bool"><code>Bool</code></a> の宣言は、ブール値を格納するのに 8 ビットかかり、<a href="../base/numbers.html#Core.Integer"><code>Integer</code></a> を直接のスーパータイプとして持っていることを意味します。現在、8 ビットの倍数のサイズのみがサポートされています。したがって、ブール値は実際には 1 ビットしか必要としませんが、8 ビットより小さい値を宣言することはできません。</p><p><a href="../base/numbers.html#Core.Bool"><code>Bool</code></a>、<a href="../base/numbers.html#Core.Int8"><code>Int8</code></a>および<a href="../base/numbers.html#Core.UInt8"><code>UInt8</code></a>の型はすべて同じ表現を持っています: どれも8ビットのメモリチャンクです。しかし、Juliaの型システムは公称的であるため、同一の構造であっても互換性はありません。これらの基本的な違いは、異なるスーパータイプを持っているということです:<a href="../base/numbers.html#Core.Bool"><code>Bool</code></a><code>の直接スーパータイプは[</code>Integer<code>](@ref)、[</code>Int8<code>](@ref)は[</code>Signed<code>](@ref)、</code>UInt8<code>(@ref)は[</code>Unsigned<code>](@ref)です。[</code>Bool<code>](@ref)、[</code>Int8<code>](@ref)、および[</code>UInt8<code>](@ref)のその他違いはすべて挙動に関するものです。これらの型のオブジェクトを引数として指定した場合に関数の挙動がどう定義されているかの違いです。もし、型の構造によって挙動が決まってしまうのであれば、[</code>Int8<code>](@ref)または[</code>UInt8<code>](@ref)とは異なる動作をする[</code>Bool`](@ref)を作ることは不可能なるでしょう。</p><h2><a class="nav-anchor" id="Composite-Types-1" href="#Composite-Types-1">複合型</a></h2><p><a href="https://en.wikipedia.org/wiki/Composite_data_type">複合型</a> は様々な言語で、レコード、構造体、またはオブジェクトと呼ばれます。複合型は名前付きフィールドのコレクションで、そのインスタンスは単一の値として扱うことができます。多くの言語では、複合型はユーザー定義可能な型の唯一の種類であり、Julia でも最も一般的に使用されるユーザー定義型です。</p><p>C++、Java、Python、Rubyなどの主流のオブジェクト指向言語では、複合型は、名前付けされた関数が関連付けられており、その組み合わせは &quot;オブジェクト&quot; と呼ばれます。Ruby や Smalltalk などの純粋なオブジェクト指向言語では、それが複合型であろうとなかろうと、すべての値がオブジェクトです。C++ や Java を含む純粋でないオブジェクト指向言語では、整数や浮動小数点値などの一部の値はオブジェクトではなく、ユーザー定義の複合型のインスタンスは真のオブジェクトで、関連付けられたメソッドを持ちます。Julia では、すべての値はオブジェクトですが、関数は操作対象のオブジェクトにバンドルされていません。これは、Juliaが多重ディスパッチで使用する関数のメソッドを選択するためです。これは、関数の最初の引数だけでなく、<em>全ての</em>引数がメソッド選択の際に考慮されるということを意味しています(メソッドとディスパッチについての詳細は <a href="methods.html#Methods-1">メソッド</a> 参照)。したがって、関数がその最初の引数だけに 「属している」という考え方は不適切です。各オブジェクトの「内部に」名前付きのメソッドのバッグ(メソッドの集合）を持つのではなく、メソッドを関数オブジェクトに編成する、ということをします。これは、Julia の言語設計の非常に有益な側面です。</p><p>複合型は <a href="../base/base.html#struct"><code>struct</code></a> キーワードの後にフィールド名のブロックが付加され、必要に応じて <code>::</code> 演算子を使用して型にアノテーションがされます:</p><pre><code class="language-julia-repl">julia&gt; struct Foo
+           bar
+           baz::Int
+           qux::Float64
+       end</code></pre><p>型アノテーションのないフィールドはデフォルトで <code>Any</code>になります。それに応じて任意の型の値を保持できます。</p><p>型<code>Foo</code>の新しいオブジェクトは、関数のような <code>Foo</code> 型のオブジェクトを関数のようにしてフィールドの値に適用することで作成できます:</p><pre><code class="language-julia-repl">julia&gt; foo = Foo(&quot;Hello, world.&quot;, 23, 1.5)
+Foo(&quot;Hello, world.&quot;, 23, 1.5)
+
+julia&gt; typeof(foo)
+Foo</code></pre><p>型が関数のように適用される時、これは <em>コンストラクター</em>と呼ばれています。2 つのコンストラクターが自動的に生成されます (これらは <em>デフォルト コンストラクター</em>と呼ばれています)。1 つは引数を受け入れ、フィールドの型に変換するために <a href="../base/base.html#Base.convert"><code>convert</code></a> を呼び出し、もう 1 つはフィールドの型と完全に一致する引数だけを受け入れます。これらの両方が生成される理由は、誤って既定のコンストラクタを置き換えることなく、新しい定義を簡単に追加できるからです。</p><p><code>bar</code>フィールドには型の制約はないので、値は何でも構いません。ただし、<code>baz</code>の値は<code>Int</code>に変換できる必要があります:</p><pre><code class="language-julia-repl">julia&gt; Foo((), 23.5, 1)
+ERROR: InexactError: Int64(23.5)
+Stacktrace:
+[...]</code></pre><p><a href="../base/base.html#Base.fieldnames"><code>fieldnames</code></a>関数をつかって、フィールド名の一覧を取得できます。</p><pre><code class="language-julia-repl">julia&gt; fieldnames(Foo)
+(:bar, :baz, :qux)</code></pre><p>従来の表記法 <code>foo.bar</code>を使用して、複合オブジェクトのフィールド値にアクセスできます:</p><pre><code class="language-julia-repl">julia&gt; foo.bar
+&quot;Hello, world.&quot;
+
+julia&gt; foo.baz
+23
+
+julia&gt; foo.qux
+1.5</code></pre><p><code>struct</code> で宣言された複合型オブジェクトは <em>不変</em>です。作成後に変更できません。これは最初は奇妙に見えるかもしれませんが、いくつかの利点があります:</p><ul><li>より効率的になることがあります。一部の構造体は配列に効率的にパックでき、場合によってはコンパイラは不変オブジェクト全体を別のメモリに割り当てることを回避できることがあります。</li><li>型コンストラクタで規定される不変性を破ることはできません。</li><li>不変オブジェクトを使用するコードは、推論しやすくなります。</li></ul><p>不変オブジェクトには、配列などの変更可能なオブジェクトがフィールドに含まれている場合があります。含まれるオブジェクトは変更可能なままです。その不変オブジェクト自体フィールドが、異なるオブジェクトを指すよう変更することができなくなるだけです。</p><p>必要に応じて、次のセクションで説明するキーワード <a href="manual/@ref "><code>mutable struct</code></a> で、変更可能な複合オブジェクトを宣言できます。</p><p>フィールドのない不変複合型はシングルトンです。このような型のインスタンスは 1 つだけです:</p><pre><code class="language-julia-repl">julia&gt; struct NoFields
+       end
+
+julia&gt; NoFields() === NoFields()
+true</code></pre><p><a href="../base/base.html#Core.:==="><code>===</code></a> によって、<code>NoFields</code>の「２つの」インスタンスが、実際には一つで同じものであることを確認できます。 シングルトンタイプについては、<a href="types.html#man-singleton-types-1">以下</a> でさらに詳しく説明します。</p><p>複合型のインスタンスがどのように生成されるかについては、まだまだ説明すべきことがありますが、その議論は [パラメトリック型(@ref Parametric-types)と<a href="methods.html#Methods-1">メソッド</a>の両方にも関わりがあり、とても重要な事項なので、<a href="constructors.html#man-constructors-1">コンストラクタ</a> という独立のセクションを設けてそこで扱うことにします。</p><h2><a class="nav-anchor" id="Mutable-Composite-Types-1" href="#Mutable-Composite-Types-1">可変複合型</a></h2><p>複合型が、<code>struct</code> ではなく <code>mutable struct</code> キーワードで宣言されていれば、その型のインスタンスは変更可能です:</p><pre><code class="language-julia-repl">julia&gt; mutable struct Bar
+           baz
+           qux::Float64
+       end
+
+julia&gt; bar = Bar(&quot;Hello&quot;, 1.5);
+
+julia&gt; bar.qux = 2.0
+2.0
+
+julia&gt; bar.baz = 1//2
+1//2</code></pre><p>変更に対応できるように、このようなオブジェクトは、一般にヒープ上に割り当てられ、メモリアドレスが一定になっています。可変オブジェクトは、時間によって値の変わりうる小さなコンテナのようなもので、アドレスだけで確実に識別できます。対称的に、変更不可能な型のインスタンスは、特定のフィールド値に関連付けられています。フィールド値だけで、オブジェクトに関する全てがわかります。型を可変にするかどうかを決めるには、同じフィールド値を持つ2つのインスタンスは同一だとみなせるか、あるいは時間とともに別々に変更する必要があるかを考えます。同一であるとみなせるならば、おそらくその型は不変にすべきでしょう。</p><p>まとめると、Julia では2 つの重要な特性で不変性を定義できます:</p><ul><li>不変型の値を変更することはできません。<ul><li>ビット型(プリミティブ型)の場合、一度設定された値のビット パターンは決して変わらず、その値はその型で恒等的であることを意味します。</li><li>複合型の場合、フィールドの値の恒等性は決して変わらないことを意味します。フィールドがビット型の場合、そのビットは決して変わらず、フィールドが配列のような変更可能な型である場合、その変更可能な型の中身は変わっても、そのフィールドは常に同じ可変の値を参照することを意味します。</li></ul></li><li>不変型のオブジェクトは、コンパイラが自由にコピーすることができます。というのも、不変性によって、元のオブジェクトとコピーしたものを見分けることができないからです。<ul><li>特に、十分(メモリを専有する領域が)小さな 整数や浮動小数点数などの不変型は、通常はレジスタ (または割り当てられたスタック) にある関数にそのまま渡されます。</li><li>変更可能な値は、(配列など、一般にメモリの使用量が大きくなり得るので)一方でヒープに割り当てられ、その配置された値へのポインタとして関数に渡されます。ただし、このような事象が起こっているかどうかを判別することがどうやっても不可能な状況だとコンパイラが判断した場合には、その限りではありません。</li></ul></li></ul><h2><a class="nav-anchor" id="宣言型-1" href="#宣言型-1">宣言型</a></h2><p>上記セクションで説明した 3 種類の型 (抽象、プリミティブ型、複合型) は、実際には密接に関連しています。これらは、共通する重要な特徴を持ちます:</p><ul><li>明示的に宣言されます。</li><li>名前を持っています。</li><li>スーパータイプを明示的に宣言します。</li><li>パラメータを付けることができます。</li></ul><p>こうした共通の特徴を持つため、これらの型は、内部的に同じ概念の <code>DataType</code> のインスタンスとして表現されます。<code>DataType</code> これら3つの型のいずれかをさします:</p><pre><code class="language-julia-repl">julia&gt; typeof(Real)
+DataType
+
+julia&gt; typeof(Int)
+DataType</code></pre><p><code>DataType</code>は抽象型、具象型どちらでもかまいません。具象型ならば、特定のサイズ、格納領域上のレイアウト、(場合によっては）フィールド名などがあります。プリミティブ型はゼロ以外のサイズの <code>DataType</code> ですが、フィールド名はありません。複合型は、フィールド名を持つか、、または空 (ゼロ サイズ)の<code>DataType</code>です。</p><p>システム内のすべての具象型の値は、なんらかの <code>DataType</code> のインスタンスです。</p><h2><a class="nav-anchor" id="合併型-1" href="#合併型-1">合併型</a></h2><p>合併型は特殊な抽象型で、引数のいずれかの型のインスタンスが全てオブジェクトとして含みます。特殊なキーワード<code>Union</code>を使って構築します:</p><pre><code class="language-julia-repl">julia&gt; IntOrString = Union{Int,AbstractString}
+Union{Int64, AbstractString}
+
+julia&gt; 1 :: IntOrString
+1
+
+julia&gt; &quot;Hello!&quot; :: IntOrString
+&quot;Hello!&quot;
+
+julia&gt; 1.0 :: IntOrString
+ERROR: TypeError: in typeassert, expected Union{Int64, AbstractString}, got Float64</code></pre><p>多くの言語のコンパイラには、型推論のために内部で使う合併構文があります。Juliaは単にそれをプログラマにも公開しているというわけです。Julia のコンパイラは、少数の型 の <code>Union</code> 型 を使うと効率的なコードを生成することがあります<a href="#footnote-1">[1]</a>。なりうる型すべてに個別に特化したコードを生成するためです。</p><p>合併型のユースケースで特に便利なのは、<code>Uniton{T, Nothing}</code>です。ここで<code>T</code>は、任意の型を指定でき、<a href="../base/base.html#Core.Nothing"><code>Nothing</code></a>は、唯一のインスタンスが <code>nothing</code>オブジェクトである、シングルトン型です。Julia のこのパターンは、他の言語の<a href="https://en.wikipedia.org/wiki/Nullable_type"><code>Nullable</code>, <code>Option</code>, <code>Maybe</code></a> 型などと同等です。関数の引数やフィールドを<code>Uniton{T, Nothing}</code>として宣言すると型<code>T</code>の値か、値がないことを示す<code>nothing</code>のどちらかに設定することができます。詳細については、<a href="faq.html#faq-nothing-1">FATのこの項目</a>を見てください。</p><h2><a class="nav-anchor" id="Parametric-Types-1" href="#Parametric-Types-1">パラメトリック型</a></h2><p>Juliaの型システムの重要かつ強力な特徴は、型がパラメトリックであるということです: 型にパラメータをとることができます。そうすると型宣言は、実質的にとりうるそれぞれのパラメータの組み合わせに対応して、新しい型の一族を導入します。多くの言語が、何らかの形で<a href="https://en.wikipedia.org/wiki/Generic_programming">汎化プログラミング</a>をサポートしていますが、この汎化プログラミングでは、必要な型を正確にしなくても、処理すべきデータ構造とアルゴリズムを指定することができます。 たとえば、ML、Haskell、Ada、Eiffel、C++、Java、C#、F#、Scala には、何らかの形の汎化プログラミングを取り入れています。これらの言語の中には、真のパラメトリック多相性をサポートするものもあれば(ML、Haskell、Scalaなど)、アドホックなテンプレートベースの汎用プログラミングスタイルをサポートするもの(例えばC++、Java)もあります。さまざまな言語で多種多様な汎化プログラミングとパラメトリック型が使われているので、ここでは、それらと、Julia のパラメトリック型を比較するのではなく、Julia のシステムを単体について説明することに焦点を当てます。ただし、Julia は動的に型付け言語であり、コンパイル時にすべての型決定を行う必要がないため、静的パラメトリック型システムで発生する多くの従来の困難は比較的簡単に処理できることに注意してください。</p><p>すべての宣言型 (<code>DataType</code> の仲間) は、それぞれ同じ構文でパラメータ化できます。最初に、パラメトリック複合型、次にパラメトリック抽象型、最後にパラメトリック プリミティブ型の順で説明します。</p><h3><a class="nav-anchor" id="パラメトリック複合型-1" href="#パラメトリック複合型-1">パラメトリック複合型</a></h3><p>型パラメータは、型名の直後に導入され、中かっこで囲みます:</p><pre><code class="language-julia-repl">julia&gt; struct Point{T}
+           x::T
+           y::T
+       end</code></pre><p>この宣言では、タイプ <code>T</code> の 2 つの 「座標」を保持する新しいパラメトリック型 <code>Point{T}</code> を定義しています。「T」って何だ?と思うかもしれませんが、まあ、これがまさにパラメトリック型のポイントです: どんな型(またはプリミティブ型でも構いませんが、ここでは実際には明らかな型が使われています)でも構いません。<code>Point{Float64}</code> は、<code>Point</code> の定義で <code>T</code> を <a href="../base/numbers.html#Core.Float64"><code>Float64</code></a> に置き換えたものと同等の具象型です。したがって、この一つの宣言文が実質的には、<code>Point{Float64}</code>、<code>Point{AbstractString}</code>、<code>Point{Int64}</code>など、無数の型に対する宣言に相当します。そして、それぞれが具象型として利用することができます:</p><pre><code class="language-julia-repl">julia&gt; Point{Float64}
+Point{Float64}
+
+julia&gt; Point{AbstractString}
+Point{AbstractString}</code></pre><p><code>Point{Float64}</code>という型は座標が64ビット浮動小数点の値を持つ点であり、<code>Point{AbstractString}</code>という型は「座標」が文字列オブジェクトである「ポイント」です(<a href="../devdocs/ast.html#Strings-1"><code>文字列</code></a> を参照)。</p><p><code>Point</code> (型パラメータ無しの単体) も有効な型オブジェクトで、<code>Point{Float64}</code>、<code>Point{AbstractString}</code>などすべてのインスタンスをサブタイプとして含んでいます:</p><pre><code class="language-julia-repl">julia&gt; Point{Float64} &lt;: Point
+true
+
+julia&gt; Point{AbstractString} &lt;: Point
+true</code></pre><p>他の型は当然<code>Point</code>のサブタイプではありません:</p><pre><code class="language-julia-repl">julia&gt; Float64 &lt;: Point
+false
+
+julia&gt; AbstractString &lt;: Point
+false</code></pre><p>異なる <code>T</code> の値がついた具象型<code>Point</code>は決して互いにサブタイプになることはありません:</p><pre><code class="language-julia-repl">julia&gt; Point{Float64} &lt;: Point{Int64}
+false
+
+julia&gt; Point{Float64} &lt;: Point{Real}
+false</code></pre><p>!!! 警告     この最後のポイントは <em>非常に</em> 重要です: <code>Float64 &lt;: Real</code>は成り立ちますが、<code>Point{Float64} &lt;: Point{Real}</code> は<em>成り立ちません</em></p><p>型理論の述語で言い換えると、Julia の型パラメータは、<a href="https://en.wikipedia.org/wiki/Covariance_and_contravariance_%28computer_science%29">共変 (もしくは反変)</a> ではなく、<em>不変</em> です。これには現実的な理由があります: <code>Point{Float64}</code>のインスタンスは<code>Point{Real}</code>のインスタンスと概念的には似ていますが、2つの型のメモリ上での表現は異なります:</p><ul><li><code>Point{Float64}</code> のインスタンスは、64 ビット値の即時ペアとしてコンパクトかつ効率的に表現できます;</li><li><code>Point{Real}</code> のインスタンスは、<a href="../base/numbers.html#Core.Real"><code>Real</code></a> のインスタンスの任意のペアを保持できる必要があります。 <code>Real</code> のインスタンスであるオブジェクトは任意のサイズと構造を持つことができるため、実際には<code>Point{Real}</code> のインスタンスは、個別に割り当てられた <code>Real</code> オブジェクトへのポインタのペアとして表す必要があります。</li></ul><p><code>Point{Float64}</code> に値を直接格納できることで得られる効率は、配列の場合は非常に大きくなります: <code>Array{Float64}</code> は 64 ビット浮動小数点値の連続したメモリ ブロックとして格納されますが、<code>Array{Real}</code>は、個別に割り当てられた<a href="../base/numbers.html#Core.Real"><code>Real</code></a>オブジェクトへのポインタの配列でなければなりません。抽象型<code>Real</code>に宣言されたオブジェクトの実装は、64ビット浮動小数点数が<a href="https://en.wikipedia.org/wiki/Object_type_%28object-oriented_programming%29#Boxing">ボックス化</a>されている場合も、任意の大きさの複雑なオブジェクトである場合も許容しなくてはいけません。</p><p><code>Point{Float64}</code> は <code>Point{Real}</code> のサブタイプではないため、次のメソッドは <code>Point{Float64}</code> 型の引数には適用できません:</p><pre><code class="language-julia">function norm(p::Point{Real})
+    sqrt(p.x^2 + p.y^2)
+end</code></pre><p><code>T</code> が <a href="../base/numbers.html#Core.Real"><code>Real</code></a> のサブタイプである <code>Point{T}</code>のすべての引数を許容するメソッドの正しい定義方法は下記の通りです:</p><pre><code class="language-julia">function norm(p::Point{&lt;:Real})
+    sqrt(p.x^2 + p.y^2)
+end</code></pre><p>(同等の定義として、<code>function norm(p::Point{T} where T&lt;:Real)</code> や、<code>function norm(p::Point{T}) where T&lt;:Real</code> も可能です; <a href="types.html#UnionAll-Types-1">全合併型</a>を参照。</p><p>後の <a href="methods.html#Methods-1">メソッド</a> で、より多くの例を説明します。</p><p><code>Point</code> オブジェクトはどのように構築されるでしょうか? <a href="constructors.html#man-constructors-1">コンストラクター</a>で詳しく説明しますが、複合型に対して独自のコンストラクタを定義することは可能ですが、特別にコンストラクタの宣言をしない場合にも、デフォルトで新しい複合型オブジェクトを作成する方法が2つあります。1つは型パラメータを明示的に与えるもの、もう1つはオブジェクトコンストラクタへの引数から暗黙裡に推定されるものです。</p><p>型 <code>Point{Float64}</code> は <code>T</code> の代わりに <a href="../base/numbers.html#Core.Float64"><code>Float64</code></a> を使って宣言した<code>Point</code> と同等の具象型であるため、それに応じてコンストラクタとしてそのまま適用できます:</p><pre><code class="language-julia-repl">julia&gt; Point{Float64}(1.0, 2.0)
+Point{Float64}(1.0, 2.0)
+
+julia&gt; typeof(ans)
+Point{Float64}</code></pre><p>デフォルトのコンストラクタでは、フィールドごとに 引数を指定する必要があります:</p><pre><code class="language-julia-repl">julia&gt; Point{Float64}(1.0)
+ERROR: MethodError: no method matching Point{Float64}(::Float64)
+[...]
+
+julia&gt; Point{Float64}(1.0,2.0,3.0)
+ERROR: MethodError: no method matching Point{Float64}(::Float64, ::Float64, ::Float64)
+[...]</code></pre><p>パラメトリック型では、デフォルトのコンストラクターは 1 つだけしか生成されません。オーバーライドできないため、このコンストラクターは任意の引数を受け取り、フィールドの型に変換します。</p><p>多くの場合、生成しようとする <code>Point</code> オブジェクトの型を指定することは冗長です。コンストラクター呼び出しの引数の型には既に型情報が隠れているからです。そのため、パラメーター型 <code>T</code> を推論可能で曖昧さがない場合は、<code>Point</code> 自体をコンストラクタとして適用することもできます:</p><pre><code class="language-julia-repl">julia&gt; Point(1.0,2.0)
+Point{Float64}(1.0, 2.0)
+
+julia&gt; typeof(ans)
+Point{Float64}
+
+julia&gt; Point(1,2)
+Point{Int64}(1, 2)
+
+julia&gt; typeof(ans)
+Point{Int64}</code></pre><p><code>Point</code> の場合、2 つの引数が同じ型である場合にのみ、<code>T</code> の型は明確に推論されます。そうでない場合、コンストラクタは失敗して <a href="../base/base.html#Core.MethodError"><code>MethodError</code></a>が発生します:</p><pre><code class="language-julia-repl">julia&gt; Point(1,2.5)
+ERROR: MethodError: no method matching Point(::Int64, ::Float64)
+Closest candidates are:
+  Point(::T, !Matched::T) where T at none:2</code></pre><p>このように型が混在するケースを適切に処理するコンストラクター メソッドは定義できますが、後で <a href="constructors.html#man-constructors-1">コンストラクタ</a>に議論は譲ります。</p><h3><a class="nav-anchor" id="パラメトリック抽象型-1" href="#パラメトリック抽象型-1">パラメトリック抽象型</a></h3><p>パラメトリック抽象型の宣言もほぼ同じ方法で、抽象型の一群に対して型宣言を行います:</p><pre><code class="language-julia-repl">julia&gt; abstract type Pointy{T} end</code></pre><p>この宣言では、<code>Pointy{T}</code> は、型や整数値を表す <code>T</code>それぞれに対して別々の抽象型になります。パラメトリ複合型と同様に、各インスタンスは<code>Pointy</code>のサブタイプです:</p><pre><code class="language-julia-repl">julia&gt; Pointy{Int64} &lt;: Pointy
+true
+
+julia&gt; Pointy{1} &lt;: Pointy
+true</code></pre><p>パラメトリック抽象型は、パラメトリックな複合型と同じく 不変です:</p><pre><code class="language-julia-repl">julia&gt; Pointy{Float64} &lt;: Pointy{Real}
+false
+
+julia&gt; Pointy{Real} &lt;: Pointy{Float64}
+false</code></pre><p><code>Pointy{&lt;:Real}</code>の表記で<em>共変</em>型のようなものを、<code>Point{&gt;:Int}</code> の表記で<em>反変</em>型のようなものを表現できますが、技術的には、これらは型の<em>集合</em>を表しています。(<a href="types.html#UnionAll-Types-1">全合併型</a>参照)</p><pre><code class="language-julia-repl">julia&gt; Pointy{Float64} &lt;: Pointy{&lt;:Real}
+true
+
+julia&gt; Pointy{Real} &lt;: Pointy{&gt;:Int}
+true</code></pre><p>通常の抽象型は、具象型に対して役に立つ型の階層を作成するのに使われるのに対して、パラメトリック抽象型は、パラメトリック複合型と同じような目的に使います。例えば、<code>Point{T}</code> を <code>Pointy{T}</code>のサブタイプとする宣言は次のように宣言します:</p><pre><code class="language-julia-repl">julia&gt; struct Point{T} &lt;: Pointy{T}
+           x::T
+           y::T
+       end</code></pre><p>この宣言で、それぞれ選んだ <code>T</code> に対して、<code>Pointy{T}</code>のサブタイプである<code>Point{T}</code> を使うことができます:</p><pre><code class="language-julia-repl">julia&gt; Point{Float64} &lt;: Pointy{Float64}
+true
+
+julia&gt; Point{Real} &lt;: Pointy{Real}
+true
+
+julia&gt; Point{AbstractString} &lt;: Pointy{AbstractString}
+true</code></pre><p>以下の関係も不変です:</p><pre><code class="language-julia-repl">julia&gt; Point{Float64} &lt;: Pointy{Real}
+false
+
+julia&gt; Point{Float64} &lt;: Pointy{&lt;:Real}
+true</code></pre><p><code>Pointy</code> のようなパラメトリック抽象型の目的はなんでしょうか? <code>Point</code> が対角線 <code>x=y</code>上にあり、座標が1つあれば十分な場合における 点のような実装を考えてみると:</p><pre><code class="language-julia-repl">julia&gt; struct DiagPoint{T} &lt;: Pointy{T}
+           x::T
+       end</code></pre><p>ここで、<code>Point{Float64}</code> と <code>DiagPoint{Float64}</code> は、抽象型<code>Pointf{Float64}</code> の実装です。これは <code>T</code>に他の取りうる型を選んでも同じです。これによって、<code>Point</code>と<code>DiagPoint</code> のどちらを実装するにしても <code>Pointy</code> オブジェクトを共通のインターフェイスにするプログラミングが可能になります。これについての、完全な解説は、メソッドとディスパッチを導入する次の <a href="methods.html#Methods-1">メソッド</a> の章に譲ります。</p><p>どんな型でも、型パラメータがとりうるようにしてしまうと、意味を成さない場合があります。そのような状況では次のように、 <code>T</code>の範囲を制限することができます :</p><pre><code class="language-julia-repl">julia&gt; abstract type Pointy{T&lt;:Real} end</code></pre><p>この宣言では、<code>T</code>が任意の<code>Real</code>のサブタイプの場合に許容され、そうでないものはは許容されません:</p><pre><code class="language-julia-repl">julia&gt; Pointy{Float64}
+Pointy{Float64}
+
+julia&gt; Pointy{Real}
+Pointy{Real}
+
+julia&gt; Pointy{AbstractString}
+ERROR: TypeError: in Pointy, in T, expected T&lt;:Real, got Type{AbstractString}
+
+julia&gt; Pointy{1}
+ERROR: TypeError: in Pointy, in T, expected T&lt;:Real, got Int64</code></pre><p>パラメトリック複合型の型パラメータも同じ方法で制限できます:</p><pre><code class="language-julia">struct Point{T&lt;:Real} &lt;: Pointy{T}
+    x::T
+    y::T
+end</code></pre><p>現実世界での、パラメータ型がどれほど役に立つかの例として、ここでは、整数の比を表す <code>Rational</code> という不変型が、Juliaでどの様に定義されているかを示します。(単純化のため、ここではコンストラクタは省略):</p><pre><code class="language-julia">struct Rational{T&lt;:Integer} &lt;: Real
+    num::T
+    den::T
+end</code></pre><p>これは、整数値の比率になるときだけ 有理数としての意味をなすので、パラメータの型<code>T</code>は、<code>Integer</code>のサブタイプに限定されています。整数の比は数直線上の値を表現するので、任意の<code>Rational</code>は、抽象型<code>Real</code>のインスタンスです。</p><h3><a class="nav-anchor" id="Tuple-Types-1" href="#Tuple-Types-1">タプル型</a></h3><p>タプルとは、関数本体から、引数だけを抜き取りだしたものです。関数の引数の顕著な特徴は、順序と型です。そのため、タプル型は、不変なパラメータ複合型で、かつ各パラメータがフィールドの型に対応しているものに似ています。例えば、2要素のタプル型は、次の複合型に似ています:</p><pre><code class="language-julia">struct Tuple2{A,B}
+    a::A
+    b::B
+end</code></pre><p>ただし、重要な違いが3 つあります:</p><ul><li>タプル型は、任意の数のパラメータを持つことができます。</li><li>タプル型は、そのパラメータと <em>共変</em> です: <code>Tuple{int}</code> は <code>Tuple{Any}</code> のサブタイプです。したがって、<code>Tuple{Any}</code> は抽象型とみなされ、タプル型はそのパラメータが具象型の場合にのみ、具象型である、ということになります。</li><li>タプルにフィールド名はありません; フィールドはインデックスでのみアクセスできます。</li></ul><p>タプルの値は、括弧とカンマを使って書かれます。タプルが生成されたとき、必要に応じて適切なタプル型が生成されます:</p><pre><code class="language-julia-repl">julia&gt; typeof((1,&quot;foo&quot;,2.5))
+Tuple{Int64,String,Float64}</code></pre><p>暗黙的に共変となることに注目してください:</p><pre><code class="language-julia-repl">julia&gt; Tuple{Int,AbstractString} &lt;: Tuple{Real,Any}
+true
+
+julia&gt; Tuple{Int,AbstractString} &lt;: Tuple{Real,Real}
+false
+
+julia&gt; Tuple{Int,AbstractString} &lt;: Tuple{Real,}
+false</code></pre><p>直感的には、これは関数の引数の型が関数のシグネチャのサブタイプであることに相当します。(シグネチャが適合する場合)。</p><h3><a class="nav-anchor" id="可変引数タプル型-1" href="#可変引数タプル型-1">可変引数タプル型</a></h3><p>タプル型の最後のパラメータは、特殊な型 <a href="manual/@ref "><code>Vararg</code></a>にすることが可能です。<a href="manual/@ref "><code>Vararg</code></a>は、任意個数の後続の要素を表します:</p><pre><code class="language-julia-repl">julia&gt; mytupletype = Tuple{AbstractString,Vararg{Int}}
+Tuple{AbstractString,Vararg{Int64,N} where N}
+
+julia&gt; isa((&quot;1&quot;,), mytupletype)
+true
+
+julia&gt; isa((&quot;1&quot;,1), mytupletype)
+true
+
+julia&gt; isa((&quot;1&quot;,1,2), mytupletype)
+true
+
+julia&gt; isa((&quot;1&quot;,1,2,3.0), mytupletype)
+false</code></pre><p><code>Vararg{T}</code>は、0個以上の型<code>T</code>に対応することに注意してください。可変引数タプル型は、可変引数メソッドによって受け入れられる引数を表すために使用されます。(<a href="functions.html#Varargs-Functions-1">可変引数関数</a>を参照。)</p><p>型<code>Vararg{T,N}</code> は、ちょうど<code>N</code>個の型<code>T</code>に対応します。<code>NTuple{N,T}</code> は <code>Tuple{Vararg{T,N}}</code>の便利なエイリアスです。つまり、型<code>T</code>の要素をちょうど<code>N</code>個含むタプル型です。</p><h3><a class="nav-anchor" id="名前付きタプル型-1" href="#名前付きタプル型-1">名前付きタプル型</a></h3><p>名前付きタプル型は、<a href="manual/@ref "><code>NamedTuple</code></a> 型のインスタンスで、2 つのパラメータを取ります。シンボルのタプルはフィールド名、型のタプルはフィールドの型を与えます。</p><pre><code class="language-julia-repl">julia&gt; typeof((a=1,b=&quot;hello&quot;))
+NamedTuple{(:a, :b),Tuple{Int64,String}}</code></pre><p><code>NamedTuple</code>型は、コンストラクタとしても利用可能で、1 個のタプルを引数としてとります。生成された<code>NamedTuple</code>の型は、両方のパラメータの指定された具象型か、フィールド名だけが指定された型になります:</p><pre><code class="language-julia-repl">julia&gt; NamedTuple{(:a, :b),Tuple{Float32, String}}((1,&quot;&quot;))
+(a = 1.0f0, b = &quot;&quot;)
+
+julia&gt; NamedTuple{(:a, :b)}((1,&quot;&quot;))
+(a = 1, b = &quot;&quot;)</code></pre><p>フィールドの型を指定すると、引数が変換されます。そうでない場合は、引数の型がそのまま使われます。</p><h3><a class="nav-anchor" id="man-singleton-types-1" href="#man-singleton-types-1">シングルトン型</a></h3><p>ここで、特殊なパラメータ抽象型であるシングルトン型について触れておくべきでしょう。型 <code>T</code> それぞれに対して、「シングルトン型」 <code>Type{T}</code> は、インスタンスが <code>T</code>一つだけの抽象型です。定義を構文的に説明するのは難しいので、例をいくつか見てみましょう:</p><pre><code class="language-julia-repl">julia&gt; isa(Float64, Type{Float64})
+true
+
+julia&gt; isa(Real, Type{Float64})
+false
+
+julia&gt; isa(Real, Type{Real})
+true
+
+julia&gt; isa(Float64, Type{Real})
+false</code></pre><p>つまり、<a href="../base/base.html#Core.isa"><code>isa(A,Type{B})</code></a>が真を返すのは、<code>A</code>と<code>B</code>が同じオブジェクトで、そのオブジェクトが型である場合に限る、ということです。パラメータ無しの <code>Type</code>は、単なる抽象型で、全てのオブジェクトは<code>Type</code>のインスタンスです(もちろんシングルトン型も含みます):</p><pre><code class="language-julia-repl">julia&gt; isa(Type{Float64}, Type)
+true
+
+julia&gt; isa(Float64, Type)
+true
+
+julia&gt; isa(Real, Type)
+true</code></pre><p>型でないオブジェクトは、<code>Type</code>のインスタンスではありません:</p><pre><code class="language-julia-repl">julia&gt; isa(1, Type)
+false
+
+julia&gt; isa(&quot;foo&quot;, Type)
+false</code></pre><p><a href="methods.html#parametric-methods-1">パラメトリックメソッド</a> と <a href="conversion-and-promotion.html#conversion-and-promotion-1">変換</a> の議論をする前に、シングルトン型の仕組みがどう役に立つかを説明することは難しいのですが、手短にいうと、関数の挙動を特定の型の値だけに特化することができます。これが役に立つのは、挙動が型によってきまる(特にパラメトリックな)メソッドを書く時で、しかもその型が勝手に推論されるのでなく、わざわざ引数として与える場合です。</p><p>Haskell, Scala, Rubyなどの人気のある言語はシングルトン型があります。一般的な使用方法では、「シングルトン型」という用語は、唯一のインスタンスが単一の値である型のことを指します。この意味はJuliaのシングルトン型にも当てはまっていますが、型オブジェクトだけがシングルトン型になるという点が特殊なので注意してください。</p><h3><a class="nav-anchor" id="パラメトリックプリミティブ型-1" href="#パラメトリックプリミティブ型-1">パラメトリックプリミティブ型</a></h3><p>プリミティグ型にもパラメータをつけて宣言することができます。例えば、ポインタはプリミティブ型として表現ができ、Juliaでは以下のように宣言します:</p><pre><code class="language-julia"># 32-bit system:
+primitive type Ptr{T} 32 end
+
+# 64-bit system:
+primitive type Ptr{T} 64 end</code></pre><p>一般的なパラメトリック複合型とは比べて、これらの宣言には少し変な特徴があります。それは、型パラメータ<code>T</code>がその型自体の定義の中で使われていないとうことです。パラメータは単なる抽象的なタグであり、全く同一の構造である型ファミリー全体を本質的に定義します。その型ファミリーのそれぞれは、型パラメータのみで差別化されています。そのため、<code>Ptr{Float64}</code> と <code>Ptr{Int64}</code> は、まったく同じ表現であっても型としては異なります。そしてもちろん、全ての個別ポインタ型は、包括型<a href="../base/c.html#Core.Ptr"><code>Ptr</code></a>のサブタイプです:</p><pre><code class="language-julia-repl">julia&gt; Ptr{Float64} &lt;: Ptr
+true
+
+julia&gt; Ptr{Int64} &lt;: Ptr
+true</code></pre><h2><a class="nav-anchor" id="UnionAll-Types-1" href="#UnionAll-Types-1">全合併型</a></h2><p>上述のように、<code>Ptr</code> のようなパラメトリック型は、すべてのインスタンス (<code>Ptr{Int64}</code> など) のスーパータイプとして機能します。その具体的な振る舞いはどのようなものでしょうか? <code>Ptr</code> 自体は、通常のデータ型ではありません。というのも、参照されるデータの型を知らなければ、明らかにその型をメモリ操作に使用できないからです。答えは、<code>Ptr</code> (または<code>Array</code>のような他のパラメトリック型) は、<a href="types.html#UnionAll-Types-1"><code>全合併</code></a> 型と呼ばれる種類の異なる型です。この型は、あるパラメーターをすべての値に対して、繰り返し合併した <em>反復共用体</em> を表現します。</p><p>全合併型は通常、キーワード <code>where</code> を使用して書かれます。たとえば、<code>Ptr</code> は より正確には<code>Ptr{T} where T</code>と書くことができて、その意味は、「ある<code>T</code>という値によって<code>Ptr{T}</code> のようにかける型をもつ値全て」ということです。この文脈では、パラメータ <code>T</code> は型にまたぐ変数のようなもので、&quot;型変数&quot; とも呼ばれます。 それぞれの <code>where</code> は単一の型変数を導入するので、これらの式は複数のパラメーターを持つ場合、例えば <code>Array{T,N} where N where T</code> のように型に対してネストネストされます。</p><p>型の適用構文 <code>A{B,C}</code> では <code>A</code> が 全合併型にする必要があります。最初に <code>A</code> の最も外側の型変数を <code>B</code> で置き換えます。 その結果は別の 全合併型になることが想定され、<code>C</code> に置き換えられます。よって <code>A{B,C}</code> は <code>A{B}{C}</code> に相当します。 これは、<code>Array{Float64}</code> のように型を部分的にインスタンス化することが可能である理由の説明になっています。: 最初のパラメーター値は固定されていますが、2 番目のパラメーターは全てのとりうる値にまたがっているからです。 明示的な <code>where</code> 構文を使用すると、どんなパラメーターのサブセットにでも固定できます。たとえば、すべての 1 次元配列の型は、<code>Array{T,1} where T</code> と書くことができます。</p><p>型変数は、サブタイプの関係をつかって制限することができます。 <code>Array{T}  where T &lt;: Integer</code> で、要素の型が <a href="manual/@ref "><code>Integer</code></a>のいずれかである配列すべてを指しています。 構文 <code>Array{&lt;: Integer}</code> は、<code>Array{T} where  T&lt;:Integer</code> の便利な簡略表記です。 型変数は、下限と上限の両方を指定することができます。 <code>Array{T} where Int&lt;:T&lt;:Number</code> は、<a href="../base/numbers.html#Core.Number"><code>Number</code></a> の配列で<code>Int</code>を含むもの全てを指します。(<code>T</code> は少なくとも <code>Int</code> 以上の大きさでなければいけません)。構文 <code>where T&gt;:Int</code> はまた、型変数の下限のみを指定しています。<code>Array{&gt;:Int}</code>は、<code>Array{T} where T&gt;:Int</code> と同等です。</p><p><code>where</code> 式は入れ子にできるので、型変数の境界は外側の型変数を参照できます。 たとえば、<code>Tuple{T,Array{S}} where S&lt;:AbstractArray{T} where T&lt;:Real</code> は、次の2要素タプルを参照します:  第一要素は <code>Real</code> のいずれか、第二要素は、 各要素が第一要素と同じ型を要素に持つ配列。</p><p><code>where</code> キーワード自体は、より複雑な宣言の内側で入れ子にすることができます。たとえば、次の宣言によって作成された 2 つの型について考えてみましょう:</p><pre><code class="language-julia-repl">julia&gt; const T1 = Array{Array{T,1} where T, 1}
+Array{Array{T,1} where T,1}
+
+julia&gt; const T2 = Array{Array{T,1}, 1} where T
+Array{Array{T,1},1} where T</code></pre><p>型 <code>T1</code> は、1 次元配列を要素とする 1 次元配列を定義します:  内側の配列のかたは <code>T</code> で表されていますが、内側の配列を1つ抜き出してくるとその各要素の型は同じだということで、また別の内側の配列を取り出し来たとき、その要素は別の型の場合があります。 一方、型<code>T2</code>は、内部配列の内側の配列のすべてが 1 次元配列の方が等しい 1次元配列の1 次元配列を定義します。 <code>T2</code> は抽象型であり、例えば<code>Array{Array{Int,1},1} &lt;: T2</code> であるのに対して、<code>T1</code> は具象型です。その結果、<code>T1</code> はゼロ引数コンストラクタ <code>a=T1()</code> で構築できますが、<code>T2</code> ではできません。</p><p>関数定義構文の短い形式と同様に、このような型に名前を付ける便利な構文があります:</p><pre><code class="language-julia">Vector{T} = Array{T,1}</code></pre><p>これは<code>const Vector = 配列{T,1} T</code>と同等です。 <code>Vector{Float64}</code> の書き込みは <code>Array{Float64,1}</code> を書くのと同じで、包括型の <code>Vector</code> は、要素の型に関係なく、2 番目のパラメーター (配列ディメンションの数) が 1 であるすべての <code>Array</code> オブジェクトをインスタンスとして持ちます。パラメトリック型を常に完全に指定する必要がある言語では、これは特に役に立ちませんが、Julia では、<code>Vector</code> と書くだけで、任意の要素型のすべての 1 次元の密な配列を含む抽象型を表現することができます。</p><h2><a class="nav-anchor" id="型エイリアス-1" href="#型エイリアス-1">型エイリアス</a></h2><p>既に表現可能な型に新しい名前を導入すると便利な場合があります。 これは、単純な代入文で行うことができます。 たとえば、<code>UInt</code> は、システム上のポインターのサイズに適した <a href="../base/numbers.html#Core.UInt32"><code>UInt32</code></a> または <a href="../base/numbers.html#Core.UInt64"><code>UInt64</code></a> のいずれかに別名です:</p><pre><code class="language-julia-repl"># 32-bit system:
+julia&gt; UInt
+UInt32
+
+# 64-bit system:
+julia&gt; UInt
+UInt64</code></pre><p>これは<code>base/boot.jl</code>の以下のコードで実現されています:</p><pre><code class="language-julia">if Int === Int64
+    const UInt = UInt64
+else
+    const UInt = UInt32
+end</code></pre><p>もちろん、これは <code>Int</code> が<a href="../base/numbers.html#Core.Int32"><code>Int32</code></a>または <a href="../base/numbers.html#Core.Int64"><code>Int64</code></a>) のどちらの別名なのかで変わりますが、この別名は正しい方になるよう事前に定義されています。</p><p>(<code>Int</code> とは異なり、<code>Float</code> は特定のサイズの <a href="../base/numbers.html#Core.AbstractFloat"><code>AbstractFloat</code></a>の型の別名が存在しないことに注意してください。<code>Int</code> のサイズがそのマシン上のネイティブ ポインターのサイズを反映する整数レジスタとは異なり、浮動小数点レジスタ のサイズは IEEE-754 標準で規定されています。)</p><h2><a class="nav-anchor" id="型に対する演算-1" href="#型に対する演算-1">型に対する演算</a></h2><p>Julia の型はそれ自体がオブジェクトであるため、通常の関数を作用させられます。 型の操作や探索に特に役立つ関数が既に導入されています。 <code>&lt;:</code> 演算子などは、左手のオペランドが、右側のオペランドのサブタイプであるかどうかを示す演算子です。</p><p><a href="../base/base.html#Core.isa"><code>isa</code></a> 関数は、オブジェクトが指定された型であるかを検査し、真偽値を返します:</p><pre><code class="language-julia-repl">julia&gt; isa(1, Int)
+true
+
+julia&gt; isa(1, AbstractFloat)
+false</code></pre><p><a href="../base/base.html#Core.typeof"><code>typeof</code></a> 関数は、すでにこのマニュアルを通して使われていますが、引数で与えられたオブジェクトの型を返します。前述のように、型はオブジェクトであるため、型も型を持ち、<code>typeof</code> の引数として型を与えるおｋとができます:</p><pre><code class="language-julia-repl">julia&gt; typeof(Rational{Int})
+DataType
+
+julia&gt; typeof(Union{Real,String})
+Union</code></pre><p>この操作をを繰り返したらどうなるでしょうか? 型の型の型は何でしょう? すでに見たように、型はすべて複合型の値なので、すべて<code>DataType</code>型になります:</p><pre><code class="language-julia-repl">julia&gt; typeof(DataType)
+DataType
+
+julia&gt; typeof(Union)
+DataType</code></pre><p><code>DataType</code>は自身の型でもあります。</p><p>一部の型に適用することのある、もう 1 つの操作は<a href="../base/base.html#Base.supertype"><code>supertype</code></a>です。引数の型のスーパータイプを明らかにします。宣言型 (<code>DataType</code> ) のみが、明確なスーパータイプを持っています:</p><pre><code class="language-julia-repl">julia&gt; supertype(Float64)
+AbstractFloat
+
+julia&gt; supertype(Number)
+Any
+
+julia&gt; supertype(AbstractString)
+Any
+
+julia&gt; supertype(Any)
+Any</code></pre><p><a href="../base/base.html#Base.supertype"><code>supertype</code></a>を他の型オブジェクト(または型ではないオブジェクト)に適用すると、<a href="../base/base.html#Core.MethodError"><code>MethodError</code></a>が発生します:</p><pre><code class="language-julia-repl">julia&gt; supertype(Union{Float64,Int64})
+ERROR: MethodError: no method matching supertype(::Type{Union{Float64, Int64}})
+Closest candidates are:
+  supertype(!Matched::DataType) at operators.jl:42
+  supertype(!Matched::UnionAll) at operators.jl:47</code></pre><h2><a class="nav-anchor" id="man-custom-pretty-printing-1" href="#man-custom-pretty-printing-1">独自の整形表示</a></h2><p>型のインスタンスの表示方法をカスタマイズしたくい場合がよくあります。これは<a href="../base/io-network.html#Base.show-Tuple{Any}"><code>show</code></a>関数をオーバーロードすることによって実現されます。 たとえば、極座標形式で複素数を表す型を定義したとします:</p><pre><code class="language-julia-repl">julia&gt; struct Polar{T&lt;:Real} &lt;: Number
+           r::T
+           Θ::T
+       end
+
+julia&gt; Polar(r::Real,Θ::Real) = Polar(promote(r,Θ)...)
+Polar</code></pre><p>ここでは、異なる <a href="../base/numbers.html#Core.Real"><code>Real</code></a> 型の引数を受け取り、それらを共通の型に昇格できるようにカスタム コンストラクター関数を追加しました (<a href="constructors.html#man-constructors-1">コンストラクター</a>と<a href="conversion-and-promotion.html#conversion-and-promotion-1">変換と昇格</a>を参照)。 (もちろん、<a href="../base/numbers.html#Core.Number"><code>Number</code></a> 型と同じ用に動作させるためには、他の多くのメソッドを定義する必要があるでしょう。例えば、<code>+</code>、<code>*</code>、<code>one</code>、<code>zero</code>、昇格のルールなど。既定では、この型のインスタンスは、単に、型名とフィールド値に関する情報を`Polar{Float64}(3.0,4.0))と表示します。</p><p>代わりに <code>3.0 * exp(4.0im)</code> として表示したい場合は、特定の出力オブジェクト <code>io</code>(ファイル、端末、バッファなどを表します。 <a href="networking-and-streams.html#networking-and-streams-1">ネットワークとストリーム</a>を参照) にオブジェクトを出力する次のメソッドを定義します:</p><pre><code class="language-julia-repl">julia&gt; Base.show(io::IO, z::Polar) = print(io, z.r, &quot; * exp(&quot;, z.Θ, &quot;im)&quot;)</code></pre><p><code>Polar</code>オブジェクトの表示をより細かく制御することができます。特に、REPL などの対話型環境で単一のオブジェクトを表示するのに使用される冗長な複数行印刷形式と、オブジェクトを別の(配列などの)オブジェクトの一部として<a href="../base/io-network.html#Base.print"><code>print</code></a> するシンプルな単一行形式 の両方が必要な場合があります。デフォルトでは <code>show(io,z)</code> 関数がどちらの場合も呼び出されますが、ユーザー定義の <em>別の</em> 複数形式で表示するためには、3引数をとる<code>show</code>関数で、2番めの引数に <code>text/plain</code> MIME タイプ (<a href="../base/io-network.html#Multimedia-I/O-1">Multimedia I/O</a>参照)をとるものをオーバーロードします。例えば:</p><pre><code class="language-julia-repl">julia&gt; Base.show(io::IO, ::MIME&quot;text/plain&quot;, z::Polar{T}) where{T} =
+           print(io, &quot;Polar{$T} complex number:\n   &quot;, z)</code></pre><p>(ここで <code>print(...,z)</code> は 2 引数 の<code>show(io,z)</code> メソッドを呼び出すことに注意。) この結果は、下記のとおりです:</p><pre><code class="language-julia-repl">julia&gt; Polar(3, 4.0)
+Polar{Float64} complex number:
+   3.0 * exp(4.0im)
+
+julia&gt; [Polar(3, 4.0), Polar(4.0,5.3)]
+2-element Array{Polar{Float64},1}:
+ 3.0 * exp(4.0im)
+ 4.0 * exp(5.3im)</code></pre><p>ここで、単一行の <code>show(io,z)</code> 形式は<code>Polar</code> 値の配列に引き続き使用されますています。 技術的には REPL が <code>display(z)</code> を呼び出して行を実行した結果を表示します。複数行印刷形式では、<code>show(stdout, MIME(&quot;text/plain&quot;), z)</code>  単一行形式は<code>show(stdout,z)</code> がデフォルトになります。 しかし、新しいマルチメディア表示ハンドラを定義しない限りは(<a href="../base/io-network.html#Multimedia-I/O-1">Multimedia I/O</a>を参照)、新しい <a href="../base/io-network.html#Base.Multimedia.display"><code>display</code></a>メソッドを定義すべきではありません。 </p><p>さらに、IJulia などの環境で、オブジェクトのより豊かな表示(HTML、画像など)をするために、他の MIME タイプの <code>show</code>メソッドを定義することもできます。  例えば、<code>Polar</code>オブジェクトに対して、書式付きのHTML表示を定義して、上付き文字と斜体を使うには以下のようにします:</p><pre><code class="language-julia-repl">julia&gt; Base.show(io::IO, ::MIME&quot;text/html&quot;, z::Polar{T}) where {T} =
+           println(io, &quot;&lt;code&gt;Polar{$T}&lt;/code&gt; complex number: &quot;,
+                   z.r, &quot; &lt;i&gt;e&lt;/i&gt;&lt;sup&gt;&quot;, z.Θ, &quot; &lt;i&gt;i&lt;/i&gt;&lt;/sup&gt;&quot;)</code></pre><p><code>Polar</code>オブジェクトは、HTML 表示をサポートする環境では、 HTMLを使用して自動的に表示されますが、必要に応じて手動で <code>show</code> を呼び出して HTML 出力を取得できます:</p><pre><code class="language-julia-repl">julia&gt; show(stdout, &quot;text/html&quot;, Polar(3.0,4.0))
+&lt;code&gt;Polar{Float64}&lt;/code&gt; complex number: 3.0 &lt;i&gt;e&lt;/i&gt;&lt;sup&gt;4.0 &lt;i&gt;i&lt;/i&gt;&lt;/sup&gt;</code></pre><p>An HTML renderer would display this as: <code>Polar{Float64}</code> complex number: 3.0 <i>e</i><sup>4.0 <i>i</i></sup></p><p>経験則として、単一行の <code>show</code> メソッドは、表示されたオブジェクトを作成する、有効な Julia 式を表示すべきです。上記の <code>Polar</code> の単一行の <code>show</code> メソッドに乗算演算子 (<code>*</code>) などの二項演算子が含まれている場合、別のオブジェクトの一部として表示する際に、正しく解析されないことがあります。 これを確認するために、<code>Polar</code> 型の具体的なインスタンスの二乗の式オブジェクト (<a href="metaprogramming.html#Program-representation-1"><code>プログラムの表現</code></a>を参照)を考えます:</p><pre><code class="language-julia-repl">julia&gt; a = Polar(3, 4.0)
+Polar{Float64} complex number:
+   3.0 * exp(4.0im)
+
+julia&gt; print(:($a^2))
+3.0 * exp(4.0im) ^ 2</code></pre><p>演算子 <code>^</code> の優先順位は <code>*</code> よりも高いため (<a href="mathematical-operations.html#operator-precedence-and-associativity-1">演算子の優先順位と結合則</a>を参照)、この出力は <code>(3.0 * exp(4.0im)) ^ 2</code> と等しいはずの式 <code>a ^ 2</code> を忠実に表示しません。 この問題を解決するには、出力時に式オブジェクトによって内部的に呼び出される <code>Base.show_unquoted(io::IO, z::Polar, indent::Int, precedence::Int)</code>のカスタムメソッドを作成する必要があります:</p><pre><code class="language-julia-repl">julia&gt; function Base.show_unquoted(io::IO, z::Polar, ::Int, precedence::Int)
+           if Base.operator_precedence(:*) &lt;= precedence
+               print(io, &quot;(&quot;)
+               show(io, z)
+               print(io, &quot;)&quot;)
+           else
+               show(io, z)
+           end
+       end
+
+julia&gt; :($a^2)
+:((3.0 * exp(4.0im)) ^ 2)</code></pre><p>上記で定義したメソッドは、呼び出し元演算子の優先順位が乗算の優先順位以上である場合に、括弧を追加します。 この検査によって、括弧なしでも正しく解析する式 (<code>:($a + 2)</code>や<code>:($a =2)</code>など) では、括弧を省略して表示できます:</p><pre><code class="language-julia-repl">julia&gt; :($a + 2)
+:(3.0 * exp(4.0im) + 2)
+
+julia&gt; :($a == 2)
+:(3.0 * exp(4.0im) == 2)</code></pre><p>場合によっては、コンテキストに応じて <code>show</code> メソッドの動作を調整すると便利です。これは<a href="../base/io-network.html#Base.IOContext"><code>IOContext</code></a>型で実現可能です。ラップされた IO ストリームと共にコンテキストプロパティを渡すことができます。 たとえば、<code>:compact</code> プロパティが <code>true</code> に設定されている場合は、<code>show</code> メソッドで短い表現を作成し、<code>false</code> または指定なしだと、長い表現になるというようなことができます:</p><pre><code class="language-julia-repl">julia&gt; function Base.show(io::IO, z::Polar)
+           if get(io, :compact, false)
+               print(io, z.r, &quot;ℯ&quot;, z.Θ, &quot;im&quot;)
+           else
+               print(io, z.r, &quot; * exp(&quot;, z.Θ, &quot;im)&quot;)
+           end
+       end</code></pre><p>この新しい簡潔な表現は、渡された IO ストリームが <code>:compact</code> プロパティ セットを持つ <code>IOContext</code> オブジェクトである場合に使用されます。特に、水平方向の幅が制限されていて、配列を何段かで表示する場合などに役立ちます:</p><pre><code class="language-julia-repl">julia&gt; show(IOContext(stdout, :compact=&gt;true), Polar(3, 4.0))
+3.0ℯ4.0im
+
+julia&gt; [Polar(3, 4.0) Polar(4.0,5.3)]
+1×2 Array{Polar{Float64},2}:
+ 3.0ℯ4.0im  4.0ℯ5.3im</code></pre><p>表示の調整に使用できる一般的なプロパティの一覧については、<a href="../base/io-network.html#Base.IOContext"><code>IOContext</code></a>のドキュメントを参照してください。</p><h2><a class="nav-anchor" id="&quot;Value-types&quot;-1" href="#&quot;Value-types&quot;-1">&quot;値型&quot;</a></h2><p>Julia では、<code>true</code> や <code>false</code>などの<em>値</em>を関数ディスパッチに使用できません。ただし、パラメトリック型によるディスパッチは可能で、その型パラメータとして 「普通の」値 (型、シンボル、整数、浮動小数点数、タプルなど) を使うことができます。 一般的な例は<code>Array{T,N}</code>の次元パラメータです。<code>T</code>は型 (例えば、<a href="../base/numbers.html#Core.Float64"><code>Float64</code></a>)ですが、<code>N</code>は単なる<code>Int</code>型の値です。</p><p>値をパラメーターとして受け取る独自の型を作成し、それらを使用してディスパッチを制御できます。この考え方を説明するために、パラメトリック型の <code>Val{x}</code>とコンストラクター <code>Val(x) = Val{x}()</code>を導入しましょう。手の混んだ階層を必要としないときには、この手法にはこの型を慣用的に用います。</p><p><a href="../base/base.html#Base.Val"><code>Val</code></a>は次のように定義します:</p><pre><code class="language-julia-repl">julia&gt; struct Val{x}
+       end
+
+julia&gt; Val(x) = Val{x}()
+Val</code></pre><p><code>Val</code>の実装はこれ以上ありません。 Julia の標準ライブラリの関数には、<code>Val</code>型のインスタンスを引数にとるものがあり、独自の関数を書くときにも <code>Val</code> 型を利用できます。例えば:  例えば：</p><pre><code class="language-julia-repl">julia&gt; firstlast(::Val{true}) = &quot;First&quot;
+firstlast (generic function with 1 method)
+
+julia&gt; firstlast(::Val{false}) = &quot;Last&quot;
+firstlast (generic function with 2 methods)
+
+julia&gt; firstlast(Val(true))
+&quot;First&quot;
+
+julia&gt; firstlast(Val(false))
+&quot;Last&quot;</code></pre><p>Julia 全体で一貫性を保つために、呼び出し側で常に <code>Val</code><em>type</em>を使用するのではなく、<code>Val</code>の<em>インスタンス</em>を渡します。つまり、呼び方は、<code>foo(Val{:bar})</code> ではなく <code>foo(Val(:bar))</code> です。</p><p><code>Val</code>を含むパラメトリックな「値」型は、非常に誤用しやすいので注意して下さい。 ひどいときは、コードのパフォーマンスを大幅に<em>低下</em>させる可能性があります。  特に、上記のようなコードを、実用的に使いたいと思うことはないでしょう。 適切(および不適切)な<code>Val</code>の使用方法野詳細については、<a href="performance-tips.html#man-performance-tips-1">パフォーマンス・ティップス</a>の広範な議論を読んでください。</p><div class="footnote" id="footnote-1"><a href="#footnote-1"><strong>[1]</strong></a><p>ここでいう、&quot;少数&quot; は<code>MAX_UNION_SPLITTING</code>定数で定義され、現在 4 に設定されています。</p></div><footer><hr/><a class="previous" href="variables-and-scoping.html"><span class="direction">Previous</span><span class="title">Scope of Variables</span></a><a class="next" href="methods.html"><span class="direction">Next</span><span class="title">メソッド</span></a></footer></article></body></html>

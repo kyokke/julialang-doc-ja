@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>整数と浮動小数点数 · The Julia Language</title><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-28835595-6', 'auto');
+ga('send', 'pageview');
+</script><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../assets/documenter.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link href="../assets/documenter.css" rel="stylesheet" type="text/css"/><link href="../assets/julia-manual.css" rel="stylesheet" type="text/css"/></head><body><nav class="toc"><a href="../index.html"><img class="logo" src="../assets/logo.png" alt="The Julia Language logo"/></a><h1>The Julia Language</h1><select id="version-selector" onChange="window.location.href=this.value" style="visibility: hidden"></select><form class="search" id="search-form" action="../search.html"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../index.html">Home</a></li><li><span class="toctext">Manual</span><ul><li><a class="toctext" href="getting-started.html">はじめよう</a></li><li><a class="toctext" href="variables.html">変数</a></li><li class="current"><a class="toctext" href="integers-and-floating-point-numbers.html">整数と浮動小数点数</a><ul class="internal"><li><a class="toctext" href="#整数-1">整数</a></li><li><a class="toctext" href="#浮動小数点数-1">浮動小数点数</a></li><li><a class="toctext" href="#arbitrary-precision-arithmetic-1">任意精度演算</a></li><li><a class="toctext" href="#man-numeric-literal-coefficients-1">数値リテラル係数</a></li><li><a class="toctext" href="#と1のリテラル-1">0と1のリテラル</a></li></ul></li><li><a class="toctext" href="mathematical-operations.html">算術演算と初等関数</a></li><li><a class="toctext" href="complex-and-rational-numbers.html">複素数と有理数</a></li><li><a class="toctext" href="strings.html">文字列</a></li><li><a class="toctext" href="functions.html">関数</a></li><li><a class="toctext" href="control-flow.html">制御フロー</a></li><li><a class="toctext" href="variables-and-scoping.html">Scope of Variables</a></li><li><a class="toctext" href="types.html">型</a></li><li><a class="toctext" href="methods.html">メソッド</a></li><li><a class="toctext" href="constructors.html">Constructors</a></li><li><a class="toctext" href="conversion-and-promotion.html">変換と昇格</a></li><li><a class="toctext" href="interfaces.html">Interfaces</a></li><li><a class="toctext" href="modules.html">モジュール</a></li><li><a class="toctext" href="documentation.html">ドキュメンテーション</a></li><li><a class="toctext" href="metaprogramming.html">メタプログラミング</a></li><li><a class="toctext" href="arrays.html">多次元配列</a></li><li><a class="toctext" href="missing.html">Missing Values</a></li><li><a class="toctext" href="networking-and-streams.html">ネットワークとストリーム</a></li><li><a class="toctext" href="parallel-computing.html">並列コンピューティング</a></li><li><a class="toctext" href="running-external-programs.html">外部プログラムの実行</a></li><li><a class="toctext" href="calling-c-and-fortran-code.html">C, Fortran コードの呼び出し</a></li><li><a class="toctext" href="handling-operating-system-variation.html">Handling Operating System Variation</a></li><li><a class="toctext" href="environment-variables.html">Environment Variables</a></li><li><a class="toctext" href="embedding.html">Julia の埋め込み</a></li><li><a class="toctext" href="code-loading.html">Code Loading</a></li><li><a class="toctext" href="profile.html">プロファイリング</a></li><li><a class="toctext" href="stacktraces.html">Stack Traces</a></li><li><a class="toctext" href="performance-tips.html">パフォーマンス・ティップス</a></li><li><a class="toctext" href="workflow-tips.html">Workflow Tips</a></li><li><a class="toctext" href="style-guide.html">スタイルガイド</a></li><li><a class="toctext" href="faq.html">Frequently Asked Questions</a></li><li><a class="toctext" href="noteworthy-differences.html">他の言語との注目すべき違い</a></li><li><a class="toctext" href="unicode-input.html">Unicode Input</a></li></ul></li><li><span class="toctext">Base</span><ul><li><a class="toctext" href="../base/base.html">Essentials</a></li><li><a class="toctext" href="../base/collections.html">Collections and Data Structures</a></li><li><a class="toctext" href="../base/math.html">Mathematics</a></li><li><a class="toctext" href="../base/numbers.html">Numbers</a></li><li><a class="toctext" href="../base/strings.html">Strings</a></li><li><a class="toctext" href="../base/arrays.html">Arrays</a></li><li><a class="toctext" href="../base/parallel.html">Tasks</a></li><li><a class="toctext" href="../base/multi-threading.html">Multi-Threading</a></li><li><a class="toctext" href="../base/constants.html">Constants</a></li><li><a class="toctext" href="../base/file.html">Filesystem</a></li><li><a class="toctext" href="../base/io-network.html">I/O and Network</a></li><li><a class="toctext" href="../base/punctuation.html">Punctuation</a></li><li><a class="toctext" href="../base/sort.html">Sorting and Related Functions</a></li><li><a class="toctext" href="../base/iterators.html">Iteration utilities</a></li><li><a class="toctext" href="../base/c.html">C Interface</a></li><li><a class="toctext" href="../base/libc.html">C Standard Library</a></li><li><a class="toctext" href="../base/stacktraces.html">StackTraces</a></li><li><a class="toctext" href="../base/simd-types.html">SIMD Support</a></li></ul></li><li><span class="toctext">Standard Library</span><ul><li><a class="toctext" href="../stdlib/Base64.html">Base64</a></li><li><a class="toctext" href="../stdlib/CRC32c.html">CRC32c</a></li><li><a class="toctext" href="../stdlib/Dates.html">Dates</a></li><li><a class="toctext" href="../stdlib/DelimitedFiles.html">Delimited Files</a></li><li><a class="toctext" href="../stdlib/Distributed.html">Distributed Computing</a></li><li><a class="toctext" href="../stdlib/FileWatching.html">File Events</a></li><li><a class="toctext" href="../stdlib/Future.html">Future</a></li><li><a class="toctext" href="../stdlib/InteractiveUtils.html">Interactive Utilities</a></li><li><a class="toctext" href="../stdlib/LibGit2.html">LibGit2</a></li><li><a class="toctext" href="../stdlib/Libdl.html">Dynamic Linker</a></li><li><a class="toctext" href="../stdlib/LinearAlgebra.html">Linear Algebra</a></li><li><a class="toctext" href="../stdlib/Logging.html">Logging</a></li><li><a class="toctext" href="../stdlib/Markdown.html">Markdown</a></li><li><a class="toctext" href="../stdlib/Mmap.html">Memory-mapped I/O</a></li><li><a class="toctext" href="../stdlib/Pkg.html">Pkg</a></li><li><a class="toctext" href="../stdlib/Printf.html">Printf</a></li><li><a class="toctext" href="../stdlib/Profile.html">プロファイリング</a></li><li><a class="toctext" href="../stdlib/REPL.html">The Julia REPL</a></li><li><a class="toctext" href="../stdlib/Random.html">Random Numbers</a></li><li><a class="toctext" href="../stdlib/SHA.html">SHA</a></li><li><a class="toctext" href="../stdlib/Serialization.html">Serialization</a></li><li><a class="toctext" href="../stdlib/SharedArrays.html">Shared Arrays</a></li><li><a class="toctext" href="../stdlib/Sockets.html">Sockets</a></li><li><a class="toctext" href="../stdlib/SparseArrays.html">Sparse Arrays</a></li><li><a class="toctext" href="../stdlib/Statistics.html">Statistics</a></li><li><a class="toctext" href="../stdlib/Test.html">Unit Testing</a></li><li><a class="toctext" href="../stdlib/UUIDs.html">UUIDs</a></li><li><a class="toctext" href="../stdlib/Unicode.html">Unicode</a></li></ul></li><li><span class="toctext">Developer Documentation</span><ul><li><a class="toctext" href="../devdocs/reflection.html">リフレクションとインストロスペクション</a></li><li><span class="toctext">Documentation of Julia&#39;s Internals</span><ul><li><a class="toctext" href="../devdocs/init.html">Julia ランタイムの初期化</a></li><li><a class="toctext" href="../devdocs/ast.html">Julia ASTs</a></li><li><a class="toctext" href="../devdocs/types.html">More about types</a></li><li><a class="toctext" href="../devdocs/object.html">Memory layout of Julia Objects</a></li><li><a class="toctext" href="../devdocs/eval.html">Eval of Julia code</a></li><li><a class="toctext" href="../devdocs/callconv.html">Calling Conventions</a></li><li><a class="toctext" href="../devdocs/compiler.html">High-level Overview of the Native-Code Generation Process</a></li><li><a class="toctext" href="../devdocs/functions.html">Julia Functions</a></li><li><a class="toctext" href="../devdocs/cartesian.html">Base.Cartesian</a></li><li><a class="toctext" href="../devdocs/meta.html">Talking to the compiler (the <code>:meta</code> mechanism)</a></li><li><a class="toctext" href="../devdocs/subarrays.html">SubArrays</a></li><li><a class="toctext" href="../devdocs/isbitsunionarrays.html">isbits Union Optimizations</a></li><li><a class="toctext" href="../devdocs/sysimg.html">システムイメージのビルド</a></li><li><a class="toctext" href="../devdocs/llvm.html">Working with LLVM</a></li><li><a class="toctext" href="../devdocs/stdio.html">printf() and stdio in the Julia runtime</a></li><li><a class="toctext" href="../devdocs/boundscheck.html">Bounds checking</a></li><li><a class="toctext" href="../devdocs/locks.html">Proper maintenance and care of multi-threading locks</a></li><li><a class="toctext" href="../devdocs/offset-arrays.html">Arrays with custom indices</a></li><li><a class="toctext" href="../devdocs/require.html">Module loading</a></li><li><a class="toctext" href="../devdocs/inference.html">Inference</a></li><li><a class="toctext" href="../devdocs/ssair.html">Julia SSA-form IR</a></li><li><a class="toctext" href="../devdocs/gc-sa.html">Static analyzer annotations for GC correctness in C code</a></li></ul></li><li><span class="toctext">Developing/debugging Julia&#39;s C code</span><ul><li><a class="toctext" href="../devdocs/backtraces.html">クラッシュ(セグメンテーションフォルト)の報告と分析</a></li><li><a class="toctext" href="../devdocs/debuggingtips.html">gdb debugging tips</a></li><li><a class="toctext" href="../devdocs/valgrind.html">Using Valgrind with Julia</a></li><li><a class="toctext" href="../devdocs/sanitizers.html">Sanitizer support</a></li></ul></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li>Manual</li><li><a href="integers-and-floating-point-numbers.html">整数と浮動小数点数</a></li></ul><a class="edit-page" href="https://github.com/JuliaLang/julia/blob/master/doc/src/manual/integers-and-floating-point-numbers.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/><div id="topbar"><span>整数と浮動小数点数</span><a class="fa fa-bars" href="#"></a></div></header><h1><a class="nav-anchor" id="integers-and-floating-point-numbers-1" href="#integers-and-floating-point-numbers-1">整数と浮動小数点数</a></h1><p>整数と浮動小数点の値は、算術と計算の基本的な構成要素です。 このような値の組み込み表現は数値プリミティブと呼ばれ、コード内の即時値としての整数と浮動小数点数の表現は数値リテラルと呼ばれます。 たとえば、<code>1</code> は整数リテラルで、<code>1.0</code> は浮動小数点リテラルです。オブジェクトとしてのバイナリインメモリ表現は数値プリミティブです。</p><p>Julia では、様々なプリミティブ数値型を提供され、そのそれぞれの型に対して、標準的な数学関数と同様に、算術演算子とビット演算子が定義されています。これら数値型や演算は、最新のコンピュータでネイティブにサポートされている数値型と演算に直接対応付けられているため、Julia は計算リソースを最大限に活用できます。さらに、Julia は<a href="integers-and-floating-point-numbers.html#arbitrary-precision-arithmetic-1">任意精度演算</a>をソフトウェア的にサポートしており、ネイティブなハードウェア表現では表現できない数値の演算を扱えますが、パフォーマンスは比較的遅くなってしまいます。</p><p>Juliaのプリミティブ数値型を次に示します:</p><ul><li><strong>整数型:</strong></li></ul><table><tr><th style="text-align: left">型</th><th style="text-align: left">符号の有無</th><th style="text-align: left">ビット数</th><th style="text-align: left">最小値</th><th style="text-align: left">最大値</th></tr><tr><td style="text-align: left"><a href="../base/numbers.html#Core.Int8"><code>Int8</code></a></td><td style="text-align: left">✓</td><td style="text-align: left">8</td><td style="text-align: left">-2^7</td><td style="text-align: left">2^7 - 1</td></tr><tr><td style="text-align: left"><a href="../base/numbers.html#Core.UInt8"><code>UInt8</code></a></td><td style="text-align: left"></td><td style="text-align: left">8</td><td style="text-align: left">0</td><td style="text-align: left">2^8 - 1</td></tr><tr><td style="text-align: left"><a href="../base/numbers.html#Core.Int16"><code>Int16</code></a></td><td style="text-align: left">✓</td><td style="text-align: left">16</td><td style="text-align: left">-2^15</td><td style="text-align: left">2^15 - 1</td></tr><tr><td style="text-align: left"><a href="../base/numbers.html#Core.UInt16"><code>UInt16</code></a></td><td style="text-align: left"></td><td style="text-align: left">16</td><td style="text-align: left">0</td><td style="text-align: left">2^16 - 1</td></tr><tr><td style="text-align: left"><a href="../base/numbers.html#Core.Int32"><code>Int32</code></a></td><td style="text-align: left">✓</td><td style="text-align: left">32</td><td style="text-align: left">-2^31</td><td style="text-align: left">2^31 - 1</td></tr><tr><td style="text-align: left"><a href="../base/numbers.html#Core.UInt32"><code>UInt32</code></a></td><td style="text-align: left"></td><td style="text-align: left">32</td><td style="text-align: left">0</td><td style="text-align: left">2^32 - 1</td></tr><tr><td style="text-align: left"><a href="../base/numbers.html#Core.Int64"><code>Int64</code></a></td><td style="text-align: left">✓</td><td style="text-align: left">64</td><td style="text-align: left">-2^63</td><td style="text-align: left">2^63 - 1</td></tr><tr><td style="text-align: left"><a href="../base/numbers.html#Core.UInt64"><code>UInt64</code></a></td><td style="text-align: left"></td><td style="text-align: left">64</td><td style="text-align: left">0</td><td style="text-align: left">2^64 - 1</td></tr><tr><td style="text-align: left"><a href="../base/numbers.html#Core.Int128"><code>Int128</code></a></td><td style="text-align: left">✓</td><td style="text-align: left">128</td><td style="text-align: left">-2^127</td><td style="text-align: left">2^127 - 1</td></tr><tr><td style="text-align: left"><a href="../base/numbers.html#Core.UInt128"><code>UInt128</code></a></td><td style="text-align: left"></td><td style="text-align: left">128</td><td style="text-align: left">0</td><td style="text-align: left">2^128 - 1</td></tr><tr><td style="text-align: left"><a href="../base/numbers.html#Core.Bool"><code>Bool</code></a></td><td style="text-align: left">N/A</td><td style="text-align: left">8</td><td style="text-align: left"><code>false</code> (0)</td><td style="text-align: left"><code>true</code> (1)</td></tr></table><ul><li><strong>浮動小数点型:</strong></li></ul><table><tr><th style="text-align: left">型</th><th style="text-align: left">精度</th><th style="text-align: left">ビット数</th></tr><tr><td style="text-align: left"><a href="../base/numbers.html#Core.Float16"><code>Float16</code></a></td><td style="text-align: left"><a href="https://en.wikipedia.org/wiki/Half-precision_floating-point_format">half</a></td><td style="text-align: left">16</td></tr><tr><td style="text-align: left"><a href="../base/numbers.html#Core.Float32"><code>Float32</code></a></td><td style="text-align: left"><a href="https://en.wikipedia.org/wiki/Single_precision_floating-point_format">single</a></td><td style="text-align: left">32</td></tr><tr><td style="text-align: left"><a href="../base/numbers.html#Core.Float64"><code>Float64</code></a></td><td style="text-align: left"><a href="https://en.wikipedia.org/wiki/Double_precision_floating-point_format">double</a></td><td style="text-align: left">64</td></tr></table><p>さらに、これらのプリミティブ数値型を用いて、Juliaは <a href="complex-and-rational-numbers.html#complex-and-rational-numbers-1">複素数と有理数</a> に完全対応しています。すべての数値型は明示的なキャストなしで自然に相互運用されます。これは柔軟でユーザーが拡張可能な <a href="conversion-and-promotion.html#conversion-and-promotion-1">型昇格システム</a>のおかげです。</p><h2><a class="nav-anchor" id="整数-1" href="#整数-1">整数</a></h2><p>整数リテラルは、標準的な方法で表現できます:</p><pre><code class="language-julia-repl">julia&gt; 1
+1
+
+julia&gt; 1234
+1234</code></pre><p>整数リテラルのデフォルトの型は、ターゲット・システムが 32 ビット・アーキテクチャーと 64 ビット・アーキテクチャーのどちらであるかによって異なります:</p><pre><code class="language-julia-repl"># 32-bit system:
+julia&gt; typeof(1)
+Int32
+
+# 64-bit system:
+julia&gt; typeof(1)
+Int64</code></pre><p>Julia の内部変数 <a href="../base/constants.html#Base.Sys.WORD_SIZE"><code>Sys.WORD_SIZE</code></a> を見ると、ターゲット・システムが 32 ビットか 64 ビットかがわかります:</p><pre><code class="language-julia-repl"># 32-bit system:
+julia&gt; Sys.WORD_SIZE
+32
+
+# 64-bit system:
+julia&gt; Sys.WORD_SIZE
+64</code></pre><p>Julia には、システムの符号付きネイティブ整数型と符号なしネイティブ整数型のエイリアスである <code>Int</code> 型と <code>UInt</code> がそれぞれ定義されています:</p><pre><code class="language-julia-repl"># 32-bit system:
+julia&gt; Int
+Int32
+julia&gt; UInt
+UInt32
+
+# 64-bit system:
+julia&gt; Int
+Int64
+julia&gt; UInt
+UInt64</code></pre><p>大きな整数リテラルで、32 ビットのみを使用して表すことができず、64 ビットで表すことができるものに対しては、システムの種類に関係なく、常に 64 ビットの整数が生成されます:</p><pre><code class="language-julia-repl"># 32-bit or 64-bit system:
+julia&gt; typeof(3000000000)
+Int64</code></pre><p>符号なしの整数の入出力には、<code>0x</code> プレフィックスを持つ16進数の数字 <code>0-9a-f</code> (大文字の数字 <code>A-F</code> も利用可能)を使います。符号なしの値のサイズは、使用する16進数の桁数で決まります:</p><pre><code class="language-julia-repl">julia&gt; 0x1
+0x01
+
+julia&gt; typeof(ans)
+UInt8
+
+julia&gt; 0x123
+0x0123
+
+julia&gt; typeof(ans)
+UInt16
+
+julia&gt; 0x1234567
+0x01234567
+
+julia&gt; typeof(ans)
+UInt32
+
+julia&gt; 0x123456789abcdef
+0x0123456789abcdef
+
+julia&gt; typeof(ans)
+UInt64
+
+julia&gt; 0x11112222333344445555666677778888
+0x11112222333344445555666677778888
+
+julia&gt; typeof(ans)
+UInt128</code></pre><p>こうした振る舞いは、符号なし整数の16進リテラルを使用する場合、通常は、単なる整数値というよりは、固定長バイト列として使われることが多いだろうという考察に基づいています。</p><p>変数 <a href="../base/base.html#ans"><code>ans</code></a> には、対話型セッションで最後に評価された式の値が格納されていることを思い出してください。これは、Julia コードが対話セッション以外の他の方法で実行されている場合にはあてはまりません。</p><p>2進数・8進数リテラルにも対応しています:</p><pre><code class="language-julia-repl">julia&gt; 0b10
+0x02
+
+julia&gt; typeof(ans)
+UInt8
+
+julia&gt; 0o010
+0x08
+
+julia&gt; typeof(ans)
+UInt8
+
+julia&gt; 0x00000000000000001111222233334444
+0x00000000000000001111222233334444
+
+julia&gt; typeof(ans)
+UInt128</code></pre><p>16進・2進・8進リテラルに対しては、符号なし整数型が生成されます。リテラルの先頭桁を <code>0</code> で埋めない場合、バイナリ データのサイズは必要最小限のサイズになります。先頭にゼロが付加されている場合、その先頭の桁が<code>1</code>である同じ桁数のリテラルに必要な最小サイズになります。これにより、ユーザーはデータのサイズを制御できます。 <code>UInt128</code> に格納できない値は、このようなリテラルとして記述できません。</p><p>2進・8進・16進リテラルは、リテラルの直前に <code>-</code> の符号をつけることができます。この場合生成されるのは、符号を付ける前の数とサイズの等しい符号なしの整数で、元の数の2の補数表現になります:</p><pre><code class="language-julia-repl">julia&gt; -0x2
+0xfe
+
+julia&gt; -0x0002
+0xfffe</code></pre><p>整数などのプリミティブ数値型の最小・最大値は、<a href="../base/base.html#Base.typemin"><code>typemin</code></a> 関数と <a href="../base/base.html#Base.typemax"><code>typemax</code></a> 関数によって得られます:</p><pre><code class="language-julia-repl">julia&gt; (typemin(Int32), typemax(Int32))
+(-2147483648, 2147483647)
+
+julia&gt; for T in [Int8,Int16,Int32,Int64,Int128,UInt8,UInt16,UInt32,UInt64,UInt128]
+           println(&quot;$(lpad(T,7)): [$(typemin(T)),$(typemax(T))]&quot;)
+       end
+   Int8: [-128,127]
+  Int16: [-32768,32767]
+  Int32: [-2147483648,2147483647]
+  Int64: [-9223372036854775808,9223372036854775807]
+ Int128: [-170141183460469231731687303715884105728,170141183460469231731687303715884105727]
+  UInt8: [0,255]
+ UInt16: [0,65535]
+ UInt32: [0,4294967295]
+ UInt64: [0,18446744073709551615]
+UInt128: [0,340282366920938463463374607431768211455]</code></pre><p><a href="../base/base.html#Base.typemin"><code>typemin</code></a>と<a href="../base/base.html#Base.typemax"><code>typemax</code></a>によって返される値は、この関数に引数として与えられた型の数値になります。(上記の式では、<a href="control-flow.html#man-loops-1">for ループ</a>、<a href="strings.html#man-strings-1">文字列</a>、<a href="running-external-programs.html#command-interpolation-1">式展開</a>など、まだ紹介していない機能をいくつか使用していますが、プログラミング経験を持つユーザーにとっては十分に理解できるものでしょう。)</p><h3><a class="nav-anchor" id="オーバーフロー時の動作-1" href="#オーバーフロー時の動作-1">オーバーフロー時の動作</a></h3><p>Julia では、その型で表現可能な値の範囲を超えると、ラップアラウンド(循環)が発生します:</p><pre><code class="language-julia-repl">julia&gt; x = typemax(Int64)
+9223372036854775807
+
+julia&gt; x + 1
+-9223372036854775808
+
+julia&gt; x + 1 == typemin(Int64)
+true</code></pre><p>したがって、Julia の整数型での演算は、実際には <a href="https://en.wikipedia.org/wiki/Modular_arithmetic">モジュラー演算</a>の一形態です。 これは、現代のコンピュータに実装されている整数の基礎となる算術演算の特徴を反映しています。オーバーフローが起こり得るアプリケーションでは、オーバーフローによって生成されるラップアラウンドを明示的にチェックすることが不可欠です。そうでなければ、代わりに<a href="integers-and-floating-point-numbers.html#arbitrary-precision-arithmetic-1">任意精度演算</a>の<a href="../base/numbers.html#Base.GMP.BigInt"><code>BigInt</code></a>型を使用することをお勧めします。</p><h3><a class="nav-anchor" id="除算エラー-1" href="#除算エラー-1">除算エラー</a></h3><p>整数除算 (<code>div</code> 関数) には 2つの例外的なケースがあります。一つは、0 除算、もうひとつは、最小の負の数 (<a href="../base/base.html#Base.typemin"><code>typemin</code></a>) の -1 除算です。どちらの場合も<a href="../base/base.html#Core.DivideError"><code>DivideError</code></a>をスローします。 また、剰余関数 (<code>rem</code> と <code>mod</code>) は、2 番目の引数がゼロの場合に <a href="../base/base.html#Core.DivideError"><code>DivideError</code></a>をスローします。</p><h2><a class="nav-anchor" id="浮動小数点数-1" href="#浮動小数点数-1">浮動小数点数</a></h2><p>浮動小数点リテラルは、必要に応じて<a href="https://en.wikipedia.org/wiki/Scientific_notation#E-表記">e-表記</a>を使用して、標準フォーマットで表記されます:</p><pre><code class="language-julia-repl">julia&gt; 1.0
+1.0
+
+julia&gt; 1.
+1.0
+
+julia&gt; 0.5
+0.5
+
+julia&gt; .5
+0.5
+
+julia&gt; -1.23
+-1.23
+
+julia&gt; 1e10
+1.0e10
+
+julia&gt; 2.5e-4
+0.00025</code></pre><p>上記の結果はすべて <a href="../base/numbers.html#Core.Float64"><code>Float64</code></a> 値です。リテラル <a href="../base/numbers.html#Core.Float32"><code>Float32</code></a> 値は、<code>e</code> の代わりに <code>f</code> を書くことによって入力できます:</p><pre><code class="language-julia-repl">julia&gt; 0.5f0
+0.5f0
+
+julia&gt; typeof(ans)
+Float32
+
+julia&gt; 2.5f-4
+0.00025f0</code></pre><p>値は<a href="../base/numbers.html#Core.Float32"><code>Float32</code></a>に簡単に変換できます:</p><pre><code class="language-julia-repl">julia&gt; Float32(-1.5)
+-1.5f0
+
+julia&gt; typeof(ans)
+Float32</code></pre><p>16進表記の浮動小数点リテラルも有効ですが、基数2の指数の前に <code>p</code> をつけて利用し、値は <a href="../base/numbers.html#Core.Float64"><code>Float64</code></a>になります:</p><pre><code class="language-julia-repl">julia&gt; 0x1p0
+1.0
+
+julia&gt; 0x1.8p3
+12.0
+
+julia&gt; 0x.4p-1
+0.125
+
+julia&gt; typeof(ans)
+Float64</code></pre><p>半精度浮動小数点数(<a href="../base/numbers.html#Core.Float16"><code>Float16</code></a>)もサポートされていますが、これはソフトウェアで実装され、計算に <a href="../base/numbers.html#Core.Float32"><code>Float32</code></a> を使用します。</p><pre><code class="language-julia-repl">julia&gt; sizeof(Float16(4.))
+2
+
+julia&gt; 2*Float16(4.)
+Float16(8.0)</code></pre><p>アンダースコア <code>_</code> は、数字区切り文字として使用できます:</p><pre><code class="language-julia-repl">julia&gt; 10_000, 0.000_000_005, 0xdead_beef, 0b1011_0010
+(10000, 5.0e-9, 0xdeadbeef, 0xb2)</code></pre><h3><a class="nav-anchor" id="浮動小数点-の0-1" href="#浮動小数点-の0-1">浮動小数点 の0</a></h3><p>浮動小数点数には正と負<a href="https://en.wikipedia.org/wiki/Signed_zero">2 つのゼロ</a>があります。これらは互いに等しい値ですが、異なる2進数表現を持っています。<a href="../base/numbers.html#Base.bitstring"><code>bitstring</code></a> 関数で確認することができます:</p><pre><code class="language-julia-repl">julia&gt; 0.0 == -0.0
+true
+
+julia&gt; bitstring(0.0)
+&quot;0000000000000000000000000000000000000000000000000000000000000000&quot;
+
+julia&gt; bitstring(-0.0)
+&quot;1000000000000000000000000000000000000000000000000000000000000000&quot;</code></pre><h3><a class="nav-anchor" id="special-floating-point-values-1" href="#special-floating-point-values-1">特殊な浮動小数点の値</a></h3><p>浮動小数点の値で実数の数直線上のどの点にも対応しない値が3つあります:</p><table><tr><th style="text-align: left"><code>Float16</code></th><th style="text-align: left"><code>Float32</code></th><th style="text-align: left"><code>Float64</code></th><th style="text-align: left">名前</th><th style="text-align: left">説明</th></tr><tr><td style="text-align: left"><code>Inf16</code></td><td style="text-align: left"><code>Inf32</code></td><td style="text-align: left"><code>Inf</code></td><td style="text-align: left">正の無限大</td><td style="text-align: left">すべての有限の浮動小数点数よりも大きい値</td></tr><tr><td style="text-align: left"><code>-Inf16</code></td><td style="text-align: left"><code>-Inf32</code></td><td style="text-align: left"><code>-Inf</code></td><td style="text-align: left">負の無限大</td><td style="text-align: left">すべての有限の浮動小数点よりも小さい値</td></tr><tr><td style="text-align: left"><code>NaN16</code></td><td style="text-align: left"><code>NaN32</code></td><td style="text-align: left"><code>NaN</code></td><td style="text-align: left">非数</td><td style="text-align: left">どんな浮動小数点数とも <code>==</code>の成り立たない値 (自分自身とも)</td></tr></table><p>これら非有限の浮動小数点値を互いにどのように順序付けされるかについての詳細は、<a href="mathematical-operations.html#numeric-comparisons-1">数値の比較</a>を参照してください。<a href="https://en.wikipedia.org/wiki/IEEE_754-2008">IEEE 754 規格</a>では、これらの浮動小数点数の値は特定の算術演算の結果として得られます:</p><pre><code class="language-julia-repl">julia&gt; 1/Inf
+0.0
+
+julia&gt; 1/0
+Inf
+
+julia&gt; -5/0
+-Inf
+
+julia&gt; 0.000001/0
+Inf
+
+julia&gt; 0/0
+NaN
+
+julia&gt; 500 + Inf
+Inf
+
+julia&gt; 500 - Inf
+-Inf
+
+julia&gt; Inf + Inf
+Inf
+
+julia&gt; Inf - Inf
+NaN
+
+julia&gt; Inf * Inf
+Inf
+
+julia&gt; Inf / Inf
+NaN
+
+julia&gt; 0 * Inf
+NaN</code></pre><p><a href="../base/base.html#Base.typemin"><code>typemin</code></a>関数と<a href="../base/base.html#Base.typemax"><code>typemax</code></a>関数は浮動小数点型にも適用できます:</p><pre><code class="language-julia-repl">julia&gt; (typemin(Float16),typemax(Float16))
+(-Inf16, Inf16)
+
+julia&gt; (typemin(Float32),typemax(Float32))
+(-Inf32, Inf32)
+
+julia&gt; (typemin(Float64),typemax(Float64))
+(-Inf, Inf)</code></pre><h3><a class="nav-anchor" id="マシンイプシロン-1" href="#マシンイプシロン-1">マシンイプシロン</a></h3><p>ほとんどの実数は浮動小数点数で正確に表現することができないため、多くの目的で、2つの隣接する浮動小数点数の間の距離を知ることは重要なことです。これは、<a href="https://en.wikipedia.org/wiki/Machine_epsilon">マシンイプシロン</a> として知られています。</p><p>Julia では <a href="../stdlib/Dates.html#Base.eps"><code>eps</code></a> 関数で、各数値型を引数にとり、その型においての <code>1.0</code> という値と、その値の次に大きな浮動小数点数の間の距離を得ることができます:</p><pre><code class="language-julia-repl">julia&gt; eps(Float32)
+1.1920929f-7
+
+julia&gt; eps(Float64)
+2.220446049250313e-16
+
+julia&gt; eps() # same as eps(Float64)
+2.220446049250313e-16</code></pre><p>これらの値、<code>2.0^-23</code>と<code>2.0^-52</code>はそれぞれ <a href="../base/numbers.html#Core.Float32"><code>Float32</code></a>と<a href="../base/numbers.html#Core.Float64"><code>Float64</code></a>の値です。<a href="../stdlib/Dates.html#Base.eps"><code>eps</code></a> 関数は、引数として浮動小数点数も受け取ることができ、その値と次に表される浮動小数点値との差の絶対値を返します。つまり<code>eps(x)</code> は <code>x</code> と同じ型の値を生成し、<code>x + eps(x)</code> は <code>x</code> より大きい次に表される浮動小数点値になります:</p><pre><code class="language-julia-repl">julia&gt; eps(1.0)
+2.220446049250313e-16
+
+julia&gt; eps(1000.)
+1.1368683772161603e-13
+
+julia&gt; eps(1e-27)
+1.793662034335766e-43
+
+julia&gt; eps(0.0)
+5.0e-324</code></pre><p>隣接する 2 つの 表現可能な浮動小数点数の間の距離は一定ではなく、その距離は元の値が小さいほど小さくなり、大きいほど大きくなります。つまり、表現可能な浮動小数点数の数直線は0付近で最も密度が高く、0から遠ざかるにつれて指数関数的に疎になります。定義上、<code>1.0</code> は 64 ビット浮動小数点数であるため、<code>eps(1.0)</code> と<code>eps(Float64)</code>は同じになります。</p><p>Julia はまた、 <a href="../base/numbers.html#Base.nextfloat"><code>nextfloat</code></a>関数と<a href="../base/numbers.html#Base.prevfloat"><code>prevfloat</code></a>関数を提供します。これらはそれぞれ、引数の値に対して、その型で表現可能な、次に大きな値、次に小さな値を返します:</p><pre><code class="language-julia-repl">julia&gt; x = 1.25f0
+1.25f0
+
+julia&gt; nextfloat(x)
+1.2500001f0
+
+julia&gt; prevfloat(x)
+1.2499999f0
+
+julia&gt; bitstring(prevfloat(x))
+&quot;00111111100111111111111111111111&quot;
+
+julia&gt; bitstring(x)
+&quot;00111111101000000000000000000000&quot;
+
+julia&gt; bitstring(nextfloat(x))
+&quot;00111111101000000000000000000001&quot;</code></pre><p>この例では、隣接する表現可能な浮動小数点数は、2進数表現でもおなじく隣接する、という一般的な原則を示しています。</p><h3><a class="nav-anchor" id="丸めモード-1" href="#丸めモード-1">丸めモード</a></h3><p>浮動小数点で正確に表現できない数は、適切な表現可能な値に丸める必要があります。丸め処理の方法は、<a href="https://en.wikipedia.org/wiki/IEEE_754-2008">IEEE 754 規格</a>に複数のモードが示されており、必要に応じてそのモードを変更することができます。</p><p>デフォルトの丸めモードは、常に <a href="../base/math.html#Base.Rounding.RoundNearest"><code>RoundNearest</code></a>(最近接丸め)で、これは、最も近い表現可能な値に丸める方法で、仮に最近接の表現可能な数が2つある場合には、最下位ビットが偶数になるように丸めます。</p><h3><a class="nav-anchor" id="背景と参照-1" href="#背景と参照-1">背景と参照</a></h3><p>浮動小数点演算には、低レベルの実装の詳細に慣れていないユーザーが驚くような多くの微妙な点がたくさんあります。ただし、これらの微妙な点は、科学計算に関する多くの書籍や下記の資料で詳しく説明されています:</p><ul><li>浮動小数点演算の最も信頼のおけるガイドは、<a href="https://standard.ieee.org/standard/754-2008.html">IEEE 754-2008規格</a>です。ただしオンライン・無料での利用はできません。</li><li>浮動小数点数の表現について完結だが明快な解説として、John D.Cook&#39;の<a href="https://www.johndcook.com/blog/2009/04/06/anatomy-of-a-floating-point-number/">記事</a>を参照のこと。<a href="https://www.johndcook.com/blog/2009/04/06/numbers-a-leaky-a-leaky">イントロダクション</a>では、浮動小数点数と理想化された抽象的な実数との乖離から生じる問題について書かれています。</li><li>また、Bruce Dawsonの<a href="https://randomascii.wordpress.com/2012/05/20/the-normal-not-normal-of-odd-floats/">浮動小数点数に関する一連のブログ記事</a>もお勧めします。</li><li>浮動小数点数と及び、浮動小数点数を用いた演算で遭遇する数値精度の問題についての詳細な議論については、David Goldbergの論文<a href="http://citeseerx.ist.ist.psu.edu/viewdoc/download?doi=10.1.1.22.6768">What Every Computer Scientists Should Know About</a>を参照してください。</li><li>浮動小数点数の歴史、理論、問題、および数値計算における他の多くのトピックの議論について、さらに広く扱った文書については、「浮動小数点の父」として知られている<a href="https://en.wikipedia.org/wiki/William_Kahan">William Kahan</a>の <a href="https://people.eecs.berkeley.edu/~wkahan/">著作集</a>を参照してください。特に興味深いのは「浮動小数点の老人のインタビュー」(https://people.eecs.berkeley.edu/~wkahan/ieee754status/754story.html)です。</li></ul><h2><a class="nav-anchor" id="arbitrary-precision-arithmetic-1" href="#arbitrary-precision-arithmetic-1">任意精度演算</a></h2><p>任意精度の整数と浮動小数点数を使用した計算を可能にするために、Julia は<a href="https://gmplib.org">GNU Multiple Precision Arithmetic Library(GMP)</a>と<a href="https://www.mpfr.org">GNU MPFR Library</a>をラップしています。<a href="../base/numbers.html#Base.GMP.BigInt"><code>BigInt</code></a>と<a href="../base/numbers.html#Base.MPFR.BigFloat"><code>BigFloat</code></a>は、それぞれ任意の精度整数と浮動小数点数でJuliaで使用できます。</p><p>コンストラクターは、プリミティブな数値型からこれらの型を作成するために存在し、<a href="../base/numbers.html#Base.parse"><code>parse</code></a>は<code>AbstractString</code>からそれらを構築するために使用することができます。一度こうして値を生成したら、他のすべての数値型との演算が可能です。これは Juliaの<a href="conversion-and-promotion.html#conversion-and-promotion-1">型昇格と変換メカニズム</a>によって実現されています:</p><pre><code class="language-julia-repl">julia&gt; BigInt(typemax(Int64)) + 1
+9223372036854775808
+
+julia&gt; parse(BigInt, &quot;123456789012345678901234567890&quot;) + 1
+123456789012345678901234567891
+
+julia&gt; parse(BigFloat, &quot;1.23456789012345678901&quot;)
+1.234567890123456789010000000000000000000000000000000000000000000000000000000004
+
+julia&gt; BigFloat(2.0^66) / 3
+2.459565876494606882133333333333333333333333333333333333333333333333333333333344e+19
+
+julia&gt; factorial(BigInt(40))
+815915283247897734345611269596115894272000000000</code></pre><p>ただし、プリミティブ型と <a href="../base/numbers.html#Base.GMP.BigInt"><code>BigInt</code></a>や<a href="../base/numbers.html#Base.MPFR.BigFloat"><code>BigFloat</code></a> との型昇格は自動には行われず、明示的に記述する必要があります。</p><pre><code class="language-julia-repl">julia&gt; x = typemin(Int64)
+-9223372036854775808
+
+julia&gt; x = x - 1
+9223372036854775807
+
+julia&gt; typeof(x)
+Int64
+
+julia&gt; y = BigInt(typemin(Int64))
+-9223372036854775808
+
+julia&gt; y = y - 1
+-9223372036854775809
+
+julia&gt; typeof(y)
+BigInt</code></pre><p><a href="../base/numbers.html#Base.MPFR.BigFloat"><code>BigFloat</code></a> 演算でのデフォルトの精度と丸めモードは、<a href="../base/numbers.html#Base.MPFR.setprecision"><code>setprecision</code></a>や<a href="../base/numbers.html#Base.Rounding.setrounding-Tuple{Type,Any}"><code>setrounding</code></a>を使ってグローバルに変更することができます。その後の全ての計算で、この変更の影響を受けます。もしくは、<code>do</code> ブロックでそれらの関数を使用し、そのコードブロック内でのみ精度や丸めモードを変更することも可能です:</p><pre><code class="language-julia-repl">julia&gt; setrounding(BigFloat, RoundUp) do
+           BigFloat(1) + parse(BigFloat, &quot;0.1&quot;)
+       end
+1.100000000000000000000000000000000000000000000000000000000000000000000000000003
+
+julia&gt; setrounding(BigFloat, RoundDown) do
+           BigFloat(1) + parse(BigFloat, &quot;0.1&quot;)
+       end
+1.099999999999999999999999999999999999999999999999999999999999999999999999999986
+
+julia&gt; setprecision(40) do
+           BigFloat(1) + parse(BigFloat, &quot;0.1&quot;)
+       end
+1.1000000000004</code></pre><h2><a class="nav-anchor" id="man-numeric-literal-coefficients-1" href="#man-numeric-literal-coefficients-1">数値リテラル係数</a></h2><p>一般的な数式・式を明確にするために、Julia では変数の直前に数値リテラルを付けることで乗算を表すことができます。これにより、多項式の記述がはるかにクリーンになります:</p><pre><code class="language-julia-repl">julia&gt; x = 3
+3
+
+julia&gt; 2x^2 - 3x + 1
+10
+
+julia&gt; 1.5x^2 - .5x + 1
+13.0</code></pre><p>また、指数関数の記述もエレガントになります:</p><pre><code class="language-julia-repl">julia&gt; 2^2x
+64</code></pre><p>数値リテラル係数の優先順位は、否定などの単項演算子よりもわずかに低くなります。 したがって、<code>-2x</code> は <code>(-2) * x</code> と <code>√2x</code> は <code>(√2) * x</code> として解析されます。 ただし、数値リテラル係数は、指数関数と組み合わせると、単項演算子と同様に解析されます。 たとえば、<code>2^3x</code> は <code>2^(3x)</code> として解析され、<code>2x^3</code> は <code>2*(x^3)</code> として解析されます。</p><p>数値リテラルは、括弧付き式に対する係数としても機能します:</p><pre><code class="language-julia-repl">julia&gt; 2(x-1)^2 - 3(x-1) + 1
+3</code></pre><p>!!!メモ     暗黙的な乗算に使用される数値リテラル係数の優先順位は     乗算(<code>*</code>)、および除算 (<code>/</code>、<code>\</code>、および <code>//</code>) などの他の二項演算子よりも高くなります。     これは、例えば、<code>1 / 2im</code> は <code>-0.5im</code> に等し、<code>6 // 2(2+ 1)</code> は <code>1 // 1</code>に等しくなります。</p><p>さらに、括弧付き式は変数への係数として使用でき、式と変数の掛け算とすることができます:</p><pre><code class="language-julia-repl">julia&gt; (x-1)x
+6</code></pre><p>ただし、2 つの括弧式の並べておいたり、括弧式の前に変数を配置しても、乗算とはみなされません:</p><pre><code class="language-julia-repl">julia&gt; (x-1)(x+1)
+ERROR: MethodError: objects of type Int64 are not callable
+
+julia&gt; x(x+1)
+ERROR: MethodError: objects of type Int64 are not callable</code></pre><p>括弧式を並べる場合も、括弧式の直前に変数を置いた時も、関数の適応として解釈されます: 数値リテラルではない式の直後に括弧を付けると、括弧内の値に適用される関数として解釈されます (関数についての詳細は、<a href="faq.html#Functions-1">関数</a>の項を参照してください)。したがって、いずれの場合も、左側の値が関数ではないため、エラーが発生します。</p><p>このような構文機能の強化により、一般的な数式を記述するときに発生する視覚的なノイズが大幅に低減されます。数値リテラル係数と、乗算する識別子または括弧式の間に空白が生じないことに注意してください。</p><h3><a class="nav-anchor" id="構文の競合-1" href="#構文の競合-1">構文の競合</a></h3><p>リテラル係数を２つ並べる構文と競合するかもしれない２つの数値リテラル構文があります:16進整数リテラル と浮動小数点リテラルの指数表記です。構文上の競合が発生する状況を以下のようなものです:</p><ul><li>16進整数値 <code>0xff</code> は、数値リテラル <code>0</code> と変数 <code>xff</code> の掛け算と解釈できる。</li><li>浮動小数点リテラル <code>1e10</code> は、数値リテラル <code>1</code>と 変数 <code>e10</code> の掛け算と解釈できる。<code>E</code>形式も同様。</li><li>32 ビット浮動小数点リテラル <code>1.5f22</code> は、数値リテラル<code>1.5</code> と 変数 <code>f22</code> の掛け算と解釈できる。</li></ul><p>どの場合についても、数値リテラルとしての解釈を優先して解決されます。つまり:</p><ul><li><code>0x</code> で始まる式は、常に16進数リテラルです。</li><li>数値リテラルで始まり、<code>e</code> または <code>E</code> が続く式は、常に浮動小数点リテラルです。</li><li>数値リテラルで始まり、<code>f</code> が続く式は、常に 32 ビット浮動小数点リテラルです。</li></ul><p>歴史的な理由から数値リテラルの <code>e</code> に相当する <code>E</code> とは異なり、<code>F</code> は単なる文字であり、数値リテラルでは <code>f</code> のように動作しません。したがって、数値リテラルで始まり<code>F</code>が続く式は、数値リテラルに変数を掛けたものとして解釈され、例えば<code>1.5F22</code>は`1.5</p><ul><li>F22`に等しいことを意味します。</li></ul><h2><a class="nav-anchor" id="と1のリテラル-1" href="#と1のリテラル-1">0と1のリテラル</a></h2><p>Julia は、指定された型または特定の変数の型に対応するリテラル 0 と 1 を返す関数を提供します。</p><table><tr><th style="text-align: left">関数</th><th style="text-align: left">説明</th></tr><tr><td style="text-align: left"><a href="../base/numbers.html#Base.zero"><code>zero(x)</code></a></td><td style="text-align: left">型 <code>x</code> もしくは 変数 <code>x</code>と同じ型を持つリテラル0</td></tr><tr><td style="text-align: left"><a href="../base/numbers.html#Base.one"><code>one(x)</code></a></td><td style="text-align: left">型 <code>x</code> もしくは 変数 <code>x</code>と同じ型を持つリテラル1</td></tr></table><p>これらの関数は、<a href="mathematical-operations.html#numeric-comparisons-1">数値比較</a>の際に、不要な <a href="conversion-and-promotion.html#conversion-and-promotion-1">型変換</a> のオーバーヘッドを回避するのに役立ちます。</p><p>例：</p><pre><code class="language-julia-repl">julia&gt; zero(Float32)
+0.0f0
+
+julia&gt; zero(1.0)
+0.0
+
+julia&gt; one(Int32)
+1
+
+julia&gt; one(BigFloat)
+1.0</code></pre><footer><hr/><a class="previous" href="variables.html"><span class="direction">Previous</span><span class="title">変数</span></a><a class="next" href="mathematical-operations.html"><span class="direction">Next</span><span class="title">算術演算と初等関数</span></a></footer></article></body></html>
