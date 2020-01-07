@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-12-25 05:01+0000\n"
-"PO-Revision-Date: 2020-01-07 11:08+0900\n"
+"PO-Revision-Date: 2020-01-07 11:27+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -4944,7 +4944,7 @@ msgid ""
 msgstr ""
 "      * `T` が整数型の場合, `x` が `T`で表せない場合には`InexactError` が発生します。.\n"
 "  * `x % T` は `x` を整数型 `T`の、`2^n` を法として、`x`と合同な数に変換します。ここで `n` は `T`のビット数です。言い換えると、2進数表現を `T` で表現できるよう切り捨てをしています。\n"
-"  * [丸め関数](@ref rounding-functions) はオプションの引数として、型 `T` をとります。例えば, `round(Int,x)`は `Int(round(x))`の略記です。\n"
+"  * [丸め関数](@ref Rounding-functions-infile) はオプションの引数として、型 `T` をとります。例えば, `round(Int,x)`は `Int(round(x))`の略記です。\n"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:425
@@ -5034,7 +5034,7 @@ msgstr "独自の変換と昇格を定義する方法については、[変換�
 #: ext/julia/doc/src/manual/mathematical-operations.md:465
 #, no-wrap
 msgid "Rounding functions"
-msgstr "[丸め関数](@id rounding-functions)"
+msgstr "[丸め関数](@id Rounding-functions-infile)"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/mathematical-operations.md:477
