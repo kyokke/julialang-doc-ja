@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po 4a\n"
 "POT-Creation-Date: 2019-12-25 05:01+0000\n"
-"PO-Revision-Date: 2020-01-07 10:54+0900\n"
+"PO-Revision-Date: 2020-01-07 11:08+0900\n"
 "Last-Translator: Kyosuke Matsumoto <kyokke@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -20758,7 +20758,7 @@ msgstr ""
 "Julia から呼び出されるコードは、共有ライブラリとして使用できなければなりません。ほとんどの C ライブラリと Fortran ライブラリは既に共有ライブ"
 "ラリとしてコンパイルされていますが、GCC (または Clang) を使用してコードを自分でコンパイルする場合は、`-shared` および `fPIC` オプションを使用"
 "してください。Julia の JIT によって生成されるマシン命令はネイティブ C 呼び出しと同じなので、結果として生じるオーバーヘッドは C コードからライ"
-"ブラリ関数を呼び出すのと同じです。"
+"ブラリ関数を呼び出すのと同じです。[^1]"
 
 #. type: Plain text
 #: ext/julia/doc/src/manual/calling-c-and-fortran-code.md:20
@@ -51082,7 +51082,7 @@ msgstr ""
 #: ext/julia/doc/src/stdlib/Dates.md:802
 #, no-wrap
 msgid "Rounding Functions"
-msgstr "[丸め関数](@id rounding-functions)"
+msgstr "丸め関数"
 
 #. type: Plain text
 #: ext/julia/doc/src/stdlib/Dates.md:806
