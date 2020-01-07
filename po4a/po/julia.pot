@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-12-25 05:01+0000\n"
+"POT-Creation-Date: 2020-01-07 02:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -422,7 +422,7 @@ msgid ""
 msgstr ""
 
 #. type: Code fence info string
-#: ext/julia/doc/src/./index.md:1 ext/julia/doc/src/./index.md:23 ext/julia/doc/src/manual/getting-started.md:10 ext/julia/doc/src/manual/unicode-input.md:18 ext/julia/doc/src/stdlib/REPL.md:10 ext/julia/doc/src/stdlib/Pkg.md:16
+#: ext/julia/doc/src/./index.md:1 ext/julia/doc/src/./index.md:23 ext/julia/doc/src/manual/getting-started.md:10 ext/julia/doc/src/manual/unicode-input.md:18 ext/julia/doc/src/stdlib/REPL.md:10 ext/julia/doc/src/stdlib/Pkg.md:14
 #, no-wrap
 msgid "@eval"
 msgstr ""
@@ -45900,7 +45900,7 @@ msgstr ""
 #. type: Title #
 #: ext/julia/doc/src/stdlib/Profile.md:1
 #, no-wrap
-msgid "[Profiling](@id lib-profiling)"
+msgid "[プロファイリング](@id lib-profiling)"
 msgstr ""
 
 #. type: Plain text
@@ -49097,21 +49097,19 @@ msgid "Pkg は Julia の組み込みパッケージ マネージャであり、�
 msgstr ""
 
 #. type: Plain text
-#: ext/julia/doc/src/stdlib/Pkg.md:15
+#: ext/julia/doc/src/stdlib/Pkg.md:13
 #, no-wrap
 msgid ""
-"!!! note\n"
-"    What follows is a very brief introduction to Pkg. For more\n"
-"    information on `Project.toml` files, `Manifest.toml` files, package\n"
-"    version compatibility (`[compat]`), environments, registries, etc.,\n"
-"    it is highly recommended to read the full manual, which is available "
-"here:\n"
-"    "
-"[https://julialang.github.io/Pkg.jl/v1/](https://julialang.github.io/Pkg.jl/v1/).\n"
+"!!!メモ\n"
+"    以下は、Pkg の非常に簡単な紹介です。\n"
+"    `Project.toml` ファイルや、`Manifest.toml` ファイル、パッケージのバージョン互換性 (`[compat]` "
+")、環境、レジストリー等に関する詳細情報については\n"
+"   以下で入手可能な完全なマニュアルを読むことを強くお勧めします: "
+"[https://julialang.github.io/Pkg.jl/v1/](https://julialang.github.io/Pkg.jl/v1/)。\n"
 msgstr ""
 
 #. type: Plain text
-#: ext/julia/doc/src/stdlib/Pkg.md:16
+#: ext/julia/doc/src/stdlib/Pkg.md:14
 #, no-wrap
 msgid ""
 "import Markdown\n"
@@ -51833,7 +51831,7 @@ msgstr ""
 #. type: Title ###
 #: ext/julia/doc/src/stdlib/Dates.md:802
 #, no-wrap
-msgid "Rounding Functions"
+msgid "[丸め関数](@id rounding-functions)"
 msgstr ""
 
 #. type: Plain text
